@@ -1,0 +1,20 @@
+# Components
+entity  b       Browser
+process wa      Web Application
+process bw      Background Worker
+store   mq      Message Queue
+store   db      Database
+store   wac     Web Application Config
+store   bwc     Background Worker Config
+
+# Data flows
+b       -->     wa   Web Request
+wa      -->     b    Web Response
+wac     ::>     wa   Read Web App Config
+wa      -->     mq   Put Message
+mq      -->     bw   Message
+db      -->     bw   Query Results
+bwc     ::>     bw   Read Worker Config
+
+# Trust Boundary
+frame wa wac bw bwc = Trusted

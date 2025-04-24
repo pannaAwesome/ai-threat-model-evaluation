@@ -1,0 +1,14 @@
+An application with a queue-decoupled background process.
+The application has one external entity the Browser.
+The application has two trusted processes the Web Application and Background Worker.
+The application has two trusted data stores the Web Application Config and the Background Worker Config,
+and two untrusted data stores the Message Queue and the Database.
+
+The Browser requests and sends messages to the Web Application.
+The Web Application puts the message in the Message Queue.
+The Web Application Config stores credentials used by the Web Application to access the Message Queue.
+
+The messages in the Message Queue is send to the Background Worker.
+The Background Worker can query the Database.
+The Background Worker Config stores the credentials used by the Background 
+Worker to access the Database.
