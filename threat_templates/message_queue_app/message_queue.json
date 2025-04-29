@@ -1,0 +1,129 @@
+[
+    {
+      "Type": "Information Disclosure",
+      "Threat": "Accessing database credentials",
+      "Assets": ["Background Worker Config"],
+      "Description": "The Background Worker Config stores the credentials used by the Background Worker to access the Database. An attacker could compromise the Background Worker and get access to the Database credentials.",
+      "Impact": "",
+      "Mitigation": "Encrypt the Database credentials in the configuration file. Expire and replace the Database credentials regularly.",
+      "Risk": "High Severity"
+    },
+    {
+      "Type": "Information Disclosure",
+      "Threat": "Unauthorised access",
+      "Assets": ["Database"],
+      "Description": "An attacker could make a query call on the Database.",
+      "Impact": "",
+      "Mitigation": "Require all queries to be authenticated.",
+      "Risk": "High Severity"
+    },
+    {
+      "Type": "Information Disclosure",
+      "Threat": "Credential theft",
+      "Assets": ["Database"],
+      "Description": "An attacker could obtain the Database credentials and use them to make unauthorised queries.",
+      "Impact": "",
+      "Mitigation": "Use a firewall to restrict access to the Database to only the Background Worker IP address.",
+      "Risk": "Medium Severity"
+    },
+    {
+      "Type": "Information Disclosure",
+      "Threat": "Credentials should be encrypted",
+      "Assets": ["Web Application Config"],
+      "Description": "The Web Application Config stores credentials used  by the Web Application to access the Message Queue. These could be stolen by an attacker and used to read confidential data or place poisoned messages on the queue.",
+      "Impact": "",
+      "Mitigation": "The Message Queue credentials should be encrypted.",
+      "Risk": "High Severity"
+    },
+    {
+      "Type": "Information Disclosure",
+      "Threat": "Message secrecy",
+      "Assets": ["Message Queue"],
+      "Description": "The data flow between the Web Application and the Background Worker is not point-to-point and therefore end-to-end secrecy cannot be provided at the transport layer. Messages could be read by an attacker at rest in the Message Queue.",
+      "Impact": "",
+      "Mitigation": "Use message level encryption for high sensitivity data (e.g. security tokens) in messages.",
+      "Risk": "Low Severity"
+    },
+    {
+      "Type": "Tampering",
+      "Threat": "Message tampering",
+      "Assets": ["Message Queue"],
+      "Description": "Messages on the queue could be tampered with, causing incorrect processing by the Background Worker.",
+      "Impact": "",
+      "Mitigation": "Sign all queue messages at the Web Server. Validate the message signature at the Background Worker and reject any message with a missing or invalid signature. Log any failed messages.",
+      "Risk": "Medium Severity"
+    },
+    {
+      "Type": "Spoofing",
+      "Threat": "Fake messages could be placed on the queue",
+      "Assets": ["Message Queue"],
+      "Description": "An attacker could put a fake message on queue, causing the Background Worker to do incorrect processing.",
+      "Impact": "",
+      "Mitigation": "Restrict access to the queue to the IP addresses of the Web Server and Background Worker. Implement authentication on the queue endpoint.",
+      "Risk": "High Severity"
+    },
+    {
+      "Type": "Denial of Service",
+      "Threat": "Poison messages 1",
+      "Assets": ["Background Worker"],
+      "Description": "An attacker could generate a malicious message that the Background Worker cannot process.",
+      "Impact": "",
+      "Mitigation": "Implement a poison message queue where messages are placed after a fixed number of retries.",
+      "Risk": "Medium Severity"
+    },
+    {
+      "Type": "Denial of Service",
+      "Threat": "Poison messages 2",
+      "Assets": ["Background Worker"],
+      "Description": "An attacker could generate a malicious message that the Background Worker cannot process.",
+      "Impact": "",
+      "Mitigation": "Validate the content of all messages before processing. Reject any message that has invalid content and log the rejection. Do not log the malicious content — instead log a description of the error.",
+      "Risk": "Medium Severity"
+    },
+    {
+      "Type": "Information Disclosure",
+      "Threat": "Data flow should use HTTPS",
+      "Assets": ["Web Request"],
+      "Description": "These requests are made over the public internet and could be intercepted by an attacker.",
+      "Impact": "",
+      "Mitigation": "The requests should require HTTPS. This will provide confidentiality and integrity. HTTP should not be supported.",
+      "Risk": "High Severity"
+    },
+    {
+      "Type": "Information Disclosure",
+      "Threat": "Data flow should use HTTPS",
+      "Assets": ["Put Message"],
+      "Description": "These requests are made over the public internet and could be intercepted by an attacker.",
+      "Impact": "",
+      "Mitigation": "The requests should require HTTPS. This will provide confidentiality and integrity. HTTP should not be supported.",
+      "Risk": "High Severity"
+    },
+    {
+      "Type": "Information Disclosure",
+      "Threat": "Data flow should use HTTPS",
+      "Assets": ["Message"],
+      "Description": "These requests are made over the public internet and could be intercepted by an attacker.",
+      "Impact": "",
+      "Mitigation": "The requests should require HTTPS. This will provide confidentiality and integrity. HTTP should not be supported.",
+      "Risk": "High Severity"
+    },
+    {
+      "Type": "Information Disclosure",
+      "Threat": "Man in the middle attack",
+      "Assets": ["Query Results"],
+      "Description": "An attacker could intercept the Database queries in transit and obtain sensitive information, such as Database credentials, query parameters or query results (is unlikely since the data flow is over a private network).",
+      "Impact": "",
+      "Mitigation": "Enforce an encrypted connection at the Database server.",
+      "Risk": "Low Severity"
+    },
+    {
+      "Type": "Information Disclosure",
+      "Threat": "Data flow should use HTTPS",
+      "Assets": ["Web Response"],
+      "Description": "These responses are over the public internet and could be intercepted by an attacker.",
+      "Impact": "",
+      "Mitigation": "The requests should require HTTPS. This will provide confidentiality and integrity. HTTP should not be supported.",
+      "Risk": "High Severity"
+    }
+  ]
+  
