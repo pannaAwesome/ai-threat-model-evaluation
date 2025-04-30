@@ -1,187 +1,160 @@
 ### Spoofing Threats
 
-#### Spoofing: Web Application to Message Queue
+#### Test Case: Spoofing - Message Interception
 ```gherkin
-Given an attacker impersonates the Web Application to send fraudulent messages to the Message Queue
-When the Message Queue receives a message
-Then the Message Queue should validate the authenticity of the message
-And the Message Queue should reject fraudulent messages
+Given an attacker intercepts messages between the Browser and the Web Application
+When the attacker impersonates a legitimate user
+And submits malicious messages to the Message Queue
+Then the system should detect and reject the malicious messages
+And the system should log the spoofing attempt
 ```
 
-#### Spoofing: Background Worker to Database
+#### Test Case: Spoofing - Message Queue Compromise
 ```gherkin
-Given an attacker impersonates the Background Worker to query sensitive data from the Database
-When the Database receives a query
-Then the Database should authenticate the query source
-And the Database should deny unauthorized access
+Given an attacker compromises the Message Queue
+When the attacker injects fraudulent messages
+And the Background Worker processes these messages
+Then the system should detect and reject the fraudulent messages
+And the system should log the spoofing attempt
 ```
 
-#### Spoofing: Browser to Web Application
+#### Test Case: Spoofing - Background Worker Config Access
 ```gherkin
-Given an attacker impersonates the Browser to send malicious requests to the Web Application
-When the Web Application receives a request
-Then the Web Application should validate the request's origin
-And the Web Application should reject malicious requests
-```
-
-#### Spoofing: Web Application to Web Application Config
-```gherkin
-Given an attacker impersonates the Web Application to access the Web Application Config and steal credentials
-When the Web Application Config is accessed
-Then the access should be authenticated
-And unauthorized access should be denied
+Given an attacker gains access to the Background Worker Config
+When the attacker uses the stored credentials to impersonate the Background Worker
+And queries the Database with malicious intent
+Then the system should detect and reject the unauthorized queries
+And the system should log the spoofing attempt
 ```
 
 ### Tampering Threats
 
-#### Tampering: Browser to Web Application
+#### Test Case: Tampering - Message Interception
 ```gherkin
-Given an attacker intercepts and modifies messages in transit between the Browser and the Web Application
-When a message is received by the Web Application
-Then the Web Application should verify the integrity of the message
-And the Web Application should reject tampered messages
+Given an attacker intercepts messages sent from the Browser to the Web Application
+When the attacker modifies the messages before they are placed in the Message Queue
+Then the system should detect and reject the altered messages
+And the system should log the tampering attempt
 ```
 
-#### Tampering: Message Queue
+#### Test Case: Tampering - Message Queue Modification
 ```gherkin
-Given an attacker modifies messages in the Message Queue before they are processed by the Background Worker
-When the Background Worker processes a message
-Then the Background Worker should verify the integrity of the message
-And the Background Worker should reject tampered messages
+Given an attacker directly modifies messages in the Message Queue
+When the Background Worker processes these messages
+Then the system should detect and reject the modified messages
+And the system should log the tampering attempt
 ```
 
-#### Tampering: Background Worker Config
+#### Test Case: Tampering - Database Modification
 ```gherkin
-Given an attacker alters the Background Worker Config to use malicious credentials for Database access
-When the Background Worker Config is accessed
-Then the config should be protected from unauthorized modifications
-And any tampering should be detected and alerted
+Given an attacker modifies the Database directly
+When the Background Worker retrieves and processes the altered data
+Then the system should detect and reject the corrupted data
+And the system should log the tampering attempt
 ```
 
 ### Repudiation Threats
 
-#### Repudiation: Web Application Request
+#### Test Case: Repudiation - Malicious Message Sending
 ```gherkin
-Given a user denies sending a request to the Web Application
-When a request is sent to the Web Application
-Then the Web Application should log the request details
-And the log should be tamper-proof
+Given a legitimate user sends a malicious message to the Web Application
+When the message is placed in the Message Queue without logging or tracking
+Then the system should log the message and its origin
+And the system should provide an audit trail for accountability
 ```
 
-#### Repudiation: Background Worker Database Query
+#### Test Case: Repudiation - Background Worker Processing
 ```gherkin
-Given the Background Worker denies performing a specific database query
-When the Background Worker performs a database query
-Then the query should be logged
-And the log should be tamper-proof
+Given the Background Worker processes a malicious message from the Message Queue
+When the message is processed without logging the source
+Then the system should log the source of the message
+And the system should provide an audit trail for accountability
 ```
 
-#### Repudiation: Message Queue Message Flow
+#### Test Case: Repudiation - Database Modification
 ```gherkin
-Given the Message Queue denies receiving a message from the Web Application
-When a message is sent to the Message Queue
-Then the message flow should be logged
-And the log should be tamper-proof
+Given an attacker modifies the Database
+When the Background Worker processes the altered data without an audit trail
+Then the system should log the data modifications
+And the system should provide an audit trail for accountability
 ```
 
 ### Information Disclosure Threats
 
-#### Information Disclosure: Web Application Config
+#### Test Case: Information Disclosure - Message Interception
 ```gherkin
-Given an attacker gains unauthorized access to the Web Application Config and retrieves sensitive credentials
-When the Web Application Config is accessed
-Then access should be authenticated and authorized
-And unauthorized access should be denied
+Given an attacker intercepts messages sent from the Browser to the Web Application
+When the attacker gains access to sensitive data
+Then the system should detect and prevent the unauthorized access
+And the system should log the information disclosure attempt
 ```
 
-#### Information Disclosure: Web Application to Message Queue
+#### Test Case: Information Disclosure - Message Queue Access
 ```gherkin
-Given an attacker intercepts messages in transit between the Web Application and the Message Queue
-When messages are sent between the Web Application and the Message Queue
-Then the messages should be encrypted
-And unauthorized access should be prevented
+Given an attacker gains unauthorized access to the Message Queue
+When the attacker reads sensitive messages stored within
+Then the system should detect and prevent the unauthorized access
+And the system should log the information disclosure attempt
 ```
 
-#### Information Disclosure: Background Worker Config
+#### Test Case: Information Disclosure - Database Access
 ```gherkin
-Given an attacker gains unauthorized access to the Background Worker Config and retrieves sensitive credentials
-When the Background Worker Config is accessed
-Then access should be authenticated and authorized
-And unauthorized access should be denied
-```
-
-#### Information Disclosure: Background Worker to Database
-```gherkin
-Given an attacker intercepts queries sent from the Background Worker to the Database
-When queries are sent from the Background Worker to the Database
-Then the queries should be encrypted
-And unauthorized access should be prevented
+Given an attacker accesses the Database directly
+When the attacker reads sensitive data stored within
+Then the system should detect and prevent the unauthorized access
+And the system should log the information disclosure attempt
 ```
 
 ### Denial of Service Threats
 
-#### Denial of Service: Web Application
+#### Test Case: Denial of Service - Web Application Flooding
 ```gherkin
-Given an attacker floods the Web Application with a high volume of requests
-When the Web Application receives a high volume of requests
-Then the Web Application should implement rate limiting
-And the Web Application should remain responsive
+Given an attacker floods the Web Application with requests
+When the Web Application is overwhelmed
+Then the system should detect and mitigate the DoS attack
+And the system should log the DoS attempt
 ```
 
-#### Denial of Service: Message Queue
+#### Test Case: Denial of Service - Message Queue Flooding
 ```gherkin
 Given an attacker floods the Message Queue with a large number of messages
-When the Message Queue receives a large number of messages
-Then the Message Queue should implement rate limiting
-And the Message Queue should remain responsive
+When the Background Worker is overwhelmed
+Then the system should detect and mitigate the DoS attack
+And the system should log the DoS attempt
 ```
 
-#### Denial of Service: Database
+#### Test Case: Denial of Service - Database Attack
 ```gherkin
-Given an attacker floods the Database with a high volume of queries
-When the Database receives a high volume of queries
-Then the Database should implement rate limiting
-And the Database should remain responsive
-```
-
-#### Denial of Service: Background Worker
-```gherkin
-Given an attacker exploits a vulnerability in the Background Worker to crash it
-When the Background Worker is under attack
-Then the Background Worker should have resilience mechanisms
-And the Background Worker should remain operational
+Given an attacker performs a Denial of Service attack on the Database
+When the Database becomes unavailable for the Background Worker to query
+Then the system should detect and mitigate the DoS attack
+And the system should log the DoS attempt
 ```
 
 ### Elevation of Privilege Threats
 
-#### Elevation of Privilege: Web Application
+#### Test Case: Elevation of Privilege - Web Application Vulnerability
 ```gherkin
-Given an attacker exploits a vulnerability in the Web Application to gain higher privileges and access sensitive data
-When the Web Application is accessed
-Then the access should be authenticated and authorized
-And unauthorized privilege escalation should be prevented
+Given an attacker exploits a vulnerability in the Web Application
+When the attacker gains unauthorized access to the Web Application Config
+And obtains sensitive credentials
+Then the system should detect and prevent the unauthorized access
+And the system should log the elevation of privilege attempt
 ```
 
-#### Elevation of Privilege: Background Worker
+#### Test Case: Elevation of Privilege - Background Worker Vulnerability
 ```gherkin
-Given an attacker exploits a vulnerability in the Background Worker to gain higher privileges and access the Database
-When the Background Worker accesses the Database
-Then the access should be authenticated and authorized
-And unauthorized privilege escalation should be prevented
+Given an attacker exploits a vulnerability in the Background Worker
+When the attacker gains unauthorized access to the Background Worker Config
+And obtains sensitive credentials
+Then the system should detect and prevent the unauthorized access
+And the system should log the elevation of privilege attempt
 ```
 
-#### Elevation of Privilege: Message Queue
+#### Test Case: Elevation of Privilege - Database Access
 ```gherkin
-Given an attacker compromises the Message Queue to gain higher privileges and intercept messages
-When the Message Queue is accessed
-Then the access should be authenticated and authorized
-And unauthorized privilege escalation should be prevented
-```
-
-#### Elevation of Privilege: Web Application Config
-```gherkin
-Given an attacker exploits a vulnerability in the Web Application to gain higher privileges and access the Web Application Config
-When the Web Application Config is accessed
-Then the access should be authenticated and authorized
-And unauthorized privilege escalation should be prevented
+Given an attacker gains unauthorized access to the Database
+When the attacker escalates privileges to modify or delete sensitive data
+Then the system should detect and prevent the unauthorized access
+And the system should log the elevation of privilege attempt
 ```

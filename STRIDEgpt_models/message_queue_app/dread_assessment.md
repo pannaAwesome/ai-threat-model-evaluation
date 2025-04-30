@@ -1,25 +1,21 @@
 | Threat Type | Scenario | Damage Potential | Reproducibility | Exploitability | Affected Users | Discoverability | Risk Score |
 |------------|----------|------------------|-----------------|----------------|----------------|-----------------|------------|
-| Spoofing | An attacker impersonates the Web Application to send fraudulent messages to the Message Queue. | 8 | 6 | 7 | 7 | 5 | 6.60 |
-| Spoofing | An attacker impersonates the Background Worker to query sensitive data from the Database. | 9 | 5 | 6 | 8 | 4 | 6.40 |
-| Spoofing | An attacker impersonates the Browser to send malicious requests to the Web Application. | 8 | 7 | 7 | 8 | 6 | 7.20 |
-| Spoofing | An attacker impersonates the Web Application to access the Web Application Config and steal crede... | 9 | 5 | 6 | 7 | 4 | 6.20 |
-| Tampering | An attacker intercepts and modifies messages in transit between the Browser and the Web Application. | 8 | 6 | 7 | 8 | 5 | 6.80 |
-| Tampering | An attacker modifies messages in the Message Queue before they are processed by the Background Wo... | 8 | 5 | 6 | 7 | 4 | 6.00 |
-| Tampering | An attacker alters the Background Worker Config to use malicious credentials for Database access. | 9 | 4 | 5 | 7 | 3 | 5.60 |
-| Repudiation | A user denies sending a request to the Web Application, and there is no adequate logging to verif... | 7 | 6 | 6 | 7 | 5 | 6.20 |
-| Repudiation | The Background Worker denies performing a specific database query, and there is insufficient logg... | 7 | 5 | 5 | 6 | 4 | 5.40 |
-| Repudiation | The Message Queue denies receiving a message from the Web Application, and there is no logging to... | 7 | 5 | 5 | 6 | 4 | 5.40 |
-| Information Disclosure | An attacker gains unauthorized access to the Web Application Config and retrieves sensitive crede... | 9 | 5 | 6 | 7 | 4 | 6.20 |
-| Information Disclosure | An attacker intercepts messages in transit between the Web Application and the Message Queue. | 8 | 6 | 7 | 7 | 5 | 6.60 |
-| Information Disclosure | An attacker gains unauthorized access to the Background Worker Config and retrieves sensitive cre... | 9 | 5 | 6 | 7 | 4 | 6.20 |
-| Information Disclosure | An attacker intercepts queries sent from the Background Worker to the Database. | 9 | 5 | 6 | 7 | 4 | 6.20 |
-| Denial of Service | An attacker floods the Web Application with a high volume of requests, causing it to become unres... | 8 | 7 | 7 | 9 | 6 | 7.40 |
-| Denial of Service | An attacker floods the Message Queue with a large number of messages, causing it to become unresp... | 8 | 6 | 6 | 8 | 5 | 6.60 |
-| Denial of Service | An attacker floods the Database with a high volume of queries, causing it to become unresponsive. | 8 | 6 | 6 | 8 | 5 | 6.60 |
-| Denial of Service | An attacker exploits a vulnerability in the Background Worker to crash it, causing service interr... | 8 | 5 | 6 | 7 | 4 | 6.00 |
-| Elevation of Privilege | An attacker exploits a vulnerability in the Web Application to gain higher privileges and access ... | 9 | 5 | 6 | 8 | 4 | 6.40 |
-| Elevation of Privilege | An attacker exploits a vulnerability in the Background Worker to gain higher privileges and acces... | 9 | 4 | 5 | 7 | 3 | 5.60 |
-| Elevation of Privilege | An attacker compromises the Message Queue to gain higher privileges and intercept messages. | 8 | 5 | 6 | 7 | 4 | 6.00 |
-| Elevation of Privilege | An attacker exploits a vulnerability in the Web Application to gain higher privileges and access ... | 9 | 5 | 6 | 7 | 4 | 6.20 |
+| Spoofing | An attacker intercepts messages between the Browser and the Web Application, impersonating a legi... | 9 | 4 | 6 | 7 | 5 | 6.20 |
+| Spoofing | An attacker compromises the Message Queue and injects fraudulent messages, which are then process... | 8 | 5 | 6 | 7 | 5 | 6.20 |
+| Spoofing | An attacker gains access to the Background Worker Config and uses the stored credentials to imper... | 9 | 4 | 7 | 6 | 5 | 6.20 |
+| Tampering | An attacker intercepts and modifies messages sent from the Browser to the Web Application before ... | 8 | 5 | 6 | 7 | 5 | 6.20 |
+| Tampering | An attacker directly modifies messages in the Message Queue before they are processed by the Back... | 8 | 5 | 7 | 7 | 5 | 6.40 |
+| Tampering | An attacker modifies the Database directly, altering the data that the Background Worker retrieve... | 9 | 4 | 6 | 7 | 5 | 6.20 |
+| Repudiation | A legitimate user sends a malicious message to the Web Application, which then places it in the M... | 7 | 5 | 5 | 6 | 4 | 5.40 |
+| Repudiation | The Background Worker processes a malicious message from the Message Queue without logging the so... | 7 | 5 | 5 | 6 | 4 | 5.40 |
+| Repudiation | An attacker modifies the Database, and the Background Worker processes the altered data without a... | 7 | 4 | 5 | 6 | 4 | 5.20 |
+| Information Disclosure | An attacker intercepts messages sent from the Browser to the Web Application, gaining access to s... | 9 | 5 | 6 | 8 | 5 | 6.60 |
+| Information Disclosure | An attacker gains unauthorized access to the Message Queue and reads sensitive messages stored wi... | 8 | 5 | 6 | 7 | 5 | 6.20 |
+| Information Disclosure | An attacker accesses the Database directly and reads sensitive data stored within. | 9 | 4 | 6 | 8 | 5 | 6.40 |
+| Denial of Service | An attacker floods the Web Application with requests, overwhelming it and preventing legitimate u... | 8 | 6 | 7 | 9 | 6 | 7.20 |
+| Denial of Service | An attacker floods the Message Queue with a large number of messages, overwhelming the Background... | 8 | 6 | 7 | 8 | 6 | 7.00 |
+| Denial of Service | An attacker performs a Denial of Service attack on the Database, making it unavailable for the Ba... | 9 | 5 | 6 | 8 | 5 | 6.60 |
+| Elevation of Privilege | An attacker exploits a vulnerability in the Web Application to gain unauthorized access to the We... | 9 | 4 | 6 | 7 | 5 | 6.20 |
+| Elevation of Privilege | An attacker exploits a vulnerability in the Background Worker to gain unauthorized access to the ... | 9 | 4 | 6 | 6 | 5 | 6.00 |
+| Elevation of Privilege | An attacker gains unauthorized access to the Database and escalates privileges to modify or delet... | 9 | 4 | 6 | 8 | 5 | 6.40 |
 

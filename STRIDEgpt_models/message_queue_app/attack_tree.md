@@ -1,32 +1,44 @@
-```mermaid
-    graph TD
-        root["Compromise Application"]
-        webapp["Compromise Web Application"]
-        root --> webapp
-        webapp1["Exploit Vulnerabilities in Web Application"]
-        webapp --> webapp1
-        webapp2["Steal Web Application Config"]
-        webapp --> webapp2
-        webapp2-1["Access Message Queue Credentials"]
-        webapp2 --> webapp2-1
-        bgworker["Compromise Background Worker"]
-        root --> bgworker
-        bgworker1["Exploit Vulnerabilities in Background Worker"]
-        bgworker --> bgworker1
-        bgworker2["Steal Background Worker Config"]
-        bgworker --> bgworker2
-        bgworker2-1["Access Database Credentials"]
-        bgworker2 --> bgworker2-1
-        msgqueue["Compromise Message Queue"]
-        root --> msgqueue
-        msgqueue1["Inject Malicious Messages"]
-        msgqueue --> msgqueue1
-        msgqueue2["Eavesdrop on Messages"]
-        msgqueue --> msgqueue2
-        database["Compromise Database"]
-        root --> database
-        database1["Exploit SQL Injection"]
-        database --> database1
-        database2["Unauthorized Data Access"]
-        database --> database2
-```
+graph TD
+    root["Compromise Application"]
+    auth["Gain Unauthorized Access"]
+    root --> auth
+    auth1["Access Web Application Directly"]
+    auth --> auth1
+    auth2["Access Background Worker Directly"]
+    auth --> auth2
+    data["Compromise Data Stores"]
+    root --> data
+    data1["Access Web Application Config"]
+    data --> data1
+    data1a["Steal Credentials for Message Queue"]
+    data1 --> data1a
+    data2["Access Background Worker Config"]
+    data --> data2
+    data2a["Steal Credentials for Database"]
+    data2 --> data2a
+    data3["Access Message Queue"]
+    data --> data3
+    data3a["Inject Malicious Messages"]
+    data3 --> data3a
+    data3b["Eavesdrop on Messages"]
+    data3 --> data3b
+    data4["Access Database"]
+    data --> data4
+    data4a["Exfiltrate Sensitive Data"]
+    data4 --> data4a
+    data4b["Inject Malicious Data"]
+    data4 --> data4b
+    process["Compromise Processes"]
+    root --> process
+    process1["Compromise Web Application"]
+    process --> process1
+    process1a["Inject Malicious Code"]
+    process1 --> process1a
+    process1b["Exploit Vulnerabilities"]
+    process1 --> process1b
+    process2["Compromise Background Worker"]
+    process --> process2
+    process2a["Inject Malicious Code"]
+    process2 --> process2a
+    process2b["Exploit Vulnerabilities"]
+    process2 --> process2b
