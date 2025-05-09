@@ -1,0 +1,2804 @@
+﻿Component,Reference ID,Countermeasure,Description,Source,State,Test result,Priority,Expiry date,Cost,Owner,Issue ID,MITRE reference,Scope,Standard baseline,Standard baseline section
+Browser,C-BROWSER-CNT-02,Activate built-in browser security filters,"Implement and regularly update built-in browser security filters on all 
+client machines to protect against malicious scripts, exploit code, and 
+other types of web-based threats. These filters help detect and block 
+untrusted content and potential attacks that could compromise the browser 
+or steal sensitive data. Regular reviews and updates ensure that the 
+browser’s security configurations remain effective against emerging 
+threats.
+
+Implementation Steps:
+
+Review Browser Security Settings:
+Verify that the browser’s security filters are enabled by default in the 
+configuration settings.
+
+Configure Automatic Updates:
+Ensure that browsers are set to automatically update so that the latest 
+security filters and patches are applied.
+
+Enforce Organizational Policies:
+Deploy centralized management policies (e.g., via Group Policy or MDM 
+solutions) to enforce and monitor these settings across all client 
+machines.
+
+Test Security Filter Effectiveness:
+Regularly perform security audits and simulated attacks to verify that the 
+security filters are properly detecting and blocking malicious content.
+
+References:
+
+    * OWASP Secure Headers Project
+      <https://owasp.org/www-project-secure-headers/>",Created by Rules Engine,Recommended,Not tested,High,N/A,Low,Josephine Bakka,,ATT&CK Enterprise - M1031 - Network Intrusion Prevention,Application Security,NIST 800-53 v5,"SI-7 Software, Firmware, and Information Integrity"
+Browser,C-BROWSER-CNT-04,Activate URL filtering mechanisms,"Implement and regularly update URL filtering mechanisms on all client 
+machines to protect against phishing attacks and access to deceptive 
+websites. These mechanisms help detect and block access to known malicious 
+domains and prevent users from visiting harmful sites that could compromise 
+credentials or lead to malware infections. Regular updates and reviews 
+ensure that the URL filtering remains effective against evolving threats.
+
+Implementation Steps:
+
+Configure Browser Settings:
+Set the browser's URL filtering features via built-in settings or through 
+centralized management policies to block access to high-risk websites.
+
+Integrate with Threat Intelligence:
+Leverage reputable threat intelligence feeds to update filtering rules and 
+identify new malicious URLs continuously.
+
+Schedule Regular Audits:
+Perform periodic reviews of the URL filtering configuration to ensure it is 
+properly enforced and updated in line with the latest threat data.
+
+Monitor and Alert:
+Establish monitoring mechanisms to detect attempts to access blocked URLs 
+and alert administrators for further investigation.
+
+References:
+
+    * Google Safe Browsing API <https://safebrowsing.google.com>",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1050 - Exploit Protection,Application Security,NIST 800-53 v5,SI-15 Information Output Filtering
+Background Config,C-APPLY-DATA-MASKING-AND-TOKENIZATION,Apply Data Masking and Tokenization,"Apply Data Masking and Tokenization
+
+Description: Protecting sensitive information, such as user credentials, is 
+crucial in maintaining user privacy and security. ""Data Masking"" and 
+""Tokenization"" are two effective techniques that help minimize exposure 
+risks by obscuring actual data values. Data Masking involves altering or 
+hiding specific data within a dataset, making it unreadable or inaccessible 
+during processes like display or logging. Tokenization replaces sensitive 
+data with non-sensitive substitutes, known as tokens, which can be used to 
+retrieve the original data without exposing it in system processes.
+
+Benefits of Data Masking and Tokenization
+
+    * Data Protection: Both techniques provide an added layer of security
+      by ensuring that sensitive data, such as passwords or personal
+      information, is not exposed in clear text.
+    * Compliance: Helps in adhering to data protection regulations such as
+      GDPR, PCI-DSS, and others, which often require the protection of
+      personal and sensitive information.
+    * Reduced Risk: By limiting the exposure of sensitive data, the risk
+      associated with data breaches and unauthorized access is
+      significantly reduced.
+
+Implementing Data Masking
+
+Data Masking should be applied in scenarios where displaying the full data 
+is unnecessary, such as:
+
+    * Log files that record user activity or system errors.
+    * Debugging information displayed in development or production
+      environments.
+    * End-user interfaces that show personal or sensitive information.
+
+Developers can implement masking by using regular expressions to replace 
+characters, using built-in functions of database management systems, or 
+employing third-party data masking tools.
+
+Implementing Tokenization
+
+Tokenization is particularly useful for handling transactions and sessions 
+where the actual data does not need to be exposed:
+
+    * Payment processing systems where credit card details are replaced
+      with tokens.
+    * Authentication systems where session identifiers replace user
+      credentials.
+
+Tokenization requires a secure method for generating, storing, and managing 
+tokens, often involving a secure tokenization service or platform.
+
+Example: Tokenization for Session Management
+
+       // Example of generating a session token        function 
+generateSessionToken(userCredentials) {          const token = 
+secureTokenService.createToken(userCredentials);          return token;     
+   }    
+
+This example demonstrates how a developer might implement tokenization to 
+manage user sessions securely, replacing sensitive credentials with a 
+secure token generated by a tokenization service.
+
+By applying Data Masking and Tokenization techniques, developers can 
+significantly enhance the security of user credentials and sensitive data, 
+ensuring compliance with data protection standards and reducing the risk of 
+exposure.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATLAS - AML.M0012 - Encrypt Sensitive Information,Data Security,NIST 800-53 v5,SI-19 De-identification
+Browser,C-BROWSER-CNT-08,Apply security hardening measures,"Implement and regularly update security hardening measures on all client 
+machines to reduce the attack surface and mitigate vulnerabilities within 
+the browser. These measures involve configuring the browser to disable 
+unnecessary features, enforcing secure settings, and applying patches that 
+strengthen the overall security posture against potential threats. Regular 
+audits and updates ensure that the browser remains resilient against 
+evolving attack vectors.
+
+Implementation Steps:
+
+Review and Configure Default Settings:
+Examine the browser’s default configuration and disable non-essential 
+features that could expose vulnerabilities.
+
+Enforce Secure Configuration:
+Apply recommended security settings, such as disabling insecure protocols 
+and enabling strict privacy controls, through centralized management or 
+configuration scripts.
+
+Regularly Update and Patch:
+Ensure that the browser and its security settings are updated regularly to 
+include the latest hardening recommendations and patches.
+
+Conduct Security Audits:
+Schedule periodic security audits to verify the effectiveness of the 
+hardening measures and adjust configurations based on emerging threats.
+
+References:
+
+    * OWASP Secure Configuration Guide
+      <https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/>",Created by Rules Engine,Recommended,Not tested,Very high,N/A,High,Josephine Bakka,,ATT&CK Enterprise - M1054 - Software Configuration,Operational Security,NIST 800-53 v5,SI-2 Flaw Remediation
+Web Application,C-WEB-APPLICATION-SERVER-SIDE-CNT-11,Block or validate all outbound requests,"To reduce the risk of data exfiltration or unauthorized system 
+communication, block or carefully validate all outbound requests made by 
+the application. Ensure that only requests to specific, trusted domains and 
+IP addresses are allowed, and that any outbound request to unapproved 
+destinations is blocked or flagged for further review. This control 
+prevents the application from communicating with malicious external systems 
+and protects sensitive data from being leaked.
+
+Implementation Steps:
+
+   1. Implement Outbound Request Filtering: Use a web application firewall
+      (WAF) or proxy to block or monitor any outbound requests that are not
+      to trusted domains or IP addresses.
+   2. Validate Outbound Requests: Before allowing outbound communication,
+      validate the destination domain and IP address to ensure they are
+      within an approved list of resources necessary for the application.
+   3. Set Domain and IP Allowlists: Define an allowlist of specific domains
+      and IP addresses that the application is authorized to interact with,
+      and block all other outbound traffic.
+   4. Monitor and Log Outbound Requests: Continuously monitor and log all
+      outbound requests for suspicious activity or attempts to communicate
+      with unapproved destinations.
+   5. Review and Update Allowlist Regularly: Periodically review the
+      allowlist to ensure that it remains up-to-date with the application's
+      legitimate requirements.
+
+References:
+
+    * Security and Privacy Controls for Information Systems and
+      Organizations <https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final>",Created by Rules Engine,Recommended,Not tested,Medium,N/A,High,Josephine Bakka,,ATT&CK Enterprise - M1031 - Network Intrusion Prevention,Network Security,NIST 800-53 v5,SC-7 Boundary Protection
+Web Application,C-WEB-APPLICATION-SERVER-SIDE-CNT-09,Capture and monitor detailed logs for critical actions,"To ensure comprehensive visibility into system activities, capture detailed 
+logs for all critical actions within the web application. These logs should 
+include data such as user actions, system changes, and access to sensitive 
+resources. Additionally, proactively monitor these logs to detect 
+suspicious behavior, unauthorized access, or anomalous activity, enabling 
+timely detection of security incidents and faster response to potential 
+threats.
+
+Implementation Steps:
+
+   1. Enable Logging for Critical Actions: Ensure that all key actions
+      (e.g., login attempts, data access, configuration changes) are logged
+      in detail, including relevant metadata such as timestamps, user
+      identifiers, and source IP addresses.
+   2. Use Centralized Logging: Store logs in a centralized location for
+      easier access and analysis. Integrate with a log management or SIEM
+      system for real-time monitoring.
+   3. Set Up Automated Alerts: Configure automated alerts for suspicious or
+      unauthorized actions, such as failed login attempts, unexpected
+      configuration changes, or access to sensitive data by unauthorized
+      users.
+   4. Regularly Review Logs: Conduct regular log reviews and audits to
+      ensure that logging mechanisms are functioning correctly and that
+      logs provide the necessary level of detail to identify security
+      incidents.
+
+References:
+
+    * OWASP Logging Best Practices
+      <https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html>",Created by Rules Engine,Recommended,Not tested,Medium,N/A,High,Josephine Bakka,,ATT&CK Enterprise - M1047 - Audit,Operational Security,NIST 800-53 v5,AU-12 Audit Record Generation
+Web Application,C-WEB-APPLICATION-SERVER-SIDE-CNT-03,Check user roles and permissions on every request,"To ensure secure access control, check the user's roles and permissions on 
+every request for protected resources or functions. This prevents 
+unauthorized access by verifying that the user has the correct privileges 
+to perform the requested action, helping to enforce the principle of least 
+privilege across the application. This should be done dynamically on each 
+request to minimize the risk of privilege escalation or unauthorized 
+resource access.
+
+Implementation Steps:
+
+   1. Role-Based Access Control (RBAC): Implement RBAC to define user roles
+      and assign permissions based on the user’s role. Ensure that only
+      authorized roles can access specific resources or functions.
+   2. Permission Validation: For every incoming request, validate that the
+      user’s assigned roles have the necessary permissions to access or
+      modify the requested resource or function.
+   3. Enforce Fine-Grained Access Control: Implement fine-grained
+      permission checks for sensitive actions and resources, ensuring that
+      access is granted based on the exact permissions needed.
+   4. Session Management: Use session or token-based management to persist
+      user identity and permissions, and ensure that permissions are
+      checked against current session data on each request.
+   5. Audit Logs: Record and review access attempts, especially for
+      sensitive resources, to detect potential unauthorized access or
+      misuse of roles and permissions.
+
+References:
+
+    * OWASP Access Control Cheat Sheet
+      <https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html>",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1015 - Active Directory Configuration,Application Security,NIST 800-53 v5,PM-10 Authorization Process
+Browser,C-BROWSER-CNT-07,Configure automatic browser updates,"Implement and regularly update automatic browser updates on all client 
+machines to ensure that the browser always runs the latest secure version. 
+This control minimizes exposure to vulnerabilities by automatically 
+applying patches and security improvements, reducing the window of 
+opportunity for attackers to exploit known weaknesses.
+
+Implementation Steps:
+
+Enable Automatic Updates:
+Configure the browser’s settings to allow automatic updates. This can 
+typically be done via built-in options or centralized management tools such 
+as Group Policy or MDM solutions.
+
+Verify Update Channels:
+Ensure that the browser is configured to use the appropriate update channel 
+(e.g., stable, beta) that balances security with compatibility for your 
+organization’s needs.
+
+Monitor Update Compliance:
+Regularly audit update logs and use monitoring tools to confirm that all 
+client machines are receiving and installing updates promptly.
+
+Test Updates in a Controlled Environment:
+Before deploying updates organization-wide, test them in a controlled 
+environment to ensure compatibility and avoid disruptions.
+
+References:
+
+    * Mozilla Firefox Enterprise Policies
+      <https://support.mozilla.org/en-US/kb/enforcing-policies-firefox-enterprise>",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Low,Josephine Bakka,,ATT&CK Enterprise - M1036 - Account Use Policies,Application Security,NIST 800-53 v5,CM-6 Configuration Settings
+Web Application,C-WEB-APPLICATION-SERVER-SIDE-CNT-10,Configure XML parsers to disallow external entities and DTD processing,"To prevent XML-based attacks such as XML External Entity (XXE) and Denial 
+of Service (DoS) attacks, configure XML parsers to disallow external 
+entities and Document Type Definition (DTD) processing by default. This 
+ensures that any incoming XML documents cannot trigger external requests or 
+load external data that could compromise the system, leak sensitive data, 
+or cause resource exhaustion.
+
+Implementation Steps:
+
+   1. Disable External Entity Resolution: Configure XML parsers to
+      explicitly disable the resolution of external entities by setting
+      options or flags that prevent the parser from fetching external
+      resources.
+   2. Disable DTD Processing: Ensure that the XML parser does not process
+      DTDs, which can be used to define and reference external entities or
+      cause denial-of-service attacks via large or nested DTDs.
+   3. Use Secure Parsers: Ensure that you are using updated and secure XML
+      parsing libraries that offer built-in protections against XXE and
+      other XML-based vulnerabilities.
+   4. Validate XML Input: Before parsing, validate XML input to ensure it
+      conforms to a known schema or structure, mitigating any unexpected or
+      malicious data.
+
+References:
+
+    * OWASP XML External Entity (XXE) Prevention Cheat Sheet
+      <https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html>",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1055 - Do Not Mitigate,Application Security,NIST 800-53 v5,CM-6 Configuration Settings
+Database,C-COMPREHENSIVE-SECURITY-FRAMEWORK-FOR-DATABASE-MANAGEMENT,Create a workflow for a comprehensive security framework for your database management system,"Creating a security framework for a database management system involves 
+implementing a series of technical measures and adhering to best practices. 
+This ensures protection against unauthorized access and secures your data. 
+Follow these steps to establish a robust security framework:
+
+Steps to Develop a Comprehensive Security Framework:
+
+    * Assess Current Security Measures: Begin by reviewing your existing
+      database security measures. Identify any gaps in security by
+      comparing current practices against industry standards such as those
+      set by the ISO/IEC 27001, NIST, or CIS benchmarks.
+    * Implement Multi-Factor Authentication (MFA), when applicable: Add an
+      extra layer of security by deploying MFA. Ensure that MFA is required
+      for all access to the database management system, particularly for
+      administrative roles.
+    * Regular Audits of User Roles and Permissions: Establish a routine
+      schedule for auditing user roles and permissions. Ensure that access
+      rights adhere to the principle of least privilege, where users are
+      granted the minimum level of access necessary for their job
+      functions.
+    * Encrypt Data: Use strong encryption protocols to protect data both at
+      rest and in transit. Implement TLS for data in transit and AES for
+      data at rest. Ensure that encryption keys are managed securely using
+      a dedicated key management service or tool.
+    * Automate Security Monitoring: Set up automated systems to monitor
+      your database for real-time security threats. Utilize intrusion
+      detection systems (IDS) and intrusion prevention systems (IPS) to
+      detect and respond to threats as they occur.
+    * Ensure Compliance with Privacy Regulations: Regularly review and
+      update your security practices to maintain compliance with relevant
+      privacy laws and regulations, such as GDPR or HIPAA, depending on
+      your location and industry.
+
+By methodically implementing these steps, you can significantly enhance the 
+security posture of your Database Manager. This comprehensive approach not 
+only protects against a wide array of threats but also helps in maintaining 
+user trust and organizational reputation.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1032 - Multi-factor Authentication||ATT&CK Enterprise - M1050 - Exploit Protection,Application Security||Data Security,NIST 800-53 v5,IA-2 Identification and Authentication (organizational Users)||AC-3 ACCESS ENFORCEMENT||SC-28 PROTECTION OF INFORMATION AT REST||SC-8 TRANSMISSION CONFIDENTIALITY AND INTEGRITY
+Browser,C-BROWSER-CNT-03,Deploy anti-phishing protection,"Implement and regularly update anti-phishing protection on all client 
+machines to safeguard users from deceptive websites and phishing attempts. 
+This control leverages browser-integrated security features and threat 
+intelligence to detect and block fraudulent sites, protecting sensitive 
+credentials and personal data. Regular configuration reviews and updates 
+ensure that phishing protection remains effective against emerging threats.
+
+Implementation Steps:
+
+Enable Browser Phishing Protection:
+Activate the built-in anti-phishing features available in the browser 
+settings, ensuring that users are warned about potentially deceptive 
+websites.
+
+Integrate Threat Intelligence Feeds:
+Connect the browser’s security system to reputable threat intelligence 
+services (e.g., Google Safe Browsing) to keep filtering rules current with 
+the latest phishing data.
+
+Enforce Organizational Policies:
+Use centralized management tools (e.g., Group Policy or MDM solutions) to 
+enforce anti-phishing configurations across all client machines.
+
+Monitor and Review:
+Regularly audit and monitor logs for phishing detection alerts, and adjust 
+settings as necessary to maintain a robust defense against phishing 
+attacks.
+
+References:
+
+    * Google Safe Browsing API <https://safebrowsing.google.com>",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1017 - User Training,Network Security,NIST 800-53 v5,SC-18 Mobile Code
+Web Application,C-WEB-APPLICATION-SERVER-SIDE-CNT-06,"Disable unused services, remove default accounts, and apply security updates","To minimize the attack surface and enhance security, disable any unused 
+services, remove default accounts, and apply security updates promptly. By 
+doing so, you reduce the risk of exploitation through unneeded services or 
+default credentials and ensure that the system is protected from known 
+vulnerabilities. Additionally, use secure configurations to prevent 
+unauthorized access and ensure that the system is optimally protected.
+
+Implementation Steps:
+
+   1. Disable Unused Services: Identify and disable any services that are
+      not needed for the application or system to function. This limits the
+      number of potential attack vectors.
+   2. Remove Default Accounts: Remove or disable default accounts and
+      ensure that all active accounts are assigned strong, unique
+      credentials. Avoid using default settings that might be easily
+      guessed by attackers.
+   3. Apply Security Updates: Regularly check for and apply security
+      patches to all systems and applications. Set up an automated patch
+      management process to ensure that critical updates are applied as
+      soon as they are released.
+   4. Use Secure Configurations: Ensure that all configurations, such as
+      database, server, and application settings, follow security best
+      practices, including strong encryption, least privilege access, and
+      secure communication protocols.
+
+References:
+
+    * OWASP Secure Configuration Guide
+      <https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/>",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1048 - Application Isolation and Sandboxing,Network Security,NIST 800-53 v5,CM-3 Configuration Change Control
+Web App Config,C-SECRETS-MANAGER-02,Enforce encryption of secrets at rest and in transit,"Ensure that all secrets stored in Secrets Manager are encrypted both at 
+rest and in transit using strong cryptographic algorithms such as AES-256. 
+Regularly rotate encryption keys and follow best practices for key 
+management. Ensure that communication between systems accessing Secrets 
+Manager is encrypted with TLS to prevent interception of secrets in 
+transit.",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1041 - Encrypt Sensitive Information,Data Security,NIST 800-53 v5,SC-12 CRYPTOGRAPHIC KEY ESTABLISHMENT AND MANAGEMENT
+Web Application,C-WEB-APPLICATION-SERVER-SIDE-CNT-02,"Enforce MFA, use secure cookies, and invalidate sessions","To enhance authentication security, enforce multi-factor authentication 
+(MFA) for all users, particularly for accessing sensitive resources. Use 
+secure cookies to store session information and ensure they are configured 
+with proper flags (e.g., HttpOnly, Secure) to prevent unauthorized access. 
+Additionally, implement session invalidation after logout or inactivity to 
+minimize the risk of session hijacking or unauthorized access.
+
+Implementation Steps:
+
+   1. Enforce MFA: Configure MFA for all user accounts, requiring an
+      additional verification step (e.g., SMS, authenticator app) beyond
+      just username and password. This should be applied to all sensitive
+      operations and accounts with high privileges.
+   2. Use Secure Cookies: Set cookies with the Secure flag (to ensure they
+      are only sent over HTTPS), HttpOnly flag (to prevent access via
+      JavaScript), and SameSite flag (to restrict cross-site request
+      behavior), ensuring session data is protected.
+   3. Invalidate Sessions on Logout or Inactivity: Implement session
+      expiration or timeouts for inactivity and invalidate user sessions
+      upon logout to prevent session hijacking. Ensure that tokens are
+      revoked immediately when no longer needed.
+   4. Monitor Session Activity: Continuously monitor and review session
+      activity to detect any unauthorized access attempts or suspicious
+      session behavior.
+
+References:
+
+    * OWASP Authentication Cheat Sheet
+      <https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html>",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1056 - Pre-compromise,Application Security,NIST 800-53 v5,IA-9 Service Identification and Authentication
+Background Config,C-ENFORCE-PRINCIPLE-OF-LEAST-PRIVILEGE,Enforce Principle of Least Privilege,"The Principle of Least Privilege (PoLP) dictates that a user, program, or 
+process should have the minimum privileges necessary to perform its 
+function. This minimizes the potential damage from errors or malicious 
+intent. Below are steps to implement this principle within your software 
+applications, particularly regarding user credentials and access controls.
+
+Implementation Steps
+
+Identify Necessary Privileges:
+
+    * Review each user role and determine the minimum access necessary for
+      each role to perform its duties effectively. Document these
+      privileges for future reference and audits.
+
+Assign Role-Based Access Controls (RBAC):
+
+    * Implement RBAC to manage permissions. Assign users to roles rather
+      than granting permissions directly to user accounts.
+    * Example: Define roles such as 'Administrator', 'Editor', and
+      'Viewer', each with its own set of minimum necessary permissions.
+
+Use Secure Defaults:
+
+    * Default new accounts to have the least privilege level. Upgrade
+      privileges only as needed and after proper approval processes.
+    * Example: New users should receive 'Viewer' access by default, with
+      options to request additional privileges through a formal process.
+
+Regularly Review and Audit Access Rights:
+
+    * Schedule periodic reviews of user roles and privileges to ensure they
+      are still in alignment with job functions.
+    * Use tools to automate the auditing process and alert administrators
+      to privilege creep or unused accounts.
+
+Implement Separation of Duties:
+
+    * Design systems to separate critical functions that require higher
+      privileges among different roles.
+    * Example: Require that code changes are approved by a different person
+      than the one who wrote the code, ensuring no single user has full
+      control over the software lifecycle.
+
+Limit Elevated Access:
+
+    * Avoid using accounts with elevated privileges for routine operations.
+      Administrators should use regular accounts for daily work, switching
+      to privileged accounts only when necessary.
+    * Implement time-based privileges for tasks requiring elevated access,
+      which automatically revert to standard privileges after a set time.
+
+Apply Principle to All Components:
+
+    * Extend the principle of least privilege to all components of the
+      system, including databases, applications, network configurations,
+      and service accounts.
+
+Educate Users and Developers:
+
+    * Provide training sessions for users and developers about the
+      importance of the principle of least privilege.
+    * Include examples of potential security breaches that could occur from
+      over-privileged accounts.
+
+Use Secure Coding Practices:
+
+    * Follow secure coding guidelines to ensure that applications enforce
+      access controls consistently and securely.
+    * Reference resources such as OWASP’s Secure Coding Practices or CWE’s
+      Common Weakness Enumeration for guidance on secure coding.
+
+Monitor and Respond to Anomalies:
+
+    * Implement monitoring tools to detect and alert on unusual access
+      patterns or privilege escalations.
+    * Regularly update and patch management tools that help enforce least
+      privilege policies.
+
+By applying these steps, you effectively minimize the attack surface of 
+your software by limiting the number of users and processes that can access 
+sensitive information or perform critical functions. This is a key strategy 
+in reducing the risk of security breaches and ensuring the overall security 
+and stability of your systems.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1050 - Exploit Protection,Application Security,ASVS,V4.1.3
+Browser,C-BROWSER-CNT-05,Enforce strict certificate validation,"Implement and regularly update strict certificate validation on all client 
+machines to ensure that the browser only establishes secure connections 
+with trusted websites. This control verifies that SSL/TLS certificates are 
+valid and issued by recognized Certificate Authorities (CAs), preventing 
+attackers from using forged certificates for man-in-the-middle attacks.
+
+Implementation Steps:
+
+Enable Certificate Validation:
+Configure the browser to enforce strict certificate validation, ensuring 
+that invalid, expired, or self-signed certificates trigger warnings or 
+connection blocks.
+
+Leverage Centralized Policies:
+Use enterprise management tools (e.g., Group Policy or MDM solutions) to 
+enforce certificate validation settings across all client machines.
+
+Monitor Certificate Revocations:
+Ensure that the browser is set to regularly check Certificate Revocation 
+Lists (CRLs) or use Online Certificate Status Protocol (OCSP) to verify 
+certificate validity.
+
+Regularly Audit Configurations:
+Periodically review and test the certificate validation process to confirm 
+that it effectively blocks connections to untrusted sites.
+
+References:
+
+    * OWASP Transport Layer Protection Cheat Sheet
+      <https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html>",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1056 - Pre-compromise,Application Security,NIST 800-53 v5,SC-17 Public Key Infrastructure Certificates
+Message Queue,C-ALIBABA-MESSAGE-QUEUE-01,Enforce strong authentication and access control for message queues,"Implement strong authentication mechanisms, such as multi-factor 
+authentication (MFA), for accessing Alibaba Message Queue. Configure 
+role-based access controls (RBAC) to ensure that users and services have 
+the minimum necessary permissions to access message queues. Regularly audit 
+access and privilege settings to detect and revoke any unnecessary or 
+excessive privileges.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1026 - Privileged Account Management,Application Security,NIST 800-53 v5,AC-3 ACCESS ENFORCEMENT
+Database,C-ENFORCE-TLS-FOR-ALL-COMMUNICATIONS,Enforce TLS for all Communications,"Implementing Transport Layer Security (TLS) for all communications from and 
+to a database manager is essential to protect sensitive data from 
+interception, eavesdropping, and tampering. TLS ensures that data 
+transmitted between clients and servers is encrypted, maintaining 
+confidentiality and integrity of data in transit.
+
+Steps to Enforce TLS:
+
+    * Verify that your database management system supports TLS. Consult the
+      documentation for your specific database system to understand its TLS
+      capabilities and requirements.
+    * Acquire and install a valid digital certificate from a trusted
+      Certificate Authority (CA) for your database server. This certificate
+      will be used to establish secure connections with clients.
+    * Configure the database server to enforce TLS for all incoming and
+      outgoing connections. This typically involves modifying the
+      database’s network configuration settings to enable TLS and specify
+      the server certificate to use.
+    * Update all client applications and services that connect to the
+      database to use TLS. Ensure they are configured to verify the
+      server's certificate to prevent man-in-the-middle attacks.
+    * Regularly update your TLS configuration and certificates. Set
+      reminders to renew your certificates before they expire and follow
+      security best practices for selecting cipher suites and TLS versions.
+    * Monitor and audit TLS usage regularly. Utilize tools to track the
+      encryption status of communications and alert on any unauthorized
+      attempts to bypass security protocols.
+
+Best Practices for TLS Implementation:
+
+    * Always use strong cipher suites recommended by security standards
+      like those from the National Institute of Standards and Technology
+      (NIST) or the Internet Engineering Task Force (IETF).
+    * Disable older versions of TLS (such as TLS 1.0 and 1.1) and SSL to
+      avoid vulnerabilities associated with these outdated protocols.
+    * Consider implementing mutual TLS (mTLS) where both the client and
+      server authenticate each other, adding an additional layer of
+      security, particularly useful for service-to-service communications.
+
+By enforcing TLS for all communications, developers will not only safeguard 
+data in transit but also align with regulatory requirements and industry 
+standards for data protection, significantly enhancing the security posture 
+of the database environment.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1041 - Encrypt Sensitive Information,Application Security||Data Security||Network Security,NIST 800-53 v5,SC-13 Cryptographic Protection||SC-8 TRANSMISSION CONFIDENTIALITY AND INTEGRITY||SI-4 System Monitoring
+Web Application,C-WEB-APPLICATION-SERVER-SIDE-CNT-04,Ensure proper escaping/encoding of dynamic content and configure CSP,"To mitigate the risk of script injection attacks such as Cross-Site 
+Scripting (XSS), ensure that all dynamic content in the web application is 
+properly escaped or encoded before being rendered. This prevents malicious 
+scripts from being executed in the user’s browser. Additionally, configure 
+a Content Security Policy (CSP) to limit the sources of executable content, 
+reducing the risk of inline script execution and script-based attacks.
+
+Implementation Steps:
+
+   1. Escape or Encode Dynamic Content: Ensure that any dynamic content
+      included in web pages (e.g., user inputs, data from external sources)
+      is properly escaped or encoded to prevent execution of potentially
+      harmful scripts.
+   2. Use CSP to Control Script Sources: Configure a strict Content
+      Security Policy (CSP) to restrict which domains can serve executable
+      content (e.g., scripts, styles). For example, disallow inline scripts
+      and only allow scripts from trusted domains.
+   3. Monitor and Update CSP: Regularly review and update the CSP to ensure
+      it is correctly configured as new resources or third-party services
+      are added to the application.
+   4. Test for XSS Vulnerabilities: Conduct regular security testing to
+      ensure that content is correctly sanitized and that the CSP is
+      enforced.
+
+References:
+
+    * OWASP XSS Prevention Cheat Sheet
+      <https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html>",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1038 - Execution Prevention,Application Security,NIST 800-53 v5,SI-10 INFORMATION INPUT VALIDATION
+Background Config,C-HARDEN-SYSTEM-CONFIGURATIONS-AND-CONDUCT-THIRD-PARTY-SECURITY-ASSESSMENTS,Harden System Configurations and Conduct Third-party Security Assessments,"Harden System Configurations
+
+Baseline Configuration Standards:
+
+    * Establish and document baseline security configurations for all
+      systems, including servers, databases, applications, and network
+      devices.
+    * Reference industry standards such as CIS Benchmarks or NIST
+      guidelines to define secure configurations.
+
+Disable Unnecessary Services and Ports:
+
+    * Review all running services and open ports on your systems. Disable
+      any that are not essential to your operation.
+    * Use tools like netstat, nmap, or system-specific utilities to audit
+      open ports and active services.
+
+Enforce Strong Authentication Mechanisms:
+
+    * Implement multi-factor authentication (MFA) for all user accounts,
+      especially for accounts with elevated privileges.
+    * Use strong, unique passwords for each account. Enforce password
+      policies that require complexity, expiration, and non-reusability.
+
+Apply the Principle of Least Privilege (PoLP):
+
+    * Review and restrict user privileges to the minimum necessary for
+      their roles.
+    * Implement Role-Based Access Control (RBAC) to manage permissions
+      effectively.
+
+Regular Patch Management:
+
+    * Establish a patch management process to ensure that all systems are
+      up-to-date with the latest security patches and updates.
+    * Use automated tools to regularly check for and apply updates to
+      operating systems, applications, and third-party components.
+
+Implement Network Segmentation:
+
+    * Segment your network into different zones based on trust levels and
+      functionality. Restrict access between these segments using firewalls
+      and access control lists.
+    * Ensure that sensitive data and critical systems are placed in highly
+      secure segments with limited access.
+
+Enable Logging and Monitoring:
+
+    * Enable detailed logging for all authentication attempts, both
+      successful and failed. Ensure that logs are stored securely and are
+      tamper-evident.
+    * Use a Security Information and Event Management (SIEM) system to
+      aggregate and analyze logs for suspicious activity.
+
+Conduct Regular Configuration Audits:
+
+    * Schedule regular audits of system configurations to ensure compliance
+      with baseline standards.
+    * Use automated configuration management tools to detect and remediate
+      deviations from approved configurations.
+
+Secure Default Configurations:
+
+    * Change all default passwords and configurations upon installation of
+      new systems and software.
+    * Harden default configurations based on vendor recommendations and
+      security best practices.
+
+Implement Intrusion Detection and Prevention Systems (IDPS):
+
+    * Deploy IDPS to monitor network traffic and system activities for
+      signs of malicious activity.
+    * Configure IDPS to alert administrators and take predefined actions
+      when suspicious behavior is detected.
+
+Conduct Third-party Security Assessments
+
+Select Reputable Security Firms:
+
+    * Choose third-party security firms with a strong track record and
+      relevant experience in conducting security assessments.
+    * Verify their credentials and seek references or case studies from
+      previous clients.
+
+Define Scope and Objectives:
+
+    * Clearly define the scope of the security assessment, including which
+      systems, applications, and components will be evaluated.
+    * Establish specific objectives for the assessment, such as identifying
+      vulnerabilities, evaluating configuration security, and testing user
+      credential management.
+
+Conduct Penetration Testing:
+
+    * Engage third-party security firms to perform penetration testing,
+      simulating real-world attacks to identify vulnerabilities.
+    * Ensure that the penetration tests include attempts to exploit user
+      credential management systems and processes.
+
+Perform Vulnerability Assessments:
+
+    * Have the third-party firm conduct comprehensive vulnerability
+      assessments using automated tools and manual techniques.
+    * Focus on identifying vulnerabilities related to user credential
+      storage, transmission, and management.
+
+Review Code and Configurations:
+
+    * Include code reviews and configuration reviews in the assessment to
+      identify insecure coding practices and misconfigurations.
+    * Ensure that reviews cover all components involved in user
+      authentication and authorization.
+
+Assess Third-party Components:
+
+    * Include third-party libraries, frameworks, and services in the scope
+      of the assessment to identify supply chain vulnerabilities.
+    * Verify that third-party components are up-to-date and have not been
+      tampered with.
+
+Analyze and Report Findings:
+
+    * Review the findings of the security assessment with the third-party
+      firm. Ensure that the report includes detailed descriptions of
+      vulnerabilities, their potential impacts, and recommended remediation
+      steps.
+    * Prioritize vulnerabilities based on their severity and potential
+      impact on the system.
+
+Implement Remediation Actions:
+
+    * Develop and execute a plan to address the vulnerabilities identified
+      in the assessment.
+    * Validate that remediation actions have been effective by conducting
+      follow-up assessments or retests.
+
+Integrate Continuous Improvement:
+
+    * Use the findings from the security assessment to improve security
+      policies, procedures, and configurations.
+    * Schedule regular third-party assessments to continually evaluate and
+      enhance the security posture of your systems.
+
+Stay Informed of Emerging Threats:
+
+    * Keep abreast of the latest security threats and vulnerabilities by
+      subscribing to security bulletins and participating in security
+      forums.
+    * Update your systems and practices based on new information and
+      recommendations from security experts.
+
+By following these steps, you can significantly enhance the security of 
+your system configurations and ensure that third-party components are 
+thoroughly assessed, reducing the risk of unauthorized access and data 
+breaches.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1051 - Update Software||ATT&CK Enterprise - M1054 - Software Configuration,Application Security,NIST 800-53 v5,SR-6 Supplier Assessments and Reviews
+Background Config,C-IMPLEMENT-ACCOUNT-LOCKOUT-POLICY-AND-CAPTCHA,Implement Account Lockout Policy and CAPTCHA,"Implement Account Lockout Policy
+
+Define Account Lockout Thresholds:
+
+    * Determine the number of failed login attempts that will trigger an
+      account lockout. A common threshold is 3-5 failed attempts.
+
+Set Lockout Duration:
+
+    * Specify the duration for which the account remains locked. This can
+      be a fixed period (e.g., 15 minutes) or until an administrator
+      manually unlocks the account.
+
+Implement Lockout Mechanism:
+
+    * Modify the authentication logic to track failed login attempts for
+      each user.
+    * Store the count of failed attempts and the timestamp of the last
+      attempt in a secure, persistent storage (e.g., a database).
+    * Example:
+
+def authenticate(username, password):
+   user = get_user(username)
+   if user.is_locked and user.lockout_time + lockout_duration > 
+current_time():
+       return ""Account is locked. Try again later.""
+   if check_password(username, password):
+       reset_failed_attempts(username)
+       return ""Login successful""
+   else:
+       increment_failed_attempts(username)
+       if get_failed_attempts(username) >= lockout_threshold:
+           lock_account(username)
+       return ""Invalid credentials""
+
+Notify Users:
+
+    * Inform users when their account is locked due to failed login
+      attempts. Provide instructions on how to unlock their account.
+    * Send an email notification to the registered email address with
+      details about the lockout and steps to regain access.
+
+Log Account Lockout Events:
+
+    * Log all account lockout events for auditing purposes. Include details
+      such as the username, timestamp, and IP address.
+    * Example:
+
+def log_event(event_type, username, details):
+   log_entry = {
+       ""event_type"": event_type,
+       ""username"": username,
+       ""timestamp"": current_time(),
+       ""details"": details
+   }
+   save_log(log_entry)
+
+Implement Account Unlock Mechanism:
+
+    * Provide a mechanism for users to unlock their accounts, such as a
+      ""Forgot Password"" flow or administrative intervention.
+    * Ensure that the unlock process is secure and includes multi-factor
+      authentication (MFA) for verification.
+
+Regularly Review Lockout Policy:
+
+    * Periodically review and adjust the lockout thresholds and durations
+      based on the evolving security landscape and user feedback.
+
+Implement CAPTCHA
+
+Select a CAPTCHA Service:
+
+    * Choose a CAPTCHA service, such as Google reCAPTCHA, which provides
+      robust protection against automated login attempts.
+
+Integrate CAPTCHA in Login Form:
+
+    * Add CAPTCHA to the login form, ensuring that it is displayed after a
+      certain number of failed login attempts or every time if required.
+    * Example (HTML):
+
+<form action=""/login"" method=""post"">
+   <input type=""text"" name=""username"" placeholder=""Username"">
+   <input type=""password"" name=""password"" placeholder=""Password"">
+   <div class=""g-recaptcha"" data-sitekey=""your-site-key""></div>
+   <button type=""submit"">Login</button>
+</form>
+<script src=""https://www.google.com/recaptcha/api.js"" async defer></script>
+
+Validate CAPTCHA on the Server:
+
+    * Modify the server-side authentication logic to validate the CAPTCHA
+      response along with the user credentials.
+    * Example (Python):
+
+import requests
+
+def validate_captcha(captcha_response):
+   payload = {
+       'secret': 'your-secret-key',
+       'response': captcha_response
+   }
+   response = 
+requests.post('https://www.google.com/recaptcha/api/siteverify', 
+data=payload)
+   result = response.json()
+   return result.get('success', False)
+
+def authenticate(username, password, captcha_response):
+   if not validate_captcha(captcha_response):
+       return ""CAPTCHA validation failed""
+   user = get_user(username)
+   if check_password(username, password):
+       return ""Login successful""
+   else:
+       return ""Invalid credentials""
+
+Handle CAPTCHA Failures:
+
+    * Provide clear feedback to users when CAPTCHA validation fails and
+      ensure they have the opportunity to retry.
+    * Display error messages that explain the issue without revealing
+      sensitive information.
+
+Monitor CAPTCHA Effectiveness:
+
+    * Regularly monitor the effectiveness of CAPTCHA in preventing
+      automated attacks.
+    * Review logs and analytics to identify any patterns or issues with
+      CAPTCHA implementation.
+
+Ensure Accessibility:
+
+    * Make sure that the CAPTCHA solution is accessible to all users,
+      including those with disabilities.
+    * Provide alternative methods for CAPTCHA completion, such as audio
+      challenges, to ensure compliance with accessibility standards.
+
+Update CAPTCHA Service:
+
+    * Stay updated with the latest versions and best practices for the
+      CAPTCHA service you use.
+    * Regularly review and update the CAPTCHA implementation to leverage
+      new features and enhancements.
+
+By following these steps, you can effectively enforce an account lockout 
+policy and implement CAPTCHA to protect against brute force attacks and 
+automated login attempts, thereby enhancing the security of user 
+credentials.",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1043 - Credential Access Protection,Application Security,NIST 800-53 v5,AC-7 UNSUCCESSFUL LOGON ATTEMPTS
+Web App Config,C-SECRETS-MANAGER-04,Implement automatic secret rotation,"Configure Secrets Manager to rotate secrets automatically on a regular 
+basis or after specific events (e.g., system compromise). Ensure that 
+applications and services using these secrets are capable of updating with 
+the new credentials without service disruption. Regularly review and audit 
+secret rotation logs to ensure compliance.",Created by Rules Engine,Recommended,Not tested,High,N/A,High,Josephine Bakka,,ATT&CK Enterprise - M1030 - Network Segmentation,Operational Security,NIST 800-53 v5,AC-6 LEAST PRIVILEGE
+Browser,C-BROWSER-CNT-01,Implement client-side script blockers,"Implement and regularly update client-side script blockers on all client 
+machines to mitigate cross-site scripting (XSS) risks. This control 
+restricts the execution of untrusted scripts within the browser, ensuring 
+that only verified and safe code is run. Developers and DevOps engineers 
+should configure built-in browser options or deploy reputable 
+script-blocking extensions to prevent malicious code execution. Regular 
+audits and updates are essential to maintain the effectiveness of these 
+blockers against emerging threats.
+
+Implementation Steps:
+
+Activate Built-in Script Blocking:
+Configure the browser settings to enable any built-in script blocking 
+features that prevent untrusted script execution.
+
+Deploy Trusted Extensions:
+For browsers lacking robust built-in capabilities, deploy reputable 
+third-party script-blocking extensions (e.g., NoScript) using centralized 
+management tools.
+
+Enforce Configuration Policies:
+Use enterprise management solutions such as Group Policy or MDM to enforce 
+consistent script-blocking settings across all client machines.
+
+Monitor and Audit:
+Regularly review and test the effectiveness of script blockers through 
+security audits and simulated attack scenarios, updating configurations as 
+needed.
+
+References:
+
+    * OWASP XSS Prevention Cheat Sheet
+      <https://cheatsheetseries.owasp.org/cheatsheets/XSS_Filter_Evasion_Cheat_Sheet.html>",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1038 - Execution Prevention,Application Security,NIST 800-53 v5,SI-15 Information Output Filtering
+Background Config,C-IMPLEMENT-COMPREHENSIVE-LOGGING,Implement Comprehensive Logging,"Define Logging Requirements:
+
+    * Identify the critical events related to user credentials that need to
+      be logged, such as login attempts, password changes, account
+      lockouts, and privilege escalations.
+    * Ensure compliance with relevant regulations and industry standards,
+      such as GDPR, HIPAA, or PCI DSS, which may have specific logging
+      requirements.
+
+Choose a Logging Framework:
+
+    * Select a logging framework appropriate for your technology stack
+      (e.g., Log4j for Java, Winston for Node.js, or Python's built-in
+      logging module).
+    * Ensure that the chosen framework supports configurable log levels,
+      multiple output formats, and integration with log management
+      solutions.
+
+Set Up Log Levels:
+
+    * Define log levels (e.g., DEBUG, INFO, WARN, ERROR, FATAL) and
+      determine which events should be logged at each level.
+    * Use lower log levels (DEBUG, INFO) for detailed information during
+      development and higher log levels (WARN, ERROR, FATAL) for production
+      environments to avoid log overflow.
+
+Log Critical Events:
+
+    * Implement logging for critical user credential events:
+          o Successful and Failed Login Attempts:
+
+logger.info(f""User {username} logged in successfully from IP {ip_address}"")
+logger.warning(f""Failed login attempt for user {username} from IP 
+{ip_address}"")
+
+Password Changes:
+logger.info(f""User {username} changed their password from IP {ip_address}"")
+Account Lockouts:
+
+logger.warning(f""User {username} account locked due to multiple failed 
+login attempts"")
+
+Privilege Escalations:
+
+logger.info(f""User {username} escalated privileges to {new_role} from IP 
+{ip_address}"")
+Include Relevant Context in Logs:
+
+    * Capture and log relevant context for each event, such as timestamp,
+      username, IP address, user agent, and any other pertinent details.
+    * Ensure logs are structured and include consistent formats for easier
+      parsing and analysis.
+
+Secure Log Storage:
+
+    * Ensure logs are stored securely to prevent tampering. Use encryption
+      to protect log data at rest.
+    * Restrict access to log files to authorized personnel only and
+      implement audit trails to monitor access.
+
+Implement Log Rotation and Retention Policies:
+
+    * Configure log rotation to manage log file sizes and prevent disk
+      space exhaustion.
+    * Define and implement log retention policies that specify how long
+      logs should be kept based on regulatory requirements and business
+      needs.
+    * Example (Python logging with rotation):
+
+from logging.handlers import TimedRotatingFileHandler
+
+handler = TimedRotatingFileHandler('app.log', when='midnight', 
+backupCount=30)
+logger.addHandler(handler)
+
+Integrate with a Centralized Log Management System:
+
+    * Use a centralized log management system (e.g., ELK Stack, Splunk, or
+      Graylog) to aggregate logs from different sources and provide
+      advanced analysis and alerting capabilities.
+    * Configure log forwarding from your application to the centralized
+      system.
+    * Example (Log forwarding using Filebeat for ELK Stack)
+
+filebeat.inputs:
+- type: log
+ paths:
+   - /var/log/app/*.log
+
+output.elasticsearch:
+ hosts: [""http://localhost:9200""]
+
+Monitor and Analyze Logs:
+
+    * Set up alerts for critical events, such as multiple failed login
+      attempts or unauthorized access attempts, using your log management
+      system.
+    * Regularly review logs to identify suspicious activities and potential
+      security incidents.
+    * Example (ELK Stack alerting with Watcher)
+
+{
+ ""trigger"": {
+   ""schedule"": {
+     ""interval"": ""1m""
+   }
+ },
+ ""input"": {
+   ""search"": {
+     ""request"": {
+       ""indices"": [""app-logs""],
+       ""body"": {
+         ""query"": {
+           ""bool"": {
+             ""must"": [
+               { ""match"": { ""event_type"": ""failed_login"" } },
+               { ""range"": { ""@timestamp"": { ""gte"": ""now-1m"" } } }
+             ]
+           }
+         }
+       }
+     }
+   }
+ },
+ ""condition"": {
+   ""compare"": {
+     ""ctx.payload.hits.total"": { ""gt"": 5 }
+   }
+ },
+ ""actions"": {
+   ""email_admin"": {
+     ""email"": {
+       ""to"": ""admin@example.com"",
+       ""subject"": ""Alert: Multiple Failed Login Attempts"",
+       ""body"": ""There have been more than 5 failed login attempts in the 
+last minute.""
+     }
+   }
+ }
+}
+
+Review and Update Logging Practices Regularly:
+
+    * Periodically review and update your logging practices to ensure they
+      remain effective and compliant with evolving security standards and
+      business requirements.
+    * Conduct regular audits of log data and logging configurations to
+      identify and address gaps.
+
+By following these steps, you can implement comprehensive logging for user 
+credentials, enhancing your ability to detect and respond to security 
+incidents effectively.
+
+ ",Created by Rules Engine,Recommended,Not tested,Medium,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1054 - Software Configuration,Application Security,NIST 800-53 v5,AU-2 Event Logging
+Message Queue,C-ALIBABA-MESSAGE-QUEUE-04,Implement cryptographic signing and integrity checks for messages,"Implement cryptographic signing of messages transmitted through Alibaba 
+Message Queue to ensure their integrity and authenticity. Use secure 
+transmission methods, such as TLS, to protect messages in transit. 
+Regularly audit and monitor the integrity of messages stored in or 
+transmitted through the message queue. Implement automated integrity checks 
+during message processing to detect and prevent the use of tampered 
+messages.",Created by Rules Engine,Recommended,Not tested,Very high,N/A,High,Josephine Bakka,,ATT&CK Enterprise - M1049 - Antivirus/Antimalware,Data Security,NIST 800-53 v5,"SI-7 Software, Firmware, and Information Integrity"
+Message Queue,C-ALIBABA-MESSAGE-QUEUE-02,Implement encryption for messages in transit,"Ensure that all messages transmitted through Alibaba Message Queue are 
+encrypted using Transport Layer Security (TLS) or other strong encryption 
+methods. Regularly audit and review encryption settings to ensure 
+compliance with security policies. Monitor network traffic for any signs of 
+unencrypted message transmission and take corrective action as needed to 
+prevent unauthorized access to sensitive data.",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1041 - Encrypt Sensitive Information,Data Security,NIST 800-53 v5,SC-8 TRANSMISSION CONFIDENTIALITY AND INTEGRITY
+Browser,C-BROWSER-CNT-09,Implement extension whitelisting policies,"Implement and regularly update extension whitelisting policies on all 
+client machines to ensure that only approved and trusted browser extensions 
+are installed. This control prevents the use of unauthorized or malicious 
+extensions that could compromise the browser's security or steal sensitive 
+data. Developers and DevOps engineers should configure management tools to 
+enforce a whitelist of extensions and continuously review it for 
+compliance.
+
+Implementation Steps:
+
+Establish a Whitelist:
+Identify and document a list of trusted browser extensions that are 
+approved for use within the organization.
+
+Configure Management Tools:
+Use centralized management solutions (e.g., Group Policy, MDM, or 
+browser-specific management consoles) to enforce the extension whitelist on 
+all client machines.
+
+Monitor Extension Usage:
+Regularly audit installed extensions to ensure compliance with the 
+whitelist and remove any unauthorized or unapproved extensions.
+
+Review and Update Policies:
+Periodically review the whitelist and update it based on emerging threats, 
+changes in business requirements, and updated security guidelines.
+
+References:
+
+    * Google Chrome Enterprise - Manage Chrome Extensions
+      <https://support.google.com/chrome/a/answer/9296680?hl=en>",Created by Rules Engine,Recommended,Not tested,Very high,N/A,High,Josephine Bakka,,ATT&CK Enterprise - M1024 - Restrict Registry Permissions,Application Security,NIST 800-53 v5,SI-14 Non-persistence
+Background Config,C-IMPLEMENT-INPUT-VALIDATION,Implement Input Validation,"Identify Input Sources:
+
+    * Identify all points in your application where user input is received,
+      such as login forms, registration forms, profile update forms, and
+      API endpoints.
+
+Define Validation Rules:
+
+    * Establish validation rules for each input field based on its expected
+      format and constraints. For example:
+          o Username: Alphanumeric characters, length 3-20.
+          o Password: Minimum 8 characters, must include at least one
+            uppercase letter, one lowercase letter, one number, and one
+            special character.
+          o Email: Valid email format.
+          o Other Fields: Specific rules based on the context (e.g., phone
+            numbers, dates).
+
+Client-Side Validation:
+
+    * Implement initial input validation on the client side using HTML5
+      attributes and JavaScript to provide immediate feedback to users.
+    * Example (HTML5 and JavaScript for a registration form):
+
+<form id=""registrationForm"">
+   <input type=""text"" name=""username"" required pattern=""[a-zA-Z0-9]{3,20}"" 
+title=""Username must be 3-20 alphanumeric characters"">
+   <input type=""password"" name=""password"" required 
+pattern=""(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"" 
+title=""Password must be at least 8 characters, including one uppercase 
+letter, one lowercase letter, one number, and one special character"">
+   <input type=""email"" name=""email"" required title=""Please enter a valid 
+email address"">
+   <button type=""submit"">Register</button>
+</form>
+<script>
+   document.getElementById('registrationForm').addEventListener('submit', 
+function(event) {
+       if (!this.checkValidity()) {
+           event.preventDefault();
+       }
+   });
+</script>
+
+Server-Side Validation:
+
+    * Implement robust input validation on the server side to ensure
+      security, as client-side validation can be bypassed.
+    * Use appropriate libraries and frameworks for validation based on your
+      programming language.
+    * Example (Python with Flask and WTForms):
+
+from flask import Flask, request, render_template_string
+from wtforms import Form, StringField, PasswordField, validators
+
+app = Flask(__name__)
+
+class RegistrationForm(Form):
+   username = StringField('Username', [validators.Length(min=3, max=20), 
+validators.Regexp('^[a-zA-Z0-9]*$', message=""Username must be 
+alphanumeric"")])
+   password = PasswordField('Password', [validators.DataRequired(), 
+validators.Length(min=8), 
+validators.Regexp('(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])', 
+message=""Password must include uppercase, lowercase, number, and special 
+character"")])
+   email = StringField('Email', [validators.Email()])
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+   form = RegistrationForm(request.form)
+   if request.method == 'POST' and form.validate():
+       # Process valid form data
+       return ""Registration successful""
+   return render_template_string('''<form method=""post"">
+                                       {{ form.username.label }} {{ 
+form.username }}<br>
+                                       {{ form.password.label }} {{ 
+form.password }}<br>
+                                       {{ form.email.label }} {{ form.email 
+}}<br>
+                                       <button 
+type=""submit"">Register</button>
+                                     </form>''', form=form)
+
+if __name__ == '__main__':
+   app.run(debug=True)
+
+Sanitize Inputs:
+
+    * Sanitize user inputs to remove or escape any potentially harmful
+      content.
+    * Example (Python):
+
+from html import escape
+
+def sanitize_input(user_input):
+   return escape(user_input)
+
+Use Prepared Statements and Parameterized Queries:
+
+    * Prevent SQL injection by using prepared statements and parameterized
+      queries for database interactions.
+    * Example (Python with SQLAlchemy):
+
+from sqlalchemy import create_engine, text
+
+engine = create_engine('sqlite:///example.db')
+
+def get_user(username):
+   with engine.connect() as connection:
+       result = connection.execute(text(""SELECT * FROM users WHERE username 
+= :username""), {""username"": username})
+       return result.fetchone()
+
+Implement Centralized Input Validation Logic:
+
+    * Centralize input validation logic to ensure consistency and
+      maintainability.
+    * Create reusable validation functions or classes that can be used
+      across different parts of the application.
+
+Log Validation Failures:
+
+    * Log input validation failures to help identify potential attacks or
+      misuse patterns.
+    * Example:
+
+import logging
+
+logger = logging.getLogger(__name__)
+
+def log_validation_failure(field, value, reason):
+   logger.warning(f""Validation failed for {field}: {value}. Reason: 
+{reason}"")
+
+Regularly Update Validation Rules:
+
+    * Periodically review and update validation rules to adapt to new
+      threats and application requirements.
+    * Stay informed about common vulnerabilities and apply best practices
+      to your validation logic.
+
+Conduct Security Testing:
+
+    * Perform regular security testing, including automated and manual
+      testing, to ensure that input validation mechanisms are effective.
+    * Use tools like OWASP ZAP or Burp Suite to test for common input
+      validation vulnerabilities.
+
+By following these steps, you can effectively implement input validation to 
+protect user credentials and other sensitive data, reducing the risk of 
+security breaches due to malicious inputs.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK ICS - M0818 - Validate Program Inputs,Application Security,NIST 800-53 v5,SI-10 INFORMATION INPUT VALIDATION
+Web Application,C-WEB-APPLICATION-SERVER-SIDE-CNT-01,Implement prepared statements and validate user inputs,"To prevent injection attacks (e.g., SQL injection, command injection), 
+implement prepared statements for all database queries and validate all 
+user inputs on the server side. This ensures that user input is treated as 
+data, not executable code, and prevents attackers from injecting malicious 
+commands that could compromise your application or database.
+
+Implementation Steps:
+
+   1. Use Prepared Statements: Always use prepared statements with
+      parameterized queries for interacting with the database, ensuring
+      that user inputs are never directly included in SQL queries.
+   2. Sanitize and Validate Inputs: Validate all incoming data on the
+      server side (e.g., using whitelist validation or data type checking)
+      to ensure it conforms to expected formats and ranges.
+   3. Escape Output: Properly escape or encode output to prevent cross-site
+      scripting (XSS) and other injection attacks when displaying
+      user-provided data.
+   4. Use ORM or Query Builders: If possible, use Object-Relational Mapping
+      (ORM) frameworks or query builders that automatically handle safe
+      query construction.
+   5. Implement Content Security Policies: Use security controls like
+      Content Security Policies (CSP) and Input Validation to further
+      mitigate injection risks.
+
+References:
+
+    * OWASP SQL Injection Prevention Cheat Sheet
+      <https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html>",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1057 - Data Loss Prevention,Application Security,NIST 800-53 v5,SI-10 INFORMATION INPUT VALIDATION
+Message Queue,C-ALIBABA-MESSAGE-QUEUE-05,Implement privileged access management (PAM) and continuous monitoring for message queues,"Apply the principle of least privilege to limit the access of insiders to 
+Alibaba Message Queue. Implement Privileged Access Management (PAM) 
+solutions to control and monitor access to message queues. Set up 
+continuous monitoring and logging for all privileged activities, with 
+regular audits to detect and respond to any unauthorized changes or message 
+deletions. Implement alerts for any suspicious or unauthorized activities 
+within the message queue.",Created by Rules Engine,Recommended,Not tested,Very high,N/A,High,Josephine Bakka,,ATT&CK Enterprise - M1026 - Privileged Account Management,Operational Security,NIST 800-53 v5,AC-6 LEAST PRIVILEGE
+Database,C-IMPLEMENT-PROPER-INPUT-VALIDATION,Implement proper input validation,"Implement Proper Input Validation
+
+Input validation is crucial for securing a database management system 
+against SQL injection, as well as cross-site scripting (XSS), command 
+injection, and other input-based security threats. By ensuring only 
+properly formatted and safe data is processed, input validation acts as a 
+critical defense mechanism.
+
+Steps to Implement Proper Input Validation:
+
+    * Identify all points of data entry in your application, including user
+      forms, API endpoints, and external data interfaces.
+    * Define validation criteria for each input type based on what is
+      considered valid content, format, and length. Establish these
+      criteria based on the specific requirements of your system and the
+      nature of the data being processed.
+    * Adopt a whitelist approach for validation. List acceptable
+      characters, patterns, and value ranges for each input field, and
+      configure your validation logic to reject any input that does not
+      match these specified criteria.
+    * Implement validation checks at both the client-side for immediate
+      user feedback and at the server-side to catch any malicious inputs
+      that bypass client-side defenses.
+    * Utilize existing libraries and frameworks that support robust input
+      validation to simplify implementation. Frameworks like OWASP ESAPI or
+      specific libraries for web frameworks (e.g., Struts, Spring Security)
+      are recommended.
+    * Regularly update your input validation rules and criteria in response
+      to emerging threats and changes in your application's functionality.
+
+Security Best Practices:
+
+    * Ensure that validation failures are handled securely by providing
+      generic error messages that do not disclose details about the backend
+      or validation logic.
+    * Log validation failures to monitor for unusual patterns or potential
+      attack attempts, ensuring these logs are protected and reviewed
+      regularly.
+    * Engage in continuous security training to stay informed about the
+      latest input validation techniques and emerging vulnerabilities.
+
+By diligently implementing and maintaining rigorous input validation 
+practices, developers can significantly enhance the security of their 
+database management systems, safeguard data integrity, and improve user 
+interactions.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK ICS - M0818 - Validate Program Inputs,Application Security,NIST 800-53 v5,SI-10 INFORMATION INPUT VALIDATION
+Database,C-IMPLEMENT-RATE-LIMITING-AND-RESOURCE-ALLOCATION,Implement rate and resource limiting,"Protecting your database from Denial of Service (DoS) attacks involves 
+implementing rate limiting and proper resource allocation. These measures 
+control the volume of incoming requests and the distribution of system 
+resources, ensuring the database remains stable and responsive under 
+various load conditions.
+
+Steps to Implement Rate and Resource Limiting:
+
+    * Identify critical endpoints or services within your database that
+      require protection. Focus on those most vulnerable to high traffic or
+      intensive resource usage.
+    * Implement rate limiting by configuring rules in your web application
+      firewall (WAF), API gateway, or directly within your application's
+      code. Define thresholds for requests per second (RPS) and maximum
+      connections per IP address to prevent overload.
+    * Set up resource allocation limits using your database management
+      system’s (DBMS) built-in features or third-party tools. Define
+      maximum CPU, memory, and network bandwidth per user or service to
+      ensure fair usage and prevent any single user or process from
+      consuming excessive resources.
+    * Regularly monitor database performance and adjust rate limiting and
+      resource allocation settings based on real-time data and usage
+      patterns. This helps in accommodating legitimate traffic spikes
+      without compromising the system’s stability.
+    * Develop fallback strategies for scenarios where rate limits are hit
+      or resources are maxed out. Options include queuing excess requests,
+      temporarily reducing service fidelity, or providing clear error
+      messages to users explaining why their requests cannot be processed.
+
+Recommended Security Practices:
+
+    * Regularly review and update your rate limiting and resource
+      allocation configurations to adapt to new business requirements and
+      evolving security threats.
+    * Use analytics and logging to gain insights into traffic patterns and
+      resource usage. This data is invaluable for tuning your
+      configurations and understanding attack vectors.
+    * Participate in security training to stay informed about the latest
+      techniques in DoS mitigation and resource management. Knowledge in
+      these areas is crucial for maintaining an effective defense against
+      sophisticated attacks.
+
+By effectively implementing rate limiting and resource allocation, you 
+safeguard your database against DoS attacks and other forms of abuse, 
+ensuring optimal performance and reliability under varied load conditions. 
+This proactive stance helps maintain service availability and promotes fair 
+resource usage among all users.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1038 - Execution Prevention,Application Security||Network Security,NIST 800-53 v5,SC-5 DENIAL-OF-SERVICE PROTECTION
+Background Worker,C-BACKGROUND-TASK-CNT-03,Implement rate limiting,"To mitigate the risk of Denial of Service (DoS) attacks targeting the 
+background task processing queue, implement rate limiting. Follow these 
+guidelines to effectively control the number of requests:
+
+    * Determine Rate Limits:
+          o Analyze and establish an acceptable rate of requests per time
+            unit (e.g., requests per second).
+          o Consider different rate limits for various levels of priority
+            or user hierarchies.
+    * Implement Rate Limiting Mechanism:
+          o Select a rate limiting algorithm that fits your use case (e.g.,
+            token bucket, leaky bucket, fixed window, or sliding window).
+          o Integrate the rate limiting logic at the entry point where
+            requests are received and before they are added to the
+            background task queue.
+    * Configure Rate Limiting Rules:
+          o Set up the chosen limits in the configuration files or
+            environment variables.
+          o Ensure the rules can be dynamically adjusted based on
+            monitoring data and evolving threats.
+    * Monitor and Log:
+          o Implement logging for all requests, including those that are
+            blocked or throttled.
+          o Monitor the logs and system performance to identify any unusual
+            patterns or spikes in requests.
+    * Respond to Rate Limit Breaches:
+          o Define appropriate actions when the rate limit is exceeded,
+            such as returning error responses or delaying the requests.
+          o Communicate with users if their requests are being throttled,
+            providing information on retry mechanisms.
+
+By effectively implementing and maintaining a rate limiting strategy, you 
+can enhance the resilience of your background task processing system 
+against DoS attacks.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1035 - Limit Access to Resource Over Network,Application Security,NIST 800-53 v5,SC-5 DENIAL-OF-SERVICE PROTECTION
+Background Config,C-IMPLEMENT-RATE-LIMITING,Implement Rate Limiting,"Identify Key Endpoints:
+
+    * Determine which endpoints in your application require rate limiting.
+      Common targets include login, registration, password reset, and API
+      endpoints that handle sensitive operations.
+
+Choose a Rate Limiting Strategy:
+
+    * Decide on the rate limiting strategy to use. Popular strategies
+      include fixed window, sliding window, token bucket, and leaky bucket.
+      Each has its trade-offs in terms of simplicity and effectiveness.
+
+Select a Rate Limiting Library or Middleware:
+
+    * Choose a rate limiting library or middleware appropriate for your
+      tech stack. For example:
+          o Python: Flask-Limiter, django-ratelimit
+          o Node.js: express-rate-limit
+          o Java: Bucket4j
+          o .NET: AspNetCoreRateLimit
+
+Configure Rate Limits:
+
+    * Define rate limit policies, such as the maximum number of requests
+      allowed per user per unit of time. For example, allow a maximum of 5
+      login attempts per user per minute.
+    * Example (Flask-Limiter configuration):
+
+from flask import Flask, request
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+
+app = Flask(__name__)
+limiter = Limiter(get_remote_address, app=app, default_limits=[""200 per 
+day"", ""50 per hour""])
+
+@app.route(""/login"", methods=[""POST""])
+@limiter.limit(""5 per minute"")
+def login():
+   # login logic here
+   return ""Login endpoint""
+
+if __name__ == '__main__':
+   app.run(debug=True)
+
+Implement User-Specific Limits:
+
+    * Apply rate limits on a per-user basis using unique identifiers like
+      user ID or IP address. This prevents abuse from a single user while
+      allowing legitimate traffic to flow.
+    * Example (express-rate-limit in Node.js):
+
+const rateLimit = require('express-rate-limit');
+
+const loginLimiter = rateLimit({
+ windowMs: 60 * 1000, // 1 minute
+ max: 5, // limit each IP to 5 requests per windowMs
+ message: ""Too many login attempts from this IP, please try again after a 
+minute""
+});
+
+app.post('/login', loginLimiter, (req, res) => {
+ // login logic here
+ res.send('Login endpoint');
+});
+
+Monitor and Log Rate Limit Events:
+
+    * Log rate limit events to monitor abuse and understand user behavior.
+      Use these logs for auditing and improving security policies.
+    * Example (Python logging):
+
+import logging
+
+logger = logging.getLogger(__name__)
+
+@limiter.request_filter
+def logging_filter():
+   logger.info(f""Rate limit exceeded for IP: {request.remote_addr}"")
+
+Handle Rate Limit Exceeded Responses:
+
+    * Provide clear feedback to users when they exceed rate limits. Return
+      an appropriate HTTP status code (e.g., 429 Too Many Requests) and a
+      message indicating the retry-after period.
+    * Example (Node.js):
+
+const loginLimiter = rateLimit({
+ windowMs: 60 * 1000, // 1 minute
+ max: 5, // limit each IP to 5 requests per windowMs
+ handler: (req, res) => {
+   res.status(429).send('Too many login attempts, please try again 
+later.');
+ }
+});
+
+Implement Backoff Strategies:
+
+    * Consider implementing exponential backoff strategies where the retry
+      time increases exponentially after each failed attempt. This
+      discourages brute force attacks.
+    * Example (Conceptual code):
+
+def calculate_backoff(attempts):
+   base_delay = 2  # base delay in seconds
+   return min(base_delay * (2 ** (attempts - 1)), 3600)  # max backoff of 1 
+hour
+
+Use Distributed Rate Limiting:
+
+    * For applications with multiple servers, implement distributed rate
+      limiting to maintain consistent limits across all instances. Use
+      distributed data stores like Redis to track limits.
+    * Example (Rate limiting with Redis):
+
+from redis import Redis
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+
+app = Flask(__name__)
+redis = Redis(host='localhost', port=6379)
+limiter = Limiter(
+   key_func=get_remote_address,
+   storage_uri=""redis://localhost:6379"",
+   app=app,
+   default_limits=[""200 per day"", ""50 per hour""]
+)
+
+Review and Adjust Limits Regularly:
+
+    * Periodically review the effectiveness of your rate limits and adjust
+      them based on user behavior, application requirements, and emerging
+      threats.
+    * Monitor logs and analytics to identify patterns of abuse and adjust
+      rate limits accordingly.
+
+Provide Whitelisting Mechanisms:
+
+    * Implement whitelisting mechanisms for trusted users or IP addresses
+      that require higher rate limits. Ensure that whitelisting is securely
+      managed and audited.
+    * Example (Flask-Limiter with whitelisting):
+
+def whitelist():
+   return request.remote_addr in ['trusted_ip1', 'trusted_ip2']
+
+@app.route(""/login"", methods=[""POST""])
+@limiter.limit(""5 per minute"", override_defaults=False)
+@limiter.limit(""100 per minute"", key_func=whitelist)
+def login():
+   # login logic here
+   return ""Login endpoint""
+
+By following these steps, you can effectively implement rate limiting to 
+protect user credentials from brute force attacks and excessive requests, 
+enhancing the security and performance of your application.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1038 - Execution Prevention,Application Security,NIST 800-53 v5,SC-5 DENIAL-OF-SERVICE PROTECTION
+Database,C-IMPLEMENT-REGULAR-REVIEWS-AND-UPDATES-FOR-SYSTEM-CONFIGURATIONS-AND-DEPENDENCIES,Implement regular review and updates for system configuration and dependencies,"To safeguard the integrity and security of a database management system, it 
+is crucial to continuously manage and update system configurations and 
+dependencies. This involves aligning with security benchmarks, utilizing 
+automated tools for vulnerability management, and maintaining up-to-date 
+system components.
+
+Steps to Ensure Continuous Management and Security:
+
+    * Assess current database configurations against established industry
+      security benchmarks, such as those provided by CIS (Center for
+      Internet Security) or OWASP. Make necessary adjustments to meet or
+      exceed these standards.
+    * Implement automated vulnerability scanning tools that continuously
+      monitor both the database and its dependencies for vulnerabilities.
+      Tools such as Nessus or Qualys can be integrated into your
+      development and operational workflows.
+    * Regularly apply updates and patches to the database management system
+      and all connected libraries and frameworks. Prioritize patches based
+      on the severity of the vulnerabilities they address.
+    * Review and optimize database security settings periodically. Adjust
+      authentication, authorization, encryption, and logging settings based
+      on current security practices and organizational needs.
+
+Best Practices for Continuous Improvement:
+
+    * Subscribe to and actively monitor security advisories and updates
+      related to the database systems and any third-party dependencies.
+      Organizations such as CERT or the vendor’s own security bulletins are
+      reliable sources.
+    * Collaborate with IT security teams to ensure that the database
+      configurations are not only compliant with security standards but
+      also optimized for performance without compromising security.
+    * Engage in regular security training sessions to keep up-to-date with
+      the latest in database security and vulnerability management. This
+      will help in understanding and implementing the best practices in
+      real-world scenarios.
+
+By rigorously applying these steps and best practices, developers can play 
+a crucial role in enhancing the resilience of the Database Manager against 
+security vulnerabilities, thereby ensuring its continued protection against 
+both known and emerging threats.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1016 - Vulnerability Scanning||ATT&CK Enterprise - M1051 - Update Software,Application Security,NIST 800-53 v5,SI-2 Flaw Remediation
+Message Queue,C-ALIBABA-MESSAGE-QUEUE-03,Implement resource throttling and monitoring for message queues,"Configure resource throttling to limit the number of messages or operations 
+that can be performed within Alibaba Message Queue in a given time frame. 
+Monitor resource usage in real-time and set up automated alerts for unusual 
+spikes in activity. Implement failover strategies to ensure that the 
+message queue remains available even under high load conditions. Regularly 
+review and adjust resource limits to prevent denial of service attacks.",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1030 - Network Segmentation,Application Security,NIST 800-53 v5,SC-5 DENIAL-OF-SERVICE PROTECTION
+Database,C-IMPLEMENT-AND-ACTIVELY-REVIEW-COMPREHENSIVE-MONITORING-AND-LOGGING-MECHANISMS,"Implement review, monitoring, and logging mechanisms","Effective monitoring, reviewing, and logging are fundamental to maintaining 
+the security and integrity of a Database Manager. These mechanisms ensure 
+that all operations within the database—from routine user actions to 
+potential security breaches—are meticulously tracked, logged, and analyzed. 
+Here are essential steps to establish these processes effectively.
+
+Steps to Implement Monitoring and Logging:
+
+    * Define the Scope of Monitoring: Identify all critical components of
+      your database that require monitoring. This includes user logins,
+      data modifications, and configuration changes. Ensuring comprehensive
+      coverage helps create a complete picture of activities within the
+      database environment.
+    * Set Up Detailed Logging: Configure your database management system to
+      log detailed information for each event. This should include the
+      timestamp, user ID, action details, and outcome. High granularity in
+      logs is crucial for creating reliable audit trails and facilitating
+      effective incident investigations.
+    * Ensure Secure Log Storage: Store log files in a secure location with
+      strict access controls. Consider encrypting logs both at rest and in
+      transit to protect sensitive information from unauthorized access.
+      Use strong encryption standards like AES for securing log data.
+    * Implement Automated Log Analysis: Deploy automated tools to help
+      review and analyze log data. These tools can identify patterns,
+      detect anomalies, and trigger alerts on suspicious activities, aiding
+      in proactive security measures.
+    * Regular Review and Updates: Regularly review and update your
+      monitoring and logging practices. Adjust configurations as necessary
+      to adapt to new security threats or changes in system architecture.
+      Keeping your monitoring tools updated is essential for maintaining
+      their effectiveness.
+
+Best Practices for Effective Monitoring and Logging:
+
+    * Collaborate with security professionals to define meaningful logging
+      criteria and establish protocols for data classification and
+      retention. Tailor these protocols to meet compliance requirements and
+      organizational security policies.
+    * Engage in ongoing training on log analysis and incident response. For
+      developers and database administrators, understanding how to
+      interpret logs and respond to data insights is critical for
+      maintaining system security.
+    * Utilize robust frameworks and tools that integrate easily with your
+      database environment and provide comprehensive monitoring and logging
+      features. Examples include ELK Stack (Elasticsearch, Logstash,
+      Kibana) for logging and Splunk for data analysis.
+
+By effectively implementing and continually refining monitoring and logging 
+mechanisms, developers can significantly enhance the proactive security 
+management of the Database Manager. These practices not only aid in 
+detecting and responding to potential security incidents but also provide 
+invaluable insights into operational health and system performance.",Created by Rules Engine,Recommended,Not tested,Medium,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1047 - Audit||ATT&CK Enterprise - M1054 - Software Configuration,Application Security,,
+Database,C-IMPLEMENT-SECURE-ERROR-HANDLING,Implement secure error handling,"Effective error handling is crucial for maintaining the security and 
+integrity of database systems. It involves crafting user-facing error 
+messages that do not reveal sensitive information and securely logging 
+detailed errors for internal use. Implementing these protocols can 
+significantly mitigate potential security risks associated with improper 
+error handling.
+
+Steps to Implement Secure Error Handling Protocols:
+
+    * Standardize User-Facing Error Messages: Design and implement a
+      standardized set of error messages that are intentionally vague and
+      do not disclose specifics about the underlying system or data schema.
+      These messages should provide just enough information to inform the
+      user that an error has occurred without aiding potential attackers.
+    * Secure Internal Error Logging: Develop a robust logging system that
+      captures detailed error information for internal purposes. This
+      should include the error type, the affected component, the time of
+      occurrence, and any relevant user actions leading up to the error.
+      Ensure that these logs are accessible only to authorized personnel
+      through secure authentication mechanisms.
+    * Encrypt Sensitive Error Data: Apply encryption to log files that
+      contain sensitive information. Use strong encryption standards such
+      as AES to protect this data from unauthorized access, especially if
+      logs are stored in potentially vulnerable locations or transmitted
+      over networks.
+    * Regular Audits and Updates: Conduct regular audits of your error
+      handling and logging practices to identify and address security
+      vulnerabilities. Update your approaches based on the latest security
+      research, industry best practices, and compliance requirements
+      relevant to your operational environment.
+
+Best Practices for Secure Error Handling:
+
+    * Integrate error handling and logging as fundamental aspects of the
+      development lifecycle. Consider error handling from the initial
+      design phase and continuously refine these mechanisms throughout the
+      development process.
+    * Utilize features provided by your database management system or
+      third-party tools specifically designed for secure error logging and
+      handling. These tools often come with advanced features like
+      automatic encryption and compliance with the latest security
+      standards.
+    * Train developers and IT staff regularly on secure coding practices
+      and the importance of proper error handling. Encourage participation
+      in workshops and seminars that focus on security best practices and
+      emerging threats.
+
+By adhering to these steps and best practices, developers can ensure that 
+their error handling protocols enhance the security posture of the database 
+management system, effectively protecting it from exploits that target 
+error information.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,,Application Security,NIST 800-53 v5,SI-11 Error Handling
+Background Config,C-IMPLEMENT-SECURE-ERROR-HANDLING,Implement Secure Error Handling,"Identify Error Sources:
+
+    * Map out all potential error sources related to user credentials.
+      These can include login failures, registration errors, password reset
+      issues, and API errors.
+
+Define a General Error Handling Strategy:
+
+    * Create a centralized error handling strategy that ensures consistency
+      across your application. This should include categorizing errors into
+      types (e.g., client errors, server errors, validation errors) and
+      defining a standard way to handle each type.
+
+Use Generic Error Messages for Users:
+
+    * Provide generic error messages to users to avoid revealing sensitive
+      information. For example, instead of ""Username not found"" or
+      ""Password incorrect,"" use ""Invalid credentials.""
+
+Log Detailed Error Information Securely:
+
+    * Log detailed error information on the server side for debugging and
+      auditing purposes. Ensure logs are protected and accessible only to
+      authorized personnel.
+    * Example (Python logging):
+
+import logging
+
+logger = logging.getLogger(__name__)
+
+@app.route(""/login"", methods=[""POST""])
+def login():
+   # assume login logic here
+   if not valid_credentials:
+       logger.warning(f""Login failed for user {username} from IP 
+{request.remote_addr}"")
+       return jsonify({""error"": ""Invalid credentials""}), 401
+   return jsonify({""message"": ""Login successful""}), 200
+
+Implement Exception Handling:
+
+    * Implement exception handling to catch and manage unexpected errors
+      gracefully. Ensure that exceptions do not reveal stack traces or
+      sensitive information to users.
+
+Sanitize Error Messages:
+
+    * Ensure that any user input included in error messages is sanitized to
+      prevent injection attacks.
+    * Example (Python):
+
+from markupsafe import escape
+
+@app.route(""/login"", methods=[""POST""])
+def login():
+   # assume login logic here
+   if not valid_credentials:
+       username = escape(username)
+       logger.warning(f""Login failed for user {username} from IP 
+{request.remote_addr}"")
+       return jsonify({""error"": ""Invalid credentials""}), 401
+   return jsonify({""message"": ""Login successful""}), 200
+
+Use HTTP Status Codes Appropriately:
+
+    * Use appropriate HTTP status codes to indicate the nature of the
+      error. For example:
+          o 400 for bad requests (e.g., validation errors)
+          o 401 for unauthorized access (e.g., invalid credentials)
+          o 403 for forbidden access (e.g., insufficient permissions)
+          o 404 for not found (e.g., non-existent endpoint)
+          o 500 for server errors
+
+Centralize Error Handling Logic:
+
+    * Create middleware or a central error handler to manage errors across
+      your application, ensuring consistency and reducing the risk of
+      unhandled errors.
+
+Test Error Handling Mechanisms:
+
+    * Conduct thorough testing of your error handling mechanisms to ensure
+      they work as expected and do not leak sensitive information.
+    * Include unit tests, integration tests, and security tests as part of
+      your testing strategy.
+
+Regularly Review and Update Error Handling Practices:
+
+    * Periodically review and update your error handling practices to
+      address new threats and improve security.
+    * Stay informed about best practices and common vulnerabilities related
+      to error handling.
+
+By following these steps, you can implement secure error handling for user 
+credentials, protecting your application from information leakage and 
+enhancing its overall security posture.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK ICS - M0928 - Operating System Configuration,Application Security,NIST 800-53 v5,SI-11 Error Handling
+Background Config,C-IMPLEMENT-SECURE-PASSWORD-HASHING-AND-MULTI-FACTOR-AUTHENTICATION,Implement Secure Password Hashing and Multi-Factor Authentication,"Choose a Strong Hashing Algorithm:
+
+    * Use a strong, industry-standard hashing algorithm designed for
+      password storage, such as bcrypt, Argon2, or PBKDF2.
+
+Install Necessary Libraries:
+
+    * Install the appropriate libraries for your chosen hashing algorithm.
+      For example:
+          o Python: bcrypt, argon2-cffi, or passlib
+          o Node.js: bcrypt or argon2
+
+Configure Hashing Parameters:
+
+    * Configure parameters like salt length and number of iterations to
+      balance security and performance. Higher values increase security but
+      may impact performance.
+
+Hash Passwords Securely:
+
+    * When storing a password, generate a unique salt and hash the password
+      with the chosen algorithm.
+    * Example (Python):
+
+def hash_password(password):
+   salt = bcrypt.gensalt(rounds=bcrypt_work_factor)
+   hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
+   return hashed_password
+
+# Usage
+hashed_password = hash_password(""my_secure_password"")
+
+Verify Passwords Correctly:
+
+    * When verifying a password, use the hashing algorithm to compare the
+      provided password with the stored hash.
+    * Example (Python):
+
+def verify_password(stored_hash, password):
+   return bcrypt.checkpw(password.encode('utf-8'), stored_hash)
+
+# Usage
+is_valid = verify_password(hashed_password, ""my_secure_password"")
+
+Store Hashes Securely:
+
+    * Store password hashes in a secure location, such as a database with
+      restricted access. Ensure the database itself is secured and
+      encrypted.
+
+Migrate to Stronger Hashing Algorithms When Necessary:
+
+    * If using a weaker algorithm, plan and implement a migration strategy
+      to move to a stronger algorithm. This can be done gradually as users
+      log in.
+
+Regularly Review Hashing Practices:
+
+    * Stay informed about advancements in cryptographic practices and
+      adjust your hashing parameters and algorithms accordingly.
+
+Implementation Steps for Multi-Factor Authentication (MFA)
+
+Choose an MFA Method:
+
+    * Select an MFA method suitable for your application. Common methods
+      include:
+          o Time-based One-Time Password (TOTP) apps (e.g., Google
+            Authenticator, Authy)
+          o SMS-based OTPs
+          o Hardware tokens (e.g., YubiKey)
+          o Biometric authentication
+
+Implement MFA Enrollment:
+
+    * Allow users to enroll in MFA by associating their account with an MFA
+      method.
+    * Example (TOTP with Python):
+
+import pyotp
+import qrcode
+
+def generate_totp_secret():
+   return pyotp.random_base32()
+
+def generate_qr_code(secret, username):
+   totp_uri = pyotp.totp.TOTP(secret).provisioning_uri(name=username, 
+issuer_name=""YourApp"")
+   img = qrcode.make(totp_uri)
+   img.save(f""{username}_qrcode.png"")
+   return totp_uri
+
+# Usage
+secret = generate_totp_secret()
+qr_code_uri = generate_qr_code(secret, ""user@example.com"")
+
+Verify MFA Tokens:
+
+    * When users log in, prompt them for their MFA token and verify it
+      using the chosen method.
+
+Update Login Workflow:
+
+    * Modify the login workflow to include MFA verification after the
+      password check.
+
+Provide Backup Options:
+
+    * Allow users to set up backup MFA methods (e.g., backup codes,
+      secondary email, or phone number) in case they lose access to their
+      primary method.
+
+Handle MFA Recovery and Resets Securely:
+
+    * Implement a secure process for users to recover or reset their MFA if
+      they lose access. This should involve verifying their identity
+      through multiple factors.
+
+Educate Users on MFA:
+
+    * Provide clear instructions and support for users to set up and use
+      MFA. Educate them on the importance of securing their accounts with
+      MFA.
+
+Regularly Review MFA Practices:
+
+    * Regularly review and update your MFA implementation to address new
+      threats and improve user experience. Monitor usage and adjust
+      settings as necessary.
+
+By following these steps, you can effectively implement secure password 
+hashing and multi-factor authentication, significantly enhancing the 
+security of user credentials and protecting against unauthorized access.
+",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1032 - Multi-factor Authentication,Application Security,NIST 800-53 v5,IA-2 Identification and Authentication (organizational Users)
+Web Application,C-WEB-APPLICATION-SERVER-SIDE-CNT-12,Implement server-side checks and multi-step validation for important transactions,"To prevent workflow abuses, especially for critical or sensitive 
+transactions, implement server-side checks and multi-step validation. This 
+ensures that transactions are properly validated at multiple points in the 
+process, reducing the risk of unauthorized actions, fraud, or exploitation 
+of business workflows.
+
+Implementation Steps:
+
+   1. Define Critical Transactions: Identify which transactions are
+      critical (e.g., financial transactions, user permissions changes) and
+      require extra validation to ensure security.
+   2. Server-Side Validation: Ensure that all business rules, permissions,
+      and workflows are validated on the server side, rather than relying
+      solely on client-side validation.
+   3. Multi-Step Validation Process: Implement a multi-step validation
+      process for important transactions, requiring approval or
+      confirmation at multiple stages (e.g., email confirmation, admin
+      approval, CAPTCHA verification).
+   4. Audit Trail: Maintain a detailed audit trail for critical
+      transactions, logging every step and any changes made, so that any
+      suspicious activity can be detected and reviewed.
+   5. Review and Update Validation Rules Regularly: Periodically review and
+      update the validation rules to adapt to new business requirements and
+      emerging threats.
+
+References:
+
+    * PCI DSS Quick Reference Guide
+      <https://listings.pcisecuritystandards.org/documents/PCI_DSS-QRG-v3_2_1.pdf>",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1057 - Data Loss Prevention,Application Security,NIST 800-53 v5,"AU-6 Audit Record Review, Analysis, and Reporting"
+Web App Config,C-SECRETS-MANAGER-01,Implement strict access control policies,"Ensure that access to Secrets Manager is restricted to only authorized 
+users and systems by implementing strict role-based access controls (RBAC). 
+Use least privilege principles to limit the access of users and services to 
+only what is necessary for their function. Regularly audit access 
+permissions to ensure they remain appropriate and limit access tokens to 
+the minimum required lifespan.",Created by Rules Engine,Recommended,Not tested,Very high,N/A,High,Josephine Bakka,,ATT&CK Enterprise - M1028 - Operating System Configuration,Application Security,NIST 800-53 v5,AC-3 ACCESS ENFORCEMENT
+Background Config,C-IMPLEMENT-STRONG-ENCRYPTION-FOR-DATA-AT-REST,Implement Strong Encryption for Data at Rest,"Choose a Strong Encryption Algorithm:
+
+    * Select a well-established and widely accepted encryption algorithm
+      such as AES (Advanced Encryption Standard) with a key size of at
+      least 256 bits. This provides a high level of security for sensitive
+      data.
+
+Generate Secure Keys:
+
+    * Use a secure key management system to generate and store encryption
+      keys. Ensure keys are generated using a cryptographically secure
+      random number generator. Avoid hard-coding keys within the
+      application.
+
+Encrypt Sensitive Data Before Storing:
+
+    * Before storing any sensitive user credentials, such as passwords or
+      API keys, encrypt the data using the chosen encryption algorithm.
+    * Example using AES in Python:
+
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, 
+modes
+from cryptography.hazmat.backends import default_backend
+import os
+
+key = os.urandom(32)  # 256-bit key
+iv = os.urandom(16)   # 128-bit IV
+cipher = Cipher(algorithms.AES(key), modes.CFB(iv), 
+backend=default_backend())
+encryptor = cipher.encryptor()
+ciphertext = encryptor.update(b'sensitive_data') + encryptor.finalize()
+
+Store Encryption Keys Securely:
+
+    * Use a dedicated hardware security module (HSM) or a secure key
+      management service (KMS) to store and manage encryption keys. This
+      adds an extra layer of security by keeping keys separate from the
+      encrypted data.
+
+Implement Access Controls:
+
+    * Restrict access to the encryption keys and encrypted data to only
+      those components or users that absolutely need it. Use role-based
+      access controls (RBAC) to enforce these restrictions.
+
+Regularly Rotate Encryption Keys:
+
+    * Implement a key rotation policy to regularly update encryption keys.
+      This limits the amount of data exposed if an encryption key is
+      compromised. Use key rotation features provided by your key
+      management service.
+
+Securely Handle Decryption:
+
+    * Only decrypt data when absolutely necessary and keep it in plaintext
+      for the shortest time possible. Ensure the decrypted data is handled
+      securely and wiped from memory once it's no longer needed.
+
+Monitor and Audit Access to Encrypted Data:
+
+    * Set up logging and monitoring to track access to encrypted data and
+      encryption keys. Review logs regularly to detect any unauthorized
+      access attempts.
+
+Comply with Relevant Standards:
+
+    * Follow industry standards and regulations, such as NIST SP 800-57 for
+      key management practices and GDPR for data protection requirements,
+      to ensure compliance and best practices.
+
+Regularly Test and Update Security Measures:
+
+    * Conduct regular security audits and penetration tests to identify and
+      address vulnerabilities in your encryption implementation. Keep your
+      encryption libraries and dependencies up to date with the latest
+      security patches.
+
+By following these steps, you ensure that user credentials and other 
+sensitive data are protected with strong encryption at rest, mitigating the 
+risk of data breaches and unauthorized access.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1041 - Encrypt Sensitive Information,Application Security||Data Security,NIST 800-53 v5,SC-13 Cryptographic Protection||SC-28 PROTECTION OF INFORMATION AT REST
+Database,C-IMPLEMENT-COMPREHENSIVE-ENCRYPTION-PRACTICES,Implement strong encryption mechanisms and practices,"To secure your systems, including a database management system, from 
+unauthorized access and data breaches, it's critical to adopt a robust 
+encryption strategy for data at rest and in transit. Encryption acts as an 
+essential barrier, ensuring that sensitive information remains protected 
+against unauthorized access and breaches.
+
+Steps to Implement Encryption:
+
+    * Identify Sensitive Data: Determine which data needs encryption. Focus
+      on personal information, financial details, or any other data
+      classified as sensitive under legal or regulatory standards.
+    * Implement Data at Rest Encryption: Use the Advanced Encryption
+      Standard (AES) to encrypt all sensitive data stored within your
+      database. AES is a widely recognized encryption standard offering
+      robust security. Ensure that encryption keys are stored separately
+      from the encrypted data itself.
+    * Implement Data in Transit Encryption: Apply Transport Layer Security
+      (TLS) to encrypt all data exchanged between the Database Manager and
+      clients or other systems. This protects data from being intercepted,
+      tampered with, or forged during transmission.
+    * Manage Encryption Keys Securely: Adopt a secure key management system
+      to generate, store, and handle encryption keys. Regularly rotate
+      keys, retire old keys safely, and restrict access to keys strictly to
+      authorized personnel only.
+    * Regular Verification and Auditing: Routinely test and verify your
+      encryption implementations to detect any weaknesses or
+      vulnerabilities. Conduct periodic audits to ensure compliance with
+      encryption best practices and regulatory requirements.
+    * Update and Maintain: Stay informed about the latest encryption
+      technologies and security standards. Regularly update your encryption
+      practices and libraries to combat emerging threats and ensure robust
+      protection.
+
+Best Practices for Encryption:
+
+    * Ensure that both developers and database administrators understand
+      the importance of encryption and are trained on the best practices
+      for implementing and maintaining encryption standards.
+    * Use only well-maintained and widely accepted libraries and frameworks
+      for encryption tasks to minimize risks associated with poorly
+      implemented cryptography.
+    * Implement layered security measures along with encryption, such as
+      access controls and regular security audits, to create a
+      comprehensive defense strategy.
+
+By implementing and maintaining strong encryption practices, developers 
+will significantly enhance the security posture of the Database Manager. 
+This not only protects sensitive data against cyber threats but also 
+ensures compliance with regulatory standards and builds trust with 
+stakeholders through a demonstrated commitment to data security.",Created by Rules Engine,Recommended,Not tested,High,N/A,High,Josephine Bakka,,ATT&CK Enterprise - M1041 - Encrypt Sensitive Information,Application Security||Data Security,,
+Background Worker,C-BACKGROUND-TASK-CNT-01,Implement TLS encryption,"To ensure data integrity and confidentiality for communication between 
+background tasks, it is imperative to implement TLS (Transport Layer 
+Security) encryption. Below is a guidance for implementing TLS encryption:
+
+
+1. Select a TLS Library
+
+Choose a well-established TLS library that is compatible with your 
+programming language and development environment. Examples include OpenSSL, 
+BoringSSL, and WolfSSL for C/C++, or libraries such as ssl
+<https://docs.python.org/3/library/ssl.html> for Python, and tls
+<https://nodejs.org/api/tls.html> for Node.js.
+
+
+2. Generate SSL/TLS Certificates
+
+Generate or obtain SSL/TLS certificates from a trusted Certificate 
+Authority (CA). This includes:
+
+    * The server certificate for the task server
+    * The private key associated with the server certificate
+    * A CA certificate to verify the authenticity of the server certificate
+
+
+3. Configure the Server-Side for TLS
+
+In your background task server, configure the communication to use TLS. 
+Example configuration steps in Python using the ssl module:
+
+
+import ssl
+import socket
+
+context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+context.load_cert_chain(certfile='server_cert.pem', keyfile='server_key.pem')
+
+bindsocket = socket.socket()
+bindsocket.bind(('0.0.0.0', 10023))
+bindsocket.listen(5)
+
+while True:
+    newsocket, fromaddr = bindsocket.accept()
+    connstream = context.wrap_socket(newsocket, server_side=True)
+    # Handle the task communication
+
+
+4. Configure the Client-Side for TLS
+
+On the client-side tasks, configure the client to trust the CA certificate 
+and establish a TLS connection. Example configuration steps in Python:
+
+
+import ssl
+import socket
+
+context = ssl.create_default_context()
+context.load_verify_locations(cafile='ca_cert.pem')
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+conn = context.wrap_socket(s, server_hostname='task_server')
+conn.connect(('task_server', 10023))
+# Communicate with the server task
+
+
+5. Test the TLS Connection
+
+Ensure that your implementation works correctly by testing the TLS 
+connection between tasks. Verify data integrity and confidentiality by 
+sending and receiving encrypted data. Tools like Wireshark
+<https://www.wireshark.org/> can be utilized to inspect if the traffic is 
+indeed encrypted.
+
+
+6. Monitor and Update
+
+Regularly monitor your implementation for any signs of failure or security 
+breaches. Keep your TLS library and certificates up-to-date to mitigate new 
+vulnerabilities and maintain compliance with security standards.
+
+By following these steps, you can successfully implement TLS encryption to 
+secure the communication between your background tasks, ensuring that data 
+integrity and confidentiality are maintained at all times.",Created by Rules Engine,Recommended,Not tested,Very high,N/A,High,Josephine Bakka,,ATT&CK Enterprise - M1041 - Encrypt Sensitive Information,Network Security,NIST 800-53 v5,SC-8 TRANSMISSION CONFIDENTIALITY AND INTEGRITY
+Browser,C-BROWSER-CNT-10,Manage browser extensions securely,"Implement and regularly update secure management of browser extensions on 
+all client machines to prevent unauthorized or malicious extensions from 
+compromising browser security. This control involves enforcing approved 
+extension policies, monitoring for unauthorized installations, and ensuring 
+that all extensions are updated and configured according to security best 
+practices.
+
+Implementation Steps:
+
+Enforce Extension Policies:
+Utilize centralized management tools (e.g., Group Policy, MDM, or 
+browser-specific management consoles) to control which extensions can be 
+installed and used.
+
+Monitor and Audit Extensions:
+Regularly review installed extensions to ensure compliance with 
+organizational policies. Remove or block any unapproved or suspicious 
+extensions.
+
+Regular Updates and Reviews:
+Ensure that all approved extensions are kept up-to-date and configure 
+automatic updates where possible. Periodically review security guidelines 
+and adjust policies as needed.
+
+User Education:
+Educate users about the risks of installing unapproved extensions and 
+provide guidelines for verifying extension authenticity.
+
+References:
+
+    * Google Chrome Enterprise - Manage Chrome Extensions
+      <https://support.google.com/chrome/a/answer/9296680?hl=en>",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1052 - User Account Control,Application Security,NIST 800-53 v5,AC-21 Information Sharing
+Web Application,C-WEB-APPLICATION-SERVER-SIDE-CNT-08,Perform software composition analysis and patch outdated libraries,"To reduce the risk of vulnerabilities from outdated or insecure libraries, 
+perform software composition analysis (SCA) to identify all third-party 
+libraries and dependencies used in your web application. Regularly scan for 
+known vulnerabilities and outdated components, then promptly patch or 
+upgrade them to secure versions. This ensures that your application is 
+protected from known exploits related to insecure or deprecated libraries.
+
+Implementation Steps:
+
+   1. Perform Software Composition Analysis: Use automated tools to scan
+      your codebase and identify all third-party libraries and
+      dependencies, including their versions.
+   2. Identify Vulnerabilities: Cross-reference your libraries against
+      known vulnerability databases (e.g., CVE, NVD) to identify any
+      libraries that are outdated or have known security issues.
+   3. Patch or Upgrade Libraries: Once outdated or vulnerable libraries are
+      identified, promptly upgrade to the latest stable versions or apply
+      necessary patches to mitigate any security risks.
+   4. Automate Regular Scanning: Set up automated scanning processes to
+      regularly check for vulnerabilities in your dependencies, ensuring
+      that any new risks are identified and addressed in a timely manner.
+
+References:
+
+    * OWASP Software Composition Analysis
+      <https://www.owasp.org/index.php/OWASP_Dependency_Track_Project>",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1054 - Software Configuration,Application Security,NIST 800-53 v5,"SI-7 Software, Firmware, and Information Integrity"
+Web App Config,C-SECRETS-MANAGER-03,Restrict secret sharing based on least privilege,"Implement strict least-privilege access policies that limit the sharing of 
+secrets to only the services and users that require them. Regularly audit 
+secret sharing configurations to ensure they adhere to least privilege 
+principles and avoid broad access settings that expose secrets 
+unnecessarily.",Created by Rules Engine,Recommended,Not tested,Very high,N/A,High,Josephine Bakka,,ATT&CK Enterprise - M1018 - User Account Management,Application Security,NIST 800-53 v5,AC-6 LEAST PRIVILEGE
+Background Config,C-SECURE-DATA-TRANSMISSION,Secure Data Transmission,"Use TLS for All Communications:
+
+    * Implement Transport Layer Security (TLS) to encrypt data transmitted
+      between clients and servers. Ensure that all endpoints (e.g., web
+      servers, APIs) are configured to use TLS.
+    * Example in Python using ssl:
+
+import ssl
+import socket
+
+context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+context.load_cert_chain(certfile=""path/to/certfile.pem"", 
+keyfile=""path/to/keyfile.pem"")
+
+with socket.create_connection(('example.com', 443)) as sock:
+   with context.wrap_socket(sock, server_hostname='example.com') as ssock:
+       print(ssock.version())
+
+Use Strong Cipher Suites:
+
+    * Configure your server to use strong cipher suites. Avoid weak ciphers
+      such as RC4 or those with key sizes less than 128 bits. Prefer modern
+      ciphers like AES and ChaCha20.
+
+Enforce HTTPS:
+
+    * Redirect all HTTP traffic to HTTPS. This ensures that all data is
+      transmitted securely.
+
+Use HSTS (HTTP Strict Transport Security):
+
+    * Implement HSTS to instruct browsers to only communicate with your
+      server over HTTPS, preventing protocol downgrade attacks.
+
+Validate Certificates:
+
+    * Ensure that your application validates the server certificates to
+      prevent man-in-the-middle (MITM) attacks.
+    * Example in Python using requests:
+
+import requests
+
+response = requests.get('https://example.com', 
+verify='/path/to/ca-bundle.crt')
+
+Implement Certificate Pinning:
+
+    * Use certificate pinning to associate a host with their expected
+      certificate or public key. This mitigates the risk of compromised
+      Certificate Authorities (CAs).
+
+Use Secure APIs:
+
+    * When designing APIs, ensure they are accessible only over HTTPS.
+      Apply appropriate authentication and authorization mechanisms, such
+      as OAuth 2.0.
+
+Encrypt Sensitive Data Before Transmission:
+
+    * For extra security, encrypt sensitive data at the application level
+      before transmission.
+    * Example using Fernet (symmetric encryption) in Python:
+
+from cryptography.fernet import Fernet
+
+key = Fernet.generate_key()
+cipher_suite = Fernet(key)
+encrypted_data = cipher_suite.encrypt(b'sensitive_data')
+
+Implement Rate Limiting:
+
+    * Use rate limiting to prevent abuse and mitigate denial-of-service
+      (DoS) attacks.
+
+Regularly Update and Patch:
+
+    * Keep your libraries, frameworks, and server software up to date with
+      the latest security patches to protect against known vulnerabilities.
+
+By following these steps, you ensure that data transmitted between clients 
+and servers is secured, minimizing the risk of interception and tampering 
+by unauthorized parties.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK ICS - M0808 - Encrypt Network Traffic,Application Security||Data Security,NIST 800-53 v5,SC-13 Cryptographic Protection||SC-8 TRANSMISSION CONFIDENTIALITY AND INTEGRITY||SI-4 System Monitoring
+Web App Config,C-SECRETS-MANAGER-05,Secure the API with strong authentication and input validation,"Implement strong authentication mechanisms, such as OAuth or mutual TLS, 
+for all API interactions with Secrets Manager. Ensure that input validation 
+is strictly enforced to prevent injection attacks or malformed API 
+requests. Regularly review API logs for unusual activity and 
+vulnerabilities.",Created by Rules Engine,Recommended,Not tested,Very high,N/A,High,Josephine Bakka,,ATT&CK Enterprise - M1056 - Pre-compromise,Application Security,NIST 800-53 v5,SC-7 Boundary Protection
+Background Worker,C-BACKGROUND-TASK-CNT-04,Use code signing and validation checks,"Countermeasure Description
+
+To enhance security and ensure that only authorized code is executed within 
+background tasks, it is vital to implement code signing and validation 
+checks. This countermeasure protects against unauthorized or malicious code 
+execution in your application. Follow these steps to implement this 
+control:
+
+
+Step-by-Step Implementation
+
+
+1. Generate a Pair of Public and Private Keys
+
+Use a trusted cryptographic library (e.g., OpenSSL, RSA) to generate a pair 
+of public and private keys. The private key will be used to sign the code, 
+while the public key will be distributed with your application for 
+validation purposes.
+
+
+
+openssl genpkey -algorithm RSA -out private_key.pem -aes256
+openssl rsa -pubout -in private_key.pem -out public_key.pem
+
+
+
+2. Sign Your Code
+
+Sign your code using the private key. This involves generating a digital 
+signature for your code. The signature ensures the integrity and 
+authenticity of the code.
+
+
+
+openssl dgst -sha256 -sign private_key.pem -out code_signature.bin your_code_file
+
+
+
+3. Distribute the Public Key
+
+Include the public key in your application's resources. This key will be 
+used to verify the authenticity of the code at runtime.
+
+
+4. Implement Runtime Validation Checks
+
+Before executing any background task, implement a validation check that 
+uses the public key to verify the code's digital signature. This ensures 
+that only code signed with your private key is executed.
+
+
+
+#include <openssl/pem.h>
+#include <openssl/rsa.h>
+#include <openssl/sha.h>
+
+int verify_code(const char *code_file, const char *signature_file, const char *public_key_file) {
+    FILE *pub_key_fp = fopen(public_key_file, ""r"");
+    if (!pub_key_fp) return -1;
+
+    RSA *rsa_pubkey = PEM_read_RSA_PUBKEY(pub_key_fp, NULL, NULL, NULL);
+    fclose(pub_key_fp);
+    if (!rsa_pubkey) return -1;
+
+    FILE *signature_fp = fopen(signature_file, ""rb"");
+    if (!signature_fp) return -1;
+    
+    fseek(signature_fp, 0, SEEK_END);
+    long sig_size = ftell(signature_fp);
+    fseek(signature_fp, 0, SEEK_SET);
+    
+    unsigned char *signature = (unsigned char*)malloc(sig_size);
+    fread(signature, 1, sig_size, signature_fp);
+    fclose(signature_fp);
+
+    FILE *code_fp = fopen(code_file, ""rb"");
+    if (!code_fp) return -1;
+
+    fseek(code_fp, 0, SEEK_END);
+    long code_size = ftell(code_fp);
+    fseek(code_fp, 0, SEEK_SET);
+    
+    unsigned char *code = (unsigned char*)malloc(code_size);
+    fread(code, 1, code_size, code_fp);
+    fclose(code_fp);
+    
+    unsigned char hash[SHA256_DIGEST_LENGTH];
+    SHA256(code, code_size, hash);
+
+    int result = RSA_verify(NID_sha256, hash, SHA256_DIGEST_LENGTH, signature, sig_size, rsa_pubkey);
+
+    RSA_free(rsa_pubkey);
+    free(signature);
+    free(code);
+
+    return result;
+}
+
+
+
+5. Integrate Validation in Background Task Execution
+
+Before initiating any background task, call the verify_code function to 
+ensure the code's authenticity. Only proceed with execution if the 
+validation is successful.
+
+
+
+if (verify_code(""your_code_file"", ""code_signature.bin"", ""public_key.pem"") == 1) {
+    // Execute background task
+} else {
+    // Handle validation failure
+}
+
+
+
+Conclusion
+
+By following these steps, you will ensure that only authorized and 
+authenticated code is executed within your application's background tasks, 
+enhancing its security posture against potential threats.",Created by Rules Engine,Recommended,Not tested,Very high,N/A,High,Josephine Bakka,,ATT&CK Enterprise - M1045 - Code Signing,Application Security,NIST 800-53 v5,"SI-7 Software, Firmware, and Information Integrity"
+Database,C-USE-PREPARED-STATEMENTS-WITH-PARAMETERIZED-QUERIES,Use prepared statements and parameterized queries,"To defend against SQL injection and other types of injection attacks, it is 
+crucial to separate SQL code from data input by using prepared statements 
+and parameterized queries. This practice ensures that inputs are executed 
+as data, not as part of the SQL command, effectively mitigating potential 
+injection threats.
+
+Steps to Implement Prepared Statements and Parameterized Queries:
+
+    * Identify any SQL query in your application that uses input from users
+      or external sources.
+    * Modify each SQL query to use prepared statements. In SQL, this
+      typically involves replacing input values in the SQL command with
+      placeholders (e.g., '?').
+    * For each placeholder, bind it to an actual value from your input,
+      ensuring these values are treated strictly as data.
+    * Use the database connection object's methods to prepare and execute
+      the statement. This might differ based on your programming language
+      and database system but generally involves methods like prepare() 
+      and execute().
+    * Review all existing queries for potential refactor to use prepared
+      statements, especially those that are dynamically constructed with
+      user input.
+    * Regularly participate in code reviews, specifically focusing on how
+      SQL queries are constructed and ensuring prepared statements are used
+      correctly.
+
+Security Best Practices:
+
+    * Always validate and sanitize user inputs to reduce risks further,
+      even when using prepared statements.
+    * Keep your database management system and development libraries up to
+      date to benefit from the latest security enhancements and features.
+    * Utilize tools and plugins that highlight or auto-correct SQL queries
+      not using prepared statements during development.
+
+By consistently applying the technique of using prepared statements with 
+parameterized queries, developers can substantially decrease the likelihood 
+of injection vulnerabilities, thereby protecting the integrity and 
+confidentiality of the database data.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1048 - Application Isolation and Sandboxing,Data Security,NIST 800-53 v5,SI-10 INFORMATION INPUT VALIDATION
+Background Config,C-USE-PREPARED-STATEMENTS-WITH-PARAMETERIZED-QUERIES,Use Prepared Statements with Parameterized Queries,"   1.  
+
+Understand Prepared Statements and Parameterized Queries:
+
+    * Prepared statements and parameterized queries are used to safely
+      handle user input in SQL queries, preventing SQL injection attacks.
+      They ensure that input values are treated as data rather than
+      executable code.
+
+Choose a Database Library that Supports Prepared Statements:
+
+    * Select a database library or framework that supports prepared
+      statements and parameterized queries. Common libraries include 
+      psycopg2 for PostgreSQL, MySQLdb for MySQL, and sqlite3 for SQLite in
+      Python.
+
+Use Prepared Statements in Your Queries:
+
+    * When writing SQL queries, use placeholders for user inputs instead of
+      directly embedding the input values into the query string. The exact
+      syntax for placeholders depends on the database library you are
+      using.
+    * Example using psycopg2 for PostgreSQL:
+
+import psycopg2
+
+connection = psycopg2.connect(""dbname=test user=postgres password=secret"")
+cursor = connection.cursor()
+
+query = ""SELECT * FROM users WHERE username = %s AND password = %s""
+cursor.execute(query, (username, password))
+results = cursor.fetchall()
+
+Use Named Parameters (Optional):
+
+    * Some database libraries support named parameters, which can make your
+      code more readable and maintainable.
+
+Avoid String Concatenation for SQL Queries:
+
+    * Never concatenate user inputs directly into SQL query strings. This
+      practice is vulnerable to SQL injection attacks. Always use
+      parameterized queries to safely include user input.
+
+Sanitize Inputs Where Necessary:
+
+    * While parameterized queries handle most input sanitization, ensure
+      that other inputs, such as file paths or system commands, are
+      properly validated and sanitized to prevent other forms of injection
+      attacks.
+
+Use ORM Frameworks:
+
+    * Consider using Object-Relational Mapping (ORM) frameworks like
+      SQLAlchemy for Python, Hibernate for Java, or Entity Framework for
+      .NET. These frameworks automatically use prepared statements and
+      parameterized queries, simplifying secure database interactions.
+    * Example using SQLAlchemy in Python:
+
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from models import User
+
+engine = 
+create_engine('postgresql://username:password@localhost/mydatabase')
+Session = sessionmaker(bind=engine)
+session = Session()
+
+user = session.query(User).filter(User.username == username, User.password 
+== password).first()
+
+Regularly Review and Test Your Code:
+
+    * Conduct code reviews and security testing to ensure that all database
+      interactions are using prepared statements and parameterized queries.
+      Use tools like SQLMap to test for SQL injection vulnerabilities.
+
+Stay Informed About Security Best Practices:
+
+    * Keep up to date with the latest security best practices and
+      guidelines from organizations such as OWASP. Regularly review their
+      recommendations and incorporate them into your development practices.
+
+By following these steps, you ensure that your application securely handles 
+user inputs in SQL queries, significantly reducing the risk of SQL 
+injection attacks.
+
+",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1018 - User Account Management||ATT&CK Enterprise - M1026 - Privileged Account Management||ATT&CK Enterprise - M1042 - Disable or Remove Feature or Program||ATT&CK Enterprise - M1045 - Code Signing||ATT&CK Enterprise - M1047 - Audit,Application Security,ASVS,V5.3.4||V5.3.5||V5.3.8
+Background Worker,C-BACKGROUND-TASK-CNT-02,Use role-based access control,"Implementing Role-Based Access Control (RBAC) is crucial to ensure that 
+sensitive information within background tasks is only accessible by 
+authorized users. Follow these guidelines to effectively implement RBAC:
+
+
+Step 1: Define Roles
+
+Identify and define the various roles within your application. Roles should 
+be based on the different levels of access required by users. Examples of 
+roles might include Admin, User, Guest, and Support.
+
+
+Step 2: Assign Permissions to Roles
+
+Assign specific permissions to each role. Permissions dictate what actions 
+a role can perform and what data it can access. For instance, an Admin role 
+might have permissions to create, read, update, and delete data, whereas a 
+User role might only have read and update permissions.
+
+
+Step 3: Implement Role Assignment
+
+Develop a method to assign roles to users. This can be done during the user 
+registration process or through an administrative interface within your 
+application. Ensure that users can only be assigned roles they are 
+authorized for, avoiding any unauthorized role assignments.
+
+
+Step 4: Secure Background Tasks
+
+Modify your background tasks to check the role of the user before 
+performing any actions. Only allow the background task to proceed if the 
+user's role has the necessary permissions. This can be implemented using 
+conditional checks within the task's logic:
+
+
+if (user.hasRole('Admin') || user.hasRole('Support')) {
+    // Perform sensitive background task
+} else {
+    // Log unauthorized access attempt or throw an error
+}
+
+
+Step 5: Logging and Monitoring
+
+Implement logging and monitoring to track access attempts to sensitive data 
+and services within background tasks. Log details such as the user’s role, 
+the action attempted, and whether it was successful or denied. Regularly 
+review these logs to identify and address any unauthorized access attempts.
+
+
+Step 6: Regular Role and Permission Review
+
+Periodically review and update roles and permissions to adapt to changes in 
+your application's requirements and to follow best security practices. 
+Remove or modify roles and permissions as necessary to maintain a secure 
+access control environment.
+
+By following these steps, you can successfully implement RBAC to secure 
+access to data and services within background tasks, ensuring that only 
+authorized users can access sensitive information.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1052 - User Account Control,Data Security,NIST 800-53 v5,AC-6 LEAST PRIVILEGE
+Web Application,C-WEB-APPLICATION-SERVER-SIDE-CNT-07,Use secure data formats and strict whitelisting for deserialization,"To prevent deserialization vulnerabilities, ensure that your web 
+application uses secure data formats, such as JSON, and applies strict 
+whitelisting to limit the types of objects that can be deserialized. This 
+minimizes the risk of malicious code execution or object manipulation 
+during deserialization. By enforcing tight control over deserialized data 
+and limiting the allowed object types, you reduce the attack surface and 
+prevent attackers from injecting malicious objects that could compromise 
+the server.
+
+Implementation Steps:
+
+   1. Use Secure Data Formats: Always prefer secure, text-based formats
+      like JSON over binary formats to reduce the risk of deserialization
+      attacks.
+   2. Implement Whitelisting: Configure deserialization routines to only
+      allow specific, trusted object types. Any unsupported object type
+      should be rejected immediately.
+   3. Sanitize Input: Apply rigorous validation and sanitization to all
+      input before deserialization to ensure it does not contain harmful
+      data.
+   4. Monitor for Malicious Input: Continuously monitor incoming data for
+      patterns indicating potential deserialization attacks, such as
+      malformed objects.
+
+References:
+
+    * OWASP Deserialization Cheat Sheet
+      <https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html>",Created by Rules Engine,Recommended,Not tested,Medium,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1038 - Execution Prevention,Application Security,NIST 800-53 v5,SI-10 INFORMATION INPUT VALIDATION
+Web Application,C-WEB-APPLICATION-SERVER-SIDE-CNT-05,Use TLS for communications and protect stored data with encryption,"To secure data during transmission and at rest, ensure that all 
+communications are protected using Transport Layer Security (TLS), and that 
+stored data is encrypted using strong encryption algorithms. Additionally, 
+implement robust key management practices to safeguard encryption keys and 
+ensure that only authorized users and systems can access sensitive data.
+
+Implementation Steps:
+
+   1. Enforce TLS for All Communications: Configure all communication
+      channels, including APIs, web traffic, and data transfers, to use TLS
+      (preferably TLS 1.2 or higher) to protect data in transit.
+   2. Encrypt Stored Data: Use strong encryption algorithms (e.g., AES-256)
+      to encrypt sensitive data at rest, ensuring that unauthorized users
+      cannot access or manipulate it.
+   3. Implement Key Management Practices: Use a centralized key management
+      system (KMS) to securely generate, store, and rotate encryption keys.
+      Enforce access controls to ensure that only authorized systems can
+      access encryption keys.
+   4. Regularly Update and Rotate Keys: Set up automated key rotation
+      policies to periodically update encryption keys and minimize the risk
+      of key compromise.
+
+References:
+
+    * OWASP Transport Layer Security (TLS) Cheat Sheet
+      <https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html>",Created by Rules Engine,Recommended,Not tested,Very high,N/A,High,Josephine Bakka,,ATT&CK Enterprise - M1041 - Encrypt Sensitive Information,Data Security,NIST 800-53 v5,SC-8 TRANSMISSION CONFIDENTIALITY AND INTEGRITY
+Browser,C-BROWSER-CNT-06,Utilize encrypted communication tools,"Implement and regularly update encrypted communication tools on all client 
+machines to ensure that all browser communications are securely 
+transmitted. This control enforces the use of secure protocols and 
+encryption solutions, such as TLS and VPNs, to protect data in transit 
+against interception and man-in-the-middle attacks.
+
+Implementation Steps:
+
+Enable Secure Protocols:
+Configure browsers to default to secure protocols (e.g., HTTPS, TLS 
+1.2/1.3) and disable outdated, insecure versions.
+
+Deploy VPN or Encrypted Tunnels:
+Use reputable VPN solutions to encrypt browser traffic, especially when 
+accessing untrusted networks, ensuring that data remains protected.
+
+Monitor and Validate Encryption:
+Regularly review encryption settings, validate certificate authenticity, 
+and update encryption libraries to keep pace with emerging threats.
+
+Integrate with Centralized Management:
+Utilize enterprise tools to enforce encrypted communication configurations 
+and monitor compliance across all client machines.
+
+References:
+
+    * OWASP Transport Layer Protection Cheat Sheet
+      <https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html>",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1041 - Encrypt Sensitive Information,Network Security,NIST 800-53 v5,SC-8 TRANSMISSION CONFIDENTIALITY AND INTEGRITY

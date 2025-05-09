@@ -1,0 +1,278 @@
+[
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Web App Config",
+        "Description": "An attacker exploits weak access controls to retrieve sensitive secrets",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Tampering",
+        "Assets": "Database",
+        "Description": "Attacker exploit misconfiguration and/or vulnerable third-party plugins",
+        "Risk": "High"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Web Application",
+        "Description": "Attackers can abuse server-side requests",
+        "Risk": "Medium"
+    },
+    {
+        "Type": "Elevation of Privilege",
+        "Assets": "Web Application",
+        "Description": "Attackers can bypass permissions",
+        "Risk": "High"
+    },
+    {
+        "Type": "Spoofing",
+        "Assets": "Web Application",
+        "Description": "Attackers can compromise sessions",
+        "Risk": "High"
+    },
+    {
+        "Type": "Repudiation",
+        "Assets": "Web Application",
+        "Description": "Attackers can evade detection without proper logging",
+        "Risk": "Medium"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Web Application",
+        "Description": "Attackers can exploit insecure configurations",
+        "Risk": "High"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Web Application",
+        "Description": "Attackers can exploit unsafe XML parsers",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Elevation of Privilege",
+        "Assets": "Web Application",
+        "Description": "Attackers can exploit vulnerable components",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Tampering",
+        "Assets": "Web Application",
+        "Description": "Attackers can inject malicious commands",
+        "Risk": "High"
+    },
+    {
+        "Type": "Tampering",
+        "Assets": "Web Application",
+        "Description": "Attackers can inject scripts",
+        "Risk": "High"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Web Application",
+        "Description": "Attackers can intercept or leak sensitive data",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Tampering",
+        "Assets": "Web Application",
+        "Description": "Attackers can manipulate business workflows",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Tampering",
+        "Assets": "Web Application",
+        "Description": "Attackers can run malicious code via deserialization",
+        "Risk": "Medium"
+    },
+    {
+        "Type": "Spoofing",
+        "Assets": "Background Config",
+        "Description": "Attackers compromise user accounts by Authentication Attacks",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Spoofing",
+        "Assets": "Browser",
+        "Description": "Attackers conduct phishing attacks through deceptive websites",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Tampering",
+        "Assets": "Browser",
+        "Description": "Attackers distribute malware through compromised browser extensions",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Elevation of Privilege",
+        "Assets": "Browser",
+        "Description": "Attackers exploit browser vulnerabilities to execute malicious code",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Background Config",
+        "Description": "Attackers exploit misconfiguration and Supply Chain Vulnerabilities",
+        "Risk": "High"
+    },
+    {
+        "Type": "Elevation of Privilege",
+        "Assets": "Web App Config",
+        "Description": "Attackers exploit vulnerabilities in the Secrets Manager API",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Elevation of Privilege",
+        "Assets": "Background Config",
+        "Description": "Attackers gain elevated privileges through Credential Misuse",
+        "Risk": "High"
+    },
+    {
+        "Type": "Elevation of Privilege",
+        "Assets": "Database",
+        "Description": "Attackers gain unauthorized access or elevated privileges",
+        "Risk": "High"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Database",
+        "Description": "Attackers gather useful information from inadequate error handling",
+        "Risk": "High"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Background Config",
+        "Description": "Attackers gather useful information from inadequate Error Handling",
+        "Risk": "High"
+    },
+    {
+        "Type": "Tampering",
+        "Assets": "Database",
+        "Description": "Attackers inject malicious content, e.g., SQLi",
+        "Risk": "High"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Browser",
+        "Description": "Attackers inject malicious scripts via cross-site scripting (XSS)",
+        "Risk": "High"
+    },
+    {
+        "Type": "Spoofing",
+        "Assets": "Browser",
+        "Description": "Attackers intercept browser communications through man-in-the-middle (MitM) attacks",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Denial of Service",
+        "Assets": "Background Config",
+        "Description": "Attackers perform Denial of Service through Authentication Systems",
+        "Risk": "High"
+    },
+    {
+        "Type": "Tampering",
+        "Assets": "Background Config",
+        "Description": "Attackers perform Injection Attacks and Unathorized Data Modification",
+        "Risk": "High"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Database",
+        "Description": "Attackers take advantage of insecure communication channels or inadequate data encryption practices",
+        "Risk": "High"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Background Config",
+        "Description": "Attackers take advantage of Insufficient Data Protection and Encryption for User Credentials",
+        "Risk": "High"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Web App Config",
+        "Description": "Compromised systems reuse leaked or old secrets",
+        "Risk": "High"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Message Queue",
+        "Description": "Data leakage due to unencrypted messages in transit",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Denial of Service",
+        "Assets": "Background Worker",
+        "Description": "Denial of Service (DoS) attacks",
+        "Risk": "High"
+    },
+    {
+        "Type": "Denial of Service",
+        "Assets": "Message Queue",
+        "Description": "Denial of Service (DoS) through message queue saturation",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Denial of Service",
+        "Assets": "Database",
+        "Description": "Denial of service via resource exhaustion",
+        "Risk": "High"
+    },
+    {
+        "Type": "Tampering",
+        "Assets": "Background Worker",
+        "Description": "Execution of malicious or unauthorized code",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Tampering",
+        "Assets": "Message Queue",
+        "Description": "Insider threat leading to unauthorized message manipulation or deletion",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Repudiation",
+        "Assets": "Database",
+        "Description": "Lack of evidences of misuse due to insufficient auditing and logging or poor log protection",
+        "Risk": "Medium"
+    },
+    {
+        "Type": "Tampering",
+        "Assets": "Background Worker",
+        "Description": "Message interception and manipulation",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Tampering",
+        "Assets": "Message Queue",
+        "Description": "Message tampering during transit or storage",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Web App Config",
+        "Description": "Overly permissive secrets sharing between services leads to data leakage",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Repudiation",
+        "Assets": "Background Config",
+        "Description": "Repudiation of Authentication Actions",
+        "Risk": "Medium"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Web App Config",
+        "Description": "Secrets are stored without encryption, leading to potential exposure",
+        "Risk": "Critical"
+    },
+    {
+        "Type": "Spoofing",
+        "Assets": "Message Queue",
+        "Description": "Unauthorized access to message queues",
+        "Risk": "High"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Background Worker",
+        "Description": "Unauthorized access to sensitive data",
+        "Risk": "High"
+    }
+]
