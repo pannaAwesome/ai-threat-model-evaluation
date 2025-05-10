@@ -3,6 +3,7 @@ import json
 import shutil
 from STRIDEgpt_models.convert_model import convert_STRIDEgpt
 from IriusRisk.convert_model import convert_iriusrisk
+from ThreatCanvas.convert_model import convert_threatcanvas
 
 
 def extract_STRIDEgpt_models(assets: list[str], application: list[str], result_folder: str) -> None:
@@ -19,17 +20,14 @@ def extract_STRIDEgpt_models(assets: list[str], application: list[str], result_f
     application_path = f"{folder_path}/{application}"
     
     # Convert the STRIDEgpt threat model files into JSON
-    threats, mitigations = convert_STRIDEgpt(application_path, assets)
+    threat_model = convert_STRIDEgpt(application_path, assets)
+    
+    print(f"Threat model for {application} has {len(threat_model)} threats.")
     
     # Save the threats to a file
-    threat_path = f"{result_folder}/{application}/STRIDEgpt_threats.json"
+    threat_path = f"{result_folder}/{application}/stridegpt_model.json"
     with open(threat_path, "w") as json_file:
-        json.dump(threats, json_file, indent=4)
-        
-    # Save the mitigations to a file
-    mitigation_path = f"{result_folder}/{application}/STRIDEgpt_mitigations.json"
-    with open(mitigation_path, "w") as json_file:
-        json.dump(mitigations, json_file, indent=4)
+        json.dump(threat_model, json_file, indent=4)
         
 def extract_IriusRisk_models(application: list[str], result_folder: str) -> None:
     """
@@ -44,18 +42,35 @@ def extract_IriusRisk_models(application: list[str], result_folder: str) -> None
     #for application in applications:
     application_path = f"{folder_path}/{application}"
     
-    # Convert the STRIDEgpt threat model files into JSON
-    threats, mitigations = convert_iriusrisk(application_path)
+    # Convert the IriusRisk threat model files into JSON
+    threat_model = convert_iriusrisk(application_path)
     
-    # Save the threats to a file
-    threat_path = f"{result_folder}/{application}/IriusRisk_threats.json"
+    print(f"Threat model for {application} has {len(threat_model)} threats.")
+    
+    # Save the threat model to a file
+    threat_path = f"{result_folder}/{application}/iriusrisk_model.json"
     with open(threat_path, "w") as json_file:
-        json.dump(threats, json_file, indent=4)
+        json.dump(threat_model, json_file, indent=4)
         
-    # Save the mitigations to a file
-    mitigation_path = f"{result_folder}/{application}/IriusRisk_mitigations.json"
-    with open(mitigation_path, "w") as json_file:
-        json.dump(mitigations, json_file, indent=4)
+def extract_ThreatCanvas_models(application: list[str], result_folder: str) -> None:
+    """
+    Extracts threat models from csv files in the ThreatCanvas directory,
+    and saves them as a JSON file in the result directory.
+    Parameters:
+        applications (list[str]): List of application names to process.
+        result_folder (str): Path to the directory where the JSON files will be saved.
+    """
+    folder_path = "ThreatCanvas"
+    
+    # Convert the ThreatCanvas threat model files into JSON
+    threat_model = convert_threatcanvas(folder_path, application)
+    
+    print(f"Threat model for {application} has {len(threat_model)} threats.")
+    
+    # Save the threat model to a file
+    threat_path = f"{result_folder}/{application}/threatCanvas_model.json"
+    with open(threat_path, "w") as json_file:
+        json.dump(threat_model, json_file, indent=4)
 
 if __name__ == "__main__":
     applications = ["message_queue_app"]
@@ -83,3 +98,7 @@ if __name__ == "__main__":
         # Extract threat models from the IriusRisk directory
         print(f"Extracting threat model for IriusRisk...")
         extract_IriusRisk_models(application, result_folder)
+        
+        # Extract threat models from the ThreatCanvas directory
+        print(f"Extracting threat model for ThreatCanvas...")
+        extract_ThreatCanvas_models(application, result_folder)

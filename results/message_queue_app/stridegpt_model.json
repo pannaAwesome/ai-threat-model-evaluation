@@ -1,0 +1,149 @@
+[
+    {
+        "Category": "Spoofing",
+        "Asset": "Browser",
+        "Threat": "An attacker intercepts messages between the Browser and the Web Application, impersonating a legitimate user to submit malicious messages to the Message Queue. Unauthorized access and injection of harmful messages into the system.",
+        "Mitigation": "Implement strong authentication mechanisms such as multi-factor authentication (MFA). Use secure communication protocols like TLS to encrypt messages. Validate and authenticate all incoming messages.",
+        "Risk": "6.20"
+    },
+    {
+        "Category": "Spoofing",
+        "Asset": "Browser",
+        "Threat": "An attacker intercepts messages between the Browser and the Web Application, impersonating a legitimate user to submit malicious messages to the Message Queue. Unauthorized access and injection of harmful messages into the system.",
+        "Mitigation": "Implement strong authentication mechanisms such as multi-factor authentication (MFA). Use secure communication protocols like TLS to encrypt messages. Validate and authenticate all incoming messages.",
+        "Risk": "6.20"
+    },
+    {
+        "Category": "Spoofing",
+        "Asset": "Message Queue",
+        "Threat": "An attacker compromises the Message Queue and injects fraudulent messages, which are then processed by the Background Worker as legitimate requests. Compromised data integrity and potential execution of unauthorized commands.",
+        "Mitigation": "Enforce strict access controls and authentication for the Message Queue. Use message signing and encryption to ensure integrity and authenticity. Monitor and log all activities in the Message Queue.",
+        "Risk": "6.20"
+    },
+    {
+        "Category": "Spoofing",
+        "Asset": "Background Worker",
+        "Threat": "An attacker gains access to the Background Worker Config and uses the stored credentials to impersonate the Background Worker, querying the Database with malicious intent. Unauthorized data access and potential data corruption.",
+        "Mitigation": "Store credentials securely using encryption and access controls. Implement principle of least privilege for Background Worker. Regularly rotate credentials and monitor access logs.",
+        "Risk": "6.20"
+    },
+    {
+        "Category": "Tampering",
+        "Asset": "Browser",
+        "Threat": "An attacker intercepts and modifies messages sent from the Browser to the Web Application before they are placed in the Message Queue. Altered data processing and potential execution of unintended actions.",
+        "Mitigation": "Use end-to-end encryption and message integrity checks (e.g., HMAC) to detect tampering. Implement secure communication protocols like TLS. Validate and verify all incoming messages.",
+        "Risk": "6.20"
+    },
+    {
+        "Category": "Tampering",
+        "Asset": "Browser",
+        "Threat": "An attacker intercepts and modifies messages sent from the Browser to the Web Application before they are placed in the Message Queue. Altered data processing and potential execution of unintended actions.",
+        "Mitigation": "Use end-to-end encryption and message integrity checks (e.g., HMAC) to detect tampering. Implement secure communication protocols like TLS. Validate and verify all incoming messages.",
+        "Risk": "6.20"
+    },
+    {
+        "Category": "Tampering",
+        "Asset": "Message Queue",
+        "Threat": "An attacker directly modifies messages in the Message Queue before they are processed by the Background Worker. Compromised data integrity and execution of malicious commands.",
+        "Mitigation": "Enforce strict access controls and authentication for the Message Queue. Use message signing and encryption to ensure integrity. Regularly audit and monitor the Message Queue for unauthorized access.",
+        "Risk": "6.40"
+    },
+    {
+        "Category": "Tampering",
+        "Asset": "Database",
+        "Threat": "An attacker modifies the Database directly, altering the data that the Background Worker retrieves and processes. Corrupted data and potential system malfunction.",
+        "Mitigation": "Implement strict access controls and auditing for the Database. Use database encryption and integrity checks. Regularly backup the database and monitor for unauthorized access.",
+        "Risk": "6.20"
+    },
+    {
+        "Category": "Repudiation",
+        "Asset": "Web Application",
+        "Threat": "A legitimate user sends a malicious message to the Web Application, which then places it in the Message Queue, without any logging or tracking. Difficulty in tracing and holding the user accountable for the malicious actions.",
+        "Mitigation": "Implement comprehensive logging and auditing for all messages sent to the Web Application. Use digital signatures to ensure non-repudiation. Maintain detailed audit trails.",
+        "Risk": "5.40"
+    },
+    {
+        "Category": "Repudiation",
+        "Asset": "Background Worker",
+        "Threat": "The Background Worker processes a malicious message from the Message Queue without logging the source, making it hard to identify the origin of the malicious request. Inability to trace back and identify the source of malicious activities.",
+        "Mitigation": "Ensure that all messages processed by the Background Worker are logged with source information. Use digital signatures and maintain detailed audit trails. Implement monitoring and alerting for suspicious activities.",
+        "Risk": "5.40"
+    },
+    {
+        "Category": "Repudiation",
+        "Asset": "Database",
+        "Threat": "An attacker modifies the Database, and the Background Worker processes the altered data without any audit trail. Lack of accountability for data tampering incidents.",
+        "Mitigation": "Implement comprehensive auditing and logging for all database activities. Use database triggers and change data capture (CDC) to track modifications. Regularly review audit logs.",
+        "Risk": "5.20"
+    },
+    {
+        "Category": "Repudiation",
+        "Asset": "Database",
+        "Threat": "An attacker modifies the Database, and the Background Worker processes the altered data without any audit trail. Lack of accountability for data tampering incidents.",
+        "Mitigation": "Implement comprehensive auditing and logging for all database activities. Use database triggers and change data capture (CDC) to track modifications. Regularly review audit logs.",
+        "Risk": "5.20"
+    },
+    {
+        "Category": "Information Disclosure",
+        "Asset": "Browser",
+        "Threat": "An attacker intercepts messages sent from the Browser to the Web Application, gaining access to sensitive data. Exposure of sensitive information leading to potential data breaches.",
+        "Mitigation": "Use end-to-end encryption (e.g., TLS) to protect data in transit. Implement secure communication protocols and validate all incoming messages. Regularly review and update encryption standards.",
+        "Risk": "6.60"
+    },
+    {
+        "Category": "Information Disclosure",
+        "Asset": "Browser",
+        "Threat": "An attacker intercepts messages sent from the Browser to the Web Application, gaining access to sensitive data. Exposure of sensitive information leading to potential data breaches.",
+        "Mitigation": "Use end-to-end encryption (e.g., TLS) to protect data in transit. Implement secure communication protocols and validate all incoming messages. Regularly review and update encryption standards.",
+        "Risk": "6.60"
+    },
+    {
+        "Category": "Information Disclosure",
+        "Asset": "Message Queue",
+        "Threat": "An attacker gains unauthorized access to the Message Queue and reads sensitive messages stored within. Compromise of sensitive data and potential misuse.",
+        "Mitigation": "Enforce strict access controls and authentication for the Message Queue. Use encryption to protect messages at rest. Regularly audit and monitor access to the Message Queue.",
+        "Risk": "6.20"
+    },
+    {
+        "Category": "Information Disclosure",
+        "Asset": "Database",
+        "Threat": "An attacker accesses the Database directly and reads sensitive data stored within. Exposure of sensitive information and potential data breaches.",
+        "Mitigation": "Implement strict access controls and encryption for the Database. Use database encryption and masking techniques. Regularly audit and monitor database access.",
+        "Risk": "6.40"
+    },
+    {
+        "Category": "Denial of Service",
+        "Asset": "Web Application",
+        "Threat": "An attacker floods the Web Application with requests, overwhelming it and preventing legitimate users from accessing the service. Service disruption and unavailability for legitimate users.",
+        "Mitigation": "Implement rate limiting and throttling mechanisms. Use load balancers and content delivery networks (CDNs) to distribute traffic. Regularly monitor and analyze traffic patterns.",
+        "Risk": "7.20"
+    },
+    {
+        "Category": "Denial of Service",
+        "Asset": "Message Queue",
+        "Threat": "An attacker floods the Message Queue with a large number of messages, overwhelming the Background Worker and causing processing delays. Service disruption and delayed processing of legitimate messages.",
+        "Mitigation": "Implement rate limiting and throttling for the Message Queue. Use message prioritization and load balancing. Monitor and alert on unusual message volumes.",
+        "Risk": "7.00"
+    },
+    {
+        "Category": "Denial of Service",
+        "Asset": "Database",
+        "Threat": "An attacker performs a Denial of Service attack on the Database, making it unavailable for the Background Worker to query. Service disruption and inability to process messages that require database access.",
+        "Mitigation": "Implement database replication and failover mechanisms. Use connection pooling and query optimization. Monitor and alert on unusual database activity.",
+        "Risk": "6.60"
+    },
+    {
+        "Category": "Elevation of Privilege",
+        "Asset": "Web Application",
+        "Threat": "An attacker exploits a vulnerability in the Web Application to gain unauthorized access to the Web Application Config, obtaining sensitive credentials. Elevated privileges and potential unauthorized access to the Message Queue.",
+        "Mitigation": "Regularly update and patch the Web Application. Implement least privilege access controls. Use secure coding practices and conduct regular security audits.",
+        "Risk": "6.20"
+    },
+    {
+        "Category": "Elevation of Privilege",
+        "Asset": "Background Worker",
+        "Threat": "An attacker exploits a vulnerability in the Background Worker to gain unauthorized access to the Background Worker Config, obtaining sensitive credentials. Elevated privileges and potential unauthorized access to the Database.",
+        "Mitigation": "Regularly update and patch the Background Worker. Implement least privilege access controls. Use secure coding practices and conduct regular security audits.",
+        "Risk": "6.00"
+    }
+]
