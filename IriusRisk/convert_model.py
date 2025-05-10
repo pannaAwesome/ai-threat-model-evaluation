@@ -1,77 +1,53 @@
-import csv
-import json
+import pandas as pd
 import os
-import sys
+import sys    
 
-def threats_risk_to_json(csv_path):
+def csv_to_dataframe(threat_path: str, mitigation_path: str) -> pd.DataFrame:
     """
-    Reads a CSV file and converts each row into a JSON object with the structure:
-    
-    {
-      "Type": <Use case>,
-      "Assets": <Component>,
-      "Description": <Threat>,
-      "Risk": <Projected Risk>
-    }
+    Merges threat, mitigation, and dread assessment tables into a single DataFrame.
+    Assumes the dread table has the same row order as the other two tables.
 
-    :param csv_path: full path to the CSV file
-    :return: JSON string representation of the CSV file data
-    """
-    json_list = []
-    
-    try:
-        with open(csv_path, mode='r', encoding='utf-8-sig') as csv_file:
-            reader = csv.DictReader(csv_file)
-            for row in reader:
-                json_obj = {
-                    "Type": row.get("Use case", "").strip(),
-                    "Assets": row.get("Component", "").strip(),
-                    "Description": row.get("Threat", "").strip(),
-                    "Risk": row.get("Projected Risk", "").strip()
-                }
-                json_list.append(json_obj)
-    except FileNotFoundError:
-        print(f"Error: The file at {csv_path} was not found.")
-        sys.exit(1)
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        sys.exit(1)
-    
-    return json_list
+    Parameters:
+        threat_path (str): Path to the threat_model.md file.
+        mitigation_path (str): Path to the mitigations.md file.
+        dread_path (str): Path to the dread_assessment.md file.
 
-def mitigations_to_json(csv_path):
-    """
-    Reads a CSV file and converts each row into a JSON object with the structure:
-    
-    {
-      "Type": <Use case>,
-      "Assets": <Component>,
-      "Description": <Threat>,
-      "Risk": <Projected Risk>
-    }
+    Returns:
+        pd.DataFrame: Combined DataFrame containing data from all three sources.
 
-    :param csv_path: full path to the CSV file
-    :return: JSON string representation of the CSV file data
+    Raises:
+        ValueError: If the number of rows does not match across all files.
     """
-    json_list = []
+    threat_df = pd.read_csv(threat_path, sep=',', skipinitialspace=True, engine='python')
+    threat_df = threat_df.rename(columns={"Name": "Threat", "Description": "Scenario"})
+    threat_df = threat_df[["Component", "Use Case", "Threat", "Scenario", "Current Risk"]]
     
-    try:
-        with open(csv_path, mode='r', encoding='utf-8-sig') as csv_file:
-            reader = csv.DictReader(csv_file)
-            for row in reader:
-                json_obj = {
-                    "Assets": row.get("Component", "").strip(),
-                    "Mitigation": f"{row.get('Countermeasure', '').strip()}, {row.get('Description', '').strip()}"
-                }
-                json_list.append(json_obj)
-    except FileNotFoundError:
-        print(f"Error: The file at {csv_path} was not found.")
-        sys.exit(1)
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        sys.exit(1)
+    mitigation_df = pd.read_csv(mitigation_path, sep=',', skipinitialspace=True, engine='python')
+    mitigation_df = mitigation_df.rename(columns={"Name": "Mitigation", "Description": "Fix"})
+    mitigation_df = mitigation_df[["Component", "Use Case", "Threat", "Mitigation", "Fix"]]
+
+    merged_df = pd.merge(threat_df, mitigation_df, how='left', on=["Component", "Use Case", "Threat"])
+
+    return merged_df
+
+def convert_df_to_json(df: pd.DataFrame) -> str:
+    """
+    Converts a DataFrame to a JSON string.
     
-    return json_list
+    :param df: DataFrame to convert.
+    :return: JSON string representation of the DataFrame.
+    """
+    result = []
+    for _, row in df.iterrows():
+        entry = {
+            "Category": row['Use Case'],
+            "Asset": row['Component'],
+            "Threat": f"{row['Threat']}. {row['Scenario']}",
+            "Mitigation": f"{row['Mitigation']}. {row['Fix']}",
+            "Risk": f"{row['Current Risk']} out of 100"
+        }
+        result.append(entry)
+    return result
 
 def convert_iriusrisk(folder_path):
     """
@@ -83,7 +59,7 @@ def convert_iriusrisk(folder_path):
     threats_csv = os.path.join(folder_path, "threats.csv")
     mitigations_csv = os.path.join(folder_path, "mitigations.csv")
     
-    threats_json = threats_risk_to_json(threats_csv)
-    mitigations_json = mitigations_to_json(mitigations_csv)
+    df = csv_to_dataframe(threats_csv, mitigations_csv)
+    threat_json = convert_df_to_json(df)
     
-    return threats_json, mitigations_json
+    return threat_json
