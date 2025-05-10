@@ -38,8 +38,10 @@ def convert_df_to_json(df: pd.DataFrame) -> str:
     :return: JSON string representation of the DataFrame.
     """
     result = []
+    idx = 1
     for _, row in df.iterrows():
         entry = {
+            "ID": idx,
             "Category": row['Use Case'],
             "Asset": row['Component'],
             "Threat": f"{row['Threat']}. {row['Scenario']}",
@@ -47,6 +49,7 @@ def convert_df_to_json(df: pd.DataFrame) -> str:
             "Risk": f"{row['Current Risk']} out of 100"
         }
         result.append(entry)
+        idx = idx + 1
     return result
 
 def convert_iriusrisk(folder_path):
