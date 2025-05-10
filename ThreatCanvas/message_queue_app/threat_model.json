@@ -1,0 +1,1187 @@
+{
+    "version": 1,
+    "meta": {
+        "description": "",
+        "projectType": "APPLICATION",
+        "riskTemplate": "STRIDE",
+        "riskModifiers": {
+            "paymentData": false,
+            "personalData": false,
+            "healthData": false,
+            "missionCritical": false,
+            "internetFacing": false
+        }
+    },
+    "nodes": [
+        {
+            "id": "n1",
+            "label": "Browser",
+            "notes": "",
+            "outOfScope": false,
+            "componentId": 4,
+            "trustBoundary": "t1",
+            "threats": [
+                {
+                    "id": 3399,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3447,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3471,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3460,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3398,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 2,
+                    "controls": [
+                        {
+                            "id": 3468,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3472,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3407,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                }
+            ],
+            "position": [
+                105.69875885798038,
+                -273.6680067075997
+            ]
+        },
+        {
+            "id": "n2",
+            "label": "Web Application",
+            "notes": "",
+            "outOfScope": false,
+            "componentId": 3,
+            "trustBoundary": "t2",
+            "threats": [
+                {
+                    "id": 3397,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4058,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3398,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 2,
+                    "controls": [
+                        {
+                            "id": 3468,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3472,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3399,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3447,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3471,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3460,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3432,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 1,
+                    "controls": [
+                        {
+                            "id": 3447,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3483,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3462,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3407,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3416,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 1,
+                    "controls": [
+                        {
+                            "id": 3479,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4021,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                }
+            ],
+            "position": [
+                -19.726692331620413,
+                -58.12443989311489
+            ]
+        },
+        {
+            "id": "n3",
+            "label": "Background Worker",
+            "notes": "",
+            "outOfScope": false,
+            "componentId": 3,
+            "trustBoundary": "t2",
+            "threats": [
+                {
+                    "id": 3397,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4058,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3398,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 2,
+                    "controls": [
+                        {
+                            "id": 3468,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3472,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3399,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3447,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3471,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3460,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3432,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 1,
+                    "controls": [
+                        {
+                            "id": 3447,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3483,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3462,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3407,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3416,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 1,
+                    "controls": [
+                        {
+                            "id": 3479,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4021,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                }
+            ],
+            "position": [
+                -74.08600469609353,
+                297.3824059662003
+            ]
+        },
+        {
+            "id": "n4",
+            "label": "Web Application Config",
+            "notes": "",
+            "outOfScope": false,
+            "componentId": 2,
+            "trustBoundary": "t2",
+            "threats": [
+                {
+                    "id": 3397,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4058,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3398,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 2,
+                    "controls": [
+                        {
+                            "id": 3468,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3472,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3399,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3447,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3471,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3460,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3432,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 1,
+                    "controls": [
+                        {
+                            "id": 3447,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3483,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3462,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3407,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3416,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 1,
+                    "controls": [
+                        {
+                            "id": 3479,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4021,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                }
+            ],
+            "position": [
+                272.4049345645285,
+                28.37793007219537
+            ]
+        },
+        {
+            "id": "n5",
+            "label": "Background Worker Config",
+            "notes": "",
+            "outOfScope": false,
+            "componentId": 2,
+            "trustBoundary": "t2",
+            "threats": [
+                {
+                    "id": 3397,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4058,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3398,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 2,
+                    "controls": [
+                        {
+                            "id": 3468,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3472,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3399,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3447,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3471,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3460,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3432,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 1,
+                    "controls": [
+                        {
+                            "id": 3447,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3483,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3462,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3407,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3416,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 1,
+                    "controls": [
+                        {
+                            "id": 3479,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4021,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                }
+            ],
+            "position": [
+                240.05224310597038,
+                401.6654713522839
+            ]
+        },
+        {
+            "id": "n6",
+            "label": "Message Queue",
+            "notes": "",
+            "outOfScope": false,
+            "componentId": 2,
+            "trustBoundary": "t3",
+            "threats": [
+                {
+                    "id": 3397,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4058,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3398,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 2,
+                    "controls": [
+                        {
+                            "id": 3468,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3472,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3399,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3447,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3471,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3460,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3432,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 1,
+                    "controls": [
+                        {
+                            "id": 3447,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3483,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3462,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3407,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3416,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 1,
+                    "controls": [
+                        {
+                            "id": 3479,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4021,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                }
+            ],
+            "position": [
+                156.5117153887462,
+                700.7599403619887
+            ]
+        },
+        {
+            "id": "n7",
+            "label": "Database",
+            "notes": "",
+            "outOfScope": false,
+            "componentId": 2,
+            "trustBoundary": "t3",
+            "threats": [
+                {
+                    "id": 3397,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4058,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3398,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 2,
+                    "controls": [
+                        {
+                            "id": 3468,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3472,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3399,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3447,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3471,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3460,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3432,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 1,
+                    "controls": [
+                        {
+                            "id": 3447,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3483,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 3462,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3407,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 3,
+                    "controls": [
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4057,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 3416,
+                    "notes": "",
+                    "status": "Open",
+                    "rationale": "",
+                    "riskRating": 1,
+                    "controls": [
+                        {
+                            "id": 3479,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4021,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        },
+                        {
+                            "id": 4056,
+                            "notes": "",
+                            "implemented": false,
+                            "rationale": ""
+                        }
+                    ]
+                }
+            ],
+            "position": [
+                29.645758687077873,
+                620.5415437219748
+            ]
+        }
+    ],
+    "links": [
+        {
+            "id": "l1",
+            "from": "n1",
+            "to": "n2",
+            "label": "Requests and sends messages",
+            "twoWay": true
+        },
+        {
+            "id": "l2",
+            "from": "n2",
+            "to": "n6",
+            "label": "Puts messages",
+            "twoWay": false
+        },
+        {
+            "id": "l3",
+            "from": "n4",
+            "to": "n2",
+            "label": "Provides credentials",
+            "twoWay": false
+        },
+        {
+            "id": "l4",
+            "from": "n6",
+            "to": "n3",
+            "label": "Sends messages",
+            "twoWay": false
+        },
+        {
+            "id": "l5",
+            "from": "n3",
+            "to": "n7",
+            "label": "Queries",
+            "twoWay": false
+        },
+        {
+            "id": "l6",
+            "from": "n5",
+            "to": "n3",
+            "label": "Provides credentials",
+            "twoWay": false
+        }
+    ],
+    "trustBoundaries": [
+        {
+            "isGroup": true,
+            "id": "t1",
+            "label": "External Entity"
+        },
+        {
+            "isGroup": true,
+            "id": "t2",
+            "label": "Trusted Zone"
+        },
+        {
+            "isGroup": true,
+            "id": "t3",
+            "label": "Untrusted Zone"
+        }
+    ]
+}

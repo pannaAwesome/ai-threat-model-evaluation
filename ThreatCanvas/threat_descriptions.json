@@ -1,0 +1,61 @@
+[
+    {
+        "Category": "Spoofing",
+        "Description": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
+        "Mitigations": [
+            "Enforce Authorization",
+            "Secure Connections with Strong Encryption"
+        ],
+        "Risk": 3
+    },
+    {
+        "Category": "Tampering",
+        "Description": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
+        "Mitigations": [
+            "Encrypt Sensitive Information",
+            "Input Sanitization",
+            "Input Validation",
+            "Secure Connections with Strong Encryption"
+        ],
+        "Risk": 3
+    },
+    {
+        "Category": "Repudiation",
+        "Description": "The node is prone to repudiation threats, where an attacker can deny their actions without the possibility of traceability",
+        "Mitigations": [
+            "Enforce Authentication",
+            "Enforce Authorization",
+            "Logging and Monitoring"
+        ],
+        "Risk": 1
+    },
+    {
+        "Category": "Information Disclosure",
+        "Description": "The node leaks pieces of information, such as internal data or authentication material, which could be used to facilitate further attacks",
+        "Mitigations": [
+            "Encrypt Sensitive Information",
+            "Redact Sensitive Data",
+            "Secret Management",
+            "Secure Connections with Strong Encryption"
+        ],
+        "Risk": 1
+    },
+    {
+        "Category": "Denial of Service",
+        "Description": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
+        "Mitigations": [
+            "Firewall",
+            "Mitigate Automated Attacks"
+        ],
+        "Risk": 2
+    },
+    {
+        "Category": "Elevation of Privilege",
+        "Description": "The  node  is  vulnerable  to  elevation  of  privilege  attacks,  where  an  attacker  gains  higher-level permissions than intended.",
+        "Mitigations": [
+            "Apply Least Privilege",
+            "Enforce Authorization"
+        ],
+        "Risk": 3
+    }
+]

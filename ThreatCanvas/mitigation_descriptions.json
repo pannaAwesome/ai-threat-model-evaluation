@@ -1,0 +1,50 @@
+[
+    {
+        "Mitigation": "Apply Least Privilege",
+        "Description": "Limit access privileges to those essential for performing the intended function."
+    },
+    {
+        "Mitigation": "Encrypt Sensitive Information",
+        "Description": "Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates."
+    },
+    {
+        "Mitigation": "Enforce Authentication",
+        "Description": "Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates."
+    },
+    {
+        "Mitigation": "Enforce Authorization",
+        "Description": "Ensure that the node uses strict access policies against unauthorized access."
+    },
+    {
+        "Mitigation": "Firewall",
+        "Description": "Use network appliances to filter ingress or egress traffic. Configure software on endpoints to filter network traffic"
+    },
+    {
+        "Mitigation": "Input Sanitization",
+        "Description": "Check untrusted input and remove anything that might be potentially dangerous."
+    },
+    {
+        "Mitigation": "Input Validation",
+        "Description": "Ensure that only properly formed data is entered into the system."
+    },
+    {
+        "Mitigation": "Logging and Monitoring",
+        "Description": "Keep detailed audit logs with timestamps for activities such as user logins, sensitive data access, access control changes, and administrative actions."
+    },
+    {
+        "Mitigation": "Mitigate Automated Attacks",
+        "Description": "Protect against automated attacks such as content scraping, password brute-force, or denial of service attacks."
+    },
+    {
+        "Mitigation": "Redact Sensitive Data",
+        "Description": "Redact, obfuscate, or tokenize sensitive information such as credit card numbers."
+    },
+    {
+        "Mitigation": "Secret Management",
+        "Description": "Securely encrypt, store, and manage access to secrets such as passwords, tokens, and encryption keys. This includes using centralized vaults, regular rotation, and auditing trails."
+    },
+    {
+        "Mitigation": "Secure Connections with Strong Encryption",
+        "Description": "nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure."
+    }
+]

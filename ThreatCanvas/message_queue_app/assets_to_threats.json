@@ -1,0 +1,9 @@
+{
+    "Browser": ["Denial of Service","Spoofing","Tampering"],
+    "Database": ["Denial of Service","Elevation of Privilege","Information Disclosure","Repudation","Spoofing","Tampering"],
+    "Message Queue": ["Denial of Service","Elevation of Privilege","Information Disclosure","Repudation","Spoofing","Tampering"],
+    "Web Application": ["Denial of Service","Elevation of Privilege","Information Disclosure","Repudation","Spoofing","Tampering"],
+    "Web Application Config": ["Denial of Service","Elevation of Privilege","Information Disclosure","Repudation","Spoofing","Tampering"],
+    "Background Worker": ["Denial of Service","Elevation of Privilege","Information Disclosure","Repudation","Spoofing","Tampering"],
+    "Background Worker Config": ["Denial of Service","Elevation of Privilege","Information Disclosure","Repudation","Spoofing","Tampering"]
+}
