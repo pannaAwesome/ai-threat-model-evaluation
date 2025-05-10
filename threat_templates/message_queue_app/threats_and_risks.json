@@ -1,0 +1,80 @@
+[
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Background Worker Config",
+        "Description": "The Background Worker Config stores the credentials used by the Background Worker to access the Database. An attacker could compromise the Background Worker and get access to the Database credentials.",
+        "Risk": "High Severity"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Database",
+        "Description": "An attacker could make a query call on the Database.",
+        "Risk": "High Severity"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Database",
+        "Description": "An attacker could obtain the Database credentials and use them to make unauthorised queries.",
+        "Risk": "Medium Severity"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Web Application Config",
+        "Description": "The Web Application Config stores credentials used  by the Web Application to access the Message Queue. These could be stolen by an attacker and used to read confidential data or place poisoned messages on the queue.",
+        "Risk": "High Severity"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Message Queue",
+        "Description": "The data flow between the Web Application and the Background Worker is not point-to-point and therefore end-to-end secrecy cannot be provided at the transport layer. Messages could be read by an attacker at rest in the Message Queue.",
+        "Risk": "Low Severity"
+    },
+    {
+        "Type": "Tampering",
+        "Assets": "Message Queue",
+        "Description": "Messages on the queue could be tampered with, causing incorrect processing by the Background Worker.",
+        "Risk": "Medium Severity"
+    },
+    {
+        "Type": "Spoofing",
+        "Assets": "Message Queue",
+        "Description": "An attacker could put a fake message on queue, causing the Background Worker to do incorrect processing.",
+        "Risk": "High Severity"
+    },
+    {
+        "Type": "Denial of Service",
+        "Assets": "Message Queue",
+        "Description": "An attacker could generate a malicious message that the Background Worker cannot process.",
+        "Risk": "Medium Severity"
+    },
+    {
+        "Type": "Denial of Service",
+        "Assets": "Message Queue",
+        "Description": "An attacker could generate a malicious message that the Background Worker cannot process.",
+        "Risk": "Medium Severity"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Browser",
+        "Description": "These requests are made over the public internet and could be intercepted by an attacker.",
+        "Risk": "High Severity"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Web Application",
+        "Description": "These requests are made over the public internet and could be intercepted by an attacker.",
+        "Risk": "High Severity"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Message Queue",
+        "Description": "These requests are made over the public internet and could be intercepted by an attacker.",
+        "Risk": "High Severity"
+    },
+    {
+        "Type": "Information Disclosure",
+        "Assets": "Database",
+        "Description": "An attacker could intercept the Database queries in transit and obtain sensitive information, such as Database credentials, query parameters or query results (is unlikely since the data flow is over a private network).",
+        "Risk": "Low Severity"
+    }
+]

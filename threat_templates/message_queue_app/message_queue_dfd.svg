@@ -9,7 +9,7 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 241.5)">
 <title>D</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-241.5 596.68,-241.5 596.68,4 -4,4"/>
-<text text-anchor="middle" x="296.34" y="-6.8" font-family="Helvetica,sans-Serif" font-size="9.00" fill="#000060">&#45; dfd &#45;</text>
+<text text-anchor="middle" x="296.34" y="-6.8" font-family="Helvetica,sans-Serif" font-size="9.00" fill="#000060">&#45; message_queue_dfd &#45;</text>
 <g id="clust1" class="cluster">
 <title>cluster_0</title>
 <polygon fill="none" stroke="black" stroke-dasharray="5,2" points="8,-77.5 8,-229.5 385.68,-229.5 385.68,-77.5 8,-77.5"/>
