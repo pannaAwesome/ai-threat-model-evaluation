@@ -63,51 +63,6 @@ def merge_dataframes(threat_path: str, mitigation_path: str, dread_path: str) ->
 
     return merged_df
 
-import re
-
-def find_assets_in_threat(threat, assets):
-    """finds assets in a description of a threat
-
-    Args:
-        threat (str): the threat to read
-        assets (list): assets in the system
-
-    Returns:
-        list: list of assets found in the threat description
-    """
-    threat_lower = threat.lower()
-
-    # Build a regex to find all known entities in the sentence
-    asset_patterns = [re.escape(e.lower()) for e in assets]
-    asset_regex = r'\b(?:' + '|'.join(asset_patterns) + r')\b'
-
-    # Find all matches and their positions
-    matches = [(m.group(0), m.start()) for m in re.finditer(asset_regex, threat_lower)]
-
-    if not matches:
-        return []
-
-    # Find the earliest match position
-    earliest_pos = min(pos for _, pos in matches)
-    
-    # Calculate max distance between assets in a list based on the assets starting position
-    max_distance = max_distance = len(max(assets, key=len) + " and the ") + 1
-
-
-    # Find all contiguous asset matches starting at the first one
-    found = []
-    for asset, pos in matches:
-        if pos == earliest_pos or (found and pos - matches[matches.index((asset, pos)) - 1][1] <= max_distance):
-            # Add the properly cased version from the original list
-            for original in assets:
-                if asset == original.lower():
-                    found.append(original)
-                    break
-        elif found:
-            break  # stop after first group of contiguous matches
-
-    return found
-
 def create_threat_model_json(merged_df: pd.DataFrame, assets: list[str]) -> list[dict]:
     """
     Converts a merged DataFrame into a list of JSON objects representing the threat model.
@@ -120,33 +75,15 @@ def create_threat_model_json(merged_df: pd.DataFrame, assets: list[str]) -> list
         list[dict]: List of threat model entries in dictionary format.
     """
     result = []
-    idx = 1
-    for _, row in merged_df.iterrows():
-        assets_in_threat = find_assets_in_threat(row["Scenario"], assets)
-        
-        if len(assets_in_threat) == 0:
-            entry = {
-                "ID": idx,
-                "Category": row["Threat Type"],
-                "Asset": assets_in_threat[0],
-                "Threat": f'{row["Scenario"]} {row["Potential Impact"]}',
-                "Mitigation": row["Suggested Mitigation(s)"],
-                "Risk": f'{row["Risk Score"]} out of 10'
-            }
-            result.append(entry)
-            idx = idx + 1
-        else:
-            for asset in assets_in_threat:
-                entry = {
-                    "ID": idx,
-                    "Category": row["Threat Type"],
-                    "Asset": assets_in_threat[0],
-                    "Threat": f'{row["Scenario"]} {row["Potential Impact"]}',
-                    "Mitigation": row["Suggested Mitigation(s)"],
-                    "Risk": row["Risk Score"]
-                }
-                result.append(entry)
-                idx = idx + 1
+    for idx, row in merged_df.iterrows():
+        entry = {
+            "ID": idx,
+            "Category": row["Threat Type"],
+            "Threat": f'{row["Scenario"]} {row["Potential Impact"]}',
+            "Mitigation": row["Suggested Mitigation(s)"],
+            "Risk": f'{row["Risk Score"]} out of 10'
+        }
+        result.append(entry)
     return result
 
 def convert_STRIDEgpt(folder_path: str, assets: list[str]) -> None:

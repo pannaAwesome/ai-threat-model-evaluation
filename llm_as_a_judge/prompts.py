@@ -1,61 +1,46 @@
 
-def build_threat_prompt(assets: list, candidate1: dict, candidate2: dict) -> str:
-    """
-    Build a prompt for the LLM to evaluate if two threats are the same.
+SYSTEM_PROMPT = """
+    You are an impartial judge, and you will be comparing the elements of two lists.
+    Each list represents a threat model, and you will need to determine, which elements are similar based on 
+    a user specified criteria. You should always ignore any differences in style, grammar, or punctuation.
     
-    Args:
-        candidate1 (dict): The first candidate's information.
-        candidate2 (dict): The second candidate's information.
-        Structure of dicts:
-            {
-                "ID": int,
-                "Category": <str>,
-                "Asset": <str>,
-                "Threat": <str>
-            }
+    The lists are in a JSON format, and each element in the list is a dictionary with the following keys:
+    - ID: The ID of the threat.
+    - Category: The category of the threat.
+    - Threat: A description of the threat itself.
+    - Mitigation: A description of the mitigation for the threat.
+    - Risk: The risk of the threat, this can either be one of: High Severity, Medium Severity, Low Severity, 
+            or a numerical value written as '<score> out of <max>'.
+    - (Optional) Asset: The asset that the threat targets.
     
-    Returns:
-        str: The formatted prompt for the LLM.
-    """
-    prompt = f"""
-        Please act as an impartial judge and evaluate the similarity of two threats provided from
-        two different threat models. Two threats are considered the same if they apply to the same asset(s),
-        have the same threat category, and their description describes the same malicious objective and
-        impact.
+    The categories can be either of: Spoofing, Tampering, Repudiation, Information Disclosure,
+    Denial of Service, Elevation of Privilege.
+    The assets can be either of: {assets}.
+"""
+
+THREAT_PROMPT = {
+    "message": """
+        You need to discover the elements in the two lists that are similar based on the following criteria:
+        - The category of the threats are the same.
+        - If asset is specified in both lists, then they should be the same.
+        - The threats have the same malicious objective and impact.
+        You should only consider the fields: Category, Asset, and Threat of the JSON objects in the lists.
         
-        For this task, you will be provided with two candidates, each representing a potential threat.
-        Each candidate will include the following information:
-        - Category: The category of the threat.
-        - Asset: The asset that the threat targets. 
-        - Threat: A description of the threat itself.
-        For some of the candidates, the asset may be empty. In this case, you should defer the asset from
-        the threat description.
+        The two lists are:
+        [List 1]
+        {tm1}
         
-        The Category can be either of: Spoofing, Tampering, Repudiation, Information Disclosure, 
-        Denial of Service, Elevation of Privilege.
-        The Asset can be either of: {assets}.
+        [List 2]
+        {tm2}
         
-        [First Candidate]
-        Category: {candidate1["Category"]}
-        Asset: {candidate1["Asset"]}
-        Threat: {candidate1["Threat"]}
-        
-        [Second Candidate]
-        Category: {candidate2["Category"]}
-        Asset: {candidate2["Asset"]}
-        Threat: {candidate2["Threat"]}
-        
-        Please answer with 'yes' if the two threats are the same, and 'no' if they are not.
-        If you are not sure, please answer with 'NA'.
-        Please provide a brief explanation of your answer.
-        Your answer should be in the following format:
-        {
-            'Answer': <yes/no/NA>,
-            'Threat1': {candidate1['ID']},
-            'Threat2': {candidate2['ID']},
-            'Explanation': <your explanation here>
-        }
-        Please do not include any other information in your answer.
-    """
-    
-    return prompt
+        Return the IDs of the elements that are similar as a list of tuples (ID1, ID2),
+        a list of elements only present in List1, and a list of elements only present in List2.
+    """,
+    "name": "find_similar_threats",
+    "description": """
+        Return the IDs of the elements that are similar as a list of tuples (ID1, ID2),
+        a list of elements only present in List1, and a list of elements only present in List2
+    """,
+    "output_lists": ["similar_threats", "list1_only", "list2_only"]
+}
+

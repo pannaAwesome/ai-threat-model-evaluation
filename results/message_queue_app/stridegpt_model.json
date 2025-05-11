@@ -1,5 +1,6 @@
 [
     {
+        "ID": 1,
         "Category": "Spoofing",
         "Asset": "Browser",
         "Threat": "An attacker intercepts messages between the Browser and the Web Application, impersonating a legitimate user to submit malicious messages to the Message Queue. Unauthorized access and injection of harmful messages into the system.",
@@ -7,6 +8,7 @@
         "Risk": "6.20"
     },
     {
+        "ID": 2,
         "Category": "Spoofing",
         "Asset": "Browser",
         "Threat": "An attacker intercepts messages between the Browser and the Web Application, impersonating a legitimate user to submit malicious messages to the Message Queue. Unauthorized access and injection of harmful messages into the system.",
@@ -14,6 +16,7 @@
         "Risk": "6.20"
     },
     {
+        "ID": 3,
         "Category": "Spoofing",
         "Asset": "Message Queue",
         "Threat": "An attacker compromises the Message Queue and injects fraudulent messages, which are then processed by the Background Worker as legitimate requests. Compromised data integrity and potential execution of unauthorized commands.",
@@ -21,6 +24,7 @@
         "Risk": "6.20"
     },
     {
+        "ID": 4,
         "Category": "Spoofing",
         "Asset": "Background Worker",
         "Threat": "An attacker gains access to the Background Worker Config and uses the stored credentials to impersonate the Background Worker, querying the Database with malicious intent. Unauthorized data access and potential data corruption.",
@@ -28,6 +32,7 @@
         "Risk": "6.20"
     },
     {
+        "ID": 5,
         "Category": "Tampering",
         "Asset": "Browser",
         "Threat": "An attacker intercepts and modifies messages sent from the Browser to the Web Application before they are placed in the Message Queue. Altered data processing and potential execution of unintended actions.",
@@ -35,6 +40,7 @@
         "Risk": "6.20"
     },
     {
+        "ID": 6,
         "Category": "Tampering",
         "Asset": "Browser",
         "Threat": "An attacker intercepts and modifies messages sent from the Browser to the Web Application before they are placed in the Message Queue. Altered data processing and potential execution of unintended actions.",
@@ -42,6 +48,7 @@
         "Risk": "6.20"
     },
     {
+        "ID": 7,
         "Category": "Tampering",
         "Asset": "Message Queue",
         "Threat": "An attacker directly modifies messages in the Message Queue before they are processed by the Background Worker. Compromised data integrity and execution of malicious commands.",
@@ -49,6 +56,7 @@
         "Risk": "6.40"
     },
     {
+        "ID": 8,
         "Category": "Tampering",
         "Asset": "Database",
         "Threat": "An attacker modifies the Database directly, altering the data that the Background Worker retrieves and processes. Corrupted data and potential system malfunction.",
@@ -56,6 +64,7 @@
         "Risk": "6.20"
     },
     {
+        "ID": 9,
         "Category": "Repudiation",
         "Asset": "Web Application",
         "Threat": "A legitimate user sends a malicious message to the Web Application, which then places it in the Message Queue, without any logging or tracking. Difficulty in tracing and holding the user accountable for the malicious actions.",
@@ -63,6 +72,7 @@
         "Risk": "5.40"
     },
     {
+        "ID": 10,
         "Category": "Repudiation",
         "Asset": "Background Worker",
         "Threat": "The Background Worker processes a malicious message from the Message Queue without logging the source, making it hard to identify the origin of the malicious request. Inability to trace back and identify the source of malicious activities.",
@@ -70,6 +80,7 @@
         "Risk": "5.40"
     },
     {
+        "ID": 11,
         "Category": "Repudiation",
         "Asset": "Database",
         "Threat": "An attacker modifies the Database, and the Background Worker processes the altered data without any audit trail. Lack of accountability for data tampering incidents.",
@@ -77,6 +88,7 @@
         "Risk": "5.20"
     },
     {
+        "ID": 12,
         "Category": "Repudiation",
         "Asset": "Database",
         "Threat": "An attacker modifies the Database, and the Background Worker processes the altered data without any audit trail. Lack of accountability for data tampering incidents.",
@@ -84,6 +96,7 @@
         "Risk": "5.20"
     },
     {
+        "ID": 13,
         "Category": "Information Disclosure",
         "Asset": "Browser",
         "Threat": "An attacker intercepts messages sent from the Browser to the Web Application, gaining access to sensitive data. Exposure of sensitive information leading to potential data breaches.",
@@ -91,6 +104,7 @@
         "Risk": "6.60"
     },
     {
+        "ID": 14,
         "Category": "Information Disclosure",
         "Asset": "Browser",
         "Threat": "An attacker intercepts messages sent from the Browser to the Web Application, gaining access to sensitive data. Exposure of sensitive information leading to potential data breaches.",
@@ -98,6 +112,7 @@
         "Risk": "6.60"
     },
     {
+        "ID": 15,
         "Category": "Information Disclosure",
         "Asset": "Message Queue",
         "Threat": "An attacker gains unauthorized access to the Message Queue and reads sensitive messages stored within. Compromise of sensitive data and potential misuse.",
@@ -105,6 +120,7 @@
         "Risk": "6.20"
     },
     {
+        "ID": 16,
         "Category": "Information Disclosure",
         "Asset": "Database",
         "Threat": "An attacker accesses the Database directly and reads sensitive data stored within. Exposure of sensitive information and potential data breaches.",
@@ -112,6 +128,7 @@
         "Risk": "6.40"
     },
     {
+        "ID": 17,
         "Category": "Denial of Service",
         "Asset": "Web Application",
         "Threat": "An attacker floods the Web Application with requests, overwhelming it and preventing legitimate users from accessing the service. Service disruption and unavailability for legitimate users.",
@@ -119,6 +136,7 @@
         "Risk": "7.20"
     },
     {
+        "ID": 18,
         "Category": "Denial of Service",
         "Asset": "Message Queue",
         "Threat": "An attacker floods the Message Queue with a large number of messages, overwhelming the Background Worker and causing processing delays. Service disruption and delayed processing of legitimate messages.",
@@ -126,6 +144,7 @@
         "Risk": "7.00"
     },
     {
+        "ID": 19,
         "Category": "Denial of Service",
         "Asset": "Database",
         "Threat": "An attacker performs a Denial of Service attack on the Database, making it unavailable for the Background Worker to query. Service disruption and inability to process messages that require database access.",
@@ -133,6 +152,7 @@
         "Risk": "6.60"
     },
     {
+        "ID": 20,
         "Category": "Elevation of Privilege",
         "Asset": "Web Application",
         "Threat": "An attacker exploits a vulnerability in the Web Application to gain unauthorized access to the Web Application Config, obtaining sensitive credentials. Elevated privileges and potential unauthorized access to the Message Queue.",
@@ -140,6 +160,7 @@
         "Risk": "6.20"
     },
     {
+        "ID": 21,
         "Category": "Elevation of Privilege",
         "Asset": "Background Worker",
         "Threat": "An attacker exploits a vulnerability in the Background Worker to gain unauthorized access to the Background Worker Config, obtaining sensitive credentials. Elevated privileges and potential unauthorized access to the Database.",
