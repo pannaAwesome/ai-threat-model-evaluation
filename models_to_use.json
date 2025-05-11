@@ -1,9 +1,0 @@
-{
-    "models": [
-        "microsoft/phi-4-reasoning-plus:free",
-        "meta-llama/llama-4-maverick:free",
-        "google/gemma-3-27b-it:free",
-        "mistralai/mistral-nemo:free",
-        "deepseek/deepseek-chat-v3-0324:free"
-    ]
-}
