@@ -68,7 +68,7 @@ def extract_ThreatCanvas_models(application: list[str], result_folder: str) -> N
     print(f"Threat model for {application} has {len(threat_model)} threats.")
     
     # Save the threat model to a file
-    threat_path = f"{result_folder}/{application}/threatCanvas_model.json"
+    threat_path = f"{result_folder}/{application}/threatcanvas_model.json"
     with open(threat_path, "w") as json_file:
         json.dump(threat_model, json_file, indent=4)
 

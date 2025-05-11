@@ -1,0 +1,106 @@
+[
+    {
+        "ID": 1,
+        "Category": "Information Disclosure",
+        "Asset": "Background Worker Config",
+        "Threat": "The Background Worker Config stores the credentials used by the Background Worker to access the Database. An attacker could compromise the Background Worker and get access to the Database credentials.",
+        "Mitigation": "Encrypt the Database credentials in the configuration file. Expire and replace the Database credentials regularly.",
+        "Risk": "High Severity"
+    },
+    {
+        "ID": 2,
+        "Category": "Information Disclosure",
+        "Asset": "Database",
+        "Threat": "An attacker could make a query call on the Database.",
+        "Mitigation": "Require all queries to be authenticated.",
+        "Risk": "High Severity"
+    },
+    {
+        "ID": 3,
+        "Category": "Information Disclosure",
+        "Asset": "Database",
+        "Threat": "An attacker could obtain the Database credentials and use them to make unauthorised queries.",
+        "Mitigation": "Use a firewall to restrict access to the Database to only the Background Worker IP address.",
+        "Risk": "Medium Severity"
+    },
+    {
+        "ID": 4,
+        "Category": "Information Disclosure",
+        "Asset": "Web Application Config",
+        "Threat": "The Web Application Config stores credentials used  by the Web Application to access the Message Queue. These could be stolen by an attacker and used to read confidential data or place poisoned messages on the queue.",
+        "Mitigation": "The Message Queue credentials should be encrypted.",
+        "Risk": "High Severity"
+    },
+    {
+        "ID": 5,
+        "Category": "Information Disclosure",
+        "Asset": "Message Queue",
+        "Threat": "The data flow between the Web Application and the Background Worker is not point-to-point and therefore end-to-end secrecy cannot be provided at the transport layer. Messages could be read by an attacker at rest in the Message Queue.",
+        "Mitigation": "Use message level encryption for high sensitivity data (e.g. security tokens) in messages.",
+        "Risk": "Low Severity"
+    },
+    {
+        "ID": 6,
+        "Category": "Tampering",
+        "Asset": "Message Queue",
+        "Threat": "Messages on the queue could be tampered with, causing incorrect processing by the Background Worker.",
+        "Mitigation": "Sign all queue messages at the Web Server. Validate the message signature at the Background Worker and reject any message with a missing or invalid signature. Log any failed messages.",
+        "Risk": "Medium Severity"
+    },
+    {
+        "ID": 7,
+        "Category": "Spoofing",
+        "Asset": "Message Queue",
+        "Threat": "An attacker could put a fake message on queue, causing the Background Worker to do incorrect processing.",
+        "Mitigation": "Restrict access to the queue to the IP addresses of the Web Server and Background Worker. Implement authentication on the queue endpoint.",
+        "Risk": "High Severity"
+    },
+    {
+        "ID": 8,
+        "Category": "Denial of Service",
+        "Asset": "Message Queue",
+        "Threat": "An attacker could generate a malicious message that the Background Worker cannot process.",
+        "Mitigation": "Implement a poison message queue where messages are placed after a fixed number of retries.",
+        "Risk": "Medium Severity"
+    },
+    {
+        "ID": 9,
+        "Category": "Denial of Service",
+        "Asset": "Message Queue",
+        "Threat": "An attacker could generate a malicious message that the Background Worker cannot process.",
+        "Mitigation": "Validate the content of all messages before processing. Reject any message that has invalid content and log the rejection. Do not log the malicious content \u2014 instead log a description of the error.",
+        "Risk": "Medium Severity"
+    },
+    {
+        "ID": 10,
+        "Category": "Information Disclosure",
+        "Asset": "Browser",
+        "Threat": "These requests are made over the public internet and could be intercepted by an attacker.",
+        "Mitigation": "The requests should require HTTPS. This will provide confidentiality and integrity. HTTP should not be supported.",
+        "Risk": "High Severity"
+    },
+    {
+        "ID": 11,
+        "Category": "Information Disclosure",
+        "Asset": "Web Application",
+        "Threat": "These requests are made over the public internet and could be intercepted by an attacker.",
+        "Mitigation": "The requests should require HTTPS. This will provide confidentiality and integrity. HTTP should not be supported.",
+        "Risk": "High Severity"
+    },
+    {
+        "ID": 12,
+        "Category": "Information Disclosure",
+        "Asset": "Message Queue",
+        "Threat": "These requests are made over the public internet and could be intercepted by an attacker.",
+        "Mitigation": "The requests should require HTTPS. This will provide confidentiality and integrity. HTTP should not be supported.",
+        "Risk": "High Severity"
+    },
+    {
+        "ID": 13,
+        "Category": "Information Disclosure",
+        "Asset": "Database",
+        "Threat": "An attacker could intercept the Database queries in transit and obtain sensitive information, such as Database credentials, query parameters or query results (is unlikely since the data flow is over a private network).",
+        "Mitigation": "Enforce an encrypted connection at the Database server.",
+        "Risk": "Low Severity"
+    }
+]

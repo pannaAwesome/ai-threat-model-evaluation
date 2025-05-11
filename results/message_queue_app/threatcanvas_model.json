@@ -1,5 +1,6 @@
 [
     {
+        "ID": 1,
         "Category": "Denial of Service",
         "Asset": "Browser",
         "Threat": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
@@ -7,6 +8,7 @@
         "Risk": "2 out of 3"
     },
     {
+        "ID": 2,
         "Category": "Spoofing",
         "Asset": "Browser",
         "Threat": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
@@ -14,6 +16,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 3,
         "Category": "Tampering",
         "Asset": "Browser",
         "Threat": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
@@ -21,6 +24,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 4,
         "Category": "Denial of Service",
         "Asset": "Database",
         "Threat": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
@@ -28,6 +32,7 @@
         "Risk": "2 out of 3"
     },
     {
+        "ID": 5,
         "Category": "Elevation of Privilege",
         "Asset": "Database",
         "Threat": "The  node  is  vulnerable  to  elevation  of  privilege  attacks,  where  an  attacker  gains  higher-level permissions than intended.",
@@ -35,6 +40,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 6,
         "Category": "Information Disclosure",
         "Asset": "Database",
         "Threat": "The node leaks pieces of information, such as internal data or authentication material, which could be used to facilitate further attacks",
@@ -42,6 +48,7 @@
         "Risk": "1 out of 3"
     },
     {
+        "ID": 7,
         "Category": "Spoofing",
         "Asset": "Database",
         "Threat": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
@@ -49,6 +56,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 8,
         "Category": "Tampering",
         "Asset": "Database",
         "Threat": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
@@ -56,6 +64,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 9,
         "Category": "Denial of Service",
         "Asset": "Message Queue",
         "Threat": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
@@ -63,6 +72,7 @@
         "Risk": "2 out of 3"
     },
     {
+        "ID": 10,
         "Category": "Elevation of Privilege",
         "Asset": "Message Queue",
         "Threat": "The  node  is  vulnerable  to  elevation  of  privilege  attacks,  where  an  attacker  gains  higher-level permissions than intended.",
@@ -70,6 +80,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 11,
         "Category": "Information Disclosure",
         "Asset": "Message Queue",
         "Threat": "The node leaks pieces of information, such as internal data or authentication material, which could be used to facilitate further attacks",
@@ -77,6 +88,7 @@
         "Risk": "1 out of 3"
     },
     {
+        "ID": 12,
         "Category": "Spoofing",
         "Asset": "Message Queue",
         "Threat": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
@@ -84,6 +96,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 13,
         "Category": "Tampering",
         "Asset": "Message Queue",
         "Threat": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
@@ -91,6 +104,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 14,
         "Category": "Denial of Service",
         "Asset": "Web Application",
         "Threat": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
@@ -98,6 +112,7 @@
         "Risk": "2 out of 3"
     },
     {
+        "ID": 15,
         "Category": "Elevation of Privilege",
         "Asset": "Web Application",
         "Threat": "The  node  is  vulnerable  to  elevation  of  privilege  attacks,  where  an  attacker  gains  higher-level permissions than intended.",
@@ -105,6 +120,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 16,
         "Category": "Information Disclosure",
         "Asset": "Web Application",
         "Threat": "The node leaks pieces of information, such as internal data or authentication material, which could be used to facilitate further attacks",
@@ -112,6 +128,7 @@
         "Risk": "1 out of 3"
     },
     {
+        "ID": 17,
         "Category": "Spoofing",
         "Asset": "Web Application",
         "Threat": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
@@ -119,6 +136,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 18,
         "Category": "Tampering",
         "Asset": "Web Application",
         "Threat": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
@@ -126,6 +144,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 19,
         "Category": "Denial of Service",
         "Asset": "Web Application Config",
         "Threat": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
@@ -133,6 +152,7 @@
         "Risk": "2 out of 3"
     },
     {
+        "ID": 20,
         "Category": "Elevation of Privilege",
         "Asset": "Web Application Config",
         "Threat": "The  node  is  vulnerable  to  elevation  of  privilege  attacks,  where  an  attacker  gains  higher-level permissions than intended.",
@@ -140,6 +160,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 21,
         "Category": "Information Disclosure",
         "Asset": "Web Application Config",
         "Threat": "The node leaks pieces of information, such as internal data or authentication material, which could be used to facilitate further attacks",
@@ -147,6 +168,7 @@
         "Risk": "1 out of 3"
     },
     {
+        "ID": 22,
         "Category": "Spoofing",
         "Asset": "Web Application Config",
         "Threat": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
@@ -154,6 +176,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 23,
         "Category": "Tampering",
         "Asset": "Web Application Config",
         "Threat": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
@@ -161,6 +184,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 24,
         "Category": "Denial of Service",
         "Asset": "Background Worker",
         "Threat": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
@@ -168,6 +192,7 @@
         "Risk": "2 out of 3"
     },
     {
+        "ID": 25,
         "Category": "Elevation of Privilege",
         "Asset": "Background Worker",
         "Threat": "The  node  is  vulnerable  to  elevation  of  privilege  attacks,  where  an  attacker  gains  higher-level permissions than intended.",
@@ -175,6 +200,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 26,
         "Category": "Information Disclosure",
         "Asset": "Background Worker",
         "Threat": "The node leaks pieces of information, such as internal data or authentication material, which could be used to facilitate further attacks",
@@ -182,6 +208,7 @@
         "Risk": "1 out of 3"
     },
     {
+        "ID": 27,
         "Category": "Spoofing",
         "Asset": "Background Worker",
         "Threat": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
@@ -189,6 +216,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 28,
         "Category": "Tampering",
         "Asset": "Background Worker",
         "Threat": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
@@ -196,6 +224,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 29,
         "Category": "Denial of Service",
         "Asset": "Background Worker Config",
         "Threat": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
@@ -203,6 +232,7 @@
         "Risk": "2 out of 3"
     },
     {
+        "ID": 30,
         "Category": "Elevation of Privilege",
         "Asset": "Background Worker Config",
         "Threat": "The  node  is  vulnerable  to  elevation  of  privilege  attacks,  where  an  attacker  gains  higher-level permissions than intended.",
@@ -210,6 +240,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 31,
         "Category": "Information Disclosure",
         "Asset": "Background Worker Config",
         "Threat": "The node leaks pieces of information, such as internal data or authentication material, which could be used to facilitate further attacks",
@@ -217,6 +248,7 @@
         "Risk": "1 out of 3"
     },
     {
+        "ID": 32,
         "Category": "Spoofing",
         "Asset": "Background Worker Config",
         "Threat": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
@@ -224,6 +256,7 @@
         "Risk": "3 out of 3"
     },
     {
+        "ID": 33,
         "Category": "Tampering",
         "Asset": "Background Worker Config",
         "Threat": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
