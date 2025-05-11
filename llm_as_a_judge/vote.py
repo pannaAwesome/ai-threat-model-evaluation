@@ -59,10 +59,7 @@ def get_threats_in_both(tm1:list, tm2:list, ids:list, ids_reverse:list) -> list:
     return tm1_both, tm2_both, ids_both
 
 def vote_hallucinations(tm, assets, ai) -> list:
-    # result, result_shuffled = vote_single(tm, assets, HALLUCINATIONS_PROMPT, ai)
-    
-    result = {"category_list": [(1,"Spoofing"), (2, "Tampering")], "asset_list": [(2,["Server"]), (5,["Server"])]}
-    result_shuffled = {"category_list": [(2, "Tampering"), (1,"Spoofing")], "asset_list": [(2,["Server"]), (4,["Hejsa"]), (5,["Server","Hejsa"])]}
+    result, result_shuffled = vote_single(tm, assets, HALLUCINATIONS_PROMPT, ai)
     
     categories = list(filter(lambda c: c in result_shuffled["category_list"], result["category_list"]))
     assets = list(filter(lambda a: a in result_shuffled["asset_list"], result["asset_list"]))
@@ -78,9 +75,7 @@ def vote_hallucinations(tm, assets, ai) -> list:
     }
 
 def vote_threats(tm1, tm2, assets, ai) -> list:
-    #result, result_reverse = vote_compare(tm1, tm2, assets, THREAT_PROMPT, ai)
-    result = {"similar_threats": [(1,2), (4,4), (1,1), (3,4), (20,20), (5,10)]}
-    result_reverse = {"similar_threats": [(2,1), (4,4), (1,1), (4,3), (10,10)]}
+    result, result_reverse = vote_compare(tm1, tm2, assets, THREAT_PROMPT, ai)
     
     tm1_both, tm2_both, tm_ids = get_threats_in_both(tm1, tm2, result["similar_threats"], result_reverse["similar_threats"])
     no_same = len(tm1_both)
@@ -98,9 +93,7 @@ def vote_threats(tm1, tm2, assets, ai) -> list:
     return entry, tm1_both, tm2_both
 
 def vote_mitigations(tm1, tm2, assets, ai) -> list:
-    #result, result_reverse = vote_compare(tm1, tm2, assets, MITIGATION_PROMPT, ai)
-    result = {"similar_threats": [(1,2), (4,4), (1,1),]}
-    result_reverse = {"similar_threats": [(2,1), (4,4), (1,1), (4,3)]}
+    result, result_reverse = vote_compare(tm1, tm2, assets, MITIGATION_PROMPT, ai)
     
     tm1_both, _, tm_ids = get_threats_in_both(tm1, tm2, result["similar_threats"], result_reverse["similar_threats"])
     no_same = len(tm1_both)
@@ -116,9 +109,7 @@ def vote_mitigations(tm1, tm2, assets, ai) -> list:
     }
 
 def vote_risks(tm1, tm2, assets, ai) -> list:
-    #result, result_reverse = vote_compare(tm1, tm2, assets, RISK_PROMPT, ai)
-    result = {"similar_threats": [(1,2), (4,4), (3,4), (20,20)]}
-    result_reverse = {"similar_threats": [(2,1), (4,4), (4,3)]}
+    result, result_reverse = vote_compare(tm1, tm2, assets, RISK_PROMPT, ai)
     
     tm1_both, _, tm_ids = get_threats_in_both(tm1, tm2, result["similar_threats"], result_reverse["similar_threats"])
     no_same = len(tm1_both)
