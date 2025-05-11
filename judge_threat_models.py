@@ -1,10 +1,11 @@
+import csv
 import random
 import numpy as np
 import json
 
 from dotenv import load_dotenv, find_dotenv
 
-from llm_as_a_judge.vote import vote
+from llm_as_a_judge.vote import vote, vote_hallucinations
 
 random.seed(42)
 np.random.seed(42)
@@ -37,6 +38,15 @@ def load_threat_models(tool_folder:str, human_folder:str, tools:list) -> tuple:
         
     return human_threat_model, ai_threat_models
 
+def save_results(result_folder, results, prefix=""):
+    for metric,result in results.items():
+        with open(f"{result_folder}/{prefix}_{metric}.csv", "w", newline='', encoding='utf-8') as csvfile:
+            fieldnames = result[0].keys()
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+            writer.writeheader()
+            writer.writerows(result)
+
 if __name__ == "__main__":
     
     applications = ["message_queue_app"]
@@ -56,6 +66,12 @@ if __name__ == "__main__":
         # Load threat models
         human_model, ai_models = load_threat_models(tool_folder, human_folder, tools)
         
+        for idx in range(2):
+            hallucinations = vote_hallucinations(ai_models, assets)
+            save_results(tool_folder, hallucinations, idx+1)
+        
         vote_results = vote(human_model, ai_models, assets)
+        save_results(tool_folder, vote_results)
         
-        
+        vote_results_reversed = vote(ai_models, human_model, assets)
+        save_results(tool_folder, vote_results, f"reverse")
