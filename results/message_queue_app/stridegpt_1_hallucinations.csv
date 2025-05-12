@@ -1,3 +1,0 @@
-model,no_cat,categories_ids,categories,no_assets,asset_ids,assets
-google/gemma-3-27b-it:free,0,[],[],0,[],[]
-mistralai/mistral-nemo:free,2,"[6, 10]","['Information Disclosure', 'Denial of Service']",11,"[1, 2, 3, 4, 5, 9, 12, 13, 14, 15, 16]","[['Browser', 'Web Application'], ['Database'], ['Browser', 'Web Application'], ['Background Worker'], ['Database'], ['Browser', 'Web Application'], ['Web Application'], ['Background Worker'], ['Database'], ['Web Application Config'], ['Background Worker Config']]"

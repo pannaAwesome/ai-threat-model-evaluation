@@ -1,3 +1,0 @@
-model,no_same,no_human,no_all_human,no_ai,no_all_ai,same
-google/gemma-3-27b-it:free,1,10,11,10,11,"[(0, 13)]"
-mistralai/mistral-nemo:free,0,4,4,4,4,"[('3', '9'), ('4', '10'), ('12', '11')]"
