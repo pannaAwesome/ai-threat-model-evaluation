@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import re
 
 def csv_to_dataframe(threat_path: str, mitigation_path: str) -> pd.DataFrame:
     """
@@ -39,12 +40,17 @@ def convert_df_to_json(df: pd.DataFrame) -> str:
     result = []
     idx = 0
     for _, row in df.iterrows():
+        threat_desc = f"{row['Threat']}"
+        pattern = r"<strong>General threat description:</strong>\s*(.*?)</p>"
+        match = re.search(pattern, row['Scenario'], re.DOTALL)
+        if match:
+            threat_desc += f" {match.group(1).strip()}"
         entry = {
             "ID": idx,
             "Category": row['Use Case'],
             "Asset": row['Component'],
-            "Threat": f"{row['Threat']}. {row['Scenario']}",
-            "Mitigation": f"{row['Mitigation']}. {row['Fix']}",
+            "Threat": threat_desc,
+            "Mitigation": row['Mitigation'],
             "Risk": f"{row['Current Risk']} out of 100"
         }
         result.append(entry)

@@ -76,15 +76,11 @@ if __name__ == "__main__":
     applications = ["message_queue_app"]
     result_folder = "results"
     
-    # Delete results folder if exists
-    if os.path.exists(result_folder):
-        shutil.rmtree(result_folder)
-        
-    # Create the results directory and subdirectories for each application
-    os.makedirs(result_folder)
     for application in applications:
         print(f"Processing threat model for application: {application}")
-        os.makedirs(f"{result_folder}/{application}")
+        
+        if not os.path.exists(f"{result_folder}/{application}"):
+            os.makedirs(f"{result_folder}/{application}")
 
         # Collect assets for the application
         assets_path = f"threat_templates/{application}/assets.json"
