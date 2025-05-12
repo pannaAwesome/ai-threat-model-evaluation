@@ -1,6 +1,5 @@
 import pandas as pd
 import os
-import sys    
 
 def csv_to_dataframe(threat_path: str, mitigation_path: str) -> pd.DataFrame:
     """
@@ -38,7 +37,7 @@ def convert_df_to_json(df: pd.DataFrame) -> str:
     :return: JSON string representation of the DataFrame.
     """
     result = []
-    idx = 1
+    idx = 0
     for _, row in df.iterrows():
         entry = {
             "ID": idx,
@@ -49,7 +48,7 @@ def convert_df_to_json(df: pd.DataFrame) -> str:
             "Risk": f"{row['Current Risk']} out of 100"
         }
         result.append(entry)
-        idx = idx + 1
+        idx += 1
     return result
 
 def convert_iriusrisk(folder_path):

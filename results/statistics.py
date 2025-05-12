@@ -18,8 +18,8 @@ def cohens_kappa(rater1_labels, rater2_labels, labels):
         p_expected += (rater1_total[label] / total) * (rater2_total[label] / total)
     
     k = (p_observed - p_expected) / (1 - p_expected)
-    se = standard_error_ck(p_observed, p_expected, total)
-    min_ck, max_ck = confidence_interval_ck(k, se)
+    se = _standard_error_ck(p_observed, p_expected, total)
+    min_ck, max_ck = _confidence_interval_ck(k, se)
     
     return {
         "kappa": k,
@@ -29,10 +29,10 @@ def cohens_kappa(rater1_labels, rater2_labels, labels):
         "max CI": max_ck
     }
 
-def standard_error_ck(p_observed, p_expected, no_subjects):
+def _standard_error_ck(p_observed, p_expected, no_subjects):
     return math.sqrt((p_observed (1 - p_observed)) / (no_subjects (1 - p_expected) **2))
 
-def confidence_interval_ck(k, se):
+def _confidence_interval_ck(k, se):
     return k - 1.96 * se, k + 1.96 * se
 
 def fleiss_kappa(raters_labels:list, labels:list):

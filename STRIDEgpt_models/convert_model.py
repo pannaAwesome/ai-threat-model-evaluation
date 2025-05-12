@@ -75,7 +75,8 @@ def create_threat_model_json(merged_df: pd.DataFrame, assets: list[str]) -> list
         list[dict]: List of threat model entries in dictionary format.
     """
     result = []
-    for idx, row in merged_df.iterrows():
+    idx = 0
+    for _, row in merged_df.iterrows():
         entry = {
             "ID": idx,
             "Category": row["Threat Type"],
@@ -84,6 +85,7 @@ def create_threat_model_json(merged_df: pd.DataFrame, assets: list[str]) -> list
             "Risk": f'{row["Risk Score"]} out of 10'
         }
         result.append(entry)
+        idx += 1
     return result
 
 def convert_STRIDEgpt(folder_path: str, assets: list[str]) -> None:

@@ -1,0 +1,3 @@
+model,no_cat,categories_ids,categories,no_assets,asset_ids,assets
+google/gemma-3-27b-it:free,0,[],[],0,[],[]
+mistralai/mistral-nemo:free,0,[],[],14,"[0, 1, 2, 3, 4, 5, 9, 10, 11, 12, 13, 14, 15, 16]","[['Message Queue', 'Browser'], ['Message Queue', 'Background Worker'], ['Background Worker Config', 'Database'], ['Message Queue', 'Browser'], ['Message Queue', 'Background Worker'], ['Database'], ['Browser', 'Web Application'], ['Message Queue'], ['Database'], ['Web Application'], ['Message Queue', 'Background Worker'], ['Database', 'Background Worker'], ['Web Application Config', 'Message Queue'], ['Background Worker Config', 'Database']]"
