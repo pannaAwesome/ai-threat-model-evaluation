@@ -1,0 +1,810 @@
+[
+    {
+        "ID": 1,
+        "Asset": "PostgreSQL",
+        "Threat": "Sensitive data is compromised if the host itself is compromised",
+        "Mitigation": "Risk transferred to the infrastructure team.",
+        "Risk": "High",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 2,
+        "Asset": "PostgreSQL",
+        "Threat": "Sensitive data is compromised if a backup of the data is compromised",
+        "Mitigation": "This risk is accepted by the project team, since backup is handled by an external company.",
+        "Risk": "Medium",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 3,
+        "Asset": "PostgreSQL",
+        "Threat": "Sensitive data is compromised though attacks against SSL/TLS",
+        "Mitigation": "Require cryptographically strong TLS cipher suites",
+        "Risk": "Medium",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 4,
+        "Asset": "PostgreSQL",
+        "Threat": "Sensitive data is compromised though attacks against SSL/TLS",
+        "Mitigation": "Require cryptographically secure protocols (e.g. TLSv1.2 and above)",
+        "Risk": "Medium",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 5,
+        "Asset": "PostgreSQL",
+        "Threat": "Attackers obtain unauthorised access by connecting directly to the service",
+        "Mitigation": "Require authentication before presenting restricted data",
+        "Risk": "Medium",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 6,
+        "Asset": "PostgreSQL",
+        "Threat": "Attackers gain access to unauthorised data by exploiting vulnerabilities in the service",
+        "Mitigation": "Apply required security patches to the service",
+        "Risk": "Medium",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 7,
+        "Asset": "PostgreSQL",
+        "Threat": "Attackers gain access to unauthorised data by exploiting vulnerabilities in the service",
+        "Mitigation": "Restrict access to the service at the network layer to reduce exposure",
+        "Risk": "Medium",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 8,
+        "Asset": "PostgreSQL",
+        "Threat": "Attackers gain unauthorised access to data and/or systems through SQL Injection attacks",
+        "Mitigation": "Validate all data received from the client side",
+        "Risk": "High",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 9,
+        "Asset": "PostgreSQL",
+        "Threat": "Attackers gain unauthorised access to data and/or systems through SQL Injection attacks",
+        "Mitigation": "Use prepared statements for all database queries",
+        "Risk": "High",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 10,
+        "Asset": "PostgreSQL",
+        "Threat": "Attackers gain unauthorised access to data and/or systems through SQL Injection attacks",
+        "Mitigation": "Log and reject all data validation failures",
+        "Risk": "High",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 11,
+        "Asset": "Web Service",
+        "Threat": "Authenticated attackers could gain unauthorised access to sensitive data",
+        "Mitigation": "Apply authorisation checks to segregate and control access to user data",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 12,
+        "Asset": "Web Service",
+        "Threat": "Anonymous users could gain access to sensitive data",
+        "Mitigation": "Apply authorisation checks to segregate and control access to user data",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 13,
+        "Asset": "Web Service",
+        "Threat": "Anonymous users could gain access to sensitive data",
+        "Mitigation": "Authenticate users (single factor authentication)",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 14,
+        "Asset": "Web Service",
+        "Threat": "Anonymous users could gain access to sensitive data",
+        "Mitigation": "Authenticate users (multi- or two-factor authentication [2FA])",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 15,
+        "Asset": "Web Service",
+        "Threat": "Attackers gain access to data or services by directly accessing the resources",
+        "Mitigation": "Apply authorisation checks to segregate and control access to user data",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 16,
+        "Asset": "Web Service",
+        "Threat": "Sensitive data is exposed to unauthorised personnel in a pre-production environment",
+        "Mitigation": "Ensure personal and other sensitive data is not exposed in pre-production environments",
+        "Risk": "High",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 17,
+        "Asset": "Web Service",
+        "Threat": "Sensitive data is compromised through network sniffing attacks",
+        "Mitigation": "Encrypt data between the client and server/service",
+        "Risk": "High",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 18,
+        "Asset": "Web Service",
+        "Threat": "Attackers obtain unauthorised access by connecting directly to the service",
+        "Mitigation": "Require authentication before presenting restricted data",
+        "Risk": "Medium",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 19,
+        "Asset": "Web Service",
+        "Threat": "Sensitive data is compromised though attacks against SSL/TLS",
+        "Mitigation": "Require cryptographically strong TLS cipher suites",
+        "Risk": "Medium",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 20,
+        "Asset": "Web Service",
+        "Threat": "Sensitive data is compromised though attacks against SSL/TLS",
+        "Mitigation": "Require cryptographically secure protocols (e.g. TLSv1.2 and above)",
+        "Risk": "Medium",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 21,
+        "Asset": "Web Service",
+        "Threat": "Attackers gain access to critical functions by compromising the session ID",
+        "Mitigation": "Terminate user sessions on the server-side after a logout operation",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 22,
+        "Asset": "Web Service",
+        "Threat": "Attackers gain access to critical functions by compromising the session ID",
+        "Mitigation": "Require additional authentication for sensitive operations / high value transactions",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 23,
+        "Asset": "Web Service",
+        "Threat": "Attackers could compromise users' sessions by compromising the session cookie",
+        "Mitigation": "Session ID's should be transmitted securely",
+        "Risk": "High",
+        "Category": "Spoofing"
+    },
+    {
+        "ID": 24,
+        "Asset": "Web Service",
+        "Threat": "Attackers could compromise users' sessions by compromising the session cookie",
+        "Mitigation": "Session cookie domain attributes should be restricted to prevent exposure",
+        "Risk": "High",
+        "Category": "Spoofing"
+    },
+    {
+        "ID": 25,
+        "Asset": "Web Service",
+        "Threat": "Attackers could compromise users' sessions by compromising the session cookie",
+        "Mitigation": "Session cookie path attributes should be restricted to prevent exposure",
+        "Risk": "High",
+        "Category": "Spoofing"
+    },
+    {
+        "ID": 26,
+        "Asset": "Web Service",
+        "Threat": "Attackers gain access to the system using default passwords",
+        "Mitigation": "Remove default credentials and role-based accounts from the application",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 27,
+        "Asset": "Web Service",
+        "Threat": "The session ID, and hence the users' session is compromised through brute force attack",
+        "Mitigation": "Use session management functionality provided by the development framework",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 28,
+        "Asset": "Web Service",
+        "Threat": "The session ID, and hence the users' session is compromised through brute force attack",
+        "Mitigation": "Session tokens should contain sufficient entropy",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 29,
+        "Asset": "Web Service",
+        "Threat": "Dictionary-based or brute force password attack",
+        "Mitigation": "The login function should distinguish between upper and lower case passwords",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 30,
+        "Asset": "Web Service",
+        "Threat": "Dictionary-based or brute force password attack",
+        "Mitigation": "Offer a password change facility",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 31,
+        "Asset": "Web Service",
+        "Threat": "Dictionary-based or brute force password attack",
+        "Mitigation": "Require the use of strong passwords",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 32,
+        "Asset": "Web Service",
+        "Threat": "Dictionary-based or brute force password attack",
+        "Mitigation": "Authenticate users (multi- or two-factor authentication [2FA])",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 33,
+        "Asset": "Web Service",
+        "Threat": "Session ID's and hence user sessions are compromised through network sniffing or man in the middle attacks",
+        "Mitigation": "Set the 'secure' flag (or directive) on sensitive cookies",
+        "Risk": "High",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 34,
+        "Asset": "Web Service",
+        "Threat": "Attackers gain access to user accounts by accessing the password database",
+        "Mitigation": "Store passwords in unrecoverable form to prevent disclosure",
+        "Risk": "High",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 35,
+        "Asset": "Web Service",
+        "Threat": "Attackers gain access to user accounts by exploiting flaws in the authentication function",
+        "Mitigation": "Enforce authentication on the server-side",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 36,
+        "Asset": "Web Service",
+        "Threat": "Attackers gain access to user accounts by exploiting flaws in the authentication function",
+        "Mitigation": "Ensure authentication fails securely on the serverside",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 37,
+        "Asset": "Web Service",
+        "Threat": "User accounts compromised through username guessing",
+        "Mitigation": "Require the use of strong passwords",
+        "Risk": "Medium",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 38,
+        "Asset": "Web Service",
+        "Threat": "User accounts compromised through username guessing",
+        "Mitigation": "Implement application and network rate limiting on the login function",
+        "Risk": "Medium",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 39,
+        "Asset": "Web Service",
+        "Threat": "Sensitive data is compromised through network access",
+        "Mitigation": "Use Network Access Control Lists (NACLs) for blacklisting",
+        "Risk": "Medium",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 40,
+        "Asset": "Web Service",
+        "Threat": "Authentication credentials compromised through network sniffing",
+        "Mitigation": "Encrypt data between the client and server/service",
+        "Risk": "Medium",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 41,
+        "Asset": "Web Service",
+        "Threat": "Attackers gain access to the systems through direct access",
+        "Mitigation": "Use security groups to block ingress to all ports from 0.0.0.0/0",
+        "Risk": "Medium",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 42,
+        "Asset": "Web Service",
+        "Threat": "Attackers gain access to the systems through direct access",
+        "Mitigation": "Restrict all traffic with the default security group",
+        "Risk": "Medium",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 43,
+        "Asset": "Web Service",
+        "Threat": "Attackers gain access to the systems through direct access",
+        "Mitigation": "Use security groups to block ingress to port 22 from 0.0.0.0/0",
+        "Risk": "Medium",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 44,
+        "Asset": "Web Service",
+        "Threat": "Attackers gain access to the systems through direct access",
+        "Mitigation": "Use security groups to block ingress to port 3389 from 0.0.0.0/0",
+        "Risk": "Medium",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 45,
+        "Asset": "Web Service",
+        "Threat": "Usernames could be enumerated through login responses",
+        "Mitigation": "Ensure application errors do not reveal account status",
+        "Risk": "Medium",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 46,
+        "Asset": "Web Service",
+        "Threat": "Usernames could be enumerated through login responses",
+        "Mitigation": "Ensure failed login timings do not reveal account status",
+        "Risk": "Medium",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 47,
+        "Asset": "Web Service",
+        "Threat": "Attacks against the authentication system may go undetected",
+        "Mitigation": "Log details of user actions within the system",
+        "Risk": "Medium",
+        "Category": "Repudiation"
+    },
+    {
+        "ID": 48,
+        "Asset": "Web Service",
+        "Threat": "Attacks against the authentication system may go undetected",
+        "Mitigation": "Use a synchronised time source",
+        "Risk": "Medium",
+        "Category": "Repudiation"
+    },
+    {
+        "ID": 49,
+        "Asset": "Web Service",
+        "Threat": "Attackers gain unauthorised access to data or services by exploiting known weaknesses in components, libraries, modules, frameworks, platforms and operating systems",
+        "Mitigation": "Regularly check all components of your project for known vulnerabilities",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 50,
+        "Asset": "Web Service",
+        "Threat": "Attackers gain control of the system through a source code leakage",
+        "Mitigation": "Prevent unauthorised access to source code through the service",
+        "Risk": "Medium",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 51,
+        "Asset": "Web Service",
+        "Threat": "Attackers gain unauthorised access to data on EC2 instances",
+        "Mitigation": "Maintain a patch policy and patch EC2 systems regularly",
+        "Risk": "Medium",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 52,
+        "Asset": "Web Service",
+        "Threat": "Attackers gain access to the system through Server Side Code Injection",
+        "Mitigation": "Validate all data received from external systems",
+        "Risk": "Critical",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 53,
+        "Asset": "Web Service",
+        "Threat": "Functionality could be subverted through mass assignment",
+        "Mitigation": "Use a white-list approach to assign values to variables",
+        "Risk": "High",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 54,
+        "Asset": "Web Service",
+        "Threat": "Execute arbitrary code on the server by manipulating parameters",
+        "Mitigation": "Use a library that is not vulnerable to Remote File Inclusion",
+        "Risk": "High",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 55,
+        "Asset": "Web Service",
+        "Threat": "Execute arbitrary code on the server by manipulating parameters",
+        "Mitigation": "Create a mapping to existing objects",
+        "Risk": "High",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 56,
+        "Asset": "Web Service",
+        "Threat": "Execute arbitrary code on the server by manipulating parameters",
+        "Mitigation": "Validate all data received from the client side",
+        "Risk": "High",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 57,
+        "Asset": "Web Service",
+        "Threat": "Execute arbitrary code on the server by manipulating parameters",
+        "Mitigation": "Log and reject all data validation failures",
+        "Risk": "High",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 58,
+        "Asset": "Web Service",
+        "Threat": "Execute arbitrary code on the server by manipulating parameters",
+        "Mitigation": "Validate input parameters to prevent HTTP Parameter Pollution",
+        "Risk": "High",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 59,
+        "Asset": "Web Service",
+        "Threat": "Execute arbitrary code on the server by manipulating parameters",
+        "Mitigation": "Verify that all input is limited to an appropriate size limit",
+        "Risk": "High",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 60,
+        "Asset": "Web Service",
+        "Threat": "Attackers gain control of the connection by doing a Man In The Middle attack",
+        "Mitigation": "Encrypt data between the client and server/service",
+        "Risk": "High",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 61,
+        "Asset": "Web Service",
+        "Threat": "User data or credentials are compromised through network sniffing or man in the middle attacks",
+        "Mitigation": "Consider HTTP Public Key Pinning (HPKP)",
+        "Risk": "High",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 62,
+        "Asset": "Web Service",
+        "Threat": "User data or credentials are compromised through network sniffing or man in the middle attacks",
+        "Mitigation": "Encrypt data between the client and server/service",
+        "Risk": "High",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 63,
+        "Asset": "Web Service",
+        "Threat": "User data or credentials are compromised through network sniffing or man in the middle attacks",
+        "Mitigation": "Set the HTTP security header 'Strict-Transport-Security' (HSTS)",
+        "Risk": "High",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 64,
+        "Asset": "Web Service",
+        "Threat": "User data or credentials are compromised through network sniffing or man in the middle attacks",
+        "Mitigation": "Preload application URLs to vendor Strict Transport Security domain lists",
+        "Risk": "High",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 65,
+        "Asset": "Web Service",
+        "Threat": "Access system files through XML related Attacks",
+        "Mitigation": "Disable external XML entity references in the processor",
+        "Risk": "Medium",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 66,
+        "Asset": "Web Service",
+        "Threat": "Access system files through XML related Attacks",
+        "Mitigation": "Define and enforce secure validation through an XSD or DSD schema on XML input data",
+        "Risk": "Medium",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 67,
+        "Asset": "Web Service",
+        "Threat": "Unauthorised data could be accessed by manipulating the parameters sent to the application",
+        "Mitigation": "Log and reject all data validation failures",
+        "Risk": "Medium",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 68,
+        "Asset": "Web Service",
+        "Threat": "Unauthorised data could be accessed by manipulating the parameters sent to the application",
+        "Mitigation": "Validate input parameters to prevent HTTP Parameter Pollution",
+        "Risk": "Medium",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 69,
+        "Asset": "Web Service",
+        "Threat": "Unauthorised data could be accessed by manipulating the parameters sent to the application",
+        "Mitigation": "Validate all data received from the client side",
+        "Risk": "Medium",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 70,
+        "Asset": "Web Service",
+        "Threat": "Unauthorised data could be accessed by manipulating the parameters sent to the application",
+        "Mitigation": "Verify that all input is limited to an appropriate size limit",
+        "Risk": "Medium",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 71,
+        "Asset": "Web Service",
+        "Threat": "Unauthorised data could be accessed by manipulating the parameters sent to the application",
+        "Mitigation": "Avoid using direct references to files",
+        "Risk": "Medium",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 72,
+        "Asset": "Web Service",
+        "Threat": "Unauthorised data could be accessed by manipulating the parameters sent to the application",
+        "Mitigation": "Disable Server Side Includes",
+        "Risk": "Medium",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 73,
+        "Asset": "Web UI",
+        "Threat": "Sensitive data is compromised through query parameters in the URL",
+        "Mitigation": "Ensure no sensitive data is sent in the URL",
+        "Risk": "Critical",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 74,
+        "Asset": "Web UI",
+        "Threat": "Attackers with access to a victim's browser could read locally stored data",
+        "Mitigation": "Set Cache-Control headers on sensitive and authenticated content",
+        "Risk": "Critical",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 75,
+        "Asset": "Web UI",
+        "Threat": "Attackers with access to a victim's browser could read locally stored data",
+        "Mitigation": "Disable autocompletion of sensitive data",
+        "Risk": "Critical",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 76,
+        "Asset": "Web UI",
+        "Threat": "Attackers with access to a victim's browser could read locally stored data",
+        "Mitigation": "Do not store sensitive data on client side",
+        "Risk": "Critical",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 77,
+        "Asset": "Web UI",
+        "Threat": "Attackers with access to a victim's browser could read locally stored data",
+        "Mitigation": "Clear sensitive and authenticated data from client-side storage",
+        "Risk": "Critical",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 78,
+        "Asset": "Web UI",
+        "Threat": "Sensitive data is compromised though attacks against SSL/TLS",
+        "Mitigation": "Require cryptographically strong TLS cipher suites",
+        "Risk": "Very Low",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 79,
+        "Asset": "Web UI",
+        "Threat": "Sensitive data is compromised though attacks against SSL/TLS",
+        "Mitigation": "Require cryptographically secure protocols (e.g. TLSv1.2 and above)",
+        "Risk": "Very Low",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 80,
+        "Asset": "Web UI",
+        "Threat": "Authentication process is spoofed by replaying login credentials",
+        "Mitigation": "Respond to login requests with HTTP 302 redirect",
+        "Risk": "Critical",
+        "Category": "Spoofing"
+    },
+    {
+        "ID": 81,
+        "Asset": "Web UI",
+        "Threat": "Authentication process is spoofed by replaying login credentials",
+        "Mitigation": "Disable authentication form autocomplete",
+        "Risk": "Critical",
+        "Category": "Spoofing"
+    },
+    {
+        "ID": 82,
+        "Asset": "Web UI",
+        "Threat": "Attackers gain access to in-memory passwords/credentials",
+        "Mitigation": "Overwrite passwords, key material, and other secrets maintained in memory when no longer required",
+        "Risk": "Critical",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 83,
+        "Asset": "Web UI",
+        "Threat": "Attackers with access to a victim's client could read locally stored credentials",
+        "Mitigation": "Disable authentication form autocomplete / pre-fill",
+        "Risk": "Critical",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 84,
+        "Asset": "Web UI",
+        "Threat": "Attackers bypass authentication implemented on the client side",
+        "Mitigation": "Enforce authentication on the server-side",
+        "Risk": "Critical",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 85,
+        "Asset": "Web UI",
+        "Threat": "Attackers gain unauthorised access to data or services by accessing a client side secret",
+        "Mitigation": "Implement sensitive logic and data validation on the server-side",
+        "Risk": "Critical",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 86,
+        "Asset": "Web UI",
+        "Threat": "Attackers gain unauthorised access to data or services by accessing a client side secret",
+        "Mitigation": "Review code, configuration, and online repositories for secrets and sensitive information systemically",
+        "Risk": "Critical",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 87,
+        "Asset": "Web UI",
+        "Threat": "Attackers gain unauthorised access to data or services by exploiting known weaknesses in components, libraries, modules or frameworks",
+        "Mitigation": "Regularly check all components of your project for known vulnerabilities",
+        "Risk": "Critical",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 88,
+        "Asset": "Web UI",
+        "Threat": "Attackers could gain access to sensitive data through a too permissive CORS policy",
+        "Mitigation": "Restrict Cross Domain Origin policy through HTTP headers",
+        "Risk": "Critical",
+        "Category": "Information Disclosure"
+    },
+    {
+        "ID": 89,
+        "Asset": "Web UI",
+        "Threat": "Data is posted to a spoofed server",
+        "Mitigation": "Encrypt data between the client and server/service",
+        "Risk": "High",
+        "Category": "Spoofing"
+    },
+    {
+        "ID": 90,
+        "Asset": "Web UI",
+        "Threat": "Attackers could gain access to an open session, if they have access to a user's browser",
+        "Mitigation": "Revoke user sessions after a period of inactivity",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 91,
+        "Asset": "Web UI",
+        "Threat": "Attackers could gain access to an open session, if they have access to a user's browser",
+        "Mitigation": "Revoke user sessions after a fixed time period",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 92,
+        "Asset": "Web UI",
+        "Threat": "Attackers could gain access to an open session, if they have access to a user's browser",
+        "Mitigation": "Provide logout links on all pages that require authentication",
+        "Risk": "High",
+        "Category": "Elevation of Privilege"
+    },
+    {
+        "ID": 93,
+        "Asset": "Web UI",
+        "Threat": "Attackers could gain access to a users' browser through Cross Site Scripting attacks",
+        "Mitigation": "Terminate user sessions on the server-side",
+        "Risk": "High",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 94,
+        "Asset": "Web UI",
+        "Threat": "Attackers could gain access to a users' browser through Cross Site Scripting attacks",
+        "Mitigation": "Perform contextual HTML encoding of all user submitted data",
+        "Risk": "Low",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 95,
+        "Asset": "Web UI",
+        "Threat": "Attackers could gain access to a users' browser through Cross Site Scripting attacks",
+        "Mitigation": "Set the HTTP security header 'X-Content-Type-Options' from the server",
+        "Risk": "Low",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 96,
+        "Asset": "Web UI",
+        "Threat": "Attackers could gain access to a users' browser through Cross Site Scripting attacks",
+        "Mitigation": "Set the 'httpOnly' flag (or directive) on session cookies",
+        "Risk": "Low",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 97,
+        "Asset": "Web UI",
+        "Threat": "Attackers could gain access to a users' browser through Cross Site Scripting attacks",
+        "Mitigation": "Define a restrictive 'least privilege' Content Security Policy",
+        "Risk": "Low",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 98,
+        "Asset": "Web UI",
+        "Threat": "Attackers could gain access to a users' browser through Cross Site Scripting attacks",
+        "Mitigation": "Set the HTTP security header 'X-XSS-Protection' from the server",
+        "Risk": "Low",
+        "Category": "Tampering"
+    },
+    {
+        "ID": 99,
+        "Asset": "Web UI",
+        "Threat": "Attackers could cause users to perform specific actions on their behalf through Cross Site Request Forgery attacks",
+        "Mitigation": "Set and verify one time 'Anti CSRF' tokens for sensitive operations",
+        "Risk": "Critical",
+        "Category": "Spoofing"
+    },
+    {
+        "ID": 100,
+        "Asset": "Web UI",
+        "Threat": "Attackers could cause users to perform specific actions on their behalf through Cross Site Request Forgery attacks",
+        "Mitigation": "Require re-authentication for critical operations",
+        "Risk": "Critical",
+        "Category": "Spoofing"
+    },
+    {
+        "ID": 101,
+        "Asset": "Web UI",
+        "Threat": "Attackers cause users to perform arbitrary clicks on the Critical site through ClickJacking attacks",
+        "Mitigation": "Set the HTTP security header 'X-Frame-Options header' from the server",
+        "Risk": "Critical",
+        "Category": "Tampering"
+    }
+]
