@@ -1,12 +1,14 @@
-import os
-import json
 import random
 
 from copy import copy
 from random import shuffle
+from openai import OpenAIError
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from time import time
 
 from llm_as_a_judge.judge import LLMJudge
-from llm_as_a_judge.prompts import HALLUCINATIONS_PROMPT, THREAT_PROMPT, MITIGATION_PROMPT, RISK_PROMPT
+from llm_as_a_judge.prompts import CATEGORY_PROMPT, ASSET_PROMPT, THREAT_PROMPT, MITIGATION_PROMPT, RISK_PROMPT
+from utils.run_stats import concurrent_progress_monitor
 
 ID_TM = "ID"
 ASSET_TM = "Asset"
@@ -14,122 +16,168 @@ CATEGORY_TM = "Category"
 THREAT_TM = "Threat"
 MITIGATION_TM = "Mitigation"
 RISK_TM = "Risk"
-
-def vote_compare(tm1:list, tm2:list, assets, prompt:str, ai:str) -> list:
-    judge = LLMJudge(ai)
-    
-    # Get judging for tm1, tm2
-    prompt_tm = prompt.format(tm1=tm1, tm2=tm2)
-    result = judge.judge(prompt_tm)
         
-    return result
+def vote_hallucinations(ai, th, assets):    
+    try:
+        judge = LLMJudge(ai)
+        prompt = CATEGORY_PROMPT.format(tm=th)
+        cat = judge.judge(prompt)
 
-def get_threats_in_both(tm1:list, tm2:list, ids:list) -> list:
-    """
-    Get elements that are in both list
-    """
-    tm1_both = []
-    tm2_both = []
-    for (id1,id2) in ids:
-        for th in tm1:
-            if th["ID"] == id1:
-                tm1_both.append(th)
-                break
-        for th in tm2:
-            if th["ID"] == id2:
-                tm2_both.append(th)
-                break
-    return tm1_both, tm2_both
+        prompt = ASSET_PROMPT.format(tm=th, assets=assets)
+        ass = judge.judge(prompt)
+        return cat, th[ID_TM], ass, th[ID_TM]
+    except OpenAIError as e:
+        pass
+    except Exception as e:
+        with open('answer_errors.txt', 'a', encoding='utf-8') as f:
+            f.write(f"[HALLUCINATION] AI: {ai}, ID: {th[ID_TM]}, ANSWER: {e}\n")
 
-def vote_hallucinations(ai, tm, assets, seed) -> list:    
-    
-    hallucinations = []
-    
+    return -1, -1, -1, -1
+
+def vote_hallucinations_threaded(ai, tm, assets, seed):
     random.seed(seed)
     tm_shuffled = copy(tm)
     shuffle(tm_shuffled)
     
-    judge = LLMJudge(ai)
-
-    prompt = HALLUCINATIONS_PROMPT.format(tm=tm, assets=assets)
-    result = judge.judge(prompt)
+    category_id = []
+    asset_ids = []
     
-    categories = result["categories"]
-    assets = result["assets"]
-
-    hallucinations.append({
-        "model": ai,
-        "categories_ids": [id for (id,_) in categories],
-        "categories": categories,
-        "asset_ids": [id for (id,_) in assets],
-        "assets": assets
-    })
+    info_interval_min = 30
+    info_interval = info_interval_min*60
     
-    return hallucinations
-
-def vote_threats(tm1, tm2, assets, ai, reversed=False) -> list:
-    tm1_copy = copy(tm1)
-    tm2_copy = copy(tm2)
+    start_time = time()
     
-    judge = LLMJudge(ai)
-    
-    # Get judging for tm1, tm2
-    prompt_tm = THREAT_PROMPT.format(tm1=tm1, tm2=tm2, assets=assets)
-    result = judge.judge(prompt_tm)
-    
-    tm1_both, tm2_both = get_threats_in_both(tm1_copy, tm2_copy, result["same"])
-    
-    entry = [idx1 if not reversed else idx2 for idx1, idx2 in result["same"]]
-    
-    return entry, tm1_both, tm2_both
-
-def vote_mitigations(tm1, tm2, ai, reversed=False) -> list:
-    tm1_copy = copy(tm1)
-    tm2_copy = copy(tm2)
-    
-    judge = LLMJudge(ai)
-    
-    # Get judging for tm1, tm2
-    prompt_tm = MITIGATION_PROMPT.format(tm=zip(tm1_copy, tm2_copy))
-    result = judge.judge(prompt_tm)
-    
-    return [idx1 if not reversed else idx2 for idx1, idx2 in result["same"]]
-
-def vote_risks(tm1, tm2, ai, reversed=False) -> list:
-    tm1_copy = copy(tm1)
-    tm2_copy = copy(tm2)
-    
-    judge = LLMJudge(ai)
-    
-    # Get judging for tm1, tm2
-    prompt_tm = RISK_PROMPT.format(tm=zip(tm1_copy,tm2_copy))
-    result = judge.judge(prompt_tm)
-    
-    _, _ = get_threats_in_both(tm1, tm2, result["same"])
+    with ThreadPoolExecutor() as executor:
+        futures = [executor.submit(vote_hallucinations, ai, tm, assets) for tm in tm_shuffled]
+        
+        concurrent_progress_monitor(start_time, futures, info_interval)
+        
+        for future in as_completed(futures):
+            category, cat_id, asset, ass_id = future.result()
+            if category == 0:
+                category_id.append(cat_id)            
+            if asset == 0:
+                asset_ids.append(ass_id)
     
     return {
-        "same": [idx1 if not reversed else idx2 for idx1, idx2 in result["same"]],
-        "more": [idx1 if not reversed else idx2 for idx1, idx2 in result["more"]],
-        "less": [idx1 if not reversed else idx2 for idx1, idx2 in result["less"]]
+        "category": category_id,
+        "asset": asset_ids
     }
 
-def vote(ai, human_tm, ai_tm, assets, reversed=False) -> dict:
-    ai_path = f"{os.getcwd()}/llm_as_a_judge/models_to_use.json"
-    with open(ai_path, 'r') as ai_file:
-        ai_models = json.load(ai_file)
-    
-    threats = []
-    mitigations = []
-    risks = []
-    
-    threat, tm1_both, tm2_both = vote_threats(human_tm, ai_tm, assets, ai, reversed)
-    threats.append(threat)
-    
-    mitigations.append(vote_mitigations(tm1_both, tm2_both, ai, reversed))
-    risks.append(vote_risks(tm1_both, tm2_both, ai, reversed))
 
-    return {
-        "threats": threats,
-        "mitigations": mitigations,
-        "risks": risks
+def vote_threats(th1, th2, ai, assets, reversed):
+    try:
+        judge = LLMJudge(ai)
+        th1_copy = {CATEGORY_TM: th1[CATEGORY_TM], THREAT_TM: th1[THREAT_TM]}
+        if ASSET_TM in th1:
+            th1_copy[ASSET_TM] = th1[ASSET_TM]
+        th2_copy = {CATEGORY_TM: th2[CATEGORY_TM], THREAT_TM: th2[THREAT_TM]}
+        if ASSET_TM in th2:
+            th2_copy[ASSET_TM] = th2[ASSET_TM]
+            
+            prompt_tm = THREAT_PROMPT.format(tm1=th1_copy, tm2=th2_copy, assets=assets)
+            result = judge.judge(prompt_tm)
+            if result["answer"] == 1:
+                return th1[ID_TM] if not reversed else th2[ID_TM]
+    except OpenAIError as e:
+        pass
+    except Exception as e:
+        with open('answer_errors.txt', 'a', encoding='utf-8') as f:
+            f.write(f"[THREAT] AI: {ai}, ID1: {th1[ID_TM]}, ID2: {th2[ID_TM]}, ANSWER: {e}\n")
+    return -1
+
+def vote_mitigations(th1, th2, ai, reversed):
+    try:
+        judge = LLMJudge(ai)
+        th1_copy = {MITIGATION_TM: th1[MITIGATION_TM]}
+        th2_copy = {MITIGATION_TM: th2[MITIGATION_TM]}
+        prompt_tm = MITIGATION_PROMPT.format(tm1=th1_copy, tm2=th2_copy)
+        result = judge.judge(prompt_tm)
+        
+        if result["answer"] == 1:
+            return th1[ID_TM] if not reversed else th2[ID_TM]
+    except OpenAIError as e:
+        pass
+    except Exception as e:
+        with open('answer_errors.txt', 'a', encoding='utf-8') as f:
+            f.write(f"[MITIGATION] AI: {ai}, ID1: {th1[ID_TM]}, ID2: {th2[ID_TM]}, ANSWER: {e}\n")
+    return -1
+            
+def vote_risks(th1, th2, ai, reversed):
+    try:
+        judge = LLMJudge(ai)
+        th1_copy = {RISK_TM: th1[RISK_TM]}
+        th2_copy = {RISK_TM: th2[RISK_TM]}
+        prompt_tm = RISK_PROMPT.format(tm1=th1_copy, tm2=th2_copy)
+        result = judge.judge(prompt_tm)
+        
+        return result["answer"], th1[ID_TM] if not reversed else th2[ID_TM]
+    except OpenAIError as e:
+        pass
+    except Exception as e:
+        with open('answer_errors.txt', 'a', encoding='utf-8') as f:
+            f.write(f"[RISK] AI: {ai}, ID1: {th1[ID_TM]}, ID2: {th2[ID_TM]}, ANSWER: {e}\n")
+    return -2, -1
+
+def vote_all(ths, assets, ai, reversed=False):    
+    result = {
+        "threats": -1,
+        "mitigations": -1,
+        "risks": {
+            "same": -1,
+            "more": -1,
+            "less": -1
+        }
     }
+    th1 = ths[0]
+    th2 = ths[1]
+    
+    threat_result = vote_threats(th1, th2, ai, assets, reversed)
+    result["threats"] = threat_result
+    if threat_result != -1:
+        mitigation_result = vote_mitigations(th1, th2, ai, reversed)
+        result["mitigations"] = mitigation_result
+        risk_result, risk_id = vote_risks(th1, th2, ai, reversed)
+        if risk_result == 0:
+            result["risks"]["same"] = risk_id
+        elif risk_result == 1:
+            result["risks"]["more"] = risk_id
+        elif risk_result == -1:
+            result["risks"]["less"] = risk_id
+    
+    return result
+
+def vote_threats_threaded(tms, assets, ai, reversed=False) -> list:    
+    results = {
+        "threats": [],
+        "mitigations": [],
+        "risks": {
+            "same": [],
+            "more": [],
+            "less": []
+        }
+    }
+    info_interval_min = 30
+    info_interval = info_interval_min*60
+    
+    start_time = time()
+    with ThreadPoolExecutor() as executor:
+        futures = [executor.submit(vote_all, tm, assets, ai, reversed) for tm in tms]
+        
+        concurrent_progress_monitor(start_time, futures, info_interval)
+        
+        for future in as_completed(futures):
+            result = future.result()
+            if result["threats"] != -1:
+                results["threats"].append(result["threats"])
+            if result["mitigations"] != -1:
+                results["mitigations"].append(result["mitigations"])
+            if result["risks"]["same"] != -1:
+                results["risks"]["same"].append(result["risks"]["same"])
+            if result["risks"]["more"] != -1:
+                results["risks"]["more"].append(result["risks"]["more"])
+            if result["risks"]["less"] != -1:
+                results["risks"]["less"].append(result["risks"]["less"])
+                
+    return results
+

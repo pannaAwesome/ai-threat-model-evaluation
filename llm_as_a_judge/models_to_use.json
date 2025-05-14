@@ -1,7 +1,0 @@
-[
-    "mistral:7b-instruct-v0.2-q4_K_M",
-    "llama2:7b-chat-q4_K_M",
-    "gemma3:4b-it-qat",
-    "phi3:3.8b-mini-128k-instruct-q4_K_M",
-    "qwen3:4b-q4_K_M"
-]
