@@ -5,6 +5,7 @@ from random import shuffle
 from openai import OpenAIError
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from time import time
+from itertools import repeat
 
 from llm_as_a_judge.judge import LLMJudge
 from llm_as_a_judge.prompts import CATEGORY_PROMPT, ASSET_PROMPT, THREAT_PROMPT, MITIGATION_PROMPT, RISK_PROMPT
@@ -17,7 +18,7 @@ THREAT_TM = "Threat"
 MITIGATION_TM = "Mitigation"
 RISK_TM = "Risk"
         
-def vote_hallucinations(ai, th, assets):    
+def vote_hallucinations(th, ai, assets):    
     try:
         judge = LLMJudge(ai)
         prompt = CATEGORY_PROMPT.format(tm=th)
@@ -25,7 +26,7 @@ def vote_hallucinations(ai, th, assets):
 
         prompt = ASSET_PROMPT.format(tm=th, assets=assets)
         ass = judge.judge(prompt)
-        return cat, th[ID_TM], ass, th[ID_TM]
+        return cat["answer"], th[ID_TM], ass["answer"], th[ID_TM]
     except OpenAIError as e:
         pass
     except Exception as e:
@@ -42,18 +43,8 @@ def vote_hallucinations_threaded(ai, tm, assets, seed):
     category_id = []
     asset_ids = []
     
-    info_interval_min = 30
-    info_interval = info_interval_min*60
-    
-    start_time = time()
-    
     with ThreadPoolExecutor() as executor:
-        futures = [executor.submit(vote_hallucinations, ai, tm, assets) for tm in tm_shuffled]
-        
-        concurrent_progress_monitor(start_time, futures, info_interval)
-        
-        for future in as_completed(futures):
-            category, cat_id, asset, ass_id = future.result()
+        for category, cat_id, asset, ass_id in executor.map(vote_hallucinations, tm_shuffled, repeat(ai), repeat(assets)):
             if category == 0:
                 category_id.append(cat_id)            
             if asset == 0:
@@ -75,10 +66,10 @@ def vote_threats(th1, th2, ai, assets, reversed):
         if ASSET_TM in th2:
             th2_copy[ASSET_TM] = th2[ASSET_TM]
             
-            prompt_tm = THREAT_PROMPT.format(tm1=th1_copy, tm2=th2_copy, assets=assets)
-            result = judge.judge(prompt_tm)
-            if result["answer"] == 1:
-                return th1[ID_TM] if not reversed else th2[ID_TM]
+        prompt_tm = THREAT_PROMPT.format(tm1=th1_copy, tm2=th2_copy, assets=assets)
+        result = judge.judge(prompt_tm)
+        if result["answer"] == 1:
+            return th1[ID_TM] if not reversed else th2[ID_TM]
     except OpenAIError as e:
         pass
     except Exception as e:
@@ -157,17 +148,9 @@ def vote_threats_threaded(tms, assets, ai, reversed=False) -> list:
             "less": []
         }
     }
-    info_interval_min = 30
-    info_interval = info_interval_min*60
     
-    start_time = time()
     with ThreadPoolExecutor() as executor:
-        futures = [executor.submit(vote_all, tm, assets, ai, reversed) for tm in tms]
-        
-        concurrent_progress_monitor(start_time, futures, info_interval)
-        
-        for future in as_completed(futures):
-            result = future.result()
+        for result in executor.map(vote_all, tms, repeat(assets), repeat(ai), repeat(reversed)):
             if result["threats"] != -1:
                 results["threats"].append(result["threats"])
             if result["mitigations"] != -1:
