@@ -1,0 +1,39 @@
+A system which takes video frames from video camera and process these frames on IoTEdge devices and send them
+to Azure Cognitive Service to get the audio output. The system consists of the following assets:
+- Azure Blob Storage which has a HTTP entry Point and uses a connection string
+- Azure Monitor which has a HTTP end point and uses a connection string
+- Azure Cognitive Service which has a HTTP end point and uses a connection string
+- M1 an IoTEdge Module with an HTTP end point and uses public access LAN
+- M2 an IoTEdge Module with an HTTP end point and uses public access LAN
+- M3 an IoTEdge Module with an HTTP end point and uses public access LAN
+- IoTEdgeMetricsCollector an IoTEdge Module with a HTTP end point and uses public access LAN
+- Application Insights which has an HTPP end point and uses a connection string
+
+The client's Browser makes requests to M1. The Browser and M1 device are on the 
+same network, so Browser directly hits the webapp URL.
+M1 interacts with other two IoTEdge modules M2 and M3 to render live stream from video device and display
+order scanning results via WebSockets.
+The IoTEdge Modules interact with Azure Cognitive service to get the translated text via OCR and audio stream
+via Text to Speech Service.
+IoTEdge modules send telemetry information to Application Insights.
+IoTEdge device is deployed with IoTEdge runtime which interacts with IoTEdge hub for deployments.
+IoTEdge module also sends some data to Azure storage which is required for debugging purpose.
+Cognitive service, Application Insights and Azure Storage are authenticated using connection strings which are
+stored in GutHub secrets and deployed using CI/CD pipelines.
+
+The system has one IoT Edge Device that contains four processes: M1, M2, M3 and EdgeRuntime.
+The system has one Azure instance with three processes: Azure IoT Hub, Azure Cognitive Service and
+Azure Application Insights, and one data store: Azure Storage.
+The IoT Edge Device and Azure each represent a separate trust boundary.
+The system has two external entities: Browser and USB Video Camera
+
+M1 to M2 and M2 to M3 are connected with WebSockets.
+The IoT Edge Device sends telemetry information to the Azure Application Insights process
+M1 exchanges requests and responses with the Browser.
+M2 uploads feedback frames to the Azure Storage.
+M3 receives the camera feed from the USB Video Camera.
+M3 exchanges requests and responses with the Azure Cognitive Service, and the request contains OCR and Text-to-Speech information.
+EdgeRuntime sends IoTEdge Module updates to Azure IoT Hub.
+
+We assume that secrets like ACR credentials are stored in GitHub secrets store which are deployed to IoTEdge Device
+by Ci/CD pipelines. However CI/CD pipelines are considered out of scope.
