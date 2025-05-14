@@ -1,5 +1,5 @@
 from threading import Thread
-from time import time
+from time import time, sleep
 
 def result_time(seconds):
     time_pretty = ""
@@ -14,7 +14,7 @@ def result_time(seconds):
 
 def progress_monitor(start_time, futures, interval):
     while not all(f.done() for f in futures):
-        time.sleep(interval)
+        sleep(interval)
         done_count = sum(f.done() for f in futures)
         print(f"[STATUS] Time elapsed: {result_time(time()-start_time)} Progress: {done_count} out of {len(futures)}")
 

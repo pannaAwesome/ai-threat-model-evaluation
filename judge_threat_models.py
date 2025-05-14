@@ -1,6 +1,4 @@
-import csv
 import random
-import json
 import os
 
 import numpy as np
@@ -58,16 +56,10 @@ if __name__ == "__main__":
     ai = args.aimodel
     iterations = args.iterations
     
-    # applications = ["message_queue_app"]
-    # tools = ["stridegpt", "iriusrisk", "threatcanvas"]
-    # ais = [
-    #     "llama3.2:3b-instruct-q2_K",
-    #     "phi:2.7b-chat-v2-q3_K_S",
-    #     "qwen3:1.7b-q4_K_M",
-    #     "gemma3:4b-it-q4_K_M",
-    #     "mistral:7b-instruct-q2_K"
-    # ]
-    # iterations = 2
+    # application = "message_queue_app"
+    # tool = "stridegpt"
+    # ai = "gemma:2b"
+    # iterations = 1
     
     random.seed(21)
     seeds = [random.randint(1, 1000) for _ in range(iterations)]
@@ -86,6 +78,9 @@ if __name__ == "__main__":
     tms_reversed = np.array(np.meshgrid(ai_model, human_model)).T.reshape(-1,2)
     print("[INFO] Threat models are ready for judging")
     
-    result_path = f"{tool_folder}/{ai}/{tool}"
+    result_path = f"{tool_folder}/{ai}"
+    if not os.path.exists(result_path):
+        os.mkdir(result_path)
+    result_path += f"/{tool} "
     perform_judging(ai, ai_model, tms, tms_reversed, assets, seeds, iterations, result_path)
     print(f"[SUCCESS] Finished judging threat model for {application} with {tool}")
