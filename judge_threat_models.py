@@ -56,10 +56,11 @@ if __name__ == "__main__":
     ai = args.aimodel
     iterations = args.iterations
     
+    # For easy debugging
     # application = "message_queue_app"
     # tool = "stridegpt"
-    # ai = "gemma:2b"
-    # iterations = 1
+    # ai = "gemma3:4b-it-q4_K_M"
+    # iterations = 2
     
     random.seed(21)
     seeds = [random.randint(1, 1000) for _ in range(iterations)]
@@ -82,5 +83,11 @@ if __name__ == "__main__":
     if not os.path.exists(result_path):
         os.mkdir(result_path)
     result_path += f"/{tool} "
+    
+    # For easy debugging
+    # ai_model = random.sample(ai_model, 10)
+    # tms = random.sample(list(tms), 10)
+    # tms_reversed = random.sample(list(tms_reversed), 10)
+    
     perform_judging(ai, ai_model, tms, tms_reversed, assets, seeds, iterations, result_path)
     print(f"[SUCCESS] Finished judging threat model for {application} with {tool}")
