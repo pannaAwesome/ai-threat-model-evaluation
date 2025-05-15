@@ -43,7 +43,7 @@ def vote_hallucinations_threaded(ai, tm, assets, seed):
     category_id = []
     asset_ids = []
     
-    with ThreadPoolExecutor(max_workers=1) as executor:
+    with ThreadPoolExecutor() as executor:
         for category, cat_id, asset, ass_id in executor.map(vote_hallucinations, tm_shuffled, repeat(ai), repeat(assets)):
             if category == 0:
                 category_id.append(cat_id)            
@@ -129,12 +129,16 @@ def vote_all(ths, assets, ai, reversed=False):
         mitigation_result = vote_mitigations(th1, th2, ai, reversed)
         result["mitigations"] = mitigation_result
         risk_result, risk_id = vote_risks(th1, th2, ai, reversed)
-        if risk_result == 0:
+        if risk_result == 0 and not reversed:
             result["risks"]["same"] = risk_id
-        elif risk_result == 1:
+        elif risk_result == 1 and not reversed:
             result["risks"]["more"] = risk_id
-        elif risk_result == -1:
+        elif risk_result == 1:
             result["risks"]["less"] = risk_id
+        elif risk_result == -1 and not reversed:
+            result["risks"]["less"] = risk_id
+        elif risk_result == -1:
+            result["risks"]["more"] = risk_id
     
     return result
 
@@ -149,7 +153,7 @@ def vote_threats_threaded(tms, assets, ai, reversed=False) -> list:
         }
     }
     
-    with ThreadPoolExecutor(max_workers=1) as executor:
+    with ThreadPoolExecutor() as executor:
         for result in executor.map(vote_all, tms, repeat(assets), repeat(ai), repeat(reversed)):
             if result["threats"] != -1:
                 results["threats"].append(result["threats"])

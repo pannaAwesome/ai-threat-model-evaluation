@@ -1,4 +1,5 @@
 CATEGORY_PROMPT = """
+    [Task Description]
     You are an impartial judge evaluating whether this threat has a valid category.
     The valid categories are:
     - Spoofing
@@ -10,20 +11,21 @@ CATEGORY_PROMPT = """
     
     You should disregard big and small letters.
     
+    
     [Threat]
     {tm}
     
     [Answer Options]
-    Option 1: {{ "answer": 0 }}
-    Option 2: {{ "answer": 1 }}
+    Valid: {{ "answer": 0 }}
+    Invalid: {{ "answer": 1 }}
     
     output: 
 """
 
 ASSET_PROMPT = """
+    [Task Description]
     You are an impartial judge evaluating whether this threat only addresses allowed assets.
-    The allowed assets are: {assets}
-    
+    The valid assets are: {assets}
     A threat only addresses allowed assets if:
     - The `Asset` field if present should be a valid asset
     - If the `Threat` defines the target or entry point as a valid asset, typically these are capitalized
@@ -32,23 +34,24 @@ ASSET_PROMPT = """
     [Threat]
     {tm}
     
-    output: {{ "answer": <1 for valid assets or 0 for invalid assets> }}
+    [Answer Options]
+    Valid: {{ "answer": 0 }}
+    Invalid: {{ "answer": 1 }}
+    
+    output:
 """
 
 THREAT_PROMPT = """
+    [Task Description]
     You are an impartial judge evaluating whether the following two threats describe the same issue.
-
-    Criteria:
-    - The `Category` must be the same.
+    A Threat A and B are similar if:
+    - The `Category` is the same.
     - If both threats specify an `Asset`, they must match. If not, infer the asset from the `Threat` field (usually the target or entry point and capitalized).
     - The `Threat` descriptions must have the same malicious objective and impact, either stated or implied.
     - Ignore differences in style, grammar, or formatting.
 
-    Here are examples of similar threats:
-
-    ---
-
-    Example 1:
+    [Examples Begin]
+    [Example 1]
     Threat A:
     {{
     "Category": "Elevation of Privilege",
@@ -63,12 +66,10 @@ THREAT_PROMPT = """
     "Threat": "A malicious user performs an SQL injection and they gain unauthorized access to the system."
     }}
 
-    Output:
+    output:
     {{ "answer": 1 }}
 
-    ---
-
-    Example 2:
+    [Example 2]
     Threat A:
     {{
     "Category": "Denial of Service",
@@ -82,12 +83,10 @@ THREAT_PROMPT = """
     "Threat": "An attacker performs a Denial of Service attack on the system."
     }}
 
-    Output:
+    output:
     {{ "answer": 1 }}
 
-    ---
-
-    Example 2:
+    [Example 3]
     Threat A:
     {{
     "Category": "Spoofing",
@@ -101,35 +100,33 @@ THREAT_PROMPT = """
     "Threat": "An attacker performs a Denial of Service attack on the system."
     }}
 
-    Output:
+    output:
     {{ "answer": 0 }}
+    [Examples End]
 
-    ---
-
-    Now evaluate:
-
-    Threat A:
+    [Threat A]
     {tm1}
 
-    Threat B:
+    [Threat B]
     {tm2}
+    
+    [Answer Options]
+    Similar: {{ "answer": 1 }}
+    Not similar: {{ "answer": 0 }}
 
-    Output: {{ "answer": <1 or 0>}}
+    output: 
 """
 
 MITIGATION_PROMPT = """
+    [Task Description]
     You are an impartial judge evaluating whether the following two mitigations suggest the same underlying method.
-
-    Criteria:
-    - The `Mitigation` field must describe the same or overlapping method(s).
+    A Mitigation A and B are the similar if:
+    - The `Mitigation` field describe the same or overlapping method(s).
     - A partial overlap is acceptable — not all techniques need to be listed in both.
     - Ignore differences in wording, formatting, or technical phrasing.
 
-    Here are examples of similar mitigations:
-
-    ---
-
-    Example 1:
+    [Examples Begin]
+    [Example 1]
     Mitigation A:
     {{
         "Mitigation": "Implement strict input validation on all user-supplied data to prevent injection attacks like SQL and XSS."
@@ -140,12 +137,10 @@ MITIGATION_PROMPT = """
         "Mitigation": "Sanitize user input before applying it anywhere in the system, and use an allowlist if possible."
     }}
 
-    Output:
+    output:
     {{ "answer": 1 }}
 
-    ---
-
-    Example 2:
+    [Example 2]
     Mitigation A:
     {{
         "Mitigation": "Restrict access rights using the principle of least privilege."
@@ -156,12 +151,10 @@ MITIGATION_PROMPT = """
         "Mitigation": "Implement a mechanism that ensures that a user only has the capabilities they actually need."
     }}
 
-    Output:
+    output:
     {{ "answer": 1 }}
 
-    ---
-
-    Example 3:
+    [Example 3]
     Mitigation A:
     {{
         "Mitigation": "Enforce MFA for all users to prevent unauthorized access to possibly sensitive data."
@@ -172,156 +165,134 @@ MITIGATION_PROMPT = """
         "Mitigation": "Encrypt the database to limit chance of leaking senitive data"
     }}
 
-    Output:
+    output:
     {{ "answer": 0 }}
-
-    ---
-
-    Now evaluate:
-
-    Mitigation A:
+    [Examples End]
+    
+    [Mitigation A]
     {tm1}
 
-    Mitigation B:
+    [Mitigation B]
     {tm2}
+    
+    [Answer Options]
+    Similar: {{ "answer": 1 }}
+    Not similar: {{ "answer": 0 }}
 
-    Output: {{ "answer": <1 or 0>}}
+    output: 
 """
 
 RISK_PROMPT = """
+    [Task Description]
     You are an impartial judge evaluating the severity of risks in two elements in a tuple.
-
-    Criteria:
-    - The risk present the same level of severity, regardless of the format.
+    Risk A and B are the same if:
+    - The risk presents the same level of severity, regardless of the format.
     - Ignore any difference in style, grammar, or punctuation.
 
-    Here are examples of risks that present the same level of severity:
-
-    ---
-
-    Example 1:
+    [Examples Begin]
+    [Example 1]
     Risk A:
     {{"Risk": "High Risk"}}
 
     Risk B:
     {{"Risk": "3 out of 3"}}
 
-    Output:
+    output:
     {{ "answer": 0 }}
 
-    ---
-
-    Example 2:
+    [Example 2]
     Risk A:
     {{"Risk": "Medium Risk"}}
 
     Risk B:
     {{"Risk": "50 out of 100"}}
 
-    Output:
+    output:
     {{ "answer": 0 }}
 
-    ---
-
-    Example 3:
+    [Example 3]
     Risk A:
     {{"Risk": "Low Risk"}}
 
     Risk B:
     {{"Risk": "3 out of 10"}}
 
-    Output:
+    output:
     {{ "answer": 0 }}
 
-    ---
-
-    Here are examples where the risk in Risk B is lower than in Risk A:
-
-    ---
-
-    Example 4:
+    [Example 4]
     Risk A:
     {{"Risk": "High Risk"}}
 
     Risk B:
     {{"Risk": "2 out of 3"}}
 
-    Output:
+    output:
     {{ "answer": -1 }}
 
     ---
 
-    Example 5:
+    [Example 5]
     Risk A:
     {{"Risk": "Medium Risk"}}
 
     Risk B:
     {{"Risk": "10 out of 100"}}
 
-    Output:
+    output:
     {{ "answer": -1 }}
-
-    ---
-
-    Example 6:
+    
+    [Example 6]
     Risk A:
     {{"Risk": "Low Risk"}}
 
     Risk B:
     {{"Risk": "2 out of 10"}}
 
-    Output:
+    output:
     {{ "answer": -1 }}
-
-    ---
-
-    Here are examples where the risk in Risk B is higher than in Risk A:
-
-    ---
-
-    Example 7:
+    
+    [Example 7:]
     Risk A:
     {{"Risk": "Medium Risk"}}
 
     Risk B:
     {{"Risk": "79 out of 100"}}
 
-    Output:
+    output:
     {{ "answer": 1 }}
-
-    ---
-
-    Example 8:
+    
+    [Example 8]
     Risk A:
     {{"Risk": "Low Risk"}}
 
     Risk B:
     {{"Risk": "8 out of 10"}}
 
-    Output:
+    output:
     {{ "answer": 1 }}
 
-    ---
-
-    Example 9:
+    [Example 9]
     Risk A:
     {{"Risk": "Low Risk"}}
 
     Risk B:
     {{"Risk": "5 out of 10"}}
 
-    Output:
+    output:
     {{ "answer": 1 }}
+    [Examples End]
 
-    ---
-
-    Now evaluate:
-
-    Risk A:
+    [Risk A]
     {tm1}
 
-    Risk B:
+    [Risk B]
     {tm2}
+    
+    [Answer Options]
+    Similar: {{ "answer": 0 }}
+    A bigger than B: {{ "answer": -1 }}
+    B bigger than A: {{ "answer": 1 }}
 
-    Output: {{ "answer": <0, 1 or -1>}}
+    output: 
 """
