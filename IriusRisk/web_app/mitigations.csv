@@ -1,867 +1,159 @@
-﻿Component,Reference ID,Countermeasure,Description,Source,State,Test result,Priority,Expiry date,Cost,Owner,Issue ID,MITRE reference,Scope,Standard baseline,Standard baseline section
-Web UI,C-WEB-UI-C2,"Employ frame-busting scripts, set X-Frame-Options header, and enforce Content Security Policy","To protect your web application from clickjacking and other iframe-based 
-attacks, follow these steps to implement frame-busting scripts, set the 
-X-Frame-Options HTTP header, and enforce Content Security Policy (CSP). 
-These measures will prevent your web pages from being embedded within 
-iframes on unauthorized websites, mitigating potential attacks.
-
-Step 1: Employ Frame-Busting Scripts
-
-Add Frame-Busting JavaScript: Within the <head> section of your HTML pages, 
-include a JavaScript snippet that prevents your website from being framed. 
-A simple script like this can be used:
-
-This script checks if your page is being framed and, if so, redirects the 
-top-level window to the current page, effectively ""busting"" out of the 
-frame.
-
-Step 2: Set X-Frame-Options Header
-
-Configure Web Server: Depending on your web server, add a configuration to 
-include the X-Frame-Options HTTP header in all responses. This header tells 
-browsers not to embed your pages within frames or iframes. There are three 
-options you can set:
-
-    * DENY - No framing is allowed.
-    * SAMEORIGIN - Only framing within the same domain is allowed.
-    * ALLOW-FROM uri - Framing is allowed only by the specified uri.
-
-Step 3: Enforce Content Security Policy
-
-Implement CSP Header: Content Security Policy (CSP) is a powerful tool that 
-helps prevent XSS attacks and other injection vulnerabilities. To prevent 
-your pages from being framed, include the CSP frame-ancestors directive in 
-your responses.
-
-Configure Web Server to Include CSP: Add a CSP header with a 
-frame-ancestors directive to define which origins can embed your content.
-
-Example for Apache:
-
-Example for Nginx:
-
-This CSP directive prevents all framing of your content, except on the same 
-origin. Adjust the directive according to your specific needs, replacing 
-'self' with the allowed origins if necessary.
-
-Additional Good Security Practices
-
-    * Regularly Update Your Security Measures: Security threats evolve, so
-      regularly review and update your security configurations.
-    * Educate Your Team: Ensure that your development team is aware of the
-      importance of web security and understands how to implement these
-      measures.
-    * Use Automated Tools: Employ automated tools for security headers to
-      ensure they are correctly set across your application.
-    * Monitor for Security Flaws: Regularly test your application for
-      security vulnerabilities and address any issues promptly.
-
-Implementing these steps will significantly increase the security of your 
-web application against iframe-based attacks and contribute to a more 
-robust overall security posture.
-
-nginxCopy code
-
-add_header Content-Security-Policy ""frame-ancestors 'self'"";
-
-apacheCopy code
-
-Header set Content-Security-Policy ""frame-ancestors 'self'""
-
-javascriptCopy code
-
-if (window.top !== window.self) {  window.top.location = window.location; }
- ",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1037 - Filter Network Traffic||ATT&CK Enterprise - M1050 - Exploit Protection||ATT&CK Enterprise - M1021 - Restrict Web-Based Content||ATT&CK Enterprise - M1017 - User Training||ATT&CK Enterprise - M1048 - Application Isolation and Sandboxing,Application Security||Data Security,ASVS,V1.14.1
-PostgreSQL,C-POSTGRESQL-CNT-POSTGRES-06,Enforce secure file permissions on PostgreSQL database files,"Implement and regularly update strict file system permissions for 
-PostgreSQL database files to ensure that only authorized users and 
-processes can access or modify them. This control minimizes the risk of 
-unauthorized data tampering and exposure by using OS-level security 
-settings (such as chmod/chown on Linux) to restrict access to sensitive 
-files. Developers and DevOps engineers should integrate these practices 
-into their deployment procedures, using centralized configuration 
-management tools to enforce and monitor secure file permissions across all 
-database servers.
-
-References:
-
-    * OWASP Secure Coding Practices - Access Control
-      <https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/stable-en/02-checklist/05-checklist>",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1022 - Restrict File and Directory Permissions,Data Security,NIST 800-53 v5,PT-2 Authority to Process Personally Identifiable Information
-PostgreSQL,C-POSTGRESQL-CNT-POSTGRES-03,Enforce TLS encryption for all connections,"Implement and regularly update TLS encryption for all connections to 
-PostgreSQL to secure data in transit against eavesdropping and 
-man-in-the-middle attacks. This control mandates that all client-to-server 
-and inter-node communications are encrypted using strong TLS protocols 
-(e.g., TLS 1.2 or TLS 1.3) and that proper certificate management is in 
-place. Developers and DevOps engineers should integrate TLS configuration 
-into the PostgreSQL deployment process and enforce these settings via 
-centralized management tools to maintain a secure network environment.
-
-Implementation Steps:
-
-Enable TLS Encryption:
-Configure PostgreSQL to require TLS for all incoming connections by setting 
-the appropriate parameters in the PostgreSQL configuration file (e.g., ssl 
-= on).
-
-Configure Strong Cipher Suites:
-Ensure that only secure TLS versions and cipher suites (e.g., TLS 1.2/1.3) 
-are enabled, and disable deprecated protocols to enhance the encryption 
-strength.
-
-Manage Certificates Securely:
-Use a centralized certificate management system to issue, renew, and manage 
-SSL/TLS certificates for PostgreSQL, ensuring that certificates are always 
-up-to-date and trusted.
-
-Monitor and Audit TLS Usage:
-Regularly review logs and perform security audits to verify that all 
-connections are using TLS encryption, and adjust configurations as 
-necessary to address emerging threats.
-
-References:
-
-    * PostgreSQL SSL Support Documentation
-      <https://www.postgresql.org/docs/current/ssl-tcp.html>",Created by Rules Engine,Recommended,Not tested,High,N/A,High,Josephine Bakka,,ATT&CK Enterprise - M1041 - Encrypt Sensitive Information,Network Security,NIST 800-53 v5,SC-8 TRANSMISSION CONFIDENTIALITY AND INTEGRITY
-PostgreSQL,C-POSTGRESQL-CNT-POSTGRES-04,Harden postgresql configuration and restrict network access,"Implement and regularly update a hardened PostgreSQL configuration and 
-restrict network access to protect sensitive data and prevent unauthorized 
-access. This control ensures that PostgreSQL is deployed with secure 
-settings—disabling unnecessary features and default behaviors—and that 
-network access is limited to trusted hosts using firewall rules, security 
-groups, or VLAN segmentation. Developers and DevOps engineers should 
-integrate these practices into the PostgreSQL deployment and maintenance 
-process, ensuring that configurations are reviewed regularly and network 
-access policies are enforced via centralized management tools.
-
-Implementation Steps:
-
-Harden PostgreSQL Configuration:
-Review and update the PostgreSQL configuration (e.g., postgresql.conf and 
-pg_hba.conf) to disable unnecessary services, enforce strong security 
-parameters, and enable robust logging and auditing.
-
-Restrict Network Access:
-Deploy PostgreSQL in private network segments and use firewall rules or 
-cloud security groups to allow access only from authorized IP addresses or 
-subnets.
-
-Regularly Audit and Update:
-Perform periodic security audits and configuration reviews to ensure that 
-both the database settings and network access policies remain aligned with 
-evolving security best practices.
-
-References:
-
-    * PostgreSQL Security Documentation
-      <https://www.postgresql.org/support/security/>",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1035 - Limit Access to Resource Over Network,Application Security,NIST 800-53 v5,SC-7 Boundary Protection
-Web UI,C-WEB-UI-C4,"Implement input validation, output encoding, and enforce Content Security Policy (CSP)","Implementing input validation, output encoding, and enforcing Content 
-Security Policy (CSP) are crucial steps to securing your web UI against a 
-variety of common attacks, such as Cross-Site Scripting (XSS), SQL 
-Injection, and others. Here's how to approach each countermeasure 
-effectively:
-
-Implement Input Validation
-
-Input validation ensures that only properly formatted data is entered into 
-your system. Follow these steps:
-
-   1. Define Acceptable Input: Clearly specify what constitutes valid input
-      for each field (e.g., types, lengths, formats, and ranges) in your
-      application. Use regular expressions for pattern matching where
-      applicable.
-   2. Validate All Inputs: Apply validation to all received data, whether
-      from users, files, or other systems. This includes data from forms,
-      query parameters, cookies, and any external sources.
-   3. Use Existing Libraries: Leverage existing, well-tested validation
-      libraries and frameworks for your programming language or platform,
-      rather than writing your own validation code from scratch.
-   4. Reject Invalid Input: If input validation fails, reject the input,
-      log the event for monitoring potential attacks, and provide user
-      feedback that guides them toward correct input without revealing too
-      much about the underlying validation logic or application
-      architecture.
-
-Implement Output Encoding
-
-Output encoding transforms special characters into a safe format that 
-prevents the browser from executing them as code. This is especially 
-important to mitigate XSS attacks.
-
-   1. Encode Data: Encode all dynamic data displayed to users, especially
-      data that comes from user input, external systems, or databases. Use
-      HTML entity encoding for content displayed in HTML.
-   2. Use Context-Specific Encoding: The encoding method should match the
-      context where the data is displayed (e.g., HTML, JavaScript, CSS,
-      URL). Libraries like OWASP's ESAPI provide context-specific encoding
-      functions.
-   3. Adopt Secure Frameworks: Modern web frameworks often provide
-      automatic output encoding. Familiarize yourself with and enable these
-      features in your framework.
-
-Enforce Content Security Policy (CSP)
-
-CSP is a browser feature that helps detect and mitigate certain types of 
-attacks, including XSS and data injection attacks, by allowing web 
-developers to declare which dynamic resources are allowed to load.
-
-   1. Define a CSP Policy: Create a CSP policy that specifies which sources
-      your web application is allowed to load resources from. Start with a
-      strict policy that only allows resources from your domain, and then
-      incrementally allow additional sources as needed.
-   2. Use CSP Directives: Utilize directives like default-src, script-src, 
-      img-src, style-src, and others to control specific resources. Use the 
-      nonce attribute for inline scripts and styles if they are necessary.
-   3. Test Your Policy: Before deploying, test your CSP policy to ensure it
-      doesn't break your web application's functionality. Tools like Google
-      Chrome's Developer Tools can help identify and debug CSP violations.
-   4. Implement Reporting: CSP can be configured to send reports of policy
-      violations to a server endpoint. This is invaluable for detecting and
-      responding to attacks in real-time.
-
-References and Good Practices
-
-    * OWASP (Open Web Application Security Project): Refer to OWASP's
-      guides and cheat sheets for detailed best practices on input
-      validation, output encoding, and implementing CSP.
-    * Web Framework Security Features: Use security features built into
-      your web development framework. Frameworks like Django, Ruby on
-      Rails, and ASP.NET have built-in protections against many common web
-      vulnerabilities.
-    * Continuous Education: Stay updated on the latest security practices
-      and vulnerabilities affecting web applications. Regularly update your
-      skills and your application's libraries and frameworks.
-
-By following these guidelines, developers can significantly enhance the 
-security of their web UI components against a range of common web 
-vulnerabilities.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1021 - Restrict Web-Based Content||ATT&CK Enterprise - M1050 - Exploit Protection||ATT&CK Enterprise - M1048 - Application Isolation and Sandboxing||ATT&CK ICS - M0818 - Validate Program Inputs,Application Security||Data Security,ASVS,V5.1.1
-Web Service,C-VALIDATION-SERVICE,Implement proper parsing and input validation,"Ensure the security of your server-side web service, including REST APIs 
-and gRPC services, by implementing effective parsing and input validation. 
-Proper execution of these practices prevents security vulnerabilities such 
-as injection attacks, buffer overflows, and other forms of malicious input 
-manipulation. The following steps, designed for developers with no previous 
-security experience, provide a guideline to implement these measures:
-
-Steps for Robust Parsing and Input Validation:
-    * Enforce strict input validation checks. Verify that all user-provided
-      data matches the expected format, length, and data type. Employ
-      regular expressions for the validation of complex input patterns,
-      ensuring that data conforms to predefined formats.
-    * Adopt a whitelisting approach for input validation. Explicitly define
-      and accept only known, safe input patterns, rather than attempting to
-      identify and block potentially harmful inputs.
-    * Handle special characters with care, especially in contexts where
-      they might be interpreted as executable or control characters. This
-      step is crucial for preventing injection attacks.
-    * Utilize input sanitization techniques. Employ encoding or proper
-      filtering strategies to neutralize or strip out potentially dangerous
-      characters or patterns from user inputs.
-    * Employ established libraries and tools for their robust input
-      validation and parsing features. This approach minimizes the risk of
-      errors that could lead to vulnerabilities.
-    * Implement both client-side and server-side validation to improve user
-      experience by providing immediate feedback through client-side
-      validation, while relying on server-side validation as the ultimate
-      enforcement point to ensure security.
-    * Develop secure error-handling practices. Ensure that error messages
-      do not disclose sensitive information that could be exploited by
-      attackers.
-    * Incorporate automated tools for scanning and testing your application
-      regularly. This helps in early detection and fixing of potential
-      issues related to input validation and parsing.
-
-By following these actionable steps and adhering to good security 
-practices, you can significantly reduce the risk of security breaches and 
-vulnerabilities in your web service. Regularly update your knowledge on 
-security best practices and tools from reliable sources such as the Open 
-Web Application Security Project (OWASP) to stay ahead of potential 
-threats.",Created by Rules Engine,Recommended,Not tested,High,N/A,Low,Josephine Bakka,,ATT&CK Enterprise - M1016 - Vulnerability Scanning||ATT&CK Enterprise - M1017 - User Training||ATT&CK ICS - M0818 - Validate Program Inputs,Application Security||Data Security,NIST 800-53 v5,SI-10 INFORMATION INPUT VALIDATION
-PostgreSQL,C-POSTGRESQL-CNT-POSTGRES-07,Implement rate limiting and resource throttling,"Implement and regularly update rate limiting and resource throttling for 
-PostgreSQL to protect against denial-of-service (DoS) attacks and resource 
-exhaustion. This control ensures that query rates and system resource usage 
-(CPU, memory, disk I/O) are constrained within defined limits, preserving 
-database availability and performance even under heavy load or attack 
-conditions. Developers and DevOps engineers should integrate rate limiting 
-into the query processing and utilize OS-level or middleware resource 
-controls, continuously monitoring system performance to adjust thresholds 
-as needed.
-
-Implementation Steps:
-
-Define Acceptable Thresholds:
-Establish baseline limits for the number of queries, connections, and 
-resource usage (CPU, memory, I/O) that the system can handle under normal 
-operation.
-
-Implement Query Rate Limiting:
-Use PostgreSQL settings or middleware solutions to limit the rate at which 
-queries are accepted from clients, preventing overload during traffic 
-spikes.
-
-Configure Resource Throttling:
-Apply OS-level resource controls (e.g., cgroups on Linux) or similar 
-mechanisms to restrict the CPU and memory usage of PostgreSQL processes, 
-ensuring that no single query or connection can monopolize system 
-resources.
-
-Monitor and Audit:
-Continuously track performance metrics and log query activities. Regularly 
-audit resource consumption and adjust thresholds to maintain optimal 
-performance and security.
-
-References:
-
-    * PostgreSQL Performance Tips
-      <https://www.postgresql.org/docs/current/performance-tips.html>",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1021 - Restrict Web-Based Content,Application Security,NIST 800-53 v5,SC-5 DENIAL-OF-SERVICE PROTECTION
-PostgreSQL,C-POSTGRESQL-CNT-POSTGRES-01,Implement robust authentication and role-based access control,"Implement and regularly update robust authentication and role-based access 
-control for PostgreSQL to ensure that only verified users with appropriate 
-privileges can access and manage the database. This control mandates the 
-use of strong authentication mechanisms (such as multi-factor 
-authentication and complex passwords) and granular role-based access 
-control (RBAC) to restrict permissions according to the principle of least 
-privilege. Developers and DevOps engineers should integrate these practices 
-into the PostgreSQL deployment using centralized identity management 
-systems and enforce policies via configuration management tools.
-
-Implementation Steps:
-
-Enforce Strong Authentication:
-Configure PostgreSQL to require strong passwords and, where applicable, 
-integrate with external identity providers (e.g., LDAP, Active Directory) 
-that support multi-factor authentication.
-
-Implement Role-Based Access Control (RBAC):
-Define roles with specific permissions and assign users only the privileges 
-necessary for their responsibilities. Regularly review and adjust roles to 
-ensure they align with current security policies.
-
-Centralize Authentication Management:
-Leverage centralized identity management systems to streamline user 
-provisioning, password policies, and access audits across all PostgreSQL 
-instances.
-
-Monitor and Audit:
-Enable detailed logging of authentication attempts and role changes. 
-Periodically audit access logs and RBAC configurations to ensure compliance 
-and detect potential anomalies.
-
-References:
-
-    * OWASP Authentication Cheat Sheet
-      <https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html>",Created by Rules Engine,Recommended,Not tested,High,N/A,High,Josephine Bakka,,ATT&CK Enterprise - M1043 - Credential Access Protection,Application Security,NIST 800-53 v5,SC-23 SESSION AUTHENTICITY
-PostgreSQL,C-POSTGRESQL-CNT-POSTGRES-08,Implement secure backup procedures with encryption and access controls,"Implement and regularly update secure backup procedures with encryption and 
-access controls for PostgreSQL to protect backup data against unauthorized 
-access and tampering. This control ensures that all backup files are 
-encrypted using strong cryptographic standards (e.g., AES-256) and that 
-access to these backups is restricted to authorized personnel only. 
-Developers and DevOps engineers should integrate secure backup mechanisms 
-into their PostgreSQL deployment process using automated backup tools and 
-centralized management systems to enforce encryption and access policies 
-consistently.
-
-Implementation Steps:
-
-Encrypt Backup Files:
-Configure backup tools to encrypt PostgreSQL backup files using robust 
-encryption algorithms before storage or transmission.
-
-Enforce Access Controls:
-Use OS-level permissions, cloud storage access policies, or centralized 
-management tools to restrict backup file access to authorized users only.
-
-Automate Backup Processes:
-Integrate automated backup solutions that enforce encryption and access 
-controls, ensuring consistent and secure backup routines across all 
-PostgreSQL instances.
-
-Monitor and Audit Backup Procedures:
-Regularly review backup logs and conduct audits to verify that encryption 
-and access controls are maintained and that backup data remains secure.
-
-References:
-
-    * PostgreSQL Backup and Restore Documentation
-      <https://www.postgresql.org/docs/current/backup.html>",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1056 - Pre-compromise,Data Security,NIST 800-53 v5,CP-9 System Backup
-Web Service,C-SERVICE-RESTRICTIONS,Implement service restrictions,"Implement service restrictions effectively to safeguard your server-side 
-web service, including REST APIs and gRPC services, against unauthorized 
-use and potential security threats. Follow these actionable steps, designed 
-even for developers with no prior security background, to mitigate risks 
-such as brute force attacks, denial-of-service (DoS) attempts, and 
-unwarranted resource consumption.
-
-Implementing Rate Limiting and Service Restrictions:
-    * Introduce rate-limiting mechanisms. Use a library or module specific
-      to your development framework to limit the number of requests a user
-      or client can make within a given timeframe. This measure is crucial
-      for preventing overuse and abuse of the service.
-    * Establish granular rate limits for various actions or API endpoints.
-      Analyze the functionality and sensitivity of different parts of your
-      service to apply more stringent limits where necessary. For instance,
-      login attempts may require stricter limits compared to general data
-      retrieval operations.
-    * Set time windows for rate limiting that reflect the expected traffic
-      patterns. Shorter windows can prevent burst traffic from causing
-      harm, while longer windows prevent sustained high usage. Adjust these
-      windows based on real-world usage data and analytics.
-    * Consider implementing graceful degradation strategies. During peak
-      loads or detected attacks, dynamically adjust rate limits or
-      temporarily degrade service for non-critical functionalities to
-      ensure availability of core features.
-    * Use whitelisting and blacklisting to control access. Allow trusted
-      clients or users unfettered access by whitelisting their IPs or
-      accounts, and blacklist entities that exhibit malicious behavior or
-      violate usage policies.
-    * Deploy comprehensive monitoring and logging. Utilize tools and
-      practices that enable you to observe traffic in real-time, recognize
-      patterns indicative of abuse, and maintain records for investigating
-      security incidents.
-    * Incorporate additional security layers. Integrate solutions like Web
-      Application Firewalls (WAFs) and Intrusion Detection Systems (IDS) to
-      defend against a broader spectrum of threats, including sophisticated
-      DoS and DDoS attacks.
-
-Refer to reputable security frameworks and guidelines, such as those 
-provided by OWASP (Open Web Application Security Project), to further 
-enhance your service's security posture. Staying informed about the latest 
-security best practices and vulnerabilities in web services is crucial for 
-maintaining a robust defense against evolving threats.",Created by Rules Engine,Recommended,Not tested,High,N/A,Low,Josephine Bakka,,ATT&CK Enterprise - M1022 - Restrict File and Directory Permissions||ATT&CK Enterprise - M1031 - Network Intrusion Prevention||ATT&CK Enterprise - M1035 - Limit Access to Resource Over Network,Network Security||Operational Security,NIST 800-53 v5,SC-5 DENIAL-OF-SERVICE PROTECTION||SC-43 Usage Restrictions||AC-17 Remote Access
-Web UI,C-WEB-UI-C1,Implement strong authentication mechanisms and follow the least privilege principle,"To enhance the security of your web UI, implementing strong authentication 
-mechanisms is crucial. Follow these steps to ensure that access to your 
-system is securely controlled.
-
-Step 1: Use Multi-Factor Authentication (MFA)
-
-Enable MFA: Ensure your authentication system supports Multi-Factor 
-Authentication. MFA requires users to provide two or more verification 
-factors to gain access, significantly increasing security.
-
-Integrate with Trusted Providers: Use well-established MFA providers or 
-frameworks that support various verification methods, such as SMS codes, 
-email verification, authenticator apps, or hardware tokens.
-
-Step 2: Enforce Strong Password Policies
-
-Set Complexity Requirements: Define password policies that require a mix of 
-upper and lower case letters, numbers, and special characters. Ensure 
-passwords are of a minimum length (e.g., 12 characters).
-
-Implement Account Lockout Mechanisms: To prevent brute force attacks, 
-temporarily lock accounts after several unsuccessful login attempts.
-
-Use Password Alternatives: Where possible, encourage or enforce the use of 
-passphrase alternatives, biometrics, or other more secure authentication 
-methods.
-
-Step 3: Regularly Update Authentication Systems
-
-Patch and Update: Keep your authentication systems up-to-date with the 
-latest security patches and updates.
-
-Audit and Review: Regularly audit authentication mechanisms for 
-vulnerabilities. Use security scanning tools and consider external security 
-audits.
-
-Follow the Least Privilege Principle
-
-The principle of least privilege ensures that users and systems have only 
-the minimum levels of access—or permissions—needed to perform their tasks. 
-This reduces the potential impact of a compromise.
-
-Step 1: Define Access Levels
-
-Identify Roles: Define clear roles within your application (e.g., user, 
-admin, moderator) and specify the access level for each.
-
-Assign Permissions: Assign permissions based on roles. Ensure that each 
-role has the least amount of privilege necessary to perform its functions.
-
-Step 2: Implement Role-Based Access Control (RBAC)
-
-Use RBAC Systems: Implement or utilize an existing RBAC system that allows 
-for easy management of roles and permissions.
-
-Regularly Review Access: Periodically review roles and permissions to 
-ensure they are still appropriate for each user’s needs.
-
-Step 3: Monitor and Audit Access
-
-Logging: Ensure that access and activities are logged. Keep an audit trail 
-that can be reviewed in the event of a security incident.
-
-Alerts: Set up alerts for unusual access patterns or administrative 
-actions, which can help in early detection of security breaches.
-
-Additional Good Security Practices
-
-    * Security Training: Regularly train developers and users on the
-      importance of strong authentication practices and the principle of
-      least privilege.
-    * Use Secure Communication: Ensure that authentication data, such as
-      passwords and tokens, are always transmitted over secure channels
-      (e.g., HTTPS).
-    * Periodic Security Assessments: Conduct periodic security assessments
-      and penetration testing to identify and mitigate potential
-      vulnerabilities in your authentication mechanism and access control
-      policies.
-
-Implementing these measures will significantly strengthen the security of 
-your web UI by ensuring that only authorized users can access sensitive 
-information and functionality, and that they can only perform actions 
-necessary for their role.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1026 - Privileged Account Management||ATT&CK Enterprise - M1032 - Multi-factor Authentication||ATT&CK Enterprise - M1047 - Audit||ATT&CK Enterprise - M1018 - User Account Management||ATT&CK Enterprise - M1030 - Network Segmentation,Data Security||Operational Security,ASVS,V2.5.1
-Web Service,C-HARDENED-CONFIGURATION,"Limit information leakage, e.g., via hardened configuration","Limiting information leakage in your server-side web service, such as a 
-REST API or a gRPC service, is crucial to protect sensitive information 
-from being exposed through various channels like error messages, system 
-logs, or misconfigurations. Follow these actionable steps to harden your 
-service's configuration against unintended data exposure, suitable for 
-developers without previous security experience:
-
-Key Strategies to Limit Information Leakage:
-    * Display minimalistic error messages that do not reveal internal
-      details about the service's structure or state. Error messages should
-      be generic enough to inform the user of the problem without
-      disclosing sensitive information.
-    * Alter default configurations immediately after service setup to
-      ensure that security settings are optimized and not left at their
-      less secure, default state.
-    * Restrict access to the service and its logs strictly to authorized
-      personnel. Ensure that administrative interfaces and log files are
-      not accessible to unauthorized users.
-    * Apply data masking techniques for outputs that may display sensitive
-      information. This is especially important for personal or financial
-      data to prevent direct exposure to unauthorized viewers.
-    * Configure network settings and firewalls diligently to close off
-      unnecessary open ports and correct misconfigured services that might
-      inadvertently expose sensitive data.
-    * Implement Content Security Policies (CSP) to restrict what resources
-      can be loaded and executed by the service, reducing the risk of data
-      leakage via XSS attacks or other vector exploits.
-    * Manage file and directory permissions meticulously to prevent
-      unauthorized access to files containing sensitive information. Only
-      essential access rights should be granted, based on the principle of
-      least privilege.
-    * Encrypt sensitive data in transit and at rest. Utilizing strong
-      encryption methods ensures that, even if data is somehow accessed, it
-      remains unintelligible without the decryption keys.
-
-Adhering to these steps not only enhances your web service's security 
-posture but also aligns with good security practices recommended by leading 
-security organizations, such as OWASP (Open Web Application Security 
-Project). Regularly review and update your service's configurations to 
-adapt to evolving security threats and protect against information leakage.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1041 - Encrypt Sensitive Information||ATT&CK Enterprise - M1054 - Software Configuration,Application Security||Data Security,NIST 800-53 v5,"SI-7 Software, Firmware, and Information Integrity||SI-6 Security and Privacy Function Verification||AC-4 Information Flow Enforcement||CM-6 Configuration Settings"
-Web UI,C-WEB-UI-C3,"Regularly update dependencies, use dependency scanning tools, and follow best practices for secure coding","Implementing a process to regularly update dependencies, utilize dependency 
-scanning tools, and follow best practices for secure coding is essential in 
-maintaining the security and integrity of your software. This proactive 
-approach helps mitigate vulnerabilities, reduce the attack surface, and 
-ensure the application remains robust against emerging threats. Here's how 
-to approach each aspect effectively:
-
-Regularly Update Dependencies
-
-Dependencies, such as libraries and frameworks, are often updated to patch 
-security vulnerabilities, fix bugs, and add new features. Keeping these 
-dependencies up to date is crucial.
-
-   1. Automate Updates: Use tools like Dependabot (GitHub), Renovate, or
-      npm audit (for Node.js projects) to automate the detection of
-      outdated dependencies. These tools can be configured to automatically
-      create pull requests for updates.
-   2. Subscribe to Vulnerability Alerts: Many platforms offer vulnerability
-      alerts for project dependencies. Enable these alerts to be notified
-      when a dependency needs to be updated due to a security issue.
-   3. Regular Review: Schedule regular intervals (e.g., monthly or
-      quarterly) to review and update dependencies, even if automated tools
-      are in place. This ensures that updates don't introduce breaking
-      changes or new vulnerabilities.
-
-Use Dependency Scanning Tools
-
-Dependency scanning tools analyze your project's dependencies for known 
-vulnerabilities, licensing issues, and sometimes even code quality.
-
-   1. Integrate Scanning into CI/CD Pipeline: Tools like Snyk, OWASP
-      Dependency-Check, and SonarQube can be integrated into your
-      Continuous Integration/Continuous Deployment (CI/CD) pipeline. This
-      allows for automatic scanning of dependencies whenever code is
-      committed or before deployment.
-   2. Act on Findings: Prioritize and address the vulnerabilities found by
-      scanning tools based on their severity. Some tools provide
-      recommendations or even automated fixes for vulnerabilities.
-   3. Audit Dependencies: Regularly audit your project's dependency tree to
-      identify and remove unused or unnecessary dependencies, reducing
-      potential attack vectors.
-
-Follow Best Practices for Secure Coding
-
-Adhering to secure coding practices is fundamental in developing resilient 
-software that is resistant to attacks.
-
-   1. Adopt a Security Coding Standard: Follow a coding standard focused on
-      security, such as the OWASP Secure Coding Practices, to minimize the
-      introduction of new vulnerabilities.
-   2. Perform Code Reviews: Implement a peer review process where code is
-      examined by one or more developers other than the author. This helps
-      catch security flaws, bugs, and ensures adherence to coding
-      standards.
-   3. Educate Your Team: Regularly train developers on secure coding
-      practices, emerging vulnerabilities, and defensive programming
-      techniques. Consider conducting security awareness sessions and
-      workshops.
-   4. Use Static Analysis Security Testing (SAST): Integrate SAST tools
-      into your development process to automatically analyze source code
-      for potential security issues.
-   5. Dynamic Analysis Security Testing (DAST): Use DAST tools to test your
-      applications in runtime, simulating attacks on live applications to
-      identify vulnerabilities that static analysis might miss.
-
-References and Good Practices
-
-    * OWASP: Utilize resources from the Open Web Application Security
-      Project (OWASP) for the latest in web application security, including
-      the OWASP Top Ten, which outlines the most critical web application
-      security risks.
-    * Keep Documentation: Document your security practices, dependency
-      management policies, and update procedures. This helps maintain
-      consistency and ensures new team members can follow established
-      protocols.
-    * Regular Security Assessments: Beyond just dependency management and
-      secure coding, conduct regular security assessments, including
-      penetration testing, to identify and mitigate risks.
-
-By systematically updating dependencies, using dependency scanning tools, 
-and adhering to secure coding practices, you can significantly enhance the 
-security posture of your software projects, protecting both your data and 
-your users.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1054 - Software Configuration||ATT&CK Enterprise - M1051 - Update Software||ATT&CK Enterprise - M1050 - Exploit Protection||ATT&CK Enterprise - M1038 - Execution Prevention||ATT&CK Enterprise - M1016 - Vulnerability Scanning||ATT&CK Enterprise - M1048 - Application Isolation and Sandboxing,Application Security,ASVS,V1.14.3
-PostgreSQL,C-POSTGRESQL-CNT-POSTGRES-05,Regularly update postgresql to the latest secure version,"Implement and regularly update PostgreSQL to the latest secure version to 
-ensure that all known vulnerabilities are patched and that the database 
-benefits from the latest security enhancements. This control minimizes the 
-risk of exploitation by integrating an effective patch management process 
-that monitors for new releases, tests updates in a controlled environment, 
-and deploys them consistently across all systems. Developers and DevOps 
-engineers should incorporate this practice into their routine maintenance 
-processes, using automated tools where possible to ensure compliance with 
-security best practices.
-
-Implementation Steps:
-
-Monitor for New Releases:
-Subscribe to PostgreSQL security bulletins and regularly review release 
-notes to stay informed about patches and updates.
-
-Test Updates in Staging:
-Validate new PostgreSQL versions in a controlled environment to ensure 
-compatibility and stability with existing applications before production 
-deployment.
-
-Automate Deployment:
-Use automated deployment tools or scripts to ensure that updates are 
-applied consistently and promptly across all PostgreSQL instances.
-
-Audit and Verify Compliance:
-Regularly review version inventories and update logs to confirm that all 
-systems are running the latest secure version of PostgreSQL.
-
-References:
-
-    * PostgreSQL Release Notes
-      <https://www.postgresql.org/docs/current/release.html>",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1051 - Update Software,Application Security,NIST 800-53 v5,SI-2 Flaw Remediation
-Web Service,C-TLS-SERVICE,"Secure communication channels, e.g., use TLS","Securing communication channels is critical for any server-side web 
-service, such as REST APIs and gRPC services, to protect data from 
-eavesdropping, tampering, and unauthorized access. Implementing Transport 
-Layer Security (TLS) is a foundational step towards achieving this goal. 
-Here are actionable steps to ensure secure communication through TLS, 
-suitable for developers without previous security experience:
-
-Steps for Implementing TLS:
-    * Adopt the latest version of TLS (e.g., TLS 1.2 or higher) to leverage
-      advanced security features and address vulnerabilities found in older
-      versions.
-    * Ensure digital certificates used for TLS are properly managed.
-      Certificates should be signed by a trusted Certificate Authority
-      (CA), kept up-to-date, and renewed regularly.
-    * Select strong and secure cipher suites for the service configuration,
-      which are essential for providing effective encryption, key exchange,
-      and authentication.
-    * Enable Perfect Forward Secrecy (PFS) to guarantee that each session's
-      encryption keys are unique and cannot be compromised even if the
-      long-term keys are.
-    * Implement HTTP Strict Transport Security (HSTS) to force web browsers
-      to establish connections only over HTTPS, minimizing the risk of
-      downgrade attacks.
-    * Create a protocol for continuous monitoring and auditing of your TLS
-      settings to quickly identify and fix any vulnerabilities or
-      configuration errors.
-    * For services requiring authentication, configure TLS to request and
-      validate client certificates during the handshake, enhancing mutual
-      authentication.
-    * Practice secure key management to protect the confidentiality and
-      integrity of cryptographic keys involved in the TLS process.
-
-By following these guidelines and incorporating security best practices 
-into your development and deployment processes, you can significantly 
-strengthen the security of your web service. Regular updates and audits of 
-your TLS configuration, in line with recommendations from security experts 
-and organizations such as the Open Web Application Security Project 
-(OWASP), are crucial for maintaining a high level of protection against 
-emerging threats.",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Low,Josephine Bakka,,ATT&CK Enterprise - M1041 - Encrypt Sensitive Information||ATT&CK Enterprise - M1047 - Audit||ATT&CK Enterprise - M1056 - Pre-compromise,Data Security||Network Security,NIST 800-53 v5,SC-13 Cryptographic Protection||SC-12 CRYPTOGRAPHIC KEY ESTABLISHMENT AND MANAGEMENT||SC-17 Public Key Infrastructure Certificates||SC-8 TRANSMISSION CONFIDENTIALITY AND INTEGRITY
-PostgreSQL,C-POSTGRESQL-CNT-POSTGRES-02,Use parameterized queries and validate inputs,"Implement and regularly update secure coding practices for PostgreSQL by 
-using parameterized queries and validating inputs to prevent injection 
-attacks and ensure data integrity. This control ensures that all 
-user-supplied data is properly sanitized and that SQL statements are 
-constructed safely, reducing the risk of SQL injection and unauthorized 
-data manipulation. Developers and DevOps engineers should integrate input 
-validation and parameterized query techniques into their development 
-workflows and conduct regular code reviews to maintain robust security 
-practices.
-
-Implementation Steps:
-
-Adopt Parameterized Queries:
-Ensure that all database queries are constructed using parameterized 
-queries or prepared statements to separate query logic from data inputs, 
-preventing injection of malicious SQL.
-
-Validate and Sanitize Inputs:
-Integrate input validation routines to check user-supplied data against 
-expected formats and sanitize any potentially dangerous characters or 
-patterns.
-
-Integrate Secure Coding Practices:
-Incorporate secure coding guidelines into the development process and use 
-automated tools to scan for injection vulnerabilities and improper input 
-handling.
-
-Conduct Regular Code Reviews and Testing:
-Perform periodic code reviews and security testing (e.g., penetration 
-testing and static analysis) to verify that input validation and 
-parameterization are consistently applied.
-
-References:
-
-    * OWASP SQL Injection Prevention Cheat Sheet
-      <https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html>",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1035 - Limit Access to Resource Over Network,Application Security,NIST 800-53 v5,SI-10 INFORMATION INPUT VALIDATION
-Web Service,C-SECRETS,Use secure methods to handle secrets and other sensitive information,"Protecting secrets and other sensitive information is paramount for any 
-server-side web service, including REST APIs and gRPC services, to prevent 
-unauthorized access and data breaches. Follow these actionable steps to 
-securely manage such critical data, suitable even for developers without 
-prior security experience:
-
-Secure Handling of Secrets and Sensitive Information:
-    * Securely store sensitive data by avoiding plaintext storage of
-      passwords and employing strong encryption mechanisms for all
-      sensitive information.
-    * Utilize secure credential vaults or management systems for
-      centralizing the protection of sensitive data. These tools offer
-      encryption, stringent access controls, and auditing capabilities to
-      safeguard secrets.
-    * Ensure the secure generation, storage, and transmission of API keys
-      or tokens. Communicate over secure protocols like HTTPS to protect
-      the integrity and confidentiality of these credentials.
-    * Adopt a regular rotation policy for all secrets, such as passwords,
-      API keys, and tokens, to mitigate the risk of old credentials being
-      exploited.
-    * Encrypt all secrets during transit between different components of
-      your service, ensuring they are not exposed to eavesdropping or
-      interception.
-    * For password transmission, always use HTTPS and avoid including
-      passwords in URL parameters. Implement secure password hashing and
-      salting techniques to protect stored passwords.
-    * Apply strict access control measures to limit access to sensitive
-      information, adhering to the principle of least privilege. Ensure
-      users and services have only the access necessary for their function.
-    * Maintain sensitive configuration files securely and separately from
-      the codebase to prevent accidental exposure. Avoid hardcoding secrets
-      in source code.
-    * Set up auditing and monitoring to quickly detect unauthorized
-      attempts to access sensitive information and to ensure compliance
-      with security policies.
-    * When deploying services, carefully handle the transfer of secrets to
-      production environments to prevent leakage or exposure during the
-      deployment phase.
-
-By adhering to these guidelines and incorporating security best practices 
-from authoritative sources like OWASP (Open Web Application Security 
-Project), you can significantly enhance the security posture of your web 
-service, protecting it and its users from potential threats.",Created by Rules Engine,Recommended,Not tested,High,N/A,Medium,Josephine Bakka,,ATT&CK Enterprise - M1041 - Encrypt Sensitive Information||ATT&CK Enterprise - M1043 - Credential Access Protection||ATT&CK ICS - M0809 - Operational Information Confidentiality,Data Security||Operational Security,NIST 800-53 v5,SC-13 Cryptographic Protection||IA-1 Policy and Procedures||IA-3 Device Identification and Authentication
-Web Service,C-STRONG-AUTHENTICATION,Use strong authentication mechanisms,"Secure your server-side web service, be it a REST API or a gRPC service, by 
-implementing robust authentication mechanisms. This will ensure that only 
-authorized users or systems can access and interact with your service. Here 
-are actionable steps that developers, even those without prior security 
-knowledge, can follow to strengthen authentication:
-
-Key Steps to Enhance Authentication:
-    * Adopt multi-factor authentication (MFA). For APIs, combine
-      traditional methods like API keys or client credentials with dynamic
-      security tokens that change periodically, adding an extra layer of
-      security.
-    * Utilize industry-standard authentication and authorization protocols
-      such as OAuth and OpenID Connect. These protocols provide a secure
-      and standardized way for clients to request and use access tokens
-      effectively safeguarding access to your services.
-    * Implement strong password policies. Enforce rules on password
-      complexity, such as minimum length, inclusion of uppercase and
-      lowercase letters, numbers, and symbols, and mandate regular password
-      updates.
-    * Follow secure session management practices. Use secure, randomly
-      generated session identifiers, enforce session expiration after a
-      period of inactivity, and protect against session hijacking attacks.
-    * Consider adaptive authentication methods that gauge the
-      authentication requirements based on context, like the user's
-      location, device, or the sensitivity of the operation being
-      requested.
-    * For machine-to-machine interactions or when strong client
-      authentication is necessary, use client certificate authentication.
-      This ensures that only clients with a valid certificate can establish
-      connections.
-    * Deploy account lockout mechanisms to lock or suspend user accounts
-      after several unsuccessful login attempts, protecting against
-      brute-force attacks.
-    * Ensure secure transmission of credentials using encrypted channels,
-      preferably HTTPS, to protect data in transit.
-    * Maintain secure user account management. Regularly review user access
-      privileges, promptly deactivate inactive accounts, and immediately
-      revoke access for users who leave the organization or whose accounts
-      are compromised.
-    * Enable detailed logging and monitoring of authentication attempts to
-      identify and investigate suspicious activities promptly.
-
-Following these steps and adhering to established security practices, such 
-as those recommended by the Open Web Application Security Project (OWASP), 
-can significantly mitigate unauthorized access and potential security 
-threats to your web service.",Created by Rules Engine,Recommended,Not tested,Very high,N/A,Low,Josephine Bakka,,ATT&CK Enterprise - M1018 - User Account Management||ATT&CK Enterprise - M1027 - Password Policies||ATT&CK Enterprise - M1032 - Multi-factor Authentication,Application Security||Operational Security,NIST 800-53 v5,AC-3 ACCESS ENFORCEMENT||IA-2 Identification and Authentication (organizational Users)||IA-8 Identification and Authentication (non-organizational Users)
-Web Service,C-VALIDATE-SERIALIZED,Validate and sanitize serialized data,"Validating and sanitizing serialized data is essential for maintaining the 
-integrity and security of data within your server-side web service, 
-including REST APIs and gRPC services. These measures are crucial to 
-prevent injection attacks, data tampering, and other vulnerabilities 
-associated with serialization and deserialization processes. Follow these 
-actionable steps to secure your data serialization practices:
-
-Guidelines for Secure Serialization and Deserialization:
-    * Conduct rigorous input validation on all serialized data. Ensure that
-      it matches the expected structure, format, and content. Reject any
-      data that fails to meet these predefined standards.
-    * Implement schema validation for serialized data. Utilize tools that
-      can check incoming data against a defined schema to confirm its
-      validity and structure.
-    * Create a whitelist of permissible values for each field within your
-      serialized data. Disallow any data containing values not included in
-      this list, mitigating the risk of harmful content injections.
-    * Impose restrictions on the size and length of serialized data. This
-      limits potential attack vectors by reducing the amount of data an
-      attacker can manipulate.
-    * Apply sanitization techniques to serialized data. Remove or alter
-      characters or sequences that could be exploited for malicious
-      purposes.
-    * Select secure and regularly updated libraries for data serialization
-      and deserialization. Libraries like Jackson for Java offer built-in
-      security features and are actively maintained to address new
-      vulnerabilities.
-    * Incorporate digital signatures with serialized data. This step
-      verifies the authenticity and integrity of the data, ensuring it has
-      not been altered in transit.
-    * Establish a robust logging and monitoring system. Keep detailed
-      records of deserialization events and anomalies to detect and respond
-      to potential security incidents swiftly.
-
-By adhering to these steps and integrating security best practices into 
-your development process, you can significantly enhance the safety of your 
-web service. Continuously update your knowledge and tools based on the 
-latest security research and recommendations from authoritative sources, 
-such as OWASP (Open Web Application Security Project), to protect against 
-evolving threats.",Created by Rules Engine,Recommended,Not tested,High,N/A,Low,Josephine Bakka,,ATT&CK Enterprise - M1038 - Execution Prevention||ATT&CK ICS - M0818 - Validate Program Inputs,Application Security||Data Security,NIST 800-53 v5,SI-10 INFORMATION INPUT VALIDATION
+﻿"ID",Reference,Component,Use Case,Threat,Name,Description,State,Test Result
+060c6d17-aa17-4933-96d2-6ef33077895c,C-POSTGRESQL-CNT-POSTGRES-02,PostgreSQL,Information Disclosure,Attackers exploit sql injection vulnerabilities,Use parameterized queries and validate inputs,"<p>Implement and regularly update secure coding practices for PostgreSQL by using parameterized queries and validating inputs to prevent injection attacks and ensure data integrity. This control ensures that all user-supplied data is properly sanitized and that SQL statements are constructed safely, reducing the risk of SQL injection and unauthorized data manipulation. Developers and DevOps engineers should integrate input validation and parameterized query techniques into their development workflows and conduct regular code reviews to maintain robust security practices.</p><p><strong>Implementation Steps:</strong></p><p><strong>Adopt Parameterized Queries:</strong><br>Ensure that all database queries are constructed using parameterized queries or prepared statements to separate query logic from data inputs, preventing injection of malicious SQL.</p><p><strong>Validate and Sanitize Inputs:</strong><br>Integrate input validation routines to check user-supplied data against expected formats and sanitize any potentially dangerous characters or patterns.</p><p><strong>Integrate Secure Coding Practices:</strong><br>Incorporate secure coding guidelines into the development process and use automated tools to scan for injection vulnerabilities and improper input handling.</p><p><strong>Conduct Regular Code Reviews and Testing:</strong><br>Perform periodic code reviews and security testing (e.g., penetration testing and static analysis) to verify that input validation and parameterization are consistently applied.</p><p><strong>References:</strong></p><ul><li><a href=""https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"">OWASP SQL Injection Prevention Cheat Sheet</a></li></ul>",recommended,not-tested
+0b10c991-2afb-4163-a67a-d717c0fee3ea,C-WEB-UI-C2,Web UI,Spoofing,Attackers can deceive users into clicking on hidden elements,"Employ frame-busting scripts, set X-Frame-Options header, and enforce Content Security Policy","<p>To protect your web application from clickjacking and other iframe-based attacks, follow these steps to implement frame-busting scripts, set the X-Frame-Options HTTP header, and enforce Content Security Policy (CSP). These measures will prevent your web pages from being embedded within iframes on unauthorized websites, mitigating potential attacks.</p>
+<p>Step 1: Employ Frame-Busting Scripts</p>
+<p><strong>Add Frame-Busting JavaScript:</strong> Within the <strong>&lt;head&gt;</strong> section of your HTML pages, include a JavaScript snippet that prevents your website from being framed. A simple script like this can be used:</p>
+<p>This script checks if your page is being framed and, if so, redirects the top-level window to the current page, effectively ""busting"" out of the frame.</p>
+<p>Step 2: Set X-Frame-Options Header</p>
+<p><strong>Configure Web Server:</strong> Depending on your web server, add a configuration to include the <strong>X-Frame-Options</strong> HTTP header in all responses. This header tells browsers not to embed your pages within frames or iframes. There are three options you can set:</p>
+<ul>
+ <li><strong>DENY</strong> - No framing is allowed.</li>
+ <li><strong>SAMEORIGIN</strong> - Only framing within the same domain is allowed.</li>
+ <li><strong>ALLOW-FROM uri</strong> - Framing is allowed only by the specified <strong>uri</strong>.</li>
+</ul>
+<p>Step 3: Enforce Content Security Policy</p>
+<p><strong>Implement CSP Header:</strong> Content Security Policy (CSP) is a powerful tool that helps prevent XSS attacks and other injection vulnerabilities. To prevent your pages from being framed, include the CSP <strong>frame-ancestors</strong> directive in your responses.</p>
+<p><strong>Configure Web Server to Include CSP:</strong> Add a CSP header with a <strong>frame-ancestors</strong> directive to define which origins can embed your content.</p>
+<p><strong>Example for Apache:</strong></p>
+<p><strong>Example for Nginx:</strong></p>
+<p>This CSP directive prevents all framing of your content, except on the same origin. Adjust the directive according to your specific needs, replacing <strong>'self'</strong> with the allowed origins if necessary.</p>
+<p><strong>Additional Good Security Practices</strong></p>
+<ul>
+ <li><strong>Regularly Update Your Security Measures:</strong> Security threats evolve, so regularly review and update your security configurations.</li>
+ <li><strong>Educate Your Team:</strong> Ensure that your development team is aware of the importance of web security and understands how to implement these measures.</li>
+ <li><strong>Use Automated Tools:</strong> Employ automated tools for security headers to ensure they are correctly set across your application.</li>
+ <li><strong>Monitor for Security Flaws:</strong> Regularly test your application for security vulnerabilities and address any issues promptly.</li>
+</ul>
+<p>Implementing these steps will significantly increase the security of your web application against iframe-based attacks and contribute to a more robust overall security posture.</p>
+<p>nginxCopy code</p>
+<p>add_header Content-Security-Policy ""frame-ancestors 'self'"";</p>
+<p>apacheCopy code</p>
+<p>Header set Content-Security-Policy ""frame-ancestors 'self'""</p>
+<p>javascriptCopy code</p>
+<p>if (window.top !== window.self) { &nbsp;window.top.location = window.location; } <br>&nbsp;</p>",recommended,not-tested
+11ef90b6-e611-4731-94cd-beb1ce2b7927,C-VALIDATION-SERVICE,Web Service,Elevation of Privilege,"Attackers craft and inject malicious content, e.g., SQLi",Implement proper parsing and input validation,"<p>Ensure the security of your server-side web service, including REST APIs and gRPC services, by implementing effective parsing and input validation. Proper execution of these practices prevents security vulnerabilities such as injection attacks, buffer overflows, and other forms of malicious input manipulation. The following steps, designed for developers with no previous security experience, provide a guideline to implement these measures:</p>
+<strong>Steps for Robust Parsing and Input Validation:</strong>
+<ul> <li>Enforce strict input validation checks. Verify that all user-provided data matches the expected format, length, and data type. Employ regular expressions for the validation of complex input patterns, ensuring that data conforms to predefined formats.</li> <li>Adopt a whitelisting approach for input validation. Explicitly define and accept only known, safe input patterns, rather than attempting to identify and block potentially harmful inputs.</li> <li>Handle special characters with care, especially in contexts where they might be interpreted as executable or control characters. This step is crucial for preventing injection attacks.</li> <li>Utilize input sanitization techniques. Employ encoding or proper filtering strategies to neutralize or strip out potentially dangerous characters or patterns from user inputs.</li> <li>Employ established libraries and tools for their robust input validation and parsing features. This approach minimizes the risk of errors that could lead to vulnerabilities.</li> <li>Implement both client-side and server-side validation to improve user experience by providing immediate feedback through client-side validation, while relying on server-side validation as the ultimate enforcement point to ensure security.</li> <li>Develop secure error-handling practices. Ensure that error messages do not disclose sensitive information that could be exploited by attackers.</li> <li>Incorporate automated tools for scanning and testing your application regularly. This helps in early detection and fixing of potential issues related to input validation and parsing.</li> </ul>
+<p>By following these actionable steps and adhering to good security practices, you can significantly reduce the risk of security breaches and vulnerabilities in your web service. Regularly update your knowledge on security best practices and tools from reliable sources such as the Open Web Application Security Project (OWASP) to stay ahead of potential threats.</p> ",recommended,not-tested
+12457d54-fa58-401e-9014-dc6ffbab43a6,C-WEB-UI-C3,Web UI,Tampering,Attackers can exploit vulnerabilities in third-party dependencies leading to security breaches,"Regularly update dependencies, use dependency scanning tools, and follow best practices for secure coding","<p>Implementing a process to regularly update dependencies, utilize dependency scanning tools, and follow best practices for secure coding is essential in maintaining the security and integrity of your software. This proactive approach helps mitigate vulnerabilities, reduce the attack surface, and ensure the application remains robust against emerging threats. Here's how to approach each aspect effectively:</p>
+<p><strong>Regularly Update Dependencies</strong></p>
+<p>Dependencies, such as libraries and frameworks, are often updated to patch security vulnerabilities, fix bugs, and add new features. Keeping these dependencies up to date is crucial.</p>
+<ol>
+ <li><strong>Automate Updates:</strong> Use tools like Dependabot (GitHub), Renovate, or npm audit (for Node.js projects) to automate the detection of outdated dependencies. These tools can be configured to automatically create pull requests for updates.</li>
+ <li><strong>Subscribe to Vulnerability Alerts:</strong> Many platforms offer vulnerability alerts for project dependencies. Enable these alerts to be notified when a dependency needs to be updated due to a security issue.</li>
+ <li><strong>Regular Review:</strong> Schedule regular intervals (e.g., monthly or quarterly) to review and update dependencies, even if automated tools are in place. This ensures that updates don't introduce breaking changes or new vulnerabilities.</li>
+</ol>
+<p><strong>Use Dependency Scanning Tools</strong></p>
+<p>Dependency scanning tools analyze your project's dependencies for known vulnerabilities, licensing issues, and sometimes even code quality.</p>
+<ol>
+ <li><strong>Integrate Scanning into CI/CD Pipeline:</strong> Tools like Snyk, OWASP Dependency-Check, and SonarQube can be integrated into your Continuous Integration/Continuous Deployment (CI/CD) pipeline. This allows for automatic scanning of dependencies whenever code is committed or before deployment.</li>
+ <li><strong>Act on Findings:</strong> Prioritize and address the vulnerabilities found by scanning tools based on their severity. Some tools provide recommendations or even automated fixes for vulnerabilities.</li>
+ <li><strong>Audit Dependencies:</strong> Regularly audit your project's dependency tree to identify and remove unused or unnecessary dependencies, reducing potential attack vectors.</li>
+</ol>
+<p><strong>Follow Best Practices for Secure Coding</strong></p>
+<p>Adhering to secure coding practices is fundamental in developing resilient software that is resistant to attacks.</p>
+<ol>
+ <li><strong>Adopt a Security Coding Standard:</strong> Follow a coding standard focused on security, such as the OWASP Secure Coding Practices, to minimize the introduction of new vulnerabilities.</li>
+ <li><strong>Perform Code Reviews:</strong> Implement a peer review process where code is examined by one or more developers other than the author. This helps catch security flaws, bugs, and ensures adherence to coding standards.</li>
+ <li><strong>Educate Your Team:</strong> Regularly train developers on secure coding practices, emerging vulnerabilities, and defensive programming techniques. Consider conducting security awareness sessions and workshops.</li>
+ <li><strong>Use Static Analysis Security Testing (SAST):</strong> Integrate SAST tools into your development process to automatically analyze source code for potential security issues.</li>
+ <li><strong>Dynamic Analysis Security Testing (DAST):</strong> Use DAST tools to test your applications in runtime, simulating attacks on live applications to identify vulnerabilities that static analysis might miss.</li>
+</ol>
+<p><strong>References and Good Practices</strong></p>
+<ul>
+ <li><strong>OWASP:</strong> Utilize resources from the Open Web Application Security Project (OWASP) for the latest in web application security, including the OWASP Top Ten, which outlines the most critical web application security risks.</li>
+ <li><strong>Keep Documentation:</strong> Document your security practices, dependency management policies, and update procedures. This helps maintain consistency and ensures new team members can follow established protocols.</li>
+ <li><strong>Regular Security Assessments:</strong> Beyond just dependency management and secure coding, conduct regular security assessments, including penetration testing, to identify and mitigate risks.</li>
+</ul>
+<p>By systematically updating dependencies, using dependency scanning tools, and adhering to secure coding practices, you can significantly enhance the security posture of your software projects, protecting both your data and your users.</p>",recommended,not-tested
+1d6930f5-4715-48de-830f-79e5e666536a,C-HARDENED-CONFIGURATION,Web Service,Information Disclosure,"Attackers access information, including secrets, through misconfiguration, errors, or logging","Limit information leakage, e.g., via hardened configuration","<p>Limiting information leakage in your server-side web service, such as a REST API or a gRPC service, is crucial to protect sensitive information from being exposed through various channels like error messages, system logs, or misconfigurations. Follow these actionable steps to harden your service's configuration against unintended data exposure, suitable for developers without previous security experience:</p>
+<strong>Key Strategies to Limit Information Leakage:</strong>
+<ul> <li>Display minimalistic error messages that do not reveal internal details about the service's structure or state. Error messages should be generic enough to inform the user of the problem without disclosing sensitive information.</li> <li>Alter default configurations immediately after service setup to ensure that security settings are optimized and not left at their less secure, default state.</li> <li>Restrict access to the service and its logs strictly to authorized personnel. Ensure that administrative interfaces and log files are not accessible to unauthorized users.</li> <li>Apply data masking techniques for outputs that may display sensitive information. This is especially important for personal or financial data to prevent direct exposure to unauthorized viewers.</li> <li>Configure network settings and firewalls diligently to close off unnecessary open ports and correct misconfigured services that might inadvertently expose sensitive data.</li> <li>Implement Content Security Policies (CSP) to restrict what resources can be loaded and executed by the service, reducing the risk of data leakage via XSS attacks or other vector exploits.</li> <li>Manage file and directory permissions meticulously to prevent unauthorized access to files containing sensitive information. Only essential access rights should be granted, based on the principle of least privilege.</li> <li>Encrypt sensitive data in transit and at rest. Utilizing strong encryption methods ensures that, even if data is somehow accessed, it remains unintelligible without the decryption keys.</li> </ul>
+<p>Adhering to these steps not only enhances your web service's security posture but also aligns with good security practices recommended by leading security organizations, such as OWASP (Open Web Application Security Project). Regularly review and update your service's configurations to adapt to evolving security threats and protect against information leakage.</p> ",recommended,not-tested
+2e8c1c76-b29b-450c-b031-8f534599356b,C-SERVICE-RESTRICTIONS,Web Service,Denial of Service,"Attackers abuse the service, e.g., lack of rate limiting",Implement service restrictions,"<p>Implement service restrictions effectively to safeguard your server-side web service, including REST APIs and gRPC services, against unauthorized use and potential security threats. Follow these actionable steps, designed even for developers with no prior security background, to mitigate risks such as brute force attacks, denial-of-service (DoS) attempts, and unwarranted resource consumption.</p>
+<strong>Implementing Rate Limiting and Service Restrictions:</strong>
+<ul> <li>Introduce rate-limiting mechanisms. Use a library or module specific to your development framework to limit the number of requests a user or client can make within a given timeframe. This measure is crucial for preventing overuse and abuse of the service.</li> <li>Establish granular rate limits for various actions or API endpoints. Analyze the functionality and sensitivity of different parts of your service to apply more stringent limits where necessary. For instance, login attempts may require stricter limits compared to general data retrieval operations.</li> <li>Set time windows for rate limiting that reflect the expected traffic patterns. Shorter windows can prevent burst traffic from causing harm, while longer windows prevent sustained high usage. Adjust these windows based on real-world usage data and analytics.</li> <li>Consider implementing graceful degradation strategies. During peak loads or detected attacks, dynamically adjust rate limits or temporarily degrade service for non-critical functionalities to ensure availability of core features.</li> <li>Use whitelisting and blacklisting to control access. Allow trusted clients or users unfettered access by whitelisting their IPs or accounts, and blacklist entities that exhibit malicious behavior or violate usage policies.</li> <li>Deploy comprehensive monitoring and logging. Utilize tools and practices that enable you to observe traffic in real-time, recognize patterns indicative of abuse, and maintain records for investigating security incidents.</li> <li>Incorporate additional security layers. Integrate solutions like Web Application Firewalls (WAFs) and Intrusion Detection Systems (IDS) to defend against a broader spectrum of threats, including sophisticated DoS and DDoS attacks.</li> </ul>
+<p>Refer to reputable security frameworks and guidelines, such as those provided by OWASP (Open Web Application Security Project), to further enhance your service's security posture. Staying informed about the latest security best practices and vulnerabilities in web services is crucial for maintaining a robust defense against evolving threats.</p> ",recommended,not-tested
+4935dc6a-bcf3-4873-9602-ba04b246e9c9,C-POSTGRESQL-CNT-POSTGRES-08,PostgreSQL,Information Disclosure,Attackers exfiltrate data due to insecure backup procedures,Implement secure backup procedures with encryption and access controls,"<p>Implement and regularly update secure backup procedures with encryption and access controls for PostgreSQL to protect backup data against unauthorized access and tampering. This control ensures that all backup files are encrypted using strong cryptographic standards (e.g., AES-256) and that access to these backups is restricted to authorized personnel only. Developers and DevOps engineers should integrate secure backup mechanisms into their PostgreSQL deployment process using automated backup tools and centralized management systems to enforce encryption and access policies consistently.</p><p><strong>Implementation Steps:</strong></p><p><strong>Encrypt Backup Files:</strong><br>Configure backup tools to encrypt PostgreSQL backup files using robust encryption algorithms before storage or transmission.</p><p><strong>Enforce Access Controls:</strong><br>Use OS-level permissions, cloud storage access policies, or centralized management tools to restrict backup file access to authorized users only.</p><p><strong>Automate Backup Processes:</strong><br>Integrate automated backup solutions that enforce encryption and access controls, ensuring consistent and secure backup routines across all PostgreSQL instances.</p><p><strong>Monitor and Audit Backup Procedures:</strong><br>Regularly review backup logs and conduct audits to verify that encryption and access controls are maintained and that backup data remains secure.</p><p><strong>References:</strong></p><ul><li><a href=""https://www.postgresql.org/docs/current/backup.html"">PostgreSQL Backup and Restore Documentation</a></li></ul>",recommended,not-tested
+5d601112-ac8f-4e1a-a45a-153c075d7a35,C-POSTGRESQL-CNT-POSTGRES-07,PostgreSQL,Denial of Service,Attackers cause denial of service through resource exhaustion,Implement rate limiting and resource throttling,"<p>Implement and regularly update rate limiting and resource throttling for PostgreSQL to protect against denial-of-service (DoS) attacks and resource exhaustion. This control ensures that query rates and system resource usage (CPU, memory, disk I/O) are constrained within defined limits, preserving database availability and performance even under heavy load or attack conditions. Developers and DevOps engineers should integrate rate limiting into the query processing and utilize OS-level or middleware resource controls, continuously monitoring system performance to adjust thresholds as needed.</p><p><strong>Implementation Steps:</strong></p><p><strong>Define Acceptable Thresholds:</strong><br>Establish baseline limits for the number of queries, connections, and resource usage (CPU, memory, I/O) that the system can handle under normal operation.</p><p><strong>Implement Query Rate Limiting:</strong><br>Use PostgreSQL settings or middleware solutions to limit the rate at which queries are accepted from clients, preventing overload during traffic spikes.</p><p><strong>Configure Resource Throttling:</strong><br>Apply OS-level resource controls (e.g., cgroups on Linux) or similar mechanisms to restrict the CPU and memory usage of PostgreSQL processes, ensuring that no single query or connection can monopolize system resources.</p><p><strong>Monitor and Audit:</strong><br>Continuously track performance metrics and log query activities. Regularly audit resource consumption and adjust thresholds to maintain optimal performance and security.</p><p><strong>References:</strong></p><ul><li><a href=""https://www.postgresql.org/docs/current/performance-tips.html"">PostgreSQL Performance Tips</a></li></ul>",recommended,not-tested
+67287e26-10bd-4ae5-9f65-164b06db4929,C-WEB-UI-C1,Web UI,Elevation of Privilege,Attackers may exploit weaknesses in authentication and authorization mechanisms,Implement strong authentication mechanisms and follow the least privilege principle,"<p>To enhance the security of your web UI, implementing strong authentication mechanisms is crucial. Follow these steps to ensure that access to your system is securely controlled.</p>
+<p>Step 1: Use Multi-Factor Authentication (MFA)</p>
+<p><strong>Enable MFA:</strong> Ensure your authentication system supports Multi-Factor Authentication. MFA requires users to provide two or more verification factors to gain access, significantly increasing security.</p>
+<p><strong>Integrate with Trusted Providers:</strong> Use well-established MFA providers or frameworks that support various verification methods, such as SMS codes, email verification, authenticator apps, or hardware tokens.</p>
+<p>Step 2: Enforce Strong Password Policies</p>
+<p><strong>Set Complexity Requirements:</strong> Define password policies that require a mix of upper and lower case letters, numbers, and special characters. Ensure passwords are of a minimum length (e.g., 12 characters).</p>
+<p><strong>Implement Account Lockout Mechanisms:</strong> To prevent brute force attacks, temporarily lock accounts after several unsuccessful login attempts.</p>
+<p><strong>Use Password Alternatives:</strong> Where possible, encourage or enforce the use of passphrase alternatives, biometrics, or other more secure authentication methods.</p>
+<p>Step 3: Regularly Update Authentication Systems</p>
+<p><strong>Patch and Update:</strong> Keep your authentication systems up-to-date with the latest security patches and updates.</p>
+<p><strong>Audit and Review:</strong> Regularly audit authentication mechanisms for vulnerabilities. Use security scanning tools and consider external security audits.</p>
+<p><strong>Follow the Least Privilege Principle</strong></p>
+<p>The principle of least privilege ensures that users and systems have only the minimum levels of access—or permissions—needed to perform their tasks. This reduces the potential impact of a compromise.</p>
+<p>Step 1: Define Access Levels</p>
+<p><strong>Identify Roles:</strong> Define clear roles within your application (e.g., user, admin, moderator) and specify the access level for each.</p>
+<p><strong>Assign Permissions:</strong> Assign permissions based on roles. Ensure that each role has the least amount of privilege necessary to perform its functions.</p>
+<p>Step 2: Implement Role-Based Access Control (RBAC)</p>
+<p><strong>Use RBAC Systems:</strong> Implement or utilize an existing RBAC system that allows for easy management of roles and permissions.</p>
+<p><strong>Regularly Review Access:</strong> Periodically review roles and permissions to ensure they are still appropriate for each user’s needs.</p>
+<p>Step 3: Monitor and Audit Access</p>
+<p><strong>Logging:</strong> Ensure that access and activities are logged. Keep an audit trail that can be reviewed in the event of a security incident.</p>
+<p><strong>Alerts:</strong> Set up alerts for unusual access patterns or administrative actions, which can help in early detection of security breaches.</p>
+<p><strong>Additional Good Security Practices</strong></p>
+<ul>
+ <li><strong>Security Training:</strong> Regularly train developers and users on the importance of strong authentication practices and the principle of least privilege.</li>
+ <li><strong>Use Secure Communication:</strong> Ensure that authentication data, such as passwords and tokens, are always transmitted over secure channels (e.g., HTTPS).</li>
+ <li><strong>Periodic Security Assessments:</strong> Conduct periodic security assessments and penetration testing to identify and mitigate potential vulnerabilities in your authentication mechanism and access control policies.</li>
+</ul>
+<p>Implementing these measures will significantly strengthen the security of your web UI by ensuring that only authorized users can access sensitive information and functionality, and that they can only perform actions necessary for their role.</p>",recommended,not-tested
+674654e9-71ec-46c9-a7fb-42c02632175e,C-VALIDATE-SERIALIZED,Web Service,Tampering,Attackers leverage deserialization flaws to execute malicious code,Validate and sanitize serialized data,"<p>Validating and sanitizing serialized data is essential for maintaining the integrity and security of data within your server-side web service, including REST APIs and gRPC services. These measures are crucial to prevent injection attacks, data tampering, and other vulnerabilities associated with serialization and deserialization processes. Follow these actionable steps to secure your data serialization practices:</p>
+<strong>Guidelines for Secure Serialization and Deserialization:</strong>
+<ul> <li>Conduct rigorous input validation on all serialized data. Ensure that it matches the expected structure, format, and content. Reject any data that fails to meet these predefined standards.</li> <li>Implement schema validation for serialized data. Utilize tools that can check incoming data against a defined schema to confirm its validity and structure.</li> <li>Create a whitelist of permissible values for each field within your serialized data. Disallow any data containing values not included in this list, mitigating the risk of harmful content injections.</li> <li>Impose restrictions on the size and length of serialized data. This limits potential attack vectors by reducing the amount of data an attacker can manipulate.</li> <li>Apply sanitization techniques to serialized data. Remove or alter characters or sequences that could be exploited for malicious purposes.</li> <li>Select secure and regularly updated libraries for data serialization and deserialization. Libraries like Jackson for Java offer built-in security features and are actively maintained to address new vulnerabilities.</li> <li>Incorporate digital signatures with serialized data. This step verifies the authenticity and integrity of the data, ensuring it has not been altered in transit.</li> <li>Establish a robust logging and monitoring system. Keep detailed records of deserialization events and anomalies to detect and respond to potential security incidents swiftly.</li> </ul>
+<p>By adhering to these steps and integrating security best practices into your development process, you can significantly enhance the safety of your web service. Continuously update your knowledge and tools based on the latest security research and recommendations from authoritative sources, such as OWASP (Open Web Application Security Project), to protect against evolving threats.</p> ",recommended,not-tested
+7cc5c5af-7625-4c15-b967-b64936963c24,C-TLS-SERVICE,Web Service,Tampering,Attackers use Man-in-the-Middle (MitM) to intercept communications,"Secure communication channels, e.g., use TLS","<p>Securing communication channels is critical for any server-side web service, such as REST APIs and gRPC services, to protect data from eavesdropping, tampering, and unauthorized access. Implementing Transport Layer Security (TLS) is a foundational step towards achieving this goal. Here are actionable steps to ensure secure communication through TLS, suitable for developers without previous security experience:</p>
+<strong>Steps for Implementing TLS:</strong>
+<ul> <li>Adopt the latest version of TLS (e.g., TLS 1.2 or higher) to leverage advanced security features and address vulnerabilities found in older versions.</li> <li>Ensure digital certificates used for TLS are properly managed. Certificates should be signed by a trusted Certificate Authority (CA), kept up-to-date, and renewed regularly.</li> <li>Select strong and secure cipher suites for the service configuration, which are essential for providing effective encryption, key exchange, and authentication.</li> <li>Enable Perfect Forward Secrecy (PFS) to guarantee that each session's encryption keys are unique and cannot be compromised even if the long-term keys are.</li> <li>Implement HTTP Strict Transport Security (HSTS) to force web browsers to establish connections only over HTTPS, minimizing the risk of downgrade attacks.</li> <li>Create a protocol for continuous monitoring and auditing of your TLS settings to quickly identify and fix any vulnerabilities or configuration errors.</li> <li>For services requiring authentication, configure TLS to request and validate client certificates during the handshake, enhancing mutual authentication.</li> <li>Practice secure key management to protect the confidentiality and integrity of cryptographic keys involved in the TLS process.</li> </ul>
+<p>By following these guidelines and incorporating security best practices into your development and deployment processes, you can significantly strengthen the security of your web service. Regular updates and audits of your TLS configuration, in line with recommendations from security experts and organizations such as the Open Web Application Security Project (OWASP), are crucial for maintaining a high level of protection against emerging threats.</p> ",recommended,not-tested
+8f0616f9-9432-41b2-a635-4b8ab12eb449,C-STRONG-AUTHENTICATION,Web Service,Elevation of Privilege,Attackers bypass authentication and gain unauthorized access,Use strong authentication mechanisms,"<p>Secure your server-side web service, be it a REST API or a gRPC service, by implementing robust authentication mechanisms. This will ensure that only authorized users or systems can access and interact with your service. Here are actionable steps that developers, even those without prior security knowledge, can follow to strengthen authentication:</p>
+<strong>Key Steps to Enhance Authentication:</strong>
+<ul> <li>Adopt multi-factor authentication (MFA). For APIs, combine traditional methods like API keys or client credentials with dynamic security tokens that change periodically, adding an extra layer of security.</li> <li>Utilize industry-standard authentication and authorization protocols such as OAuth and OpenID Connect. These protocols provide a secure and standardized way for clients to request and use access tokens effectively safeguarding access to your services.</li> <li>Implement strong password policies. Enforce rules on password complexity, such as minimum length, inclusion of uppercase and lowercase letters, numbers, and symbols, and mandate regular password updates.</li> <li>Follow secure session management practices. Use secure, randomly generated session identifiers, enforce session expiration after a period of inactivity, and protect against session hijacking attacks.</li> <li>Consider adaptive authentication methods that gauge the authentication requirements based on context, like the user's location, device, or the sensitivity of the operation being requested.</li> <li>For machine-to-machine interactions or when strong client authentication is necessary, use client certificate authentication. This ensures that only clients with a valid certificate can establish connections.</li> <li>Deploy account lockout mechanisms to lock or suspend user accounts after several unsuccessful login attempts, protecting against brute-force attacks.</li> <li>Ensure secure transmission of credentials using encrypted channels, preferably HTTPS, to protect data in transit.</li> <li>Maintain secure user account management. Regularly review user access privileges, promptly deactivate inactive accounts, and immediately revoke access for users who leave the organization or whose accounts are compromised.</li> <li>Enable detailed logging and monitoring of authentication attempts to identify and investigate suspicious activities promptly.</li> </ul>
+<p>Following these steps and adhering to established security practices, such as those recommended by the Open Web Application Security Project (OWASP), can significantly mitigate unauthorized access and potential security threats to your web service.</p> ",recommended,not-tested
+9d684bb6-7e19-436e-b91d-00d8b43f804c,C-POSTGRESQL-CNT-POSTGRES-06,PostgreSQL,Tampering,Attackers tamper with data due to insecure file permissions,Enforce secure file permissions on PostgreSQL database files,"<p>Implement and regularly update strict file system permissions for PostgreSQL database files to ensure that only authorized users and processes can access or modify them. This control minimizes the risk of unauthorized data tampering and exposure by using OS-level security settings (such as chmod/chown on Linux) to restrict access to sensitive files. Developers and DevOps engineers should integrate these practices into their deployment procedures, using centralized configuration management tools to enforce and monitor secure file permissions across all database servers.</p><p><strong>References:</strong></p><ul><li><a href=""https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/stable-en/02-checklist/05-checklist"">OWASP Secure Coding Practices - Access Control</a></li></ul>",recommended,not-tested
+ac8823a1-3399-4498-99e9-2c3c7590e897,C-WEB-UI-C4,Web UI,Tampering,Attackers can inject malicious scripts into web pages viewed by other users,"Implement input validation, output encoding, and enforce Content Security Policy (CSP)","<p>Implementing input validation, output encoding, and enforcing Content Security Policy (CSP) are crucial steps to securing your web UI against a variety of common attacks, such as Cross-Site Scripting (XSS), SQL Injection, and others. Here's how to approach each countermeasure effectively:</p>
+<p><strong>Implement Input Validation</strong></p>
+<p>Input validation ensures that only properly formatted data is entered into your system. Follow these steps:</p>
+<ol>
+ <li><strong>Define Acceptable Input:</strong> Clearly specify what constitutes valid input for each field (e.g., types, lengths, formats, and ranges) in your application. Use regular expressions for pattern matching where applicable.</li>
+ <li><strong>Validate All Inputs:</strong> Apply validation to all received data, whether from users, files, or other systems. This includes data from forms, query parameters, cookies, and any external sources.</li>
+ <li><strong>Use Existing Libraries:</strong> Leverage existing, well-tested validation libraries and frameworks for your programming language or platform, rather than writing your own validation code from scratch.</li>
+ <li><strong>Reject Invalid Input:</strong> If input validation fails, reject the input, log the event for monitoring potential attacks, and provide user feedback that guides them toward correct input without revealing too much about the underlying validation logic or application architecture.</li>
+</ol>
+<p><strong>Implement Output Encoding</strong></p>
+<p>Output encoding transforms special characters into a safe format that prevents the browser from executing them as code. This is especially important to mitigate XSS attacks.</p>
+<ol>
+ <li><strong>Encode Data:</strong> Encode all dynamic data displayed to users, especially data that comes from user input, external systems, or databases. Use HTML entity encoding for content displayed in HTML.</li>
+ <li><strong>Use Context-Specific Encoding:</strong> The encoding method should match the context where the data is displayed (e.g., HTML, JavaScript, CSS, URL). Libraries like OWASP's ESAPI provide context-specific encoding functions.</li>
+ <li><strong>Adopt Secure Frameworks:</strong> Modern web frameworks often provide automatic output encoding. Familiarize yourself with and enable these features in your framework.</li>
+</ol>
+<p><strong>Enforce Content Security Policy (CSP)</strong></p>
+<p>CSP is a browser feature that helps detect and mitigate certain types of attacks, including XSS and data injection attacks, by allowing web developers to declare which dynamic resources are allowed to load.</p>
+<ol>
+ <li><strong>Define a CSP Policy:</strong> Create a CSP policy that specifies which sources your web application is allowed to load resources from. Start with a strict policy that only allows resources from your domain, and then incrementally allow additional sources as needed.</li>
+ <li><strong>Use CSP Directives:</strong> Utilize directives like <strong>default-src</strong>, <strong>script-src</strong>, <strong>img-src</strong>, <strong>style-src</strong>, and others to control specific resources. Use the <strong>nonce</strong> attribute for inline scripts and styles if they are necessary.</li>
+ <li><strong>Test Your Policy:</strong> Before deploying, test your CSP policy to ensure it doesn't break your web application's functionality. Tools like Google Chrome's Developer Tools can help identify and debug CSP violations.</li>
+ <li><strong>Implement Reporting:</strong> CSP can be configured to send reports of policy violations to a server endpoint. This is invaluable for detecting and responding to attacks in real-time.</li>
+</ol>
+<p><strong>References and Good Practices</strong></p>
+<ul>
+ <li><strong>OWASP (Open Web Application Security Project):</strong> Refer to OWASP's guides and cheat sheets for detailed best practices on input validation, output encoding, and implementing CSP.</li>
+ <li><strong>Web Framework Security Features:</strong> Use security features built into your web development framework. Frameworks like Django, Ruby on Rails, and ASP.NET have built-in protections against many common web vulnerabilities.</li>
+ <li><strong>Continuous Education:</strong> Stay updated on the latest security practices and vulnerabilities affecting web applications. Regularly update your skills and your application's libraries and frameworks.</li>
+</ul>
+<p>By following these guidelines, developers can significantly enhance the security of their web UI components against a range of common web vulnerabilities.</p>",recommended,not-tested
+b130a845-09f1-4633-af89-29218a5ee7f3,C-SECRETS,Web Service,Information Disclosure,"Attackers access information, including secrets, through misconfiguration, errors, or logging",Use secure methods to handle secrets and other sensitive information,"<p>Protecting secrets and other sensitive information is paramount for any server-side web service, including REST APIs and gRPC services, to prevent unauthorized access and data breaches. Follow these actionable steps to securely manage such critical data, suitable even for developers without prior security experience:</p>
+<strong>Secure Handling of Secrets and Sensitive Information:</strong>
+<ul> <li>Securely store sensitive data by avoiding plaintext storage of passwords and employing strong encryption mechanisms for all sensitive information.</li> <li>Utilize secure credential vaults or management systems for centralizing the protection of sensitive data. These tools offer encryption, stringent access controls, and auditing capabilities to safeguard secrets.</li> <li>Ensure the secure generation, storage, and transmission of API keys or tokens. Communicate over secure protocols like HTTPS to protect the integrity and confidentiality of these credentials.</li> <li>Adopt a regular rotation policy for all secrets, such as passwords, API keys, and tokens, to mitigate the risk of old credentials being exploited.</li> <li>Encrypt all secrets during transit between different components of your service, ensuring they are not exposed to eavesdropping or interception.</li> <li>For password transmission, always use HTTPS and avoid including passwords in URL parameters. Implement secure password hashing and salting techniques to protect stored passwords.</li> <li>Apply strict access control measures to limit access to sensitive information, adhering to the principle of least privilege. Ensure users and services have only the access necessary for their function.</li> <li>Maintain sensitive configuration files securely and separately from the codebase to prevent accidental exposure. Avoid hardcoding secrets in source code.</li> <li>Set up auditing and monitoring to quickly detect unauthorized attempts to access sensitive information and to ensure compliance with security policies.</li> <li>When deploying services, carefully handle the transfer of secrets to production environments to prevent leakage or exposure during the deployment phase.</li> </ul>
+<p>By adhering to these guidelines and incorporating security best practices from authoritative sources like OWASP (Open Web Application Security Project), you can significantly enhance the security posture of your web service, protecting it and its users from potential threats.</p> ",recommended,not-tested
+cfc1e672-e429-4137-aa5d-72435798ba3d,C-POSTGRESQL-CNT-POSTGRES-04,PostgreSQL,Information Disclosure,Attackers exploit misconfigurations in postgresql settings,Harden postgresql configuration and restrict network access,"<p>Implement and regularly update a hardened PostgreSQL configuration and restrict network access to protect sensitive data and prevent unauthorized access. This control ensures that PostgreSQL is deployed with secure settings—disabling unnecessary features and default behaviors—and that network access is limited to trusted hosts using firewall rules, security groups, or VLAN segmentation. Developers and DevOps engineers should integrate these practices into the PostgreSQL deployment and maintenance process, ensuring that configurations are reviewed regularly and network access policies are enforced via centralized management tools.</p><p><strong>Implementation Steps:</strong></p><p><strong>Harden PostgreSQL Configuration:</strong><br>Review and update the PostgreSQL configuration (e.g., postgresql.conf and pg_hba.conf) to disable unnecessary services, enforce strong security parameters, and enable robust logging and auditing.</p><p><strong>Restrict Network Access:</strong><br>Deploy PostgreSQL in private network segments and use firewall rules or cloud security groups to allow access only from authorized IP addresses or subnets.</p><p><strong>Regularly Audit and Update:</strong><br>Perform periodic security audits and configuration reviews to ensure that both the database settings and network access policies remain aligned with evolving security best practices.</p><p><strong>References:</strong></p><ul><li><a href=""https://www.postgresql.org/support/security/"">PostgreSQL Security Documentation</a></li></ul>",recommended,not-tested
+da4820e7-1f57-40a4-983a-1ddf210dbddf,C-POSTGRESQL-CNT-POSTGRES-01,PostgreSQL,Spoofing,Attackers gain unauthorized access due to weak authentication,Implement robust authentication and role-based access control,"<p>Implement and regularly update robust authentication and role-based access control for PostgreSQL to ensure that only verified users with appropriate privileges can access and manage the database. This control mandates the use of strong authentication mechanisms (such as multi-factor authentication and complex passwords) and granular role-based access control (RBAC) to restrict permissions according to the principle of least privilege. Developers and DevOps engineers should integrate these practices into the PostgreSQL deployment using centralized identity management systems and enforce policies via configuration management tools.</p><p><strong>Implementation Steps:</strong></p><p><strong>Enforce Strong Authentication:</strong><br>Configure PostgreSQL to require strong passwords and, where applicable, integrate with external identity providers (e.g., LDAP, Active Directory) that support multi-factor authentication.</p><p><strong>Implement Role-Based Access Control (RBAC):</strong><br>Define roles with specific permissions and assign users only the privileges necessary for their responsibilities. Regularly review and adjust roles to ensure they align with current security policies.</p><p><strong>Centralize Authentication Management:</strong><br>Leverage centralized identity management systems to streamline user provisioning, password policies, and access audits across all PostgreSQL instances.</p><p><strong>Monitor and Audit:</strong><br>Enable detailed logging of authentication attempts and role changes. Periodically audit access logs and RBAC configurations to ensure compliance and detect potential anomalies.</p><p><strong>References:</strong></p><ul><li><a href=""https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html"">OWASP Authentication Cheat Sheet</a></li></ul>",recommended,not-tested
+fa0a458b-44ad-404c-b0c6-35893d30d68f,C-POSTGRESQL-CNT-POSTGRES-05,PostgreSQL,Tampering,Attackers exploit outdated postgresql vulnerabilities,Regularly update postgresql to the latest secure version,"<p>Implement and regularly update PostgreSQL to the latest secure version to ensure that all known vulnerabilities are patched and that the database benefits from the latest security enhancements. This control minimizes the risk of exploitation by integrating an effective patch management process that monitors for new releases, tests updates in a controlled environment, and deploys them consistently across all systems. Developers and DevOps engineers should incorporate this practice into their routine maintenance processes, using automated tools where possible to ensure compliance with security best practices.</p><p><strong>Implementation Steps:</strong></p><p><strong>Monitor for New Releases:</strong><br>Subscribe to PostgreSQL security bulletins and regularly review release notes to stay informed about patches and updates.</p><p><strong>Test Updates in Staging:</strong><br>Validate new PostgreSQL versions in a controlled environment to ensure compatibility and stability with existing applications before production deployment.</p><p><strong>Automate Deployment:</strong><br>Use automated deployment tools or scripts to ensure that updates are applied consistently and promptly across all PostgreSQL instances.</p><p><strong>Audit and Verify Compliance:</strong><br>Regularly review version inventories and update logs to confirm that all systems are running the latest secure version of PostgreSQL.</p><p><strong>References:</strong></p><ul><li><a href=""https://www.postgresql.org/docs/current/release.html"">PostgreSQL Release Notes</a></li></ul>",recommended,not-tested
+fc9242ac-9d84-4d01-a0e8-700602f9fdcb,C-POSTGRESQL-CNT-POSTGRES-03,PostgreSQL,Information Disclosure,Attackers intercept data due to unencrypted communications,Enforce TLS encryption for all connections,"<p>Implement and regularly update TLS encryption for all connections to PostgreSQL to secure data in transit against eavesdropping and man-in-the-middle attacks. This control mandates that all client-to-server and inter-node communications are encrypted using strong TLS protocols (e.g., TLS 1.2 or TLS 1.3) and that proper certificate management is in place. Developers and DevOps engineers should integrate TLS configuration into the PostgreSQL deployment process and enforce these settings via centralized management tools to maintain a secure network environment.</p><p><strong>Implementation Steps:</strong></p><p><strong>Enable TLS Encryption:</strong><br>Configure PostgreSQL to require TLS for all incoming connections by setting the appropriate parameters in the PostgreSQL configuration file (e.g., ssl = on).</p><p><strong>Configure Strong Cipher Suites:</strong><br>Ensure that only secure TLS versions and cipher suites (e.g., TLS 1.2/1.3) are enabled, and disable deprecated protocols to enhance the encryption strength.</p><p><strong>Manage Certificates Securely:</strong><br>Use a centralized certificate management system to issue, renew, and manage SSL/TLS certificates for PostgreSQL, ensuring that certificates are always up-to-date and trusted.</p><p><strong>Monitor and Audit TLS Usage:</strong><br>Regularly review logs and perform security audits to verify that all connections are using TLS encryption, and adjust configurations as necessary to address emerging threats.</p><p><strong>References:</strong></p><ul><li><a href=""https://www.postgresql.org/docs/current/ssl-tcp.html"">PostgreSQL SSL Support Documentation</a></li></ul>",recommended,not-tested
