@@ -1,0 +1,434 @@
+[
+    {
+        "ID": 0,
+        "Category": "Elevation of Privilege",
+        "Asset": "M1",
+        "Threat": "The  node  is  vulnerable  to  elevation  of  privilege  attacks,  where  an  attacker  gains  higher-level permissions than intended.",
+        "Mitigation": "Apply Least Privilege: Limit access privileges to those essential for performing the intended function. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 1,
+        "Category": "Spoofing",
+        "Asset": "M1",
+        "Threat": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
+        "Mitigation": "Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 2,
+        "Category": "Tampering",
+        "Asset": "M1",
+        "Threat": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Input Sanitization: Check untrusted input and remove anything that might be potentially dangerous. Input Validation: Ensure that only properly formed data is entered into the system. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 3,
+        "Category": "Denial of Service",
+        "Asset": "M1",
+        "Threat": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
+        "Mitigation": "Firewall: Use network appliances to filter ingress or egress traffic. Configure software on endpoints to filter network traffic Mitigate Automated Attacks: Protect against automated attacks such as content scraping, password brute-force, or denial of service attacks.",
+        "Risk": "2 out of 3"
+    },
+    {
+        "ID": 4,
+        "Category": "Information Disclosure",
+        "Asset": "M1",
+        "Threat": "The node leaks pieces of information, such as internal data or authentication material, which could be used to facilitate further attacks",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Redact Sensitive Data: Redact, obfuscate, or tokenize sensitive information such as credit card numbers. Secret Management: Securely encrypt, store, and manage access to secrets such as passwords, tokens, and encryption keys. This includes using centralized vaults, regular rotation, and auditing trails. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 5,
+        "Category": "Repudiation",
+        "Asset": "M1",
+        "Threat": "The node is prone to repudiation threats, where an attacker can deny their actions without the possibility of traceability",
+        "Mitigation": "Enforce Authentication: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Logging and Monitoring: Keep detailed audit logs with timestamps for activities such as user logins, sensitive data access, access control changes, and administrative actions.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 6,
+        "Category": "Elevation of Privilege",
+        "Asset": "M2",
+        "Threat": "The  node  is  vulnerable  to  elevation  of  privilege  attacks,  where  an  attacker  gains  higher-level permissions than intended.",
+        "Mitigation": "Apply Least Privilege: Limit access privileges to those essential for performing the intended function. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 7,
+        "Category": "Spoofing",
+        "Asset": "M2",
+        "Threat": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
+        "Mitigation": "Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 8,
+        "Category": "Tampering",
+        "Asset": "M2",
+        "Threat": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Input Sanitization: Check untrusted input and remove anything that might be potentially dangerous. Input Validation: Ensure that only properly formed data is entered into the system. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 9,
+        "Category": "Denial of Service",
+        "Asset": "M2",
+        "Threat": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
+        "Mitigation": "Firewall: Use network appliances to filter ingress or egress traffic. Configure software on endpoints to filter network traffic Mitigate Automated Attacks: Protect against automated attacks such as content scraping, password brute-force, or denial of service attacks.",
+        "Risk": "2 out of 3"
+    },
+    {
+        "ID": 10,
+        "Category": "Information Disclosure",
+        "Asset": "M2",
+        "Threat": "The node leaks pieces of information, such as internal data or authentication material, which could be used to facilitate further attacks",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Redact Sensitive Data: Redact, obfuscate, or tokenize sensitive information such as credit card numbers. Secret Management: Securely encrypt, store, and manage access to secrets such as passwords, tokens, and encryption keys. This includes using centralized vaults, regular rotation, and auditing trails. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 11,
+        "Category": "Repudiation",
+        "Asset": "M2",
+        "Threat": "The node is prone to repudiation threats, where an attacker can deny their actions without the possibility of traceability",
+        "Mitigation": "Enforce Authentication: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Logging and Monitoring: Keep detailed audit logs with timestamps for activities such as user logins, sensitive data access, access control changes, and administrative actions.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 12,
+        "Category": "Elevation of Privilege",
+        "Asset": "M3",
+        "Threat": "The  node  is  vulnerable  to  elevation  of  privilege  attacks,  where  an  attacker  gains  higher-level permissions than intended.",
+        "Mitigation": "Apply Least Privilege: Limit access privileges to those essential for performing the intended function. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 13,
+        "Category": "Spoofing",
+        "Asset": "M3",
+        "Threat": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
+        "Mitigation": "Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 14,
+        "Category": "Tampering",
+        "Asset": "M3",
+        "Threat": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Input Sanitization: Check untrusted input and remove anything that might be potentially dangerous. Input Validation: Ensure that only properly formed data is entered into the system. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 15,
+        "Category": "Denial of Service",
+        "Asset": "M3",
+        "Threat": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
+        "Mitigation": "Firewall: Use network appliances to filter ingress or egress traffic. Configure software on endpoints to filter network traffic Mitigate Automated Attacks: Protect against automated attacks such as content scraping, password brute-force, or denial of service attacks.",
+        "Risk": "2 out of 3"
+    },
+    {
+        "ID": 16,
+        "Category": "Information Disclosure",
+        "Asset": "M3",
+        "Threat": "The node leaks pieces of information, such as internal data or authentication material, which could be used to facilitate further attacks",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Redact Sensitive Data: Redact, obfuscate, or tokenize sensitive information such as credit card numbers. Secret Management: Securely encrypt, store, and manage access to secrets such as passwords, tokens, and encryption keys. This includes using centralized vaults, regular rotation, and auditing trails. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 17,
+        "Category": "Repudiation",
+        "Asset": "M3",
+        "Threat": "The node is prone to repudiation threats, where an attacker can deny their actions without the possibility of traceability",
+        "Mitigation": "Enforce Authentication: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Logging and Monitoring: Keep detailed audit logs with timestamps for activities such as user logins, sensitive data access, access control changes, and administrative actions.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 18,
+        "Category": "Elevation of Privilege",
+        "Asset": "EdgeRuntime",
+        "Threat": "The  node  is  vulnerable  to  elevation  of  privilege  attacks,  where  an  attacker  gains  higher-level permissions than intended.",
+        "Mitigation": "Apply Least Privilege: Limit access privileges to those essential for performing the intended function. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 19,
+        "Category": "Spoofing",
+        "Asset": "EdgeRuntime",
+        "Threat": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
+        "Mitigation": "Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 20,
+        "Category": "Tampering",
+        "Asset": "EdgeRuntime",
+        "Threat": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Input Sanitization: Check untrusted input and remove anything that might be potentially dangerous. Input Validation: Ensure that only properly formed data is entered into the system. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 21,
+        "Category": "Denial of Service",
+        "Asset": "EdgeRuntime",
+        "Threat": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
+        "Mitigation": "Firewall: Use network appliances to filter ingress or egress traffic. Configure software on endpoints to filter network traffic Mitigate Automated Attacks: Protect against automated attacks such as content scraping, password brute-force, or denial of service attacks.",
+        "Risk": "2 out of 3"
+    },
+    {
+        "ID": 22,
+        "Category": "Information Disclosure",
+        "Asset": "EdgeRuntime",
+        "Threat": "The node leaks pieces of information, such as internal data or authentication material, which could be used to facilitate further attacks",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Redact Sensitive Data: Redact, obfuscate, or tokenize sensitive information such as credit card numbers. Secret Management: Securely encrypt, store, and manage access to secrets such as passwords, tokens, and encryption keys. This includes using centralized vaults, regular rotation, and auditing trails. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 23,
+        "Category": "Repudiation",
+        "Asset": "EdgeRuntime",
+        "Threat": "The node is prone to repudiation threats, where an attacker can deny their actions without the possibility of traceability",
+        "Mitigation": "Enforce Authentication: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Logging and Monitoring: Keep detailed audit logs with timestamps for activities such as user logins, sensitive data access, access control changes, and administrative actions.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 24,
+        "Category": "Elevation of Privilege",
+        "Asset": "Browser",
+        "Threat": "The  node  is  vulnerable  to  elevation  of  privilege  attacks,  where  an  attacker  gains  higher-level permissions than intended.",
+        "Mitigation": "Apply Least Privilege: Limit access privileges to those essential for performing the intended function. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 25,
+        "Category": "Spoofing",
+        "Asset": "Browser",
+        "Threat": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
+        "Mitigation": "Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 26,
+        "Category": "Tampering",
+        "Asset": "Browser",
+        "Threat": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Input Sanitization: Check untrusted input and remove anything that might be potentially dangerous. Input Validation: Ensure that only properly formed data is entered into the system. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 27,
+        "Category": "Denial of Service",
+        "Asset": "Browser",
+        "Threat": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
+        "Mitigation": "Firewall: Use network appliances to filter ingress or egress traffic. Configure software on endpoints to filter network traffic Mitigate Automated Attacks: Protect against automated attacks such as content scraping, password brute-force, or denial of service attacks.",
+        "Risk": "2 out of 3"
+    },
+    {
+        "ID": 28,
+        "Category": "Information Disclosure",
+        "Asset": "Browser",
+        "Threat": "The node leaks pieces of information, such as internal data or authentication material, which could be used to facilitate further attacks",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Redact Sensitive Data: Redact, obfuscate, or tokenize sensitive information such as credit card numbers. Secret Management: Securely encrypt, store, and manage access to secrets such as passwords, tokens, and encryption keys. This includes using centralized vaults, regular rotation, and auditing trails. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 29,
+        "Category": "Repudiation",
+        "Asset": "Browser",
+        "Threat": "The node is prone to repudiation threats, where an attacker can deny their actions without the possibility of traceability",
+        "Mitigation": "Enforce Authentication: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Logging and Monitoring: Keep detailed audit logs with timestamps for activities such as user logins, sensitive data access, access control changes, and administrative actions.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 30,
+        "Category": "Elevation of Privilege",
+        "Asset": "Azure IoT Hub",
+        "Threat": "The  node  is  vulnerable  to  elevation  of  privilege  attacks,  where  an  attacker  gains  higher-level permissions than intended.",
+        "Mitigation": "Apply Least Privilege: Limit access privileges to those essential for performing the intended function. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 31,
+        "Category": "Spoofing",
+        "Asset": "Azure IoT Hub",
+        "Threat": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
+        "Mitigation": "Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 32,
+        "Category": "Tampering",
+        "Asset": "Azure IoT Hub",
+        "Threat": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Input Sanitization: Check untrusted input and remove anything that might be potentially dangerous. Input Validation: Ensure that only properly formed data is entered into the system. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 33,
+        "Category": "Denial of Service",
+        "Asset": "Azure IoT Hub",
+        "Threat": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
+        "Mitigation": "Firewall: Use network appliances to filter ingress or egress traffic. Configure software on endpoints to filter network traffic Mitigate Automated Attacks: Protect against automated attacks such as content scraping, password brute-force, or denial of service attacks.",
+        "Risk": "2 out of 3"
+    },
+    {
+        "ID": 34,
+        "Category": "Information Disclosure",
+        "Asset": "Azure IoT Hub",
+        "Threat": "The node leaks pieces of information, such as internal data or authentication material, which could be used to facilitate further attacks",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Redact Sensitive Data: Redact, obfuscate, or tokenize sensitive information such as credit card numbers. Secret Management: Securely encrypt, store, and manage access to secrets such as passwords, tokens, and encryption keys. This includes using centralized vaults, regular rotation, and auditing trails. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 35,
+        "Category": "Repudiation",
+        "Asset": "Azure IoT Hub",
+        "Threat": "The node is prone to repudiation threats, where an attacker can deny their actions without the possibility of traceability",
+        "Mitigation": "Enforce Authentication: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Logging and Monitoring: Keep detailed audit logs with timestamps for activities such as user logins, sensitive data access, access control changes, and administrative actions.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 36,
+        "Category": "Elevation of Privilege",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "The  node  is  vulnerable  to  elevation  of  privilege  attacks,  where  an  attacker  gains  higher-level permissions than intended.",
+        "Mitigation": "Apply Least Privilege: Limit access privileges to those essential for performing the intended function. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 37,
+        "Category": "Spoofing",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
+        "Mitigation": "Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 38,
+        "Category": "Tampering",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Input Sanitization: Check untrusted input and remove anything that might be potentially dangerous. Input Validation: Ensure that only properly formed data is entered into the system. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 39,
+        "Category": "Denial of Service",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
+        "Mitigation": "Firewall: Use network appliances to filter ingress or egress traffic. Configure software on endpoints to filter network traffic Mitigate Automated Attacks: Protect against automated attacks such as content scraping, password brute-force, or denial of service attacks.",
+        "Risk": "2 out of 3"
+    },
+    {
+        "ID": 40,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "The node leaks pieces of information, such as internal data or authentication material, which could be used to facilitate further attacks",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Redact Sensitive Data: Redact, obfuscate, or tokenize sensitive information such as credit card numbers. Secret Management: Securely encrypt, store, and manage access to secrets such as passwords, tokens, and encryption keys. This includes using centralized vaults, regular rotation, and auditing trails. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 41,
+        "Category": "Repudiation",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "The node is prone to repudiation threats, where an attacker can deny their actions without the possibility of traceability",
+        "Mitigation": "Enforce Authentication: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Logging and Monitoring: Keep detailed audit logs with timestamps for activities such as user logins, sensitive data access, access control changes, and administrative actions.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 42,
+        "Category": "Elevation of Privilege",
+        "Asset": "Azure Storage",
+        "Threat": "The  node  is  vulnerable  to  elevation  of  privilege  attacks,  where  an  attacker  gains  higher-level permissions than intended.",
+        "Mitigation": "Apply Least Privilege: Limit access privileges to those essential for performing the intended function. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 43,
+        "Category": "Spoofing",
+        "Asset": "Azure Storage",
+        "Threat": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
+        "Mitigation": "Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 44,
+        "Category": "Tampering",
+        "Asset": "Azure Storage",
+        "Threat": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Input Sanitization: Check untrusted input and remove anything that might be potentially dangerous. Input Validation: Ensure that only properly formed data is entered into the system. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 45,
+        "Category": "Denial of Service",
+        "Asset": "Azure Storage",
+        "Threat": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
+        "Mitigation": "Firewall: Use network appliances to filter ingress or egress traffic. Configure software on endpoints to filter network traffic Mitigate Automated Attacks: Protect against automated attacks such as content scraping, password brute-force, or denial of service attacks.",
+        "Risk": "2 out of 3"
+    },
+    {
+        "ID": 46,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Storage",
+        "Threat": "The node leaks pieces of information, such as internal data or authentication material, which could be used to facilitate further attacks",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Redact Sensitive Data: Redact, obfuscate, or tokenize sensitive information such as credit card numbers. Secret Management: Securely encrypt, store, and manage access to secrets such as passwords, tokens, and encryption keys. This includes using centralized vaults, regular rotation, and auditing trails. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 47,
+        "Category": "Repudiation",
+        "Asset": "Azure Storage",
+        "Threat": "The node is prone to repudiation threats, where an attacker can deny their actions without the possibility of traceability",
+        "Mitigation": "Enforce Authentication: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Logging and Monitoring: Keep detailed audit logs with timestamps for activities such as user logins, sensitive data access, access control changes, and administrative actions.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 48,
+        "Category": "Elevation of Privilege",
+        "Asset": "Application Insights",
+        "Threat": "The  node  is  vulnerable  to  elevation  of  privilege  attacks,  where  an  attacker  gains  higher-level permissions than intended.",
+        "Mitigation": "Apply Least Privilege: Limit access privileges to those essential for performing the intended function. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 49,
+        "Category": "Spoofing",
+        "Asset": "Application Insights",
+        "Threat": "The node is susceptible to identity spoofing, where an attacker may impersonate another user or entity.",
+        "Mitigation": "Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 50,
+        "Category": "Tampering",
+        "Asset": "Application Insights",
+        "Threat": "The node is vulnerable to data tampering, allowing unauthorized modification of data in transit or storage.",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Input Sanitization: Check untrusted input and remove anything that might be potentially dangerous. Input Validation: Ensure that only properly formed data is entered into the system. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "3 out of 3"
+    },
+    {
+        "ID": 51,
+        "Category": "Denial of Service",
+        "Asset": "Application Insights",
+        "Threat": "The node is susceptible to DoS attacks, which can render the node unavailable or unresponsive to legitimate users.",
+        "Mitigation": "Firewall: Use network appliances to filter ingress or egress traffic. Configure software on endpoints to filter network traffic Mitigate Automated Attacks: Protect against automated attacks such as content scraping, password brute-force, or denial of service attacks.",
+        "Risk": "2 out of 3"
+    },
+    {
+        "ID": 52,
+        "Category": "Information Disclosure",
+        "Asset": "Application Insights",
+        "Threat": "The node leaks pieces of information, such as internal data or authentication material, which could be used to facilitate further attacks",
+        "Mitigation": "Encrypt Sensitive Information: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Redact Sensitive Data: Redact, obfuscate, or tokenize sensitive information such as credit card numbers. Secret Management: Securely encrypt, store, and manage access to secrets such as passwords, tokens, and encryption keys. This includes using centralized vaults, regular rotation, and auditing trails. Secure Connections with Strong Encryption: nsure  that  the  node  enforces  network  connections  using  protocols  such  as  TLS  or  SSH,  with approved versions and strong cipher suites to protect data in transit from exposure.",
+        "Risk": "1 out of 3"
+    },
+    {
+        "ID": 53,
+        "Category": "Repudiation",
+        "Asset": "Application Insights",
+        "Threat": "The node is prone to repudiation threats, where an attacker can deny their actions without the possibility of traceability",
+        "Mitigation": "Enforce Authentication: Enforce robust authentication mechanism to access the node's resources and functionalities, such as passwords, pre-shared tokens, or digital certificates. Enforce Authorization: Ensure that the node uses strict access policies against unauthorized access. Logging and Monitoring: Keep detailed audit logs with timestamps for activities such as user logins, sensitive data access, access control changes, and administrative actions.",
+        "Risk": "1 out of 3"
+    }
+]

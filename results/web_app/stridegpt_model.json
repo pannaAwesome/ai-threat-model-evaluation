@@ -1,0 +1,121 @@
+[
+    {
+        "ID": 0,
+        "Category": "Spoofing",
+        "Threat": "An attacker impersonates a legitimate user by guessing or brute-forcing the username and password, gaining unauthorized access to the Web UI. Unauthorized access to customer data, including personally identifiable information.",
+        "Mitigation": "Implement strong password policies. <br> Enforce multi-factor authentication (MFA). <br> Use account lockout policies after multiple failed login attempts. <br> Implement CAPTCHA to prevent automated guessing.",
+        "Risk": "7.00 out of 10"
+    },
+    {
+        "ID": 1,
+        "Category": "Spoofing",
+        "Threat": "An attacker intercepts the session ID transmitted between the client and the Web Service and uses it to impersonate a legitimate user. Unauthorized access to customer data processed by the Web Service.",
+        "Mitigation": "Use secure, HTTP-only cookies for session management. <br> Implement short session timeouts and re-authentication for sensitive actions. <br> Use SSL/TLS to encrypt data in transit. <br> Regenerate session IDs after successful login.",
+        "Risk": "6.20 out of 10"
+    },
+    {
+        "ID": 2,
+        "Category": "Spoofing",
+        "Threat": "An attacker sends crafted XML input to the Web Service, exploiting vulnerabilities in the XML parser to impersonate a legitimate user or service. Unauthorized access to customer data processed by the Web Service.",
+        "Mitigation": "Implement strict input validation and sanitization. <br> Use secure XML parsers that are not vulnerable to attacks like XML External Entities (XXE). <br> Implement Web Application Firewalls (WAF) to detect and block malicious input.",
+        "Risk": "5.20 out of 10"
+    },
+    {
+        "ID": 3,
+        "Category": "Tampering",
+        "Threat": "An attacker intercepts and modifies the data transmitted between the Web UI and the Web Service, altering customer data. Data integrity compromise, leading to incorrect processing and potential data loss.",
+        "Mitigation": "Use SSL/TLS to encrypt data in transit. <br> Implement hash-based message authentication codes (HMAC) to ensure data integrity. <br> Use digital signatures to verify the authenticity of the data.",
+        "Risk": "6.60 out of 10"
+    },
+    {
+        "ID": 4,
+        "Category": "Tampering",
+        "Threat": "An attacker intercepts and modifies the data transmitted between the Web Service and PostgreSQL, altering the stored customer data. Data integrity compromise, leading to incorrect data retrieval and potential data loss.",
+        "Mitigation": "Use SSL/TLS to encrypt data in transit. <br> Implement database-level encryption. <br> Use prepared statements and parameterized queries to prevent SQL injection.",
+        "Risk": "6.00 out of 10"
+    },
+    {
+        "ID": 5,
+        "Category": "Tampering",
+        "Threat": "An attacker exploits a vulnerability in the Web Service to tamper with the session management, leading to session hijacking. Unauthorized access to customer data and potential data manipulation.",
+        "Mitigation": "Implement secure session management practices. <br> Use short session timeouts and re-authentication for sensitive actions. <br> Regenerate session IDs after successful login and logout.",
+        "Risk": "5.20 out of 10"
+    },
+    {
+        "ID": 6,
+        "Category": "Repudiation",
+        "Threat": "A user performs unauthorized actions and then denies having performed them, as there is no logging mechanism to track user actions. Difficulty in tracing unauthorized activities and holding users accountable.",
+        "Mitigation": "Implement comprehensive logging and monitoring. <br> Use audit trails to track user actions. <br> Ensure logs are securely stored and tamper-evident.",
+        "Risk": "5.60 out of 10"
+    },
+    {
+        "ID": 7,
+        "Category": "Repudiation",
+        "Threat": "An attacker performs actions using a legitimate user's credentials and denies involvement, as there is no audit trail to prove the actions. Difficulty in tracing unauthorized activities and holding attackers accountable.",
+        "Mitigation": "Implement multi-factor authentication (MFA). <br> Use audit trails to track user actions. <br> Ensure logs are securely stored and tamper-evident.",
+        "Risk": "5.60 out of 10"
+    },
+    {
+        "ID": 8,
+        "Category": "Repudiation",
+        "Threat": "A user denies receiving or sending specific data, as there is no mechanism to verify the data exchange. Difficulty in resolving disputes related to data exchange.",
+        "Mitigation": "Implement digital signatures and timestamps for data exchange. <br> Use non-repudiation protocols to ensure data exchange is verifiable. <br> Maintain detailed logs of data exchange transactions.",
+        "Risk": "4.60 out of 10"
+    },
+    {
+        "ID": 9,
+        "Category": "Information Disclosure",
+        "Threat": "An attacker exploits a vulnerability in the Web Service to access sensitive customer data stored in PostgreSQL. Exposure of sensitive customer data, including personally identifiable information.",
+        "Mitigation": "Implement least privilege access controls. <br> Use encrypted database connections. <br> Implement database-level encryption. <br> Regularly patch and update the Web Service and database.",
+        "Risk": "6.40 out of 10"
+    },
+    {
+        "ID": 10,
+        "Category": "Information Disclosure",
+        "Threat": "An attacker intercepts the data transmitted between the Web UI and the Web Service, gaining access to sensitive customer data. Exposure of sensitive customer data, including personally identifiable information.",
+        "Mitigation": "Use SSL/TLS to encrypt data in transit. <br> Implement strict transport layer security policies. <br> Use secure coding practices to prevent data leakage.",
+        "Risk": "7.00 out of 10"
+    },
+    {
+        "ID": 11,
+        "Category": "Information Disclosure",
+        "Threat": "An attacker exploits a vulnerability in the Web UI to access sensitive customer data processed by the Web Service. Exposure of sensitive customer data, including personally identifiable information.",
+        "Mitigation": "Implement secure coding practices. <br> Regularly patch and update the Web UI. <br> Use Web Application Firewalls (WAF) to detect and block malicious input.",
+        "Risk": "6.20 out of 10"
+    },
+    {
+        "ID": 12,
+        "Category": "Denial of Service",
+        "Threat": "An attacker floods the Web Service with a large number of requests, causing it to become unresponsive. Service disruption, leading to unavailability of the application for legitimate users.",
+        "Mitigation": "Implement rate limiting and throttling. <br> Use load balancers to distribute traffic. <br> Implement DDoS protection services. <br> Ensure the Web Service can scale horizontally.",
+        "Risk": "7.40 out of 10"
+    },
+    {
+        "ID": 13,
+        "Category": "Denial of Service",
+        "Threat": "An attacker exploits a vulnerability in the Web Service to consume excessive resources, causing it to become unresponsive. Service disruption, leading to unavailability of the application for legitimate users.",
+        "Mitigation": "Regularly patch and update the Web Service. <br> Implement resource governance and quotas. <br> Use application-level throttling and rate limiting.",
+        "Risk": "6.60 out of 10"
+    },
+    {
+        "ID": 14,
+        "Category": "Denial of Service",
+        "Threat": "An attacker floods the Web UI with a large number of requests, causing it to become unresponsive. Service disruption, leading to unavailability of the application for legitimate users.",
+        "Mitigation": "Implement rate limiting and throttling. <br> Use load balancers to distribute traffic. <br> Implement DDoS protection services. <br> Ensure the Web UI can scale horizontally.",
+        "Risk": "7.40 out of 10"
+    },
+    {
+        "ID": 15,
+        "Category": "Elevation of Privilege",
+        "Threat": "An attacker exploits a vulnerability in the Web Service to gain administrative access, allowing them to perform unauthorized actions. Unauthorized access to administrative functions, leading to potential data manipulation and service disruption.",
+        "Mitigation": "Implement least privilege access controls. <br> Regularly patch and update the Web Service. <br> Use secure coding practices to prevent privilege escalation vulnerabilities.",
+        "Risk": "6.40 out of 10"
+    },
+    {
+        "ID": 16,
+        "Category": "Elevation of Privilege",
+        "Threat": "An attacker exploits a vulnerability in the Web UI to gain administrative access, allowing them to perform unauthorized actions. Unauthorized access to administrative functions, leading to potential data manipulation and service disruption.",
+        "Mitigation": "Implement least privilege access controls. <br> Regularly patch and update the Web UI. <br> Use secure coding practices to prevent privilege escalation vulnerabilities.",
+        "Risk": "6.20 out of 10"
+    }
+]

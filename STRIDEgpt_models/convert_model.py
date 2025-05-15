@@ -17,7 +17,7 @@ def extract_markdown_table(filepath: str) -> pd.DataFrame:
     """
     with open(filepath, 'r') as file:
         content = file.read()
-    table_match = re.search(r'(\|.*?\|\n(?:\|.*?\|\n)+)', content, re.DOTALL)
+    table_match = re.search(r'(\|.*?\|\n(?:\|.*?\|\n)+)', content)
     if table_match:
         table = table_match.group(1)
         temp_path = filepath + '.tmp'
