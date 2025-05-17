@@ -54,7 +54,7 @@ def cohens_kappa(confusion, total):
     return kappa
 
 
-def build_ratings_matrix_with_universe(evaluators_lists, all_items):
+def build_ratings_matrix(evaluators_lists, all_items):
     """
     evaluators_lists: list of lists of IDs (found by each evaluator)
     all_items: list or set of all possible IDs (the universe)
@@ -75,7 +75,7 @@ def build_ratings_matrix_with_universe(evaluators_lists, all_items):
         ratings.append([not_found_count, found_count])
         
     ratings_matrix = np.array(ratings)
-    return ratings_matrix, all_items
+    return ratings_matrix
 
 def fleiss_kappa(ratings_matrix):
     """
@@ -100,5 +100,8 @@ def fleiss_kappa(ratings_matrix):
     P_e = np.sum(p ** 2)
     
     # 5. Fleiss kappa
-    kappa = (P_bar - P_e) / (1 - P_e)
-    return kappa
+    if P_e == 1:
+        return 1
+    else:
+        kappa = (P_bar - P_e) / (1 - P_e)
+        return kappa
