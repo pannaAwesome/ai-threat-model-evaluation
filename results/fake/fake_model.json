@@ -31,7 +31,7 @@
     {
         "Note": "Fake Category",
         "Human": {"category": [3], "threats": [], "mitigations": [], "risk": {"same":[], "more":[], "less":[]}},
-        "ID": 4,
+        "ID": 3,
         "Category": "Non-Repudiation",
         "Asset": "Frontend",
         "Threat": "Attackers may exploit improperly implemented input validation mechanisms on the Frontend, and thereby gain unauthorized access to the Web Server.",

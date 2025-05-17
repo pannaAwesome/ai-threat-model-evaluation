@@ -1,0 +1,11 @@
+result_id,model,seed,category,asset
+0,llama3.1:8b-instruct-q4_K_M,169,[3],"[0, 2]"
+0,llama3.1:8b-instruct-q4_K_M,169,[3],"[0, 2]"
+1,llama3.1:8b-instruct-q4_K_M,429,[3],[2]
+1,llama3.1:8b-instruct-q4_K_M,429,[3],[2]
+2,llama3.1:8b-instruct-q4_K_M,707,[],[]
+2,llama3.1:8b-instruct-q4_K_M,707,[],[]
+3,llama3.1:8b-instruct-q4_K_M,429,"[3, 3]",[]
+3,llama3.1:8b-instruct-q4_K_M,429,"[3, 3]",[]
+4,llama3.1:8b-instruct-q4_K_M,651,[3],[]
+4,llama3.1:8b-instruct-q4_K_M,651,[3],[]
