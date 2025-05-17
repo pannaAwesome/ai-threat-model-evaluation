@@ -1,6 +1,7 @@
 import random
 import os
 
+from dotenv import find_dotenv, load_dotenv
 import numpy as np
 
 from time import time
@@ -12,6 +13,11 @@ from utils.run_stats import result_time
 
 random.seed(42)
 np.random.seed(42)
+
+# Load environment variables from .env file
+env_file = find_dotenv()
+load_dotenv(env_file)
+print(os.getenv("OPENAI_ENDPOINT"))
 
 def perform_judging(ai, ai_model, tms, tms_reversed, assets, seeds, iterations, prefix_result):
     start_time = time()
@@ -80,9 +86,9 @@ if __name__ == "__main__":
     result_path += f"/{tool} "
     
     # For easy debugging
-    ai_model = random.sample(ai_model, 1)
-    tms = random.sample(list(tms), 1)
-    tms_reversed = random.sample(list(tms_reversed), 1)
+    ai_model = random.sample(ai_model, 10)
+    tms = random.sample(list(tms), 10)
+    tms_reversed = random.sample(list(tms_reversed), 10)
     
     perform_judging(ai, ai_model, tms, tms_reversed, assets, seeds, iterations, result_path)
     print(f"[SUCCESS] Finished judging threat model for {application} with {tool}")

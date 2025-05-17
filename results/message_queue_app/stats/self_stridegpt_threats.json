@@ -1,0 +1,12 @@
+[
+    {
+        "model": "mistral:7b-instruct-v0.3-q4_K_M",
+        "fk_threats": 8.455882352941183,
+        "fk_meaning_threats": "Almost Perfect"
+    },
+    {
+        "model": "mistral:7b-instruct-v0.3-q4_K_M",
+        "fk_threats": 8.455882352941183,
+        "fk_meaning_threats": "Almost Perfect"
+    }
+]

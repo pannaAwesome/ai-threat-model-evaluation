@@ -1,0 +1,18 @@
+[
+    {
+        "model": "mistral:7b-instruct-v0.3-q4_K_M",
+        "avg_threats": 0.0,
+        "max_threats": 0.0,
+        "max_meaning_threats": "No Agreement",
+        "min_threats": 0.0,
+        "min_meaning_threats": "No Agreement"
+    },
+    {
+        "model": "mistral:7b-instruct-v0.3-q4_K_M",
+        "avg_threats": 0.0,
+        "max_threats": 0.0,
+        "max_meaning_threats": "No Agreement",
+        "min_threats": 0.0,
+        "min_meaning_threats": "No Agreement"
+    }
+]

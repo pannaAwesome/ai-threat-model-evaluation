@@ -1,0 +1,26 @@
+[
+    {
+        "ID": 0,
+        "Category": "Elevation of Privilege",
+        "Asset": "Frontend",
+        "Threat": "A malicious user performs an SQL injection and they gain unauthorized access to the system.",
+        "Mitigation": "Sanitize user input before applying it anywhere in the system, and use an allowlist if possible.",
+        "Risk": "Low Severity"
+    },
+    {
+        "ID": 1,
+        "Category": "Elevation of Privilege",
+        "Asset": "Frontend",
+        "Threat": "A malicious user performs an SQL injection and they gain unauthorized access to the system.",
+        "Mitigation": "Sanitize user input before applying it anywhere in the system, and use an allowlist if possible.",
+        "Risk": "Medium Severity"
+    },
+    {
+        "ID": 2,
+        "Category": "Elevation of Privilege",
+        "Asset": "Frontend",
+        "Threat": "A malicious user performs an SQL injection and they gain unauthorized access to the system.",
+        "Mitigation": "Sanitize user input before applying it anywhere in the system, and use an allowlist if possible.",
+        "Risk": "High Severity"
+    }
+]

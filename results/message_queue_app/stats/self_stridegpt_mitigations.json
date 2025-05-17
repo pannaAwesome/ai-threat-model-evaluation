@@ -1,0 +1,12 @@
+[
+    {
+        "model": "mistral:7b-instruct-v0.3-q4_K_M",
+        "fk_mitigations": -2,
+        "fk_meaning_mitigations": "No Agreement"
+    },
+    {
+        "model": "mistral:7b-instruct-v0.3-q4_K_M",
+        "fk_mitigations": -2,
+        "fk_meaning_mitigations": "No Agreement"
+    }
+]

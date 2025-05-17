@@ -1,0 +1,28 @@
+[
+    {
+        "model": "mistral:7b-instruct-v0.3-q4_K_M",
+        "avg_category": 0.0,
+        "max_category": 0.0,
+        "max_meaning_category": "No Agreement",
+        "min_category": 0.0,
+        "min_meaning_category": "No Agreement",
+        "avg_asset": 0.0,
+        "max_asset": 0.0,
+        "max_meaning_asset": "No Agreement",
+        "min_asset": 0.0,
+        "min_meaning_asset": "No Agreement"
+    },
+    {
+        "model": "mistral:7b-instruct-v0.3-q4_K_M",
+        "avg_category": 0.0,
+        "max_category": 0.0,
+        "max_meaning_category": "No Agreement",
+        "min_category": 0.0,
+        "min_meaning_category": "No Agreement",
+        "avg_asset": 0.0,
+        "max_asset": 0.0,
+        "max_meaning_asset": "No Agreement",
+        "min_asset": 0.0,
+        "min_meaning_asset": "No Agreement"
+    }
+]

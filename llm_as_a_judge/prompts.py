@@ -54,16 +54,16 @@ THREAT_PROMPT = """
     [Example 1]
     Threat A:
     {{
-    "Category": "Elevation of Privilege",
+    "Category": "Denial of Service",
     "Asset": "System",
-    "Threat": "Attackers may exploit improperly implemented input validation mechanisms, and thereby gain unauthorized access to the system."
+    "Threat": "The System is flooded with requests, overwhelming system resources and rendering it unresponsive."
     }}
 
     Threat B:
     {{
-    "Category": "Elevation of Privilege",
-    "Asset": "System",
-    "Threat": "A malicious user performs an SQL injection and they gain unauthorized access to the system."
+    "Category": "Denial of Service",
+    "Asset": "System"
+    "Threat": "An attacker performs a Denial of Service attack on the system."
     }}
 
     output:
@@ -72,26 +72,9 @@ THREAT_PROMPT = """
     [Example 2]
     Threat A:
     {{
-    "Category": "Denial of Service",
-    "Asset": "System",
-    "Threat": "The system is flooded with requests, overwhelming system resources and rendering it unresponsive."
-    }}
-
-    Threat B:
-    {{
-    "Category": "Denial of Service",
-    "Threat": "An attacker performs a Denial of Service attack on the system."
-    }}
-
-    output:
-    {{ "answer": 1 }}
-
-    [Example 3]
-    Threat A:
-    {{
     "Category": "Spoofing",
     "Asset": "System",
-    "Threat": "The system is flooded with requests, overwhelming system resources and rendering it unresponsive."
+    "Threat": "The System is flooded with requests, overwhelming system resources and rendering it unresponsive."
     }}
 
     Threat B:
@@ -129,20 +112,6 @@ MITIGATION_PROMPT = """
     [Example 1]
     Mitigation A:
     {{
-        "Mitigation": "Implement strict input validation on all user-supplied data to prevent injection attacks like SQL and XSS."
-    }}
-
-    Mitigation B:
-    {{
-        "Mitigation": "Sanitize user input before applying it anywhere in the system, and use an allowlist if possible."
-    }}
-
-    output:
-    {{ "answer": 1 }}
-
-    [Example 2]
-    Mitigation A:
-    {{
         "Mitigation": "Restrict access rights using the principle of least privilege."
     }}
 
@@ -154,7 +123,7 @@ MITIGATION_PROMPT = """
     output:
     {{ "answer": 1 }}
 
-    [Example 3]
+    [Example 2]
     Mitigation A:
     {{
         "Mitigation": "Enforce MFA for all users to prevent unauthorized access to possibly sensitive data."

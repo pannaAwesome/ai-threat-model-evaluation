@@ -1,0 +1,2 @@
+threats,mitigations,risk_same,risk_more,risk_less
+"[0, 3, 3, 4, 5, 5, 6, 10, 12]","[3,4,5,5,6,10,12]","[3,3,10]","[4,5,5,12]","[0,6]"
