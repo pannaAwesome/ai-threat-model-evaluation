@@ -4,10 +4,10 @@ from stats.files import *
 
 import json
 
-application = "message_queue_app"
-tool = "stridegpt"
-actual_threats = 13
-tool_threats = 17
+application = "fake"
+tool = "fake"
+actual_threats = 3
+tool_threats = 5
 iterations = 5
 stats_folder = f"stats/{tool}"
 reset_stats_folder(stats_folder)

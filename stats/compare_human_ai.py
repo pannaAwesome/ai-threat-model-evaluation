@@ -45,13 +45,13 @@ def threat_compare_human_ai(human_file, ai_file, total):
         kappa = _compare_pair(row.mitigations, df_human["mitigations"].iloc[0], total)
         mitigations_kappas.append(kappa)
         
-        kappa = _compare_pair(row.risk_same, df_human["risk_same"].iloc[0], total)
+        kappa = _compare_pair(row.risks_same, df_human["risks_same"].iloc[0], total)
         risk_same_kappas.append(kappa)
         
-        kappa = _compare_pair(row.risk_more, df_human["risk_more"].iloc[0], total)
+        kappa = _compare_pair(row.risks_more, df_human["risks_more"].iloc[0], total)
         risk_more_kappas.append(kappa)
         
-        kappa = _compare_pair(row.risk_less, df_human["risk_less"].iloc[0], total)
+        kappa = _compare_pair(row.risks_less, df_human["risks_less"].iloc[0], total)
         risk_less_kappas.append(kappa)
     
     return {

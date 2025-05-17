@@ -16,16 +16,16 @@ def threats_ai_position_bias(model, df1, df2, total):
     found = sum(df1["mitigations"], [])
     mitigations_kappa = _compare_pair(reverse_found, found, total)
     # Calculate for risk same
-    reverse_found = sum(df2["risk_same"], [])
-    found = sum(df1["risk_same"], [])
+    reverse_found = sum(df2["risks_same"], [])
+    found = sum(df1["risks_same"], [])
     risk_same_kappa = _compare_pair(reverse_found, found, total)
     # Calculate for risk_more
-    reverse_found = sum(df2["risk_more"], [])
-    found = sum(df1["risk_more"], [])
+    reverse_found = sum(df2["risks_more"], [])
+    found = sum(df1["risks_more"], [])
     risk_more_kappa = _compare_pair(reverse_found, found, total)
     # Calculate for risk less
-    reverse_found = sum(df2["risk_less"], [])
-    found = sum(df1["risk_less"], [])
+    reverse_found = sum(df2["risks_less"], [])
+    found = sum(df1["risks_less"], [])
     risk_less_kappa = _compare_pair(reverse_found, found, total)
     
     return {
@@ -51,17 +51,17 @@ def threats_ai_repetition(ai_file, total):
     mitigations_kappa = fleiss_kappa(matrix)
     
     # Calculate for risk_same
-    found = list(df_ai["risk_same"])
+    found = list(df_ai["risks_same"])
     matrix = build_ratings_matrix(found, total)
     risk_same_kappa = fleiss_kappa(matrix)
     
     # Calculate for risk_more
-    found = list(df_ai["risk_more"])
+    found = list(df_ai["risks_more"])
     matrix = build_ratings_matrix(found, total)
     risk_more_kappa = fleiss_kappa(matrix)
     
     # Calculate for risk_less
-    found = list(df_ai["risk_less"])
+    found = list(df_ai["risks_less"])
     matrix = build_ratings_matrix(found, total)
     risk_less_kappa = fleiss_kappa(matrix)
     

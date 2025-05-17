@@ -41,7 +41,7 @@
     {
         "Note": "Fake Asset",
         "Human": {"category": [], "asset": [4], "threats": [], "mitigations": [], "risk": {"same":[], "more":[], "less":[]}},
-        "ID": 3,
+        "ID": 4,
         "Category": "Elevation of Privilege",
         "Asset": "Database",
         "Threat": "Attackers may exploit improperly implemented input validation mechanisms on the Frontend, and thereby gain unauthorized access to the Web Server.",

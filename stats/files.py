@@ -14,7 +14,7 @@ def read_csv_threats(filepath):
     df = pd.read_csv(filepath)
     
     # Columns that contain list strings to parse
-    list_columns = ['threats', 'mitigations', 'risk_same', 'risk_more', 'risk_less']
+    list_columns = ['threats', 'mitigations', 'risks_same', 'risks_more', 'risks_less']
     
     for col in list_columns:
         # Use ast.literal_eval to convert string list to actual Python list safely
@@ -43,7 +43,7 @@ def read_threat_reverse_pairs(folder):
     
     def make_lists(df):
         # Columns that contain list strings to parse
-        list_columns = ['threats', 'mitigations', 'risk_same', 'risk_more', 'risk_less']
+        list_columns = ['threats', 'mitigations', 'risks_same', 'risks_more', 'risks_less']
         
         for col in list_columns:
             # Use ast.literal_eval to convert string list to actual Python list safely

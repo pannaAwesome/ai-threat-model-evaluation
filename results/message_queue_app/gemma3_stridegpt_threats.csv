@@ -1,3 +1,0 @@
-result_id,model,reversed,threats,mitigations,risk_same,risk_more,risk_less
-0,mistral:7b-instruct-v0.3-q4_K_M,False,[8],[],[8],[],[]
-1,mistral:7b-instruct-v0.3-q4_K_M,False,[8],[],[8],[],[]

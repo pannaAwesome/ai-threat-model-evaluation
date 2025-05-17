@@ -1,11 +1,6 @@
 result_id,model,seed,category,asset
-0,qwen2.5:7b-instruct-q4_K_M,169,"[3, 0, 2]",[3]
-0,qwen2.5:7b-instruct-q4_K_M,169,"[3, 0, 2]",[3]
-1,qwen2.5:7b-instruct-q4_K_M,429,"[2, 3, 0]","[2, 3]"
-1,qwen2.5:7b-instruct-q4_K_M,429,"[2, 3, 0]","[2, 3]"
-2,qwen2.5:7b-instruct-q4_K_M,707,"[3, 2]",[3]
-2,qwen2.5:7b-instruct-q4_K_M,707,"[3, 2]",[3]
-3,qwen2.5:7b-instruct-q4_K_M,429,"[2, 3, 0]","[2, 3]"
-3,qwen2.5:7b-instruct-q4_K_M,429,"[2, 3, 0]","[2, 3]"
-4,qwen2.5:7b-instruct-q4_K_M,651,"[3, 2, 0]","[3, 2]"
-4,qwen2.5:7b-instruct-q4_K_M,651,"[3, 2, 0]","[3, 2]"
+0,qwen2.5:7b-instruct-q4_K_M,169,"[3, 0, 2]",[4]
+1,qwen2.5:7b-instruct-q4_K_M,429,"[2, 3, 0]","[2, 4]"
+2,qwen2.5:7b-instruct-q4_K_M,707,"[3, 2, 0]","[4, 2]"
+3,qwen2.5:7b-instruct-q4_K_M,429,"[2, 3]",[4]
+4,qwen2.5:7b-instruct-q4_K_M,651,"[3, 2, 0]",[4]
