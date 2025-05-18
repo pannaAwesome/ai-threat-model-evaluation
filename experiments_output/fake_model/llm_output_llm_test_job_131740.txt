@@ -1,0 +1,32 @@
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8
+Date: Sat, 17 May 2025 20:19:30 GMT
+Content-Length: 17
+
+ollama version is 0.6.2
+[INFO] The judges will perform 5 iterations
+[INFO] Running: App=fake, Tool=fake, Model=command-r7b:7b-12-2024-q4_K_M
+[INFO] System has assets: ['Frontend', 'Web Server']
+[INFO] Threat models are ready for judging
+[INFO] Hallucinations saved for 1 out of 5 after 20.579140186309814 sec
+[INFO] Threats saved for 1 out of 5 after 47.72392702102661 sec
+[INFO] Reversed Threats saved for 1 out of 5 after 1.0 min 26.04736638069153 sec
+[RESULT] Finished iteration 0 out of 5, it took 1.0 min 26.047396183013916 sec
+[INFO] Hallucinations saved for 2 out of 5 after 1.0 min 28.603622913360596 sec
+[INFO] Threats saved for 2 out of 5 after 2.0 min 7.710821151733398 sec
+[INFO] Reversed Threats saved for 2 out of 5 after 2.0 min 36.27154541015625 sec
+[RESULT] Finished iteration 1 out of 5, it took 2.0 min 36.2715802192688 sec
+[INFO] Hallucinations saved for 3 out of 5 after 2.0 min 39.021594762802124 sec
+[INFO] Threats saved for 3 out of 5 after 3.0 min 17.177332401275635 sec
+[INFO] Reversed Threats saved for 3 out of 5 after 3.0 min 56.18023180961609 sec
+[RESULT] Finished iteration 2 out of 5, it took 3.0 min 56.18026304244995 sec
+[INFO] Hallucinations saved for 4 out of 5 after 3.0 min 58.63045620918274 sec
+[INFO] Threats saved for 4 out of 5 after 4.0 min 35.900092124938965 sec
+[INFO] Reversed Threats saved for 4 out of 5 after 5.0 min 18.755401849746704 sec
+[RESULT] Finished iteration 3 out of 5, it took 5.0 min 18.75544047355652 sec
+[INFO] Hallucinations saved for 5 out of 5 after 5.0 min 21.537553071975708 sec
+[INFO] Threats saved for 5 out of 5 after 5.0 min 58.24659013748169 sec
+[INFO] Reversed Threats saved for 5 out of 5 after 6.0 min 39.72106742858887 sec
+[RESULT] Finished iteration 4 out of 5, it took 6.0 min 39.72110629081726 sec
+[SUCCESS] Finished judging threat model for fake with fake
+deleted 'command-r7b:7b-12-2024-q4_K_M'

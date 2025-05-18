@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8
+Date: Sat, 17 May 2025 22:04:30 GMT
+Content-Length: 17
+
+ollama version is 0.6.2
+[INFO] The judges will perform 50 iterations
+[INFO] Running: App=message_queue_app, Tool=stridegpt, Model=phi3:14b-medium-128k-instruct-q4_K_M

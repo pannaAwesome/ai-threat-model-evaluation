@@ -1,0 +1,32 @@
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8
+Date: Sat, 17 May 2025 17:28:23 GMT
+Content-Length: 17
+
+ollama version is 0.6.2
+[INFO] The judges will perform 5 iterations
+[INFO] Running: App=fake, Tool=fake, Model=phi3:14b-medium-128k-instruct-q4_K_M
+[INFO] System has assets: ['Frontend', 'Web Server']
+[INFO] Threat models are ready for judging
+[INFO] Hallucinations saved for 1 out of 5 after 23.6268527507782 sec
+[INFO] Threats saved for 1 out of 5 after 1.0 min 35.31881880760193 sec
+[INFO] Reversed Threats saved for 1 out of 5 after 2.0 min 3.7055699825286865 sec
+[RESULT] Finished iteration 0 out of 5, it took 2.0 min 3.705648183822632 sec
+[INFO] Hallucinations saved for 2 out of 5 after 2.0 min 29.487746238708496 sec
+[INFO] Threats saved for 2 out of 5 after 3.0 min 48.42939615249634 sec
+[INFO] Reversed Threats saved for 2 out of 5 after 4.0 min 20.362921476364136 sec
+[RESULT] Finished iteration 1 out of 5, it took 4.0 min 20.36308217048645 sec
+[INFO] Hallucinations saved for 3 out of 5 after 4.0 min 46.638487339019775 sec
+[INFO] Threats saved for 3 out of 5 after 6.0 min 3.2532060146331787 sec
+[INFO] Reversed Threats saved for 3 out of 5 after 6.0 min 36.308258295059204 sec
+[RESULT] Finished iteration 2 out of 5, it took 6.0 min 36.30834650993347 sec
+[INFO] Hallucinations saved for 4 out of 5 after 7.0 min 3.803178310394287 sec
+[INFO] Threats saved for 4 out of 5 after 8.0 min 31.67452573776245 sec
+[INFO] Reversed Threats saved for 4 out of 5 after 9.0 min 4.70538854598999 sec
+[RESULT] Finished iteration 3 out of 5, it took 9.0 min 4.705413341522217 sec
+[INFO] Hallucinations saved for 5 out of 5 after 9.0 min 32.73686647415161 sec
+[INFO] Threats saved for 5 out of 5 after 11.0 min 0.22778654098510742 sec
+[INFO] Reversed Threats saved for 5 out of 5 after 11.0 min 33.889551639556885 sec
+[RESULT] Finished iteration 4 out of 5, it took 11.0 min 33.889596700668335 sec
+[SUCCESS] Finished judging threat model for fake with fake
+deleted 'phi3:14b-medium-128k-instruct-q4_K_M'

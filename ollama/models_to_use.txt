@@ -29,3 +29,11 @@ test
     "phi3:3.8b-mini-128k-instruct-q3_K_M",
     "llama3.1:8b-instruct-q4_K_M",
 ]
+
+
+actual
+[
+    "gemma3:4b-it-q4_K_M",
+    "phi3:14b-medium-128k-instruct-q4_K_M",
+    "qwen2.5:7b-instruct-q4_K_M",
+]

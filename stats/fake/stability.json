@@ -46,5 +46,13 @@
         "risk_same_kappas": -0.013513513513521952,
         "risk_more_kappas": -0.027397260273974624,
         "risk_less_kappas": 0.22945205479452063
+    },
+    {
+        "model": "command-r7b:7b-12-2024-q4_K_M",
+        "threats_kappas": 1.0,
+        "mitigations_kappas": 1.0,
+        "risk_same_kappas": 0.735915492957746,
+        "risk_more_kappas": 1.0,
+        "risk_less_kappas": 1
     }
 ]

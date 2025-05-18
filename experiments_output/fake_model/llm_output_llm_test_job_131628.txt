@@ -1,0 +1,92 @@
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8
+Date: Sat, 17 May 2025 17:06:59 GMT
+Content-Length: 17
+
+ollama version is 0.6.2
+[INFO] The judges will perform 5 iterations
+[INFO] Running: App=fake, Tool=fake, Model=yi:9b-v1.5-q4_K_M
+[INFO] System has assets: ['Frontend', 'Web Server']
+[INFO] Threat models are ready for judging
+[INFO] Hallucinations saved for 1 out of 5 after 15.0 min 22.02789807319641 sec
+[INFO] Threats saved for 1 out of 5 after 37.0 min 39.83688020706177 sec
+[INFO] Reversed Threats saved for 1 out of 5 after 49.0 min 19.179184436798096 sec
+[RESULT] Finished iteration 0 out of 5, it took 49.0 min 19.179311752319336 sec
+[INFO] Hallucinations saved for 2 out of 5 after 51.0 min 52.93520712852478 sec
+[INFO] Threats saved for 2 out of 5 after 1.0 hours 7.0 min 32.82956314086914 sec
+[INFO] Reversed Threats saved for 2 out of 5 after 1.0 hours 29.0 min 7.924932956695557 sec
+[RESULT] Finished iteration 1 out of 5, it took 1.0 hours 29.0 min 7.924950838088989 sec
+[INFO] Hallucinations saved for 3 out of 5 after 1.0 hours 32.0 min 36.56371521949768 sec
+[INFO] Threats saved for 3 out of 5 after 1.0 hours 52.0 min 47.96749258041382 sec
+[INFO] Reversed Threats saved for 3 out of 5 after 2.0 hours 4.0 min 42.038167238235474 sec
+[RESULT] Finished iteration 2 out of 5, it took 2.0 hours 4.0 min 42.038214683532715 sec
+[INFO] Hallucinations saved for 4 out of 5 after 2.0 hours 7.0 min 37.817928314208984 sec
+[INFO] Threats saved for 4 out of 5 after 2.0 hours 17.0 min 35.67672324180603 sec
+[INFO] Reversed Threats saved for 4 out of 5 after 2.0 hours 31.0 min 57.18083047866821 sec
+[RESULT] Finished iteration 3 out of 5, it took 2.0 hours 31.0 min 57.180861473083496 sec
+[INFO] Hallucinations saved for 5 out of 5 after 2.0 hours 40.0 min 16.095873594284058 sec
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 2 failed: Request timed out.
+[WARN] Attempt 2 failed: Request timed out.
+[WARN] Attempt 2 failed: Request timed out.
+[INFO] Threats saved for 5 out of 5 after 3.0 hours 51.0 min 30.709032773971558 sec
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 1 failed: Request timed out.
+[WARN] Attempt 2 failed: Request timed out.
+[WARN] Attempt 2 failed: Request timed out.
+[WARN] Attempt 2 failed: Request timed out.
+[WARN] Attempt 2 failed: Request timed out.
+[WARN] Attempt 3 failed: Request timed out.
+[ERROR] Failed to retrieve answer from yi:9b-v1.5-q4_K_M
+[WARN] Attempt 3 failed: Request timed out.
+[ERROR] Failed to retrieve answer from yi:9b-v1.5-q4_K_M
+[WARN] Attempt 3 failed: Request timed out.
+[ERROR] Failed to retrieve answer from yi:9b-v1.5-q4_K_M
+[WARN] Attempt 3 failed: Request timed out.
+[ERROR] Failed to retrieve answer from yi:9b-v1.5-q4_K_M
+[INFO] Reversed Threats saved for 5 out of 5 after 5.0 hours 21.0 min 36.32886219024658 sec
+[RESULT] Finished iteration 4 out of 5, it took 5.0 hours 21.0 min 36.32964205741882 sec
+[SUCCESS] Finished judging threat model for fake with fake
+[INFO] The judges will perform 5 iterations
+[INFO] Running: App=fake, Tool=fake, Model=yi:9b-chat-v1.5-q4_K_M
+[INFO] System has assets: ['Frontend', 'Web Server']
+[INFO] Threat models are ready for judging
+[INFO] Hallucinations saved for 1 out of 5 after 5.0 min 43.80990505218506 sec
+[INFO] Threats saved for 1 out of 5 after 37.0 min 6.427834749221802 sec
+[INFO] Reversed Threats saved for 1 out of 5 after 52.0 min 8.332263946533203 sec
+[RESULT] Finished iteration 0 out of 5, it took 52.0 min 8.332316637039185 sec
+[INFO] Hallucinations saved for 2 out of 5 after 59.0 min 7.3647301197052 sec
+[INFO] Threats saved for 2 out of 5 after 1.0 hours 14.0 min 32.16499853134155 sec
+[INFO] Reversed Threats saved for 2 out of 5 after 1.0 hours 28.0 min 28.494736194610596 sec
+[RESULT] Finished iteration 1 out of 5, it took 1.0 hours 28.0 min 28.494786977767944 sec
+[INFO] Hallucinations saved for 3 out of 5 after 1.0 hours 34.0 min 53.521480560302734 sec
+[INFO] Threats saved for 3 out of 5 after 1.0 hours 51.0 min 13.224209785461426 sec
+[INFO] Reversed Threats saved for 3 out of 5 after 1.0 hours 58.0 min 19.79106569290161 sec
+[RESULT] Finished iteration 2 out of 5, it took 1.0 hours 58.0 min 19.79110336303711 sec
+[INFO] Hallucinations saved for 4 out of 5 after 1.0 hours 59.0 min 6.720394134521484 sec
+[INFO] Threats saved for 4 out of 5 after 2.0 hours 10.0 min 25.42902398109436 sec
+[INFO] Reversed Threats saved for 4 out of 5 after 2.0 hours 12.0 min 2.173588752746582 sec
+[RESULT] Finished iteration 3 out of 5, it took 2.0 hours 12.0 min 2.173618793487549 sec
+[INFO] Hallucinations saved for 5 out of 5 after 2.0 hours 12.0 min 44.139179944992065 sec
+[INFO] Threats saved for 5 out of 5 after 2.0 hours 14.0 min 32.26837658882141 sec
+[INFO] Reversed Threats saved for 5 out of 5 after 2.0 hours 16.0 min 20.10517692565918 sec
+[RESULT] Finished iteration 4 out of 5, it took 2.0 hours 16.0 min 20.105218410491943 sec
+[SUCCESS] Finished judging threat model for fake with fake
+deleted 'yi:9b-v1.5-q4_K_M'
+deleted 'yi:9b-chat-v1.5-q4_K_M'

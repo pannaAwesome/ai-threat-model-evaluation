@@ -95,6 +95,35 @@
         ]
     },
     {
+        "model": "command-r7b:7b-12-2024-q4_K_M",
+        "avg_category": 0.0,
+        "category_kappas": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        "avg_asset": 0.0,
+        "asset_kappas": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ]
+    },
+    {
         "model": "gemma3:4b-it-q4_K_M",
         "avg_category": 0.8,
         "category_kappas": [

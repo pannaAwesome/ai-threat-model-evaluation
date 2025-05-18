@@ -1,0 +1,33 @@
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8
+Date: Sat, 17 May 2025 19:11:54 GMT
+Content-Length: 17
+
+ollama version is 0.6.2
+[INFO] The judges will perform 5 iterations
+[INFO] Running: App=fake, Tool=fake, Model=deepseek-r1:14b-qwen-distill-q4_K_M
+[INFO] System has assets: ['Frontend', 'Web Server']
+[INFO] Threat models are ready for judging
+[INFO] Hallucinations saved for 1 out of 5 after 1.0 min 19.84434747695923 sec
+[INFO] Threats saved for 1 out of 5 after 13.0 min 1.139613389968872 sec
+[INFO] Reversed Threats saved for 1 out of 5 after 34.0 min 24.19857168197632 sec
+[RESULT] Finished iteration 0 out of 5, it took 34.0 min 24.198617458343506 sec
+[INFO] Hallucinations saved for 2 out of 5 after 37.0 min 11.352500438690186 sec
+[INFO] Threats saved for 2 out of 5 after 56.0 min 32.77311992645264 sec
+[WARN] Attempt 1 failed: Request timed out.
+[INFO] Reversed Threats saved for 2 out of 5 after 1.0 hours 32.0 min 13.796708583831787 sec
+[RESULT] Finished iteration 1 out of 5, it took 1.0 hours 32.0 min 13.796767473220825 sec
+[INFO] Hallucinations saved for 3 out of 5 after 1.0 hours 34.0 min 54.145527839660645 sec
+[INFO] Threats saved for 3 out of 5 after 1.0 hours 44.0 min 41.74595665931702 sec
+[INFO] Reversed Threats saved for 3 out of 5 after 2.0 hours 54.71631383895874 sec
+[RESULT] Finished iteration 2 out of 5, it took 2.0 hours 54.716355085372925 sec
+[INFO] Hallucinations saved for 4 out of 5 after 2.0 hours 3.0 min 11.24826717376709 sec
+[INFO] Threats saved for 4 out of 5 after 2.0 hours 12.0 min 10.396148204803467 sec
+[INFO] Reversed Threats saved for 4 out of 5 after 2.0 hours 23.0 min 7.121030569076538 sec
+[RESULT] Finished iteration 3 out of 5, it took 2.0 hours 23.0 min 7.121077060699463 sec
+[INFO] Hallucinations saved for 5 out of 5 after 2.0 hours 25.0 min 37.51813459396362 sec
+[INFO] Threats saved for 5 out of 5 after 2.0 hours 35.0 min 26.048386573791504 sec
+[INFO] Reversed Threats saved for 5 out of 5 after 2.0 hours 51.0 min 28.4397292137146 sec
+[RESULT] Finished iteration 4 out of 5, it took 2.0 hours 51.0 min 28.439750909805298 sec
+[SUCCESS] Finished judging threat model for fake with fake
+deleted 'deepseek-r1:14b-qwen-distill-q4_K_M'
