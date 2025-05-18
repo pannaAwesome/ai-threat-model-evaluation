@@ -36,6 +36,6 @@ actual
     "gemma3:4b-it-q4_K_M",
     "phi3:14b-medium-128k-instruct-q4_K_M",
     "qwen2.5:7b-instruct-q4_K_M",
-    "command-r7b:7b-12-2024-q4_K_M",
+    "yi:9b-chat-v1.5-q4_K_M",
     "deepseek-r1:14b-qwen-distill-q4_K_M"
 ]

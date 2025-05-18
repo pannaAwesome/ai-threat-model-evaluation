@@ -12,7 +12,7 @@ iterations = 5
 stats_folder = f"stats/{tool}"
 reset_stats_folder(stats_folder)
 
-threat_files = get_threat_files(f"results/{application}", tool)
+threat_files = get_threat_files(f"results/{application}", f"{tool}_reverse")
 hallucination_files = get_hallucination_files(f"results/{application}", tool)
 
 hallucinations = []

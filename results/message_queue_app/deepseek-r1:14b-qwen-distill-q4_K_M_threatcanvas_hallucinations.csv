@@ -1,0 +1,17 @@
+result_id,model,seed,category,asset
+0,deepseek-r1:14b-qwen-distill-q4_K_M,169,[],[]
+0,deepseek-r1:14b-qwen-distill-q4_K_M,169,[],[]
+1,deepseek-r1:14b-qwen-distill-q4_K_M,429,[],[]
+1,deepseek-r1:14b-qwen-distill-q4_K_M,429,[],[]
+2,deepseek-r1:14b-qwen-distill-q4_K_M,707,[],[]
+2,deepseek-r1:14b-qwen-distill-q4_K_M,707,[],[]
+3,deepseek-r1:14b-qwen-distill-q4_K_M,429,[],[27]
+3,deepseek-r1:14b-qwen-distill-q4_K_M,429,[],[27]
+4,deepseek-r1:14b-qwen-distill-q4_K_M,651,[],[]
+4,deepseek-r1:14b-qwen-distill-q4_K_M,651,[],[]
+5,deepseek-r1:14b-qwen-distill-q4_K_M,289,[],"[9, 27]"
+5,deepseek-r1:14b-qwen-distill-q4_K_M,289,[],"[9, 27]"
+6,deepseek-r1:14b-qwen-distill-q4_K_M,491,[],[]
+6,deepseek-r1:14b-qwen-distill-q4_K_M,491,[],[]
+0,deepseek-r1:14b-qwen-distill-q4_K_M,169,[],[19]
+0,deepseek-r1:14b-qwen-distill-q4_K_M,169,[],[19]

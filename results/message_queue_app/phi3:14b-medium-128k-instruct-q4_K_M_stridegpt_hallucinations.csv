@@ -53,3 +53,7 @@ result_id,model,seed,category,asset
 25,phi3:14b-medium-128k-instruct-q4_K_M,71,[],[14]
 26,phi3:14b-medium-128k-instruct-q4_K_M,149,[],[14]
 26,phi3:14b-medium-128k-instruct-q4_K_M,149,[],[14]
+27,phi3:14b-medium-128k-instruct-q4_K_M,813,[],[]
+27,phi3:14b-medium-128k-instruct-q4_K_M,813,[],[]
+28,phi3:14b-medium-128k-instruct-q4_K_M,770,[],[14]
+28,phi3:14b-medium-128k-instruct-q4_K_M,770,[],[14]

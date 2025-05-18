@@ -39,3 +39,5 @@ result_id,model,seed,category,asset
 18,phi3:14b-medium-128k-instruct-q4_K_M,808,[],[]
 19,phi3:14b-medium-128k-instruct-q4_K_M,4,"[30, 25, 2, 4, 15]",[26]
 19,phi3:14b-medium-128k-instruct-q4_K_M,4,"[30, 25, 2, 4, 15]",[26]
+20,phi3:14b-medium-128k-instruct-q4_K_M,15,"[17, 20, 15, 2, 18, 30, 29, 11]","[17, 20, 15, 2, 18, 29, 11]"
+20,phi3:14b-medium-128k-instruct-q4_K_M,15,"[17, 20, 15, 2, 18, 30, 29, 11]","[17, 20, 15, 2, 18, 29, 11]"
