@@ -22,7 +22,7 @@ def read_csv_threats(filepath):
     
     return df
 
-def read_threat_reverse_pairs(folder):
+def read_threat_reverse_pairs(folder, tool):
     """
     Finds and reads pairs of files:
     - {model}_{tool}_threats.csv
@@ -31,8 +31,8 @@ def read_threat_reverse_pairs(folder):
     Returns a list of tuples: (prefix, threats_df, reverse_threats_df)
     """
     # Find all *_threats.csv and *_reverse_threats.csv files
-    threat_files = glob.glob(os.path.join(folder, '*_threats.csv'))
-    reverse_files = glob.glob(os.path.join(folder, '*_reverse_threats.csv'))
+    threat_files = glob.glob(os.path.join(folder, f'*{tool}_threats.csv'))
+    reverse_files = glob.glob(os.path.join(folder, f'*{tool}_reverse_threats.csv'))
 
     # Build a dict from filename prefix (model_tool) to file path
     def extract_prefix(path, reverse=False):

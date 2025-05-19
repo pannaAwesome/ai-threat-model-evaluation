@@ -73,3 +73,22 @@ def threats_ai_repetition(ai_file, total):
         "risk_more_kappas": risk_more_kappa,
         "risk_less_kappas": risk_less_kappa
     }
+    
+def hallucinations_ai_repetition(ai_file, total):
+    df_ai = read_csv_hallucinations(ai_file)
+    
+    # Calculate for category
+    found = list(df_ai["category"])
+    matrix = build_ratings_matrix(found, total)
+    category_kappa = fleiss_kappa(matrix)
+    
+    # Calculate for asset
+    found = list(df_ai["asset"])
+    matrix = build_ratings_matrix(found, total)
+    asset_kappa = fleiss_kappa(matrix)
+    
+    return {
+        "model": df_ai["model"].iloc[0],
+        "category_kappa": category_kappa,
+        "asset_kappa": asset_kappa
+    }
