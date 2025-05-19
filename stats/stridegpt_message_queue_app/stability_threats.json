@@ -3,9 +3,9 @@
         "model": "gemma3:4b-it-q4_K_M",
         "threats_kappas": 1.0,
         "mitigations_kappas": 1.0,
-        "risk_same_kappas": 0.9767941873324405,
+        "risk_same_kappas": 0.9787778262767353,
         "risk_more_kappas": 1,
-        "risk_less_kappas": 0.5892200065466853
+        "risk_less_kappas": 0.5699193772588219
     },
     {
         "model": "phi3:14b-medium-128k-instruct-q4_K_M",
