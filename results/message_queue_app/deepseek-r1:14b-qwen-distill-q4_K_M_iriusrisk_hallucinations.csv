@@ -1,9 +1,0 @@
-result_id,model,seed,category,asset
-0,deepseek-r1:14b-qwen-distill-q4_K_M,169,[14],"[52, 23, 24, 54, 53, 14, 0, 22, 35, 39]"
-0,deepseek-r1:14b-qwen-distill-q4_K_M,169,[14],"[52, 23, 24, 54, 53, 14, 0, 22, 35, 39]"
-0,deepseek-r1:14b-qwen-distill-q4_K_M,169,[],"[52, 54, 53, 15, 14, 36, 34, 22, 35]"
-0,deepseek-r1:14b-qwen-distill-q4_K_M,169,[],"[52, 54, 53, 15, 14, 36, 34, 22, 35]"
-1,deepseek-r1:14b-qwen-distill-q4_K_M,429,[],"[39, 53, 15, 22, 34, 52, 24, 14]"
-1,deepseek-r1:14b-qwen-distill-q4_K_M,429,[],"[39, 53, 15, 22, 34, 52, 24, 14]"
-0,deepseek-r1:14b-qwen-distill-q4_K_M,169,[],"[41, 52, 53, 15, 27, 14, 0, 36, 34, 39]"
-0,deepseek-r1:14b-qwen-distill-q4_K_M,169,[],"[41, 52, 53, 15, 27, 14, 0, 36, 34, 39]"

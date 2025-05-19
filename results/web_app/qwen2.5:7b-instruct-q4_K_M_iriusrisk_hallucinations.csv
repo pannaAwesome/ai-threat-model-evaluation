@@ -1,0 +1,11 @@
+result_id,model,seed,category,asset
+0,qwen2.5:7b-instruct-q4_K_M,169,"[13, 15, 5]",[]
+1,qwen2.5:7b-instruct-q4_K_M,429,"[5, 13, 15]",[]
+3,qwen2.5:7b-instruct-q4_K_M,429,"[5, 13, 15]",[]
+2,qwen2.5:7b-instruct-q4_K_M,707,[13],[]
+4,qwen2.5:7b-instruct-q4_K_M,651,"[13, 15]",[]
+3,qwen2.5:7b-instruct-q4_K_M,429,"[13, 15]",[]
+5,qwen2.5:7b-instruct-q4_K_M,289,"[13, 5]",[]
+4,qwen2.5:7b-instruct-q4_K_M,651,"[5, 13]",[]
+6,qwen2.5:7b-instruct-q4_K_M,491,"[13, 5]",[]
+7,qwen2.5:7b-instruct-q4_K_M,864,"[13, 5]",[]
