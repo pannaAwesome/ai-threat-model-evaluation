@@ -1,154 +1,698 @@
 [
     {
         "ID": 0,
-        "Category": "Denial of Service",
-        "Asset": "Web Service",
-        "Threat": "Attackers abuse the service, e.g., lack of rate limiting",
-        "Mitigation": "Implement service restrictions",
-        "Risk": "51 out of 100"
+        "Category": "Elevation of Privilege",
+        "Asset": "USB Video Camera",
+        "Threat": "Attackers attempt to brute force weak camera passwords",
+        "Mitigation": "Implement account lockout or rate limiting on failed login attempts",
+        "Risk": "74 out of 100"
     },
     {
         "ID": 1,
-        "Category": "Information Disclosure",
-        "Asset": "Web Service",
-        "Threat": "Attackers access information, including secrets, through misconfiguration, errors, or logging",
-        "Mitigation": "Limit information leakage, e.g., via hardened configuration",
-        "Risk": "68 out of 100"
+        "Category": "Spoofing",
+        "Asset": "Browser",
+        "Threat": "Attackers conduct phishing attacks through deceptive websites",
+        "Mitigation": "Activate URL filtering mechanisms",
+        "Risk": "83 out of 100"
     },
     {
         "ID": 2,
-        "Category": "Information Disclosure",
-        "Asset": "Web Service",
-        "Threat": "Attackers access information, including secrets, through misconfiguration, errors, or logging",
-        "Mitigation": "Use secure methods to handle secrets and other sensitive information",
-        "Risk": "68 out of 100"
+        "Category": "Spoofing",
+        "Asset": "Browser",
+        "Threat": "Attackers conduct phishing attacks through deceptive websites",
+        "Mitigation": "Deploy anti-phishing protection",
+        "Risk": "83 out of 100"
     },
     {
         "ID": 3,
-        "Category": "Elevation of Privilege",
-        "Asset": "Web Service",
-        "Threat": "Attackers bypass authentication and gain unauthorized access",
-        "Mitigation": "Use strong authentication mechanisms",
+        "Category": "Tampering",
+        "Asset": "Browser",
+        "Threat": "Attackers distribute malware through compromised browser extensions",
+        "Mitigation": "Implement extension whitelisting policies",
         "Risk": "77 out of 100"
     },
     {
         "ID": 4,
-        "Category": "Spoofing",
-        "Asset": "Web UI",
-        "Threat": "Attackers can deceive users into clicking on hidden elements",
-        "Mitigation": "Employ frame-busting scripts, set X-Frame-Options header, and enforce Content Security Policy",
-        "Risk": "56 out of 100"
+        "Category": "Tampering",
+        "Asset": "Browser",
+        "Threat": "Attackers distribute malware through compromised browser extensions",
+        "Mitigation": "Manage browser extensions securely",
+        "Risk": "77 out of 100"
     },
     {
         "ID": 5,
-        "Category": "Tampering",
-        "Asset": "Web UI",
-        "Threat": "Attackers can exploit vulnerabilities in third-party dependencies leading to security breaches",
-        "Mitigation": "Regularly update dependencies, use dependency scanning tools, and follow best practices for secure coding",
-        "Risk": "56 out of 100"
+        "Category": "Elevation of Privilege",
+        "Asset": "Browser",
+        "Threat": "Attackers exploit browser vulnerabilities to execute malicious code",
+        "Mitigation": "Apply security hardening measures",
+        "Risk": "81 out of 100"
     },
     {
         "ID": 6,
-        "Category": "Tampering",
-        "Asset": "Web UI",
-        "Threat": "Attackers can inject malicious scripts into web pages viewed by other users",
-        "Mitigation": "Implement input validation, output encoding, and enforce Content Security Policy (CSP)",
-        "Risk": "68 out of 100"
+        "Category": "Elevation of Privilege",
+        "Asset": "Browser",
+        "Threat": "Attackers exploit browser vulnerabilities to execute malicious code",
+        "Mitigation": "Configure automatic browser updates",
+        "Risk": "81 out of 100"
     },
     {
         "ID": 7,
-        "Category": "Denial of Service",
-        "Asset": "PostgreSQL",
-        "Threat": "Attackers cause denial of service through resource exhaustion",
-        "Mitigation": "Implement rate limiting and resource throttling",
-        "Risk": "63 out of 100"
+        "Category": "Tampering",
+        "Asset": "USB Video Camera",
+        "Threat": "Attackers exploit vulnerabilities in camera firmware or software",
+        "Mitigation": "Regularly apply firmware updates and security patches",
+        "Risk": "48 out of 100"
     },
     {
         "ID": 8,
         "Category": "Elevation of Privilege",
-        "Asset": "Web Service",
-        "Threat": "Attackers craft and inject malicious content, e.g., SQLi",
-        "Mitigation": "Implement proper parsing and input validation",
+        "Asset": "IoTEdgeMetricsCollector",
+        "Threat": "Attackers gain access to the system by exploiting weak security configurations",
+        "Mitigation": "Ensure that SKU Basic/Consumption is not used on artifacts that need to be monitored",
         "Risk": "60 out of 100"
     },
     {
         "ID": 9,
-        "Category": "Information Disclosure",
-        "Asset": "PostgreSQL",
-        "Threat": "Attackers exfiltrate data due to insecure backup procedures",
-        "Mitigation": "Implement secure backup procedures with encryption and access controls",
-        "Risk": "88 out of 100"
+        "Category": "Elevation of Privilege",
+        "Asset": "IoTEdgeMetricsCollector",
+        "Threat": "Attackers gain access to the system by exploiting weak security configurations",
+        "Mitigation": "Ensure Application Insights are configured",
+        "Risk": "60 out of 100"
     },
     {
         "ID": 10,
-        "Category": "Information Disclosure",
-        "Asset": "PostgreSQL",
-        "Threat": "Attackers exploit misconfigurations in postgresql settings",
-        "Mitigation": "Harden postgresql configuration and restrict network access",
-        "Risk": "81 out of 100"
+        "Category": "Elevation of Privilege",
+        "Asset": "Azure Application Insights",
+        "Threat": "Attackers gain access to the system by exploiting weak security configurations",
+        "Mitigation": "Ensure Application Insights are configured",
+        "Risk": "60 out of 100"
     },
     {
         "ID": 11,
-        "Category": "Tampering",
-        "Asset": "PostgreSQL",
-        "Threat": "Attackers exploit outdated postgresql vulnerabilities",
-        "Mitigation": "Regularly update postgresql to the latest secure version",
-        "Risk": "88 out of 100"
+        "Category": "Elevation of Privilege",
+        "Asset": "Azure Application Insights",
+        "Threat": "Attackers gain access to the system by exploiting weak security configurations",
+        "Mitigation": "Ensure that SKU Basic/Consumption is not used on artifacts that need to be monitored",
+        "Risk": "60 out of 100"
     },
     {
         "ID": 12,
-        "Category": "Information Disclosure",
-        "Asset": "PostgreSQL",
-        "Threat": "Attackers exploit sql injection vulnerabilities",
-        "Mitigation": "Use parameterized queries and validate inputs",
-        "Risk": "56 out of 100"
+        "Category": "Elevation of Privilege",
+        "Asset": "USB Video Camera",
+        "Threat": "Attackers gain unauthorized access to camera controls or administrative interface",
+        "Mitigation": "Implement strong authentication and change default credentials",
+        "Risk": "72 out of 100"
     },
     {
         "ID": 13,
-        "Category": "Spoofing",
-        "Asset": "PostgreSQL",
-        "Threat": "Attackers gain unauthorized access due to weak authentication",
-        "Mitigation": "Implement robust authentication and role-based access control",
-        "Risk": "64 out of 100"
+        "Category": "Information Disclosure",
+        "Asset": "Browser",
+        "Threat": "Attackers inject malicious scripts via cross-site scripting (XSS)",
+        "Mitigation": "Implement client-side script blockers",
+        "Risk": "71 out of 100"
     },
     {
         "ID": 14,
         "Category": "Information Disclosure",
-        "Asset": "PostgreSQL",
-        "Threat": "Attackers intercept data due to unencrypted communications",
-        "Mitigation": "Enforce TLS encryption for all connections",
-        "Risk": "68 out of 100"
+        "Asset": "Browser",
+        "Threat": "Attackers inject malicious scripts via cross-site scripting (XSS)",
+        "Mitigation": "Activate built-in browser security filters",
+        "Risk": "71 out of 100"
     },
     {
         "ID": 15,
-        "Category": "Tampering",
-        "Asset": "Web Service",
-        "Threat": "Attackers leverage deserialization flaws to execute malicious code",
-        "Mitigation": "Validate and sanitize serialized data",
-        "Risk": "60 out of 100"
+        "Category": "Spoofing",
+        "Asset": "Browser",
+        "Threat": "Attackers intercept browser communications through man-in-the-middle (MitM) attacks",
+        "Mitigation": "Utilize encrypted communication tools",
+        "Risk": "81 out of 100"
     },
     {
         "ID": 16,
-        "Category": "Elevation of Privilege",
-        "Asset": "Web UI",
-        "Threat": "Attackers may exploit weaknesses in authentication and authorization mechanisms",
-        "Mitigation": "Implement strong authentication mechanisms and follow the least privilege principle",
-        "Risk": "56 out of 100"
+        "Category": "Spoofing",
+        "Asset": "Browser",
+        "Threat": "Attackers intercept browser communications through man-in-the-middle (MitM) attacks",
+        "Mitigation": "Enforce strict certificate validation",
+        "Risk": "81 out of 100"
     },
     {
         "ID": 17,
-        "Category": "Tampering",
-        "Asset": "PostgreSQL",
-        "Threat": "Attackers tamper with data due to insecure file permissions",
-        "Mitigation": "Enforce secure file permissions on PostgreSQL database files",
+        "Category": "Information Disclosure",
+        "Asset": "USB Video Camera",
+        "Threat": "Attackers intercept unencrypted video feed to capture sensitive footage",
+        "Mitigation": "Enable end-to-end encryption for video streams",
         "Risk": "68 out of 100"
     },
     {
         "ID": 18,
         "Category": "Tampering",
-        "Asset": "Web Service",
-        "Threat": "Attackers use Man-in-the-Middle (MitM) to intercept communications",
-        "Mitigation": "Secure communication channels, e.g., use TLS",
+        "Asset": "USB Video Camera",
+        "Threat": "Attackers physically sabotage or gain direct access to the camera",
+        "Mitigation": "Implement tamper-resistant hardware and secure physical placement",
+        "Risk": "94 out of 100"
+    },
+    {
+        "ID": 19,
+        "Category": "Tampering",
+        "Asset": "USB Video Camera",
+        "Threat": "Attackers tamper with camera configurations or settings",
+        "Mitigation": "Use secure configuration management and strong access control",
+        "Risk": "68 out of 100"
+    },
+    {
+        "ID": 20,
+        "Category": "Repudiation",
+        "Asset": "IoTEdgeMetricsCollector",
+        "Threat": "Exploitation of insufficient logging and monitoring",
+        "Mitigation": "Enable diagnostic logs auditing for Microsoft Azure",
+        "Risk": "66 out of 100"
+    },
+    {
+        "ID": 21,
+        "Category": "Repudiation",
+        "Asset": "Azure Application Insights",
+        "Threat": "Exploitation of insufficient logging and monitoring",
+        "Mitigation": "Enable diagnostic logs auditing for Microsoft Azure",
+        "Risk": "66 out of 100"
+    },
+    {
+        "ID": 22,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Storage",
+        "Threat": "Insecure storage of credentials and hard-coded credentials in configuration files",
+        "Mitigation": "Restrict the exposure of credential and secrets",
+        "Risk": "68 out of 100"
+    },
+    {
+        "ID": 23,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Storage",
+        "Threat": "Insecure storage of credentials and hard-coded credentials in configuration files",
+        "Mitigation": "Restrict resource access based on conditions",
+        "Risk": "68 out of 100"
+    },
+    {
+        "ID": 24,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Storage",
+        "Threat": "Insecure storage of credentials and hard-coded credentials in configuration files",
+        "Mitigation": "Manage application identities securely and automatically",
+        "Risk": "68 out of 100"
+    },
+    {
+        "ID": 25,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Storage",
+        "Threat": "Insecure storage of credentials and hard-coded credentials in configuration files",
+        "Mitigation": "Use centralized identity and authentication system",
+        "Risk": "68 out of 100"
+    },
+    {
+        "ID": 26,
+        "Category": "Information Disclosure",
+        "Asset": "Azure",
+        "Threat": "Insecure storage of credentials and hard-coded credentials in configuration files",
+        "Mitigation": "Manage application identities securely and automatically",
+        "Risk": "68 out of 100"
+    },
+    {
+        "ID": 27,
+        "Category": "Information Disclosure",
+        "Asset": "Azure",
+        "Threat": "Insecure storage of credentials and hard-coded credentials in configuration files",
+        "Mitigation": "Restrict the exposure of credential and secrets",
+        "Risk": "68 out of 100"
+    },
+    {
+        "ID": 28,
+        "Category": "Information Disclosure",
+        "Asset": "Azure",
+        "Threat": "Insecure storage of credentials and hard-coded credentials in configuration files",
+        "Mitigation": "Use centralized identity and authentication system",
+        "Risk": "68 out of 100"
+    },
+    {
+        "ID": 29,
+        "Category": "Information Disclosure",
+        "Asset": "Azure",
+        "Threat": "Insecure storage of credentials and hard-coded credentials in configuration files",
+        "Mitigation": "Restrict resource access based on conditions",
+        "Risk": "68 out of 100"
+    },
+    {
+        "ID": 30,
+        "Category": "Information Disclosure",
+        "Asset": "EdgeRuntime",
+        "Threat": "Insufficient encryption of data at rest",
+        "Mitigation": "Enable encryption at rest",
+        "Risk": "63 out of 100"
+    },
+    {
+        "ID": 31,
+        "Category": "Information Disclosure",
+        "Asset": "M2",
+        "Threat": "Insufficient encryption of data at rest",
+        "Mitigation": "Enable encryption at rest",
+        "Risk": "63 out of 100"
+    },
+    {
+        "ID": 32,
+        "Category": "Information Disclosure",
+        "Asset": "M3",
+        "Threat": "Insufficient encryption of data at rest",
+        "Mitigation": "Enable encryption at rest",
+        "Risk": "63 out of 100"
+    },
+    {
+        "ID": 33,
+        "Category": "Information Disclosure",
+        "Asset": "M1",
+        "Threat": "Insufficient encryption of data at rest",
+        "Mitigation": "Enable encryption at rest",
+        "Risk": "63 out of 100"
+    },
+    {
+        "ID": 34,
+        "Category": "Information Disclosure",
+        "Asset": "IoT Edge Device",
+        "Threat": "Insufficient encryption of data at rest",
+        "Mitigation": "Enable encryption at rest",
+        "Risk": "63 out of 100"
+    },
+    {
+        "ID": 35,
+        "Category": "Tampering",
+        "Asset": "EdgeRuntime",
+        "Threat": "Lack of runtime attestation",
+        "Mitigation": "Integrate runtime attestation",
+        "Risk": "37 out of 100"
+    },
+    {
+        "ID": 36,
+        "Category": "Tampering",
+        "Asset": "M2",
+        "Threat": "Lack of runtime attestation",
+        "Mitigation": "Integrate runtime attestation",
+        "Risk": "37 out of 100"
+    },
+    {
+        "ID": 37,
+        "Category": "Tampering",
+        "Asset": "M3",
+        "Threat": "Lack of runtime attestation",
+        "Mitigation": "Integrate runtime attestation",
+        "Risk": "37 out of 100"
+    },
+    {
+        "ID": 38,
+        "Category": "Tampering",
+        "Asset": "M1",
+        "Threat": "Lack of runtime attestation",
+        "Mitigation": "Integrate runtime attestation",
+        "Risk": "37 out of 100"
+    },
+    {
+        "ID": 39,
+        "Category": "Tampering",
+        "Asset": "IoT Edge Device",
+        "Threat": "Lack of runtime attestation",
+        "Mitigation": "Integrate runtime attestation",
+        "Risk": "37 out of 100"
+    },
+    {
+        "ID": 40,
+        "Category": "Tampering",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "Unauthorized access and data breaches due to misconfigured cloud resources",
+        "Mitigation": "Use only approved services",
+        "Risk": "71 out of 100"
+    },
+    {
+        "ID": 41,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Storage",
+        "Threat": "Unauthorized access attempts to Azure Storage accounts via endpoint devices",
+        "Mitigation": "Enable network logging for security investigation",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 42,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Storage",
+        "Threat": "Unauthorized access attempts to Azure Storage accounts via endpoint devices",
+        "Mitigation": "Enable threat detection capabilities",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 43,
+        "Category": "Information Disclosure",
+        "Asset": "Azure",
+        "Threat": "Unauthorized access attempts to Azure Storage accounts via endpoint devices",
+        "Mitigation": "Enable network logging for security investigation",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 44,
+        "Category": "Information Disclosure",
+        "Asset": "Azure",
+        "Threat": "Unauthorized access attempts to Azure Storage accounts via endpoint devices",
+        "Mitigation": "Enable threat detection capabilities",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 45,
+        "Category": "Tampering",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "Unauthorized access due to misconfigured Azure AD authentication controls",
+        "Mitigation": "Use centralized identity and authentication system",
+        "Risk": "60 out of 100"
+    },
+    {
+        "ID": 46,
+        "Category": "Tampering",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "Unauthorized access due to misconfigured Azure AD authentication controls",
+        "Mitigation": "Restrict the exposure of credential and secrets",
+        "Risk": "60 out of 100"
+    },
+    {
+        "ID": 47,
+        "Category": "Tampering",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "Unauthorized access due to misconfigured Azure AD authentication controls",
+        "Mitigation": "Restrict resource access based on conditions",
+        "Risk": "60 out of 100"
+    },
+    {
+        "ID": 48,
+        "Category": "Tampering",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "Unauthorized access due to misconfigured Azure AD authentication controls",
+        "Mitigation": "Manage application identities securely and automatically",
+        "Risk": "60 out of 100"
+    },
+    {
+        "ID": 49,
+        "Category": "Information Disclosure",
+        "Asset": "Azure IoT Hub",
+        "Threat": "Unauthorized access due to misconfigured Azure resources",
+        "Mitigation": "Use only approved services",
+        "Risk": "77 out of 100"
+    },
+    {
+        "ID": 50,
+        "Category": "Information Disclosure",
+        "Asset": "Azure IoT Hub",
+        "Threat": "Unauthorized access to Azure Key Vault encryption keys",
+        "Mitigation": "Use a secure key management process",
+        "Risk": "71 out of 100"
+    },
+    {
+        "ID": 51,
+        "Category": "Elevation of Privilege",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "Unauthorized access to Azure resources through misconfigured RBAC roles",
+        "Mitigation": "Choose approval process for third-party support",
+        "Risk": "66 out of 100"
+    },
+    {
+        "ID": 52,
+        "Category": "Elevation of Privilege",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "Unauthorized access to Azure resources through misconfigured RBAC roles",
+        "Mitigation": "Follow just enough administration (least privilege) principle",
+        "Risk": "66 out of 100"
+    },
+    {
+        "ID": 53,
+        "Category": "Elevation of Privilege",
+        "Asset": "Azure Storage",
+        "Threat": "Unauthorized access to Azure Storage data via Azure AD permissions",
+        "Mitigation": "Follow just enough administration (least privilege) principle",
+        "Risk": "48 out of 100"
+    },
+    {
+        "ID": 54,
+        "Category": "Elevation of Privilege",
+        "Asset": "Azure Storage",
+        "Threat": "Unauthorized access to Azure Storage data via Azure AD permissions",
+        "Mitigation": "Choose approval process for third-party support",
+        "Risk": "48 out of 100"
+    },
+    {
+        "ID": 55,
+        "Category": "Elevation of Privilege",
+        "Asset": "Azure",
+        "Threat": "Unauthorized access to Azure Storage data via Azure AD permissions",
+        "Mitigation": "Choose approval process for third-party support",
+        "Risk": "48 out of 100"
+    },
+    {
+        "ID": 56,
+        "Category": "Elevation of Privilege",
+        "Asset": "Azure",
+        "Threat": "Unauthorized access to Azure Storage data via Azure AD permissions",
+        "Mitigation": "Follow just enough administration (least privilege) principle",
+        "Risk": "48 out of 100"
+    },
+    {
+        "ID": 57,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Storage",
+        "Threat": "Unauthorized access to Azure Storage through unsecured public connections",
+        "Mitigation": "Secure cloud native services with network controls",
+        "Risk": "60 out of 100"
+    },
+    {
+        "ID": 58,
+        "Category": "Information Disclosure",
+        "Asset": "Azure",
+        "Threat": "Unauthorized access to Azure Storage through unsecured public connections",
+        "Mitigation": "Secure cloud native services with network controls",
+        "Risk": "60 out of 100"
+    },
+    {
+        "ID": 59,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Storage",
+        "Threat": "Unauthorized access to customer-managed keys and data in Azure Storage",
+        "Mitigation": "Use a secure key management process",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 60,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Storage",
+        "Threat": "Unauthorized access to customer-managed keys and data in Azure Storage",
+        "Mitigation": "Discover, classify, and label sensitive data",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 61,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Storage",
+        "Threat": "Unauthorized access to customer-managed keys and data in Azure Storage",
+        "Mitigation": "Monitor anomalies and threats targeting sensitive data",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 62,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Storage",
+        "Threat": "Unauthorized access to customer-managed keys and data in Azure Storage",
+        "Mitigation": "Use customer-managed key option in data at rest encryption when required",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 63,
+        "Category": "Information Disclosure",
+        "Asset": "Azure",
+        "Threat": "Unauthorized access to customer-managed keys and data in Azure Storage",
+        "Mitigation": "Discover, classify, and label sensitive data",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 64,
+        "Category": "Information Disclosure",
+        "Asset": "Azure",
+        "Threat": "Unauthorized access to customer-managed keys and data in Azure Storage",
+        "Mitigation": "Monitor anomalies and threats targeting sensitive data",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 65,
+        "Category": "Information Disclosure",
+        "Asset": "Azure",
+        "Threat": "Unauthorized access to customer-managed keys and data in Azure Storage",
+        "Mitigation": "Use a secure key management process",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 66,
+        "Category": "Information Disclosure",
+        "Asset": "Azure",
+        "Threat": "Unauthorized access to customer-managed keys and data in Azure Storage",
+        "Mitigation": "Use customer-managed key option in data at rest encryption when required",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 67,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "Unauthorized access to customer-managed keys and data loss prevention",
+        "Mitigation": "Use customer-managed key option in data at rest encryption when required",
+        "Risk": "65 out of 100"
+    },
+    {
+        "ID": 68,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "Unauthorized access to customer-managed keys and data loss prevention",
+        "Mitigation": "Use a secure key management process",
+        "Risk": "65 out of 100"
+    },
+    {
+        "ID": 69,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "Unauthorized access to customer-managed keys and data loss prevention",
+        "Mitigation": "Monitor anomalies and threats targeting sensitive data",
+        "Risk": "65 out of 100"
+    },
+    {
+        "ID": 70,
+        "Category": "Tampering",
+        "Asset": "EdgeRuntime",
+        "Threat": "Unauthorized access to IoT Edge devices",
+        "Mitigation": "Implement certificate-based authentication",
+        "Risk": "56 out of 100"
+    },
+    {
+        "ID": 71,
+        "Category": "Tampering",
+        "Asset": "M2",
+        "Threat": "Unauthorized access to IoT Edge devices",
+        "Mitigation": "Implement certificate-based authentication",
+        "Risk": "56 out of 100"
+    },
+    {
+        "ID": 72,
+        "Category": "Tampering",
+        "Asset": "M3",
+        "Threat": "Unauthorized access to IoT Edge devices",
+        "Mitigation": "Implement certificate-based authentication",
+        "Risk": "56 out of 100"
+    },
+    {
+        "ID": 73,
+        "Category": "Tampering",
+        "Asset": "M1",
+        "Threat": "Unauthorized access to IoT Edge devices",
+        "Mitigation": "Implement certificate-based authentication",
+        "Risk": "56 out of 100"
+    },
+    {
+        "ID": 74,
+        "Category": "Tampering",
+        "Asset": "IoT Edge Device",
+        "Threat": "Unauthorized access to IoT Edge devices",
+        "Mitigation": "Implement certificate-based authentication",
+        "Risk": "56 out of 100"
+    },
+    {
+        "ID": 75,
+        "Category": "Information Disclosure",
+        "Asset": "Azure IoT Hub",
+        "Threat": "Unauthorized access to public network resources",
+        "Mitigation": "Secure cloud native services with network controls",
+        "Risk": "51 out of 100"
+    },
+    {
+        "ID": 76,
+        "Category": "Tampering",
+        "Asset": "Azure IoT Hub",
+        "Threat": "Unauthorized access via local authentication and hard-coded credentials",
+        "Mitigation": "Use centralized identity and authentication system",
+        "Risk": "68 out of 100"
+    },
+    {
+        "ID": 77,
+        "Category": "Tampering",
+        "Asset": "Azure IoT Hub",
+        "Threat": "Unauthorized access via local authentication and hard-coded credentials",
+        "Mitigation": "Manage application identities securely and automatically",
+        "Risk": "68 out of 100"
+    },
+    {
+        "ID": 78,
+        "Category": "Tampering",
+        "Asset": "Azure IoT Hub",
+        "Threat": "Unauthorized access via local authentication and hard-coded credentials",
+        "Mitigation": "Restrict resource access based on conditions",
+        "Risk": "68 out of 100"
+    },
+    {
+        "ID": 79,
+        "Category": "Elevation of Privilege",
+        "Asset": "Azure IoT Hub",
+        "Threat": "Unauthorized IoT Hub API access due to misconfigured RBAC role assignment",
+        "Mitigation": "Follow just enough administration (least privilege) principle",
+        "Risk": "68 out of 100"
+    },
+    {
+        "ID": 80,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Storage",
+        "Threat": "Unauthorized network access to Azure Storage Account data",
+        "Mitigation": "Use only approved services",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 81,
+        "Category": "Information Disclosure",
+        "Asset": "Azure",
+        "Threat": "Unauthorized network access to Azure Storage Account data",
+        "Mitigation": "Use only approved services",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 82,
+        "Category": "Information Disclosure",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "Unauthorized public network access bypasses restrictions, compromising data security",
+        "Mitigation": "Secure cloud native services with network controls",
+        "Risk": "63 out of 100"
+    },
+    {
+        "ID": 83,
+        "Category": "Repudiation",
+        "Asset": "Azure IoT Hub",
+        "Threat": "Undetected unauthorized activities due to lack of resource logs",
+        "Mitigation": "Enable network logging for security investigation",
+        "Risk": "40 out of 100"
+    },
+    {
+        "ID": 84,
+        "Category": "Repudiation",
+        "Asset": "Azure Cognitive Service",
+        "Threat": "Undetected unauthorized activities due to lack of resource logs",
+        "Mitigation": "Enable network logging for security investigation",
+        "Risk": "51 out of 100"
+    },
+    {
+        "ID": 85,
+        "Category": "Denial of Service",
+        "Asset": "Azure Storage",
+        "Threat": "Unscheduled or infrequent application backups leading to potential data loss",
+        "Mitigation": "Ensure regular automated backups",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 86,
+        "Category": "Denial of Service",
+        "Asset": "Azure",
+        "Threat": "Unscheduled or infrequent application backups leading to potential data loss",
+        "Mitigation": "Ensure regular automated backups",
         "Risk": "88 out of 100"
     }
 ]

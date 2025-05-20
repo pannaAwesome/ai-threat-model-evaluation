@@ -1,11 +1,11 @@
 result_id,model,seed,category,asset
-0,gemma3:4b-it-q4_K_M,169,[],[]
-1,gemma3:4b-it-q4_K_M,429,[],[]
-2,gemma3:4b-it-q4_K_M,707,[],[]
-3,gemma3:4b-it-q4_K_M,429,[],[]
-4,gemma3:4b-it-q4_K_M,651,[],[]
-5,gemma3:4b-it-q4_K_M,289,[],[]
-6,gemma3:4b-it-q4_K_M,491,[],[]
-7,gemma3:4b-it-q4_K_M,864,[],[]
-8,gemma3:4b-it-q4_K_M,222,[],[]
-9,gemma3:4b-it-q4_K_M,812,[],[]
+0,gemma3:4b-it-q4_K_M,169,[],"[8, 55, 86, 9]"
+1,gemma3:4b-it-q4_K_M,429,[],"[55, 9, 86, 8]"
+2,gemma3:4b-it-q4_K_M,707,[],"[86, 9, 8]"
+3,gemma3:4b-it-q4_K_M,429,[],"[55, 9, 86, 8]"
+4,gemma3:4b-it-q4_K_M,651,[],"[86, 55, 8, 9]"
+5,gemma3:4b-it-q4_K_M,289,[],"[55, 86, 8]"
+6,gemma3:4b-it-q4_K_M,491,[],"[9, 55, 86, 8]"
+7,gemma3:4b-it-q4_K_M,864,[],"[9, 55, 8, 86]"
+8,gemma3:4b-it-q4_K_M,222,[],"[55, 86, 9]"
+9,gemma3:4b-it-q4_K_M,812,[],"[86, 55, 8, 9]"

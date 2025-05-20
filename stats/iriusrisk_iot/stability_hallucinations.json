@@ -2,26 +2,26 @@
     {
         "model": "gemma3:4b-it-q4_K_M",
         "category_kappa": 1,
-        "asset_kappa": 1
+        "asset_kappa": 0.9186305405665385
     },
     {
         "model": "yi:9b-chat-v1.5-q4_K_M",
-        "category_kappa": 1,
-        "asset_kappa": 1
+        "category_kappa": 0.36229253564635877,
+        "asset_kappa": 0.9487655620376486
     },
     {
         "model": "qwen2.5:7b-instruct-q4_K_M",
-        "category_kappa": 0.7821287110116786,
-        "asset_kappa": 1
+        "category_kappa": 0.9867019074610717,
+        "asset_kappa": 1.0
     },
     {
         "model": "phi3:14b-medium-128k-instruct-q4_K_M",
-        "category_kappa": 1,
-        "asset_kappa": 1
+        "category_kappa": 0.14741315949248898,
+        "asset_kappa": 0.20576844898046714
     },
     {
         "model": "deepseek-r1:14b-qwen-distill-q4_K_M",
-        "category_kappa": 1,
-        "asset_kappa": 1
+        "category_kappa": 0.4569584362191727,
+        "asset_kappa": 0.8081366426690201
     }
 ]

@@ -1,0 +1,47 @@
+[
+    {
+        "model": "gemma3:4b-it-q4_K_M",
+        "category": 0,
+        "category_max": 0,
+        "category_min": 0,
+        "asset": 5,
+        "asset_max": 7,
+        "asset_min": 3
+    },
+    {
+        "model": "yi:9b-chat-v1.5-q4_K_M",
+        "category": 0,
+        "category_max": 0,
+        "category_min": 0,
+        "asset": 17,
+        "asset_max": 17,
+        "asset_min": 17
+    },
+    {
+        "model": "qwen2.5:7b-instruct-q4_K_M",
+        "category": 5,
+        "category_max": 5,
+        "category_min": 5,
+        "asset": 12,
+        "asset_max": 12,
+        "asset_min": 12
+    },
+    {
+        "model": "phi3:14b-medium-128k-instruct-q4_K_M",
+        "category": 1,
+        "category_max": 4,
+        "category_min": 0,
+        "asset": 8,
+        "asset_max": 13,
+        "asset_min": 2
+    },
+    {
+        "model": "deepseek-r1:14b-qwen-distill-q4_K_M",
+        "category": 0,
+        "category_max": 1,
+        "category_min": 0,
+        "asset": 10,
+        "asset_max": 12,
+        "asset_min": 7
+    }
+]

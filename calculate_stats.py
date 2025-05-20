@@ -2,6 +2,7 @@ from stats.compare_human_ai import *
 from stats.compare_self import *
 from stats.compare_other import *
 from stats.files import *
+from stats.outcome import *
 
 import json
 
@@ -150,3 +151,12 @@ for experiment in experiments:
             kappa = threats_ai_ai(threat_files, possible_ids)
             with open(f"{stats_folder}/agreement_threats.json", "w") as f:
                 json.dump(kappa, f, indent=4)
+                
+            ######################### JUDGE OUTCOME #########################
+            counts = threats_count_outcome(threat_files)
+            with open(f"{stats_folder}/count_threats.json", "w") as f:
+                json.dump(counts, f, indent=4)
+                
+            counts = hallucinations_count_outcome(hallucination_files)
+            with open(f"{stats_folder}/count_hallucinations.json", "w") as f:
+                json.dump(counts, f, indent=4)

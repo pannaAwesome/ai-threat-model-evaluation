@@ -1,10 +1,10 @@
 result_id,model,seed,category,asset
-0,phi3:14b-medium-128k-instruct-q4_K_M,169,[],[]
-1,phi3:14b-medium-128k-instruct-q4_K_M,429,[],[]
-2,phi3:14b-medium-128k-instruct-q4_K_M,707,[],[]
+0,phi3:14b-medium-128k-instruct-q4_K_M,169,"[86, 85]","[8, 28, 64, 81, 43, 58, 55, 86, 63, 27, 20, 56, 29, 9, 26, 44, 65, 66]"
+1,phi3:14b-medium-128k-instruct-q4_K_M,429,"[85, 86]","[27, 44, 81, 65, 26, 9, 29, 86, 64, 63, 58, 8, 20, 56, 28, 43]"
+2,phi3:14b-medium-128k-instruct-q4_K_M,707,"[86, 85]","[43, 86, 20, 27, 81, 44, 63, 9, 29, 26, 28, 66, 56, 55, 8, 64, 65]"
 3,phi3:14b-medium-128k-instruct-q4_K_M,429,[],[]
-4,phi3:14b-medium-128k-instruct-q4_K_M,651,[],[]
-5,phi3:14b-medium-128k-instruct-q4_K_M,289,[],[]
+4,phi3:14b-medium-128k-instruct-q4_K_M,651,[21],[21]
+5,phi3:14b-medium-128k-instruct-q4_K_M,289,"[71, 56]","[71, 56]"
 6,phi3:14b-medium-128k-instruct-q4_K_M,491,[],[]
 7,phi3:14b-medium-128k-instruct-q4_K_M,864,[],[]
 8,phi3:14b-medium-128k-instruct-q4_K_M,222,[],[]

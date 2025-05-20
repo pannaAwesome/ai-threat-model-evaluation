@@ -1,10 +1,1 @@
-[
-    {
-        "model": "yi:9b-chat-v1.5-q4_K_M_stridegpt",
-        "threats_kappas": 0.41065996724178266,
-        "mitigations_kappas": 0.129151291512915,
-        "risk_same_kappas": 0.0,
-        "risk_more_kappas": 0.2934328153981817,
-        "risk_less_kappas": -0.0009790803913600063
-    }
-]
+[]
