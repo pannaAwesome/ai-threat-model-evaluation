@@ -8,6 +8,14 @@
         "risk_less_kappas": 0.934746460337714
     },
     {
+        "model": "deepseek-r1:14b-qwen-distill-q4_K_M",
+        "threats_kappas": 0.9352618950608905,
+        "mitigations_kappas": 0.637190319477681,
+        "risk_same_kappas": 0.17681835861538625,
+        "risk_more_kappas": 0.6711582119931067,
+        "risk_less_kappas": 0.8254341257972971
+    },
+    {
         "model": "yi:9b-chat-v1.5-q4_K_M",
         "threats_kappas": 1.0,
         "mitigations_kappas": 0.9493673522520188,

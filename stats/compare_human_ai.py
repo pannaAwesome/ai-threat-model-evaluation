@@ -1,5 +1,5 @@
 from stats.files import read_csv_hallucinations, read_csv_threats
-from stats.confusion_matrix import *
+from stats.stat_measures import *
 
 def _compare_pair(rater1, rater2, total):
     conf = count_based_confusion_matrix(rater1, rater2, total)

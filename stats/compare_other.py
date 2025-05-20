@@ -1,5 +1,5 @@
 from stats.files import read_csv_hallucinations, read_csv_threats
-from stats.confusion_matrix import *
+from stats.stat_measures import *
 
 def threats_ai_ai(ai_files, total):
     found_threats = []

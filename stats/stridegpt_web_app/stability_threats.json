@@ -30,5 +30,13 @@
         "risk_same_kappas": 0.9289776762632035,
         "risk_more_kappas": 0.5107534510830549,
         "risk_less_kappas": 0.9061095094498021
+    },
+    {
+        "model": "deepseek-r1:14b-qwen-distill-q4_K_M",
+        "threats_kappas": 0.9625130399790973,
+        "mitigations_kappas": 0.8173301744004698,
+        "risk_same_kappas": 0.17173576816065633,
+        "risk_more_kappas": 0.6946660946660929,
+        "risk_less_kappas": 0.8606936819149614
     }
 ]

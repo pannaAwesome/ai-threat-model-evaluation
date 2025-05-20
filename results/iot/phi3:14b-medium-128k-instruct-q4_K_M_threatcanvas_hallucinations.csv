@@ -1,0 +1,10 @@
+result_id,model,seed,category,asset
+0,phi3:14b-medium-128k-instruct-q4_K_M,169,[],[]
+1,phi3:14b-medium-128k-instruct-q4_K_M,429,[],[]
+0,phi3:14b-medium-128k-instruct-q4_K_M,169,[],[]
+1,phi3:14b-medium-128k-instruct-q4_K_M,429,[],[]
+2,phi3:14b-medium-128k-instruct-q4_K_M,707,[],[]
+3,phi3:14b-medium-128k-instruct-q4_K_M,429,[],[]
+4,phi3:14b-medium-128k-instruct-q4_K_M,651,[],[]
+5,phi3:14b-medium-128k-instruct-q4_K_M,289,[],[]
+6,phi3:14b-medium-128k-instruct-q4_K_M,491,[],[]

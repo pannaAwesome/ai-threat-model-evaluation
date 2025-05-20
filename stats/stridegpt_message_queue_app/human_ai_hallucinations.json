@@ -1,5 +1,34 @@
 [
     {
+        "model": "deepseek-r1:14b-qwen-distill-q4_K_M",
+        "avg_category": 1.0,
+        "category_kappas": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+        ],
+        "avg_asset": 1.0,
+        "asset_kappas": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+        ]
+    },
+    {
         "model": "gemma3:4b-it-q4_K_M",
         "avg_category": 1.0,
         "category_kappas": [

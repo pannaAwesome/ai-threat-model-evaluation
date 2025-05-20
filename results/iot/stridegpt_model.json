@@ -2,120 +2,120 @@
     {
         "ID": 0,
         "Category": "Spoofing",
-        "Threat": "An attacker could spoof the Browser's identity to gain access to the IoT Edge device over the same network, as Basic Authentication is being used. Unauthorized access to sensitive data and control over the IoT Edge device.",
-        "Mitigation": "Implement multi-factor authentication (MFA) and use stronger authentication mechanisms such as OAuth or certificate-based authentication. Ensure secure communication channels using TLS/SSL.",
+        "Threat": "An attacker impersonates a legitimate user by guessing or brute-forcing the username and password, gaining unauthorized access to the Web UI. Unauthorized access to customer data, including personally identifiable information.",
+        "Mitigation": "Implement strong password policies. <br> Enforce multi-factor authentication (MFA). <br> Use account lockout policies after multiple failed login attempts. <br> Implement CAPTCHA to prevent automated guessing.",
         "Risk": "7.00 out of 10"
     },
     {
         "ID": 1,
         "Category": "Spoofing",
-        "Threat": "An attacker impersonates the IoT Edge Device to send malicious data to Azure services by intercepting and modifying network traffic. Compromised integrity of telemetry data and potential denial of legitimate services.",
-        "Mitigation": "Use mutual TLS (mTLS) for secure communication between the IoT Edge Device and Azure services. Implement message signing and verification to ensure data integrity.",
-        "Risk": "6.80 out of 10"
+        "Threat": "An attacker intercepts the session ID transmitted between the client and the Web Service and uses it to impersonate a legitimate user. Unauthorized access to customer data processed by the Web Service.",
+        "Mitigation": "Use secure, HTTP-only cookies for session management. <br> Implement short session timeouts and re-authentication for sensitive actions. <br> Use SSL/TLS to encrypt data in transit. <br> Regenerate session IDs after successful login.",
+        "Risk": "6.20 out of 10"
     },
     {
         "ID": 2,
         "Category": "Spoofing",
-        "Threat": "An attacker spoofs the identity of M1 to interact with M2 and M3, leading to unauthorized access to internal communications. Potential manipulation of live video streams and order scanning results.",
-        "Mitigation": "Implement strong authentication and authorization mechanisms between M1, M2, and M3. Use digital signatures and encryption to protect internal communications.",
-        "Risk": "6.40 out of 10"
+        "Threat": "An attacker sends crafted XML input to the Web Service, exploiting vulnerabilities in the XML parser to impersonate a legitimate user or service. Unauthorized access to customer data processed by the Web Service.",
+        "Mitigation": "Implement strict input validation and sanitization. <br> Use secure XML parsers that are not vulnerable to attacks like XML External Entities (XXE). <br> Implement Web Application Firewalls (WAF) to detect and block malicious input.",
+        "Risk": "5.20 out of 10"
     },
     {
         "ID": 3,
         "Category": "Tampering",
-        "Threat": "An attacker intercepts and modifies the data sent from M3 to the Azure Cognitive Service, altering OCR and Text-to-Speech information. Incorrect translations and audio outputs, leading to misinformation and potential operational disruptions.",
-        "Mitigation": "Use end-to-end encryption and message authentication codes (MACs) to ensure data integrity and authenticity. Implement secure data transmission protocols.",
-        "Risk": "5.40 out of 10"
+        "Threat": "An attacker intercepts and modifies the data transmitted between the Web UI and the Web Service, altering customer data. Data integrity compromise, leading to incorrect processing and potential data loss.",
+        "Mitigation": "Use SSL/TLS to encrypt data in transit. <br> Implement hash-based message authentication codes (HMAC) to ensure data integrity. <br> Use digital signatures to verify the authenticity of the data.",
+        "Risk": "6.60 out of 10"
     },
     {
         "ID": 4,
         "Category": "Tampering",
-        "Threat": "An attacker modifies the telemetry information sent from the IoT Edge Device to Azure Application Insights. False analytics and monitoring data, leading to incorrect operational decisions.",
-        "Mitigation": "Use secure data transmission protocols and implement data integrity checks, such as checksums or digital signatures. Ensure that telemetry data is encrypted in transit.",
-        "Risk": "6.60 out of 10"
+        "Threat": "An attacker intercepts and modifies the data transmitted between the Web Service and PostgreSQL, altering the stored customer data. Data integrity compromise, leading to incorrect data retrieval and potential data loss.",
+        "Mitigation": "Use SSL/TLS to encrypt data in transit. <br> Implement database-level encryption. <br> Use prepared statements and parameterized queries to prevent SQL injection.",
+        "Risk": "6.00 out of 10"
     },
     {
         "ID": 5,
         "Category": "Tampering",
-        "Threat": "An attacker tampers with the connection strings stored in GitHub secrets, leading to unauthorized access to Azure services. Unauthorized access to sensitive data and potential service disruptions.",
-        "Mitigation": "Use secure secrets management practices, such as Azure Key Vault, to store and manage connection strings. Implement access controls and auditing for secrets management.",
-        "Risk": "6.00 out of 10"
+        "Threat": "An attacker exploits a vulnerability in the Web Service to tamper with the session management, leading to session hijacking. Unauthorized access to customer data and potential data manipulation.",
+        "Mitigation": "Implement secure session management practices. <br> Use short session timeouts and re-authentication for sensitive actions. <br> Regenerate session IDs after successful login and logout.",
+        "Risk": "5.20 out of 10"
     },
     {
         "ID": 6,
         "Category": "Repudiation",
-        "Threat": "An attacker performs malicious actions and denies their involvement due to the lack of robust logging and auditing mechanisms. Difficulty in identifying the source of attacks and holding attackers accountable.",
-        "Mitigation": "Implement comprehensive logging and auditing mechanisms to track all actions and changes. Use centralized logging solutions and ensure logs are tamper-proof.",
-        "Risk": "6.20 out of 10"
+        "Threat": "A user performs unauthorized actions and then denies having performed them, as there is no logging mechanism to track user actions. Difficulty in tracing unauthorized activities and holding users accountable.",
+        "Mitigation": "Implement comprehensive logging and monitoring. <br> Use audit trails to track user actions. <br> Ensure logs are securely stored and tamper-evident.",
+        "Risk": "5.60 out of 10"
     },
     {
         "ID": 7,
         "Category": "Repudiation",
-        "Threat": "An attacker manipulates the telemetry data sent to Azure Application Insights, making it difficult to trace back the source of data manipulation. Loss of trust in the telemetry data and inability to identify the source of malicious activities.",
-        "Mitigation": "Implement robust data integrity checks and use digital signatures to ensure the authenticity of telemetry data. Use centralized logging and auditing to track data changes.",
-        "Risk": "6.00 out of 10"
+        "Threat": "An attacker performs actions using a legitimate user's credentials and denies involvement, as there is no audit trail to prove the actions. Difficulty in tracing unauthorized activities and holding attackers accountable.",
+        "Mitigation": "Implement multi-factor authentication (MFA). <br> Use audit trails to track user actions. <br> Ensure logs are securely stored and tamper-evident.",
+        "Risk": "5.60 out of 10"
     },
     {
         "ID": 8,
         "Category": "Repudiation",
-        "Threat": "An attacker denies performing unauthorized actions on the IoT Edge Device due to weak logging mechanisms on the device. Difficulty in tracing back unauthorized actions to the attacker.",
-        "Mitigation": "Enhance logging mechanisms on the IoT Edge Device to capture all relevant actions and changes. Use centralized logging and ensure logs are securely stored and tamper-proof.",
-        "Risk": "5.60 out of 10"
+        "Threat": "A user denies receiving or sending specific data, as there is no mechanism to verify the data exchange. Difficulty in resolving disputes related to data exchange.",
+        "Mitigation": "Implement digital signatures and timestamps for data exchange. <br> Use non-repudiation protocols to ensure data exchange is verifiable. <br> Maintain detailed logs of data exchange transactions.",
+        "Risk": "4.60 out of 10"
     },
     {
         "ID": 9,
         "Category": "Information Disclosure",
-        "Threat": "An attacker intercepts the connection strings used by Azure services, leading to unauthorized access to sensitive data. Compromised sensitive data and potential misuse of Azure services.",
-        "Mitigation": "Use secure communication channels and encrypt connection strings in transit and at rest. Implement strong access controls and use secure secrets management practices.",
-        "Risk": "6.20 out of 10"
+        "Threat": "An attacker exploits a vulnerability in the Web Service to access sensitive customer data stored in PostgreSQL. Exposure of sensitive customer data, including personally identifiable information.",
+        "Mitigation": "Implement least privilege access controls. <br> Use encrypted database connections. <br> Implement database-level encryption. <br> Regularly patch and update the Web Service and database.",
+        "Risk": "6.40 out of 10"
     },
     {
         "ID": 10,
         "Category": "Information Disclosure",
-        "Threat": "An attacker accesses the video frames processed by M1, M2, and M3, leading to unauthorized access to sensitive video data. Compromised privacy and potential misuse of sensitive video data.",
-        "Mitigation": "Implement end-to-end encryption for video data transmission and storage. Use access controls and authentication mechanisms to restrict access to video data.",
-        "Risk": "6.00 out of 10"
+        "Threat": "An attacker intercepts the data transmitted between the Web UI and the Web Service, gaining access to sensitive customer data. Exposure of sensitive customer data, including personally identifiable information.",
+        "Mitigation": "Use SSL/TLS to encrypt data in transit. <br> Implement strict transport layer security policies. <br> Use secure coding practices to prevent data leakage.",
+        "Risk": "7.00 out of 10"
     },
     {
         "ID": 11,
         "Category": "Information Disclosure",
-        "Threat": "An attacker intercepts the telemetry data sent to Azure Application Insights, leading to unauthorized access to operational data. Compromised operational data and potential misuse of telemetry information.",
-        "Mitigation": "Use secure data transmission protocols and encrypt telemetry data in transit. Implement access controls and authentication mechanisms to protect operational data.",
-        "Risk": "5.80 out of 10"
+        "Threat": "An attacker exploits a vulnerability in the Web UI to access sensitive customer data processed by the Web Service. Exposure of sensitive customer data, including personally identifiable information.",
+        "Mitigation": "Implement secure coding practices. <br> Regularly patch and update the Web UI. <br> Use Web Application Firewalls (WAF) to detect and block malicious input.",
+        "Risk": "6.20 out of 10"
     },
     {
         "ID": 12,
         "Category": "Denial of Service",
-        "Threat": "An attacker floods the HTTP endpoints of M1, M2, and M3 with excessive requests, leading to a denial of service. Interruption of video processing and telemetry data collection.",
-        "Mitigation": "Implement rate limiting and throttling mechanisms to control the number of requests. Use load balancers and distribute traffic to prevent overloading.",
-        "Risk": "6.80 out of 10"
+        "Threat": "An attacker floods the Web Service with a large number of requests, causing it to become unresponsive. Service disruption, leading to unavailability of the application for legitimate users.",
+        "Mitigation": "Implement rate limiting and throttling. <br> Use load balancers to distribute traffic. <br> Implement DDoS protection services. <br> Ensure the Web Service can scale horizontally.",
+        "Risk": "7.40 out of 10"
     },
     {
         "ID": 13,
         "Category": "Denial of Service",
-        "Threat": "An attacker floods the Azure Cognitive Service with excessive requests, leading to a denial of service. Interruption of OCR and Text-to-Speech services.",
-        "Mitigation": "Implement rate limiting and throttling mechanisms to control the number of requests. Use auto-scaling and load balancing to handle increased traffic.",
-        "Risk": "6.80 out of 10"
+        "Threat": "An attacker exploits a vulnerability in the Web Service to consume excessive resources, causing it to become unresponsive. Service disruption, leading to unavailability of the application for legitimate users.",
+        "Mitigation": "Regularly patch and update the Web Service. <br> Implement resource governance and quotas. <br> Use application-level throttling and rate limiting.",
+        "Risk": "6.60 out of 10"
     },
     {
         "ID": 14,
         "Category": "Denial of Service",
-        "Threat": "An attacker floods the Azure Storage with excessive upload requests, leading to a denial of service. Interruption of data storage and retrieval services.",
-        "Mitigation": "Implement rate limiting and throttling mechanisms to control the number of upload requests. Use auto-scaling and load balancing to handle increased traffic.",
-        "Risk": "6.80 out of 10"
+        "Threat": "An attacker floods the Web UI with a large number of requests, causing it to become unresponsive. Service disruption, leading to unavailability of the application for legitimate users.",
+        "Mitigation": "Implement rate limiting and throttling. <br> Use load balancers to distribute traffic. <br> Implement DDoS protection services. <br> Ensure the Web UI can scale horizontally.",
+        "Risk": "7.40 out of 10"
     },
     {
         "ID": 15,
         "Category": "Elevation of Privilege",
-        "Threat": "An attacker exploits vulnerabilities in the IoT Edge Device to gain elevated privileges, leading to unauthorized access to sensitive data and control over the device. Compromised integrity and confidentiality of the IoT Edge Device.",
-        "Mitigation": "Implement the principle of least privilege and use role-based access control (RBAC). Regularly update and patch the IoT Edge Device to address vulnerabilities.",
-        "Risk": "6.60 out of 10"
+        "Threat": "An attacker exploits a vulnerability in the Web Service to gain administrative access, allowing them to perform unauthorized actions. Unauthorized access to administrative functions, leading to potential data manipulation and service disruption.",
+        "Mitigation": "Implement least privilege access controls. <br> Regularly patch and update the Web Service. <br> Use secure coding practices to prevent privilege escalation vulnerabilities.",
+        "Risk": "6.40 out of 10"
     },
     {
         "ID": 16,
         "Category": "Elevation of Privilege",
-        "Threat": "An attacker exploits vulnerabilities in the Azure services to gain elevated privileges, leading to unauthorized access to sensitive data and control over the services. Compromised integrity and confidentiality of Azure services.",
-        "Mitigation": "Implement the principle of least privilege and use role-based access control (RBAC). Regularly update and patch Azure services to address vulnerabilities.",
-        "Risk": "6.80 out of 10"
+        "Threat": "An attacker exploits a vulnerability in the Web UI to gain administrative access, allowing them to perform unauthorized actions. Unauthorized access to administrative functions, leading to potential data manipulation and service disruption.",
+        "Mitigation": "Implement least privilege access controls. <br> Regularly patch and update the Web UI. <br> Use secure coding practices to prevent privilege escalation vulnerabilities.",
+        "Risk": "6.20 out of 10"
     }
 ]

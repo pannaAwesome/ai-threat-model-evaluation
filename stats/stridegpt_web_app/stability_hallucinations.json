@@ -1,5 +1,10 @@
 [
     {
+        "model": "deepseek-r1:14b-qwen-distill-q4_K_M",
+        "category_kappa": 1,
+        "asset_kappa": 1.0
+    },
+    {
         "model": "gemma3:4b-it-q4_K_M",
         "category_kappa": 1,
         "asset_kappa": 1
@@ -17,6 +22,6 @@
     {
         "model": "phi3:14b-medium-128k-instruct-q4_K_M",
         "category_kappa": 1,
-        "asset_kappa": 0.14963620800352007
+        "asset_kappa": 0.16627432517263085
     }
 ]

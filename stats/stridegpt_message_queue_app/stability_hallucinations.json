@@ -1,5 +1,10 @@
 [
     {
+        "model": "deepseek-r1:14b-qwen-distill-q4_K_M",
+        "category_kappa": 1,
+        "asset_kappa": 1
+    },
+    {
         "model": "gemma3:4b-it-q4_K_M",
         "category_kappa": 1,
         "asset_kappa": 1
