@@ -1,51 +1,58 @@
 from stats.files import *
 from collections import Counter
 
-def threats_count_outcome(ai_files):
+def _compute_risk_proportions(row):
+    total_threats = len(row['threats'])
+    if total_threats == 0:
+        return pd.Series({'same_pct': 0, 'more_pct': 0, 'less_pct': 0})
+    
+    same_pct = (total_threats - len(row['risks_more']) - len(row["risks_less"])) / total_threats
+    more_pct = len(row['risks_more']) / total_threats
+    less_pct = len(row['risks_less']) / total_threats
+    
+    return pd.Series({'same_pct': same_pct, 'more_pct': more_pct, 'less_pct': less_pct})
+
+def _compute_mitigation_proportion(row):
+    total_threats = len(row['threats'])
+    if total_threats == 0:
+        return 0
+    return len(row['mitigations']) / total_threats
+
+def _normalized_duplicate_count(row, actual_threats):
+    threats_list = row['threats']
+    if actual_threats == 0:
+        return 0
+    counts = Counter(threats_list)
+    # Count how many unique elements appear more than once
+    unique_duplicate_count = sum(1 for count in counts.values() if count > 1)
+    return unique_duplicate_count / actual_threats
+
+def threats_count_outcome(ai_files, comparisons, actual_threats):
     counts = []
     for file in ai_files:
         df_ai = read_csv_threats(file)
         
-        threats = df_ai["threats"].apply(lambda x: len(set(x))).mean()
-        threats_max = df_ai["threats"].apply(lambda x: len(set(x))).max()
-        threats_min = df_ai["threats"].apply(lambda x: len(set(x))).min()
+        threats = df_ai["threats"].apply(lambda x: len(set(x))).mean()/actual_threats
 
-        duplicate_threats = df_ai['threats'].apply(lambda x: sum(count - 1 for count in Counter(x).values() if count > 1)).max()
+        duplicate_threats = df_ai.apply(_normalized_duplicate_count, axis=1, args=(actual_threats,)).mean()
 
-        mitigations = df_ai["mitigations"].apply(lambda x: len(set(x))).mean()
-        mitigations_max = df_ai["mitigations"].apply(lambda x: len(set(x))).max()
-        mitigations_min = df_ai["mitigations"].apply(lambda x: len(set(x))).min()
-
-        risk_same = df_ai["risks_same"].apply(lambda x: len(set(x))).mean()
-        risk_same_max = df_ai["risks_same"].apply(lambda x: len(set(x))).max()
-        risk_same_min = df_ai["risks_same"].apply(lambda x: len(set(x))).min()
-
-        risk_more = df_ai["risks_more"].apply(lambda x: len(set(x))).mean()
-        risk_more_max = df_ai["risks_more"].apply(lambda x: len(set(x))).max()
-        risk_more_min = df_ai["risks_more"].apply(lambda x: len(set(x))).min()
-
-        risk_less = df_ai["risks_less"].apply(lambda x: len(set(x))).mean()
-        risk_less_max = df_ai["risks_less"].apply(lambda x: len(set(x))).max()
-        risk_less_min = df_ai["risks_less"].apply(lambda x: len(set(x))).min()
+        mitigations = df_ai.apply(_compute_mitigation_proportion, axis=1)
+        mitigations = mitigations.mean()
+        
+        risk = df_ai.apply(_compute_risk_proportions, axis=1)
+        risk = {
+            "mean": risk.mean()
+        }
+        risk = {key: value.round(4).to_dict() for key, value in risk.items()}
         
         counts.append({
             "model": df_ai["model"].iloc[0],
-            "duplicates": int(duplicate_threats),
-            "threats": int(threats),
-            "threats_max": int(threats_max),
-            "threats_min": int(threats_min),
-            "mitigations": int(mitigations),
-            "mitigations_max": int(mitigations_max),
-            "mitigations_min": int(mitigations_min),
-            "risk_same": int(risk_same),
-            "risk_same_max": int(risk_same_max),
-            "risk_same_min": int(risk_same_min),
-            "risk_more": int(risk_more),
-            "risk_more_max": int(risk_more_max),
-            "risk_more_min": int(risk_more_min),
-            "risk_less": int(risk_less),
-            "risk_less_max": int(risk_less_max),
-            "risk_less_min": int(risk_less_min)
+            "total": comparisons,
+            "actual": actual_threats,
+            "duplicates": duplicate_threats,
+            "threats": threats,
+            "mitigations": mitigations,
+            "risk_same": risk,
         })     
         
     return counts

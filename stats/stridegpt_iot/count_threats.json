@@ -1,97 +1,77 @@
 [
     {
         "model": "gemma3:4b-it-q4_K_M",
-        "duplicates": 12,
-        "threats": 11,
-        "threats_max": 12,
-        "threats_min": 11,
-        "mitigations": 5,
-        "mitigations_max": 6,
-        "mitigations_min": 5,
-        "risk_same": 11,
-        "risk_same_max": 12,
-        "risk_same_min": 11,
-        "risk_more": 0,
-        "risk_more_max": 0,
-        "risk_more_min": 0,
-        "risk_less": 0,
-        "risk_less_max": 0,
-        "risk_less_min": 0
+        "total": 204,
+        "actual": 12,
+        "duplicates": 0.6833333333333333,
+        "threats": 0.9666666666666667,
+        "mitigations": 0.5116436100131752,
+        "risk_same": {
+            "mean": {
+                "same_pct": 1.0,
+                "more_pct": 0.0,
+                "less_pct": 0.0
+            }
+        }
     },
     {
         "model": "phi3:14b-medium-128k-instruct-q4_K_M",
-        "duplicates": 4,
-        "threats": 8,
-        "threats_max": 8,
-        "threats_min": 8,
-        "mitigations": 1,
-        "mitigations_max": 1,
-        "mitigations_min": 1,
-        "risk_same": 0,
-        "risk_same_max": 1,
-        "risk_same_min": 0,
-        "risk_more": 7,
-        "risk_more_max": 8,
-        "risk_more_min": 7,
-        "risk_less": 0,
-        "risk_less_max": 0,
-        "risk_less_min": 0
+        "total": 204,
+        "actual": 12,
+        "duplicates": 0.25,
+        "threats": 0.6666666666666666,
+        "mitigations": 0.17424242424242425,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.0258,
+                "more_pct": 0.9742,
+                "less_pct": 0.0
+            }
+        }
     },
     {
         "model": "yi:9b-chat-v1.5-q4_K_M",
-        "duplicates": 16,
-        "threats": 11,
-        "threats_max": 11,
-        "threats_min": 11,
-        "mitigations": 6,
-        "mitigations_max": 8,
-        "mitigations_min": 5,
-        "risk_same": 0,
-        "risk_same_max": 0,
-        "risk_same_min": 0,
-        "risk_more": 4,
-        "risk_more_max": 5,
-        "risk_more_min": 2,
-        "risk_less": 8,
-        "risk_less_max": 11,
-        "risk_less_min": 7
+        "total": 204,
+        "actual": 12,
+        "duplicates": 0.75,
+        "threats": 0.9166666666666666,
+        "mitigations": 0.29472934472934476,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.0,
+                "more_pct": 0.3135,
+                "less_pct": 0.6865
+            }
+        }
     },
     {
         "model": "qwen2.5:7b-instruct-q4_K_M",
-        "duplicates": 2,
-        "threats": 7,
-        "threats_max": 7,
-        "threats_min": 7,
-        "mitigations": 1,
-        "mitigations_max": 1,
-        "mitigations_min": 1,
-        "risk_same": 4,
-        "risk_same_max": 6,
-        "risk_same_min": 3,
-        "risk_more": 3,
-        "risk_more_max": 5,
-        "risk_more_min": 2,
-        "risk_less": 0,
-        "risk_less_max": 0,
-        "risk_less_min": 0
+        "total": 204,
+        "actual": 12,
+        "duplicates": 0.08333333333333334,
+        "threats": 0.5833333333333334,
+        "mitigations": 0.2111111111111111,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.5778,
+                "more_pct": 0.4222,
+                "less_pct": 0.0
+            }
+        }
     },
     {
         "model": "deepseek-r1:14b-qwen-distill-q4_K_M",
-        "duplicates": 8,
-        "threats": 8,
-        "threats_max": 11,
-        "threats_min": 7,
-        "mitigations": 3,
-        "mitigations_max": 5,
-        "mitigations_min": 1,
-        "risk_same": 0,
-        "risk_same_max": 2,
-        "risk_same_min": 0,
-        "risk_more": 2,
-        "risk_more_max": 3,
-        "risk_more_min": 1,
-        "risk_less": 1,
-        "risk_less_max": 4,
-        "risk_less_min": 0
+        "total": 204,
+        "actual": 12,
+        "duplicates": 0.3083333333333333,
+        "threats": 0.725,
+        "mitigations": 0.357133552721788,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.7054,
+                "more_pct": 0.1952,
+                "less_pct": 0.0993
+            }
+        }
     }
 ]

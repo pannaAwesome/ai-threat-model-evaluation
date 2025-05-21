@@ -153,7 +153,7 @@ for experiment in experiments:
                 json.dump(kappa, f, indent=4)
                 
             ######################### JUDGE OUTCOME #########################
-            counts = threats_count_outcome(threat_files)
+            counts = threats_count_outcome(threat_files, actual_threats*tool_threats, actual_threats)
             with open(f"{stats_folder}/count_threats.json", "w") as f:
                 json.dump(counts, f, indent=4)
                 
