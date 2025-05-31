@@ -1,0 +1,77 @@
+[
+    {
+        "model": "phi3:14b-medium-128k-instruct-q4_K_M",
+        "total": 700,
+        "actual": 50,
+        "duplicates": 0.0,
+        "threats": 0.682,
+        "mitigations": 0.2932773109243697,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.7947,
+                "more_pct": 0.0058,
+                "less_pct": 0.1995
+            }
+        }
+    },
+    {
+        "model": "deepseek-r1:14b-qwen-distill-q4_K_M",
+        "total": 700,
+        "actual": 50,
+        "duplicates": 0.10800000000000001,
+        "threats": 0.75,
+        "mitigations": 0.4487199660489507,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.4923,
+                "more_pct": 0.1932,
+                "less_pct": 0.3144
+            }
+        }
+    },
+    {
+        "model": "yi:9b-chat-v1.5-q4_K_M",
+        "total": 700,
+        "actual": 50,
+        "duplicates": 0.952,
+        "threats": 1.0,
+        "mitigations": 0.7234752093403568,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.317,
+                "more_pct": 0.0022,
+                "less_pct": 0.6808
+            }
+        }
+    },
+    {
+        "model": "qwen2.5:7b-instruct-q4_K_M",
+        "total": 700,
+        "actual": 50,
+        "duplicates": 0.0,
+        "threats": 0.78,
+        "mitigations": 0.10256410256410256,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.4615,
+                "more_pct": 0.0,
+                "less_pct": 0.5385
+            }
+        }
+    },
+    {
+        "model": "gemma3:4b-it-q4_K_M",
+        "total": 700,
+        "actual": 50,
+        "duplicates": 0.608,
+        "threats": 0.988,
+        "mitigations": 0.9358175981076103,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.8415,
+                "more_pct": 0.0,
+                "less_pct": 0.1585
+            }
+        }
+    }
+]

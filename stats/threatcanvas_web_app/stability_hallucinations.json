@@ -1,0 +1,27 @@
+[
+    {
+        "model": "phi3:14b-medium-128k-instruct-q4_K_M",
+        "category_kappa": 1,
+        "asset_kappa": 1
+    },
+    {
+        "model": "qwen2.5:7b-instruct-q4_K_M",
+        "category_kappa": 1,
+        "asset_kappa": 1
+    },
+    {
+        "model": "gemma3:4b-it-q4_K_M",
+        "category_kappa": 1,
+        "asset_kappa": 1
+    },
+    {
+        "model": "deepseek-r1:14b-qwen-distill-q4_K_M",
+        "category_kappa": 1,
+        "asset_kappa": 1
+    },
+    {
+        "model": "yi:9b-chat-v1.5-q4_K_M",
+        "category_kappa": 1,
+        "asset_kappa": 1
+    }
+]

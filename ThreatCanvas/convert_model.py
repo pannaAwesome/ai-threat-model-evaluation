@@ -17,7 +17,7 @@ def get_threat_info_for_assets(assets: pd.DataFrame, folder_path) -> pd.DataFram
     mitigation_df = pd.read_json(mitigations_info_path, orient="records")
     
     output = []
-    idx = 1
+    idx = 0
     for asset, threats in assets.items():
         for threat in threats:
             # Get the row corresponding to the threat category
@@ -49,7 +49,7 @@ def get_threat_info_for_assets(assets: pd.DataFrame, folder_path) -> pd.DataFram
                 "Risk": f"{risk} out of 3"
             }
             output.append(entry)
-            idx = idx + 1
+            idx += 1
 
     return output
     

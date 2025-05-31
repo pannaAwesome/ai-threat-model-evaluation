@@ -1,0 +1,82 @@
+[
+    {
+        "model": "deepseek-r1:7b",
+        "threats_kappas": 1.0,
+        "mitigations_kappas": 1.0,
+        "risk_same_kappas": 0.6843434343434345,
+        "risk_more_kappas": 1.0,
+        "risk_less_kappas": 0.7901119402985078
+    },
+    {
+        "model": "yi:9b-chat-v1.5-q4_K_M",
+        "threats_kappas": 1.0,
+        "mitigations_kappas": 1.0,
+        "risk_same_kappas": 1.0,
+        "risk_more_kappas": 0.7901119402985078,
+        "risk_less_kappas": 0.8511904761904766
+    },
+    {
+        "model": "qwen2.5:7b-instruct-q4_K_M",
+        "threats_kappas": 1.0,
+        "mitigations_kappas": 1.0,
+        "risk_same_kappas": 0.8934659090909087,
+        "risk_more_kappas": 0.4791666666666675,
+        "risk_less_kappas": 0.8511904761904766
+    },
+    {
+        "model": "deepseek-r1:14b-qwen-distill-q4_K_M",
+        "threats_kappas": 1.0,
+        "mitigations_kappas": 1.0,
+        "risk_same_kappas": 0.8188405797101446,
+        "risk_more_kappas": 0.8737373737373735,
+        "risk_less_kappas": 0.7636554621848746
+    },
+    {
+        "model": "yi:9b-v1.5-q4_K_M",
+        "threats_kappas": -0.013513513513521952,
+        "mitigations_kappas": -0.013513513513521952,
+        "risk_same_kappas": 1,
+        "risk_more_kappas": 1,
+        "risk_less_kappas": 1
+    },
+    {
+        "model": "llama3.1:8b-instruct-q4_K_M",
+        "threats_kappas": 1.0,
+        "mitigations_kappas": 1.0,
+        "risk_same_kappas": 0.1319444444444444,
+        "risk_more_kappas": 0.5384615384615382,
+        "risk_less_kappas": 0.7519841269841272
+    },
+    {
+        "model": "gemma3:4b-it-q4_K_M",
+        "threats_kappas": 1.0,
+        "mitigations_kappas": 1.0,
+        "risk_same_kappas": 1.0,
+        "risk_more_kappas": 1,
+        "risk_less_kappas": 0.684873949579832
+    },
+    {
+        "model": "phi3:14b-medium-128k-instruct-q4_K_M",
+        "threats_kappas": 1.0,
+        "mitigations_kappas": 1.0,
+        "risk_same_kappas": 1.0,
+        "risk_more_kappas": 0.7901119402985078,
+        "risk_less_kappas": 1.0
+    },
+    {
+        "model": "phi3:3.8b-mini-128k-instruct-q3_K_M",
+        "threats_kappas": 0.4485294117647059,
+        "mitigations_kappas": 0.1319444444444444,
+        "risk_same_kappas": -0.013513513513521952,
+        "risk_more_kappas": -0.027397260273974624,
+        "risk_less_kappas": 0.22945205479452063
+    },
+    {
+        "model": "command-r7b:7b-12-2024-q4_K_M",
+        "threats_kappas": 1.0,
+        "mitigations_kappas": 1.0,
+        "risk_same_kappas": 0.735915492957746,
+        "risk_more_kappas": 1.0,
+        "risk_less_kappas": 1
+    }
+]

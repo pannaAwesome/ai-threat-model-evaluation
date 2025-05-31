@@ -1,0 +1,152 @@
+[
+    {
+        "model": "deepseek-r1:7b",
+        "total": 15,
+        "actual": 3,
+        "duplicates": 1.0,
+        "threats": 1.0,
+        "mitigations": 0.6543434343434343,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.3212,
+                "more_pct": 0.3412,
+                "less_pct": 0.3376
+            }
+        }
+    },
+    {
+        "model": "yi:9b-chat-v1.5-q4_K_M",
+        "total": 15,
+        "actual": 3,
+        "duplicates": 1.0,
+        "threats": 1.0,
+        "mitigations": 0.75,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.5,
+                "more_pct": 0.3,
+                "less_pct": 0.2
+            }
+        }
+    },
+    {
+        "model": "qwen2.5:7b-instruct-q4_K_M",
+        "total": 15,
+        "actual": 3,
+        "duplicates": 1.0,
+        "threats": 1.0,
+        "mitigations": 0.6666666666666666,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.4667,
+                "more_pct": 0.0667,
+                "less_pct": 0.4667
+            }
+        }
+    },
+    {
+        "model": "deepseek-r1:14b-qwen-distill-q4_K_M",
+        "total": 15,
+        "actual": 3,
+        "duplicates": 1.0,
+        "threats": 1.0,
+        "mitigations": 0.6833333333333333,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.4306,
+                "more_pct": 0.3167,
+                "less_pct": 0.2528
+            }
+        }
+    },
+    {
+        "model": "yi:9b-v1.5-q4_K_M",
+        "total": 15,
+        "actual": 3,
+        "duplicates": 0.0,
+        "threats": 0.06666666666666667,
+        "mitigations": 0.2,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.2,
+                "more_pct": 0.0,
+                "less_pct": 0.0
+            }
+        }
+    },
+    {
+        "model": "llama3.1:8b-instruct-q4_K_M",
+        "total": 15,
+        "actual": 3,
+        "duplicates": 1.0,
+        "threats": 1.0,
+        "mitigations": 0.7857575757575759,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.3797,
+                "more_pct": 0.2479,
+                "less_pct": 0.3724
+            }
+        }
+    },
+    {
+        "model": "gemma3:4b-it-q4_K_M",
+        "total": 15,
+        "actual": 3,
+        "duplicates": 1.0,
+        "threats": 1.0,
+        "mitigations": 0.75,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.8833,
+                "more_pct": 0.0,
+                "less_pct": 0.1167
+            }
+        }
+    },
+    {
+        "model": "phi3:14b-medium-128k-instruct-q4_K_M",
+        "total": 15,
+        "actual": 3,
+        "duplicates": 1.0,
+        "threats": 1.0,
+        "mitigations": 0.6666666666666666,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.7111,
+                "more_pct": 0.1778,
+                "less_pct": 0.1111
+            }
+        }
+    },
+    {
+        "model": "phi3:3.8b-mini-128k-instruct-q3_K_M",
+        "total": 15,
+        "actual": 3,
+        "duplicates": 0.0,
+        "threats": 0.4666666666666666,
+        "mitigations": 0.3,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.4,
+                "more_pct": 0.2,
+                "less_pct": 0.2
+            }
+        }
+    },
+    {
+        "model": "command-r7b:7b-12-2024-q4_K_M",
+        "total": 15,
+        "actual": 3,
+        "duplicates": 1.0,
+        "threats": 1.0,
+        "mitigations": 0.8,
+        "risk_same": {
+            "mean": {
+                "same_pct": 0.08,
+                "more_pct": 0.92,
+                "less_pct": 0.0
+            }
+        }
+    }
+]

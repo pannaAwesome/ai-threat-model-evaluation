@@ -1,0 +1,24 @@
+The web application is build in three tiers: Web UI, Web Service and PostgreSQL.
+
+PostgreSQL is in the trust zone Public Cloud and it is a data store that holds customer data. It is PostgreSQL database 
+deployed on public cloud with Amazon Web Services, specifically Relational Database Service (RDS). The data is encrypted 
+during transfer with HTTPS and SSL/TLS, and the encryption is applied at transport level so covering the whole connection.
+
+Web Service is in the trust zone Public Cloud and it processes customer data, which can contain personally identifiable
+information. This information is both send and received for the process. The Web Service uses a Java Web Container,
+running on Amazon Web Services specifically Elastic Compute Cloud (EC2). The Web Service implements an authentication function 
+with a username and password login structure. The Web Service uses session management and it gives a unique session ID
+which will be transmitted between the client and server. The data between the Web Service and the client is encrypted 
+with HTTPS and SSL/TLS at the transport level. The Web Service can take XML as input from the client.
+
+Web UI is in the internet trust zone and it sends and receives customer data, which can contain personally identifiable
+information. The Web UI will request the user for a password based login before they can use the application. The data 
+between the Web UI and the client is encrypted with HTTPS and SSL/TLS at the transport level. The Web UI is written
+with JQuery.
+
+The system has two processes: Web UI and Web Service, and one data store: PostgreSQL. Web UI is in the Internet trust
+zone, and the Web Service and PostgreSQL is in the Public Cloud trust zone.
+The Web UI exchanges requests and responses with the Web Service.
+The Web Service exchanges queries and data with the PostgreSQL.
+
+We have allowed that the PostgreSQL stores sensitive data, and this should not be factored into the threat model.

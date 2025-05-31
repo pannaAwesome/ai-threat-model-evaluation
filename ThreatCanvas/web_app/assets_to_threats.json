@@ -1,0 +1,5 @@
+{
+    "PostgreSQL": ["Elevation of Privilege", "Spoofing", "Tampering", "Denial of Service", "Information Disclosure"],
+    "Web Service": ["Elevation of Privilege", "Spoofing", "Tampering", "Denial of Service", "Information Disclosure", "Repudiation"],
+    "Web UI": ["Spoofing", "Tampering", "Denial of Service"]
+}

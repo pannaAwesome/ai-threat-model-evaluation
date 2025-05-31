@@ -1,0 +1,28 @@
+# Components
+process mo      M1
+process mt      M2
+process mh      M3
+process er      EgdeRuntime
+entity  b       Browser
+entity  v       USB Video Camera
+process aih     Azure IoT Hub
+process acs     Azure Cognitive Service
+process aa      Azure Application Insights
+store   as      Azure Storage
+
+# Data flows
+b       -->     mo   Request
+mo      -->     b    Response
+mo      <-->    mt   Websockets
+mt      <-->    mh   Websockets
+mt      -->     as   Uploading Feedback Frames
+mh      -->     acs  Request(OCR, Text to Speech)
+mh      -->     aa   Telemetry
+v       -->     mh   Camera Feed
+er      -->     aih  Updating IotEdge Modules
+acs     -->     mh   Response
+
+
+# Trust Boundary
+frame mo mt mh er = IoT Edge Device
+frame aih as acs aa = Azure

@@ -1,0 +1,42 @@
+[
+    {
+        "model": "gemma3:4b-it-q4_K_M",
+        "threats_kappas": 0.9695318660835893,
+        "mitigations_kappas": 0.9825460518998281,
+        "risk_same_kappas": 0.9695318660835893,
+        "risk_more_kappas": 1,
+        "risk_less_kappas": 1
+    },
+    {
+        "model": "phi3:14b-medium-128k-instruct-q4_K_M",
+        "threats_kappas": 1.0,
+        "mitigations_kappas": 1.0,
+        "risk_same_kappas": 0.07271041291658345,
+        "risk_more_kappas": 0.9625098962847314,
+        "risk_less_kappas": 1
+    },
+    {
+        "model": "yi:9b-chat-v1.5-q4_K_M",
+        "threats_kappas": 1.0,
+        "mitigations_kappas": 0.9075855920501863,
+        "risk_same_kappas": 1,
+        "risk_more_kappas": 0.9346649443264192,
+        "risk_less_kappas": 0.8732669848724722
+    },
+    {
+        "model": "qwen2.5:7b-instruct-q4_K_M",
+        "threats_kappas": 1.0,
+        "mitigations_kappas": 1.0,
+        "risk_same_kappas": 0.7479394705856712,
+        "risk_more_kappas": 0.681720040464438,
+        "risk_less_kappas": 1
+    },
+    {
+        "model": "deepseek-r1:14b-qwen-distill-q4_K_M",
+        "threats_kappas": 0.8065653979632468,
+        "mitigations_kappas": 0.6825199203187274,
+        "risk_same_kappas": 0.135498687664017,
+        "risk_more_kappas": 0.23416524011171935,
+        "risk_less_kappas": 0.21761998685074205
+    }
+]

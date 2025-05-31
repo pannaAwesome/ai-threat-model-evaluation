@@ -1,0 +1,11 @@
+{
+    "M1": ["Elevation of Privilege", "Spoofing", "Tampering", "Denial of Service", "Information Disclosure", "Repudiation"],
+    "M2": ["Elevation of Privilege", "Spoofing", "Tampering", "Denial of Service", "Information Disclosure", "Repudiation"],
+    "M3": ["Elevation of Privilege", "Spoofing", "Tampering", "Denial of Service", "Information Disclosure", "Repudiation"],
+    "EdgeRuntime": ["Elevation of Privilege", "Spoofing", "Tampering", "Denial of Service", "Information Disclosure", "Repudiation"],
+    "Browser": ["Elevation of Privilege", "Spoofing", "Tampering", "Denial of Service", "Information Disclosure", "Repudiation"],
+    "Azure IoT Hub": ["Elevation of Privilege", "Spoofing", "Tampering", "Denial of Service", "Information Disclosure", "Repudiation"],
+    "Azure Cognitive Service": ["Elevation of Privilege", "Spoofing", "Tampering", "Denial of Service", "Information Disclosure", "Repudiation"],
+    "Azure Storage": ["Elevation of Privilege", "Spoofing", "Tampering", "Denial of Service", "Information Disclosure", "Repudiation"],
+    "Application Insights": ["Elevation of Privilege", "Spoofing", "Tampering", "Denial of Service", "Information Disclosure", "Repudiation"]
+}

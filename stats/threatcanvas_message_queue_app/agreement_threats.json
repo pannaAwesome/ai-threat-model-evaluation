@@ -1,0 +1,7 @@
+{
+    "threats_kappas": 0.9498597475455901,
+    "mitigations_kappas": 0.4023620873237571,
+    "risk_same_kappas": 0.4697477422048791,
+    "risk_more_kappas": 0.3072724728273395,
+    "risk_less_kappas": 0.7550416569337446
+}

@@ -1,0 +1,52 @@
+[
+    {
+        "model": "llama3.1:8b-instruct-q4_K_M",
+        "category_kappa": 1,
+        "asset_kappa": 0.3397887323943667
+    },
+    {
+        "model": "deepseek-r1:14b-qwen-distill-q4_K_M",
+        "category_kappa": 1.0,
+        "asset_kappa": 1.0
+    },
+    {
+        "model": "qwen2.5:7b-instruct-q4_K_M",
+        "category_kappa": 0.9121779859484775,
+        "asset_kappa": 0.7636554621848746
+    },
+    {
+        "model": "phi3:3.8b-mini-128k-instruct-q3_K_M",
+        "category_kappa": 0.1847826086956522,
+        "asset_kappa": 1
+    },
+    {
+        "model": "deepseek-r1:7b",
+        "category_kappa": 0.29096638655462226,
+        "asset_kappa": 0.4791666666666675
+    },
+    {
+        "model": "phi3:14b-medium-128k-instruct-q4_K_M",
+        "category_kappa": 1.0,
+        "asset_kappa": 1.0
+    },
+    {
+        "model": "yi:9b-chat-v1.5-q4_K_M",
+        "category_kappa": 1,
+        "asset_kappa": 1.0
+    },
+    {
+        "model": "command-r7b:7b-12-2024-q4_K_M",
+        "category_kappa": 1,
+        "asset_kappa": 1
+    },
+    {
+        "model": "yi:9b-v1.5-q4_K_M",
+        "category_kappa": 0.3558776167471821,
+        "asset_kappa": 0.41314553990610386
+    },
+    {
+        "model": "gemma3:4b-it-q4_K_M",
+        "category_kappa": 0.735915492957746,
+        "asset_kappa": 1.0
+    }
+]

@@ -1,0 +1,41 @@
+heavier
+[
+    "mistral:7b-instruct-v0.3-q4_K_M",
+    "llama3:8b-instruct-q4_K_M",
+    "phi3:3.8b-mini-128k-instruct-q4_K_M",
+    "qwen3:8b-q4_K_M",
+    "gemma3:4b-it-q4_K_M"
+]
+
+lighter
+[
+    "llama3.2:3b-instruct-q2_K",
+    "phi:2.7b-chat-v2-q3_K_S",
+    "qwen3:1.7b-q4_K_M",
+    "gemma3:4b-it-q4_K_M",
+    "mistral:7b-instruct-q2_K"
+]
+
+test
+[
+    "deepseek-r1:7b",
+    "deepseek-r1:14b-qwen-distill-q4_K_M",
+    "qwen2.5:7b-instruct-q4_K_M",
+    "gemma3:12b-it-q4_K_M",
+    "gemma3:4b-it-q4_K_M",
+    "yi:9b-v1.5-q4_K_M",
+    "yi:9b-chat-v1.5-q4_K_M",
+    "phi3:14b-medium-128k-instruct-q4_K_M",
+    "phi3:3.8b-mini-128k-instruct-q3_K_M",
+    "llama3.1:8b-instruct-q4_K_M",
+]
+
+
+actual
+[
+    "gemma3:4b-it-q4_K_M",
+    "phi3:14b-medium-128k-instruct-q4_K_M",
+    "qwen2.5:7b-instruct-q4_K_M",
+    "yi:9b-chat-v1.5-q4_K_M",
+    "deepseek-r1:14b-qwen-distill-q4_K_M"
+]

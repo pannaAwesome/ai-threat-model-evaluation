@@ -1,0 +1,89 @@
+[
+    {
+        "ID": 0,
+        "Category": "Information Disclosure",
+        "Threat": "Uencrypted data can be intercepted in transit",
+        "Mitigation": "All products and services must encrypt data in transit using approved cryptographic protocols and algorithms. Use TLS to encrypt all HTTP-based network traffic. Use other mechanisms, such as IPSec, to encrypt non-HTTP network traffic that contains customer or confidential data. Applies to data flow from browser to IoTEdge modules.",
+        "Risk": "Confidentiality and Integrity"
+    },
+    {
+        "ID": 1,
+        "Category": "Elevation of Privilege",
+        "Asset": "M1",
+        "Threat": "Unauthorized Access to M1 IoTEdge Module",
+        "Mitigation": "Add authentication in all IoTEdge modules.",
+        "Risk": "Authenticity"
+    },
+    {
+        "ID": 2,
+        "Category": "Elevation of Privilege",
+        "Asset": "M2",
+        "Threat": "Unauthorized Access to M2 IoTEdge Module",
+        "Mitigation": "Add authentication in all IoTEdge modules.",
+        "Risk": "Authenticity"
+    },
+    {
+        "ID": 3,
+        "Category": "Elevation of Privilege",
+        "Asset": "M3",
+        "Threat": "Unauthorized Access to M3 IoTEdge Module",
+        "Mitigation": "Add authentication in all IoTEdge modules.",
+        "Risk": "Authenticity"
+    },
+    {
+        "ID": 4,
+        "Category": "Information Disclosure",
+        "Threat": "Unauthorized Access to M2 IoTEdge Module where database secrets are used",
+        "Mitigation": "Add authentication in all IoTEdge modules.",
+        "Risk": "Authenticity"
+    },
+    {
+        "ID": 5,
+        "Category": "Denial of Service",
+        "Threat": "Dos attack on all IoTEdge Modules since there is no Authentication",
+        "Mitigation": "All services deployed as IoTEdge modules must use authentication.",
+        "Risk": "Availability"
+    },
+    {
+        "ID": 6,
+        "Category": "Tampering",
+        "Threat": "Application Insights is connected via Connection String which is stored in .env file on the IoTEdge device. Once user gains access to the device, .env file can be read and attacker can tamper the log data.",
+        "Mitigation": "All services within the Azure Trust Boundary must authenticate all incoming requests, including requests coming from the same network. Proper authorizations should also be applied to prevent unnecessary privileges.",
+        "Risk": "Confidentiality"
+    },
+    {
+        "ID": 7,
+        "Category": "Tampering",
+        "Threat": "Video camera path is stored in .env file on the IoTEdge device. Once user gains access to the device, .env file can be read and attacker can tamper the video feed or use another video source or fake video stream.",
+        "Mitigation": "All products and services must encrypt data in transit using approved cryptographic protocols and algorithms.",
+        "Risk": "Confidentiality and Integrity"
+    },
+    {
+        "ID": 8,
+        "Category": "Spoofing",
+        "Threat": "Azure IoT Hub connection string is stored in .env file on IoTEdge Device. Once user gains access to the device, .env file can be read and attacker cause Dos attacks on IoTHub",
+        "Mitigation": "All services within the Azure Trust Boundary must authenticate all incoming requests, including requests coming from the same network. Proper authorizations should also be applied to prevent unnecessary privileges.",
+        "Risk": "Confidentiality"
+    },
+    {
+        "ID": 9,
+        "Category": "Denial of Service",
+        "Threat": "Azure Cognitive Service connection string is stored in .env file on IoTEdge Device. Once user gains access to the device, .env file can be read and attacker cause DoS attacks on Azure Cognitive Service",
+        "Mitigation": "All services within the Azure Trust Boundary must authenticate all incoming requests, including requests coming from the same network. Proper authorizations should also be applied to prevent unnecessary privileges. ",
+        "Risk": "Confidentiality"
+    },
+    {
+        "ID": 10,
+        "Category": "Tampering",
+        "Threat": "Storage connection string is stored in .env file on the IoTEdge device. Once user gains access to the device, .env file can be read and attacker can tamper data on storage or read from the storage.",
+        "Mitigation": "All customer or confidential data must be encrypted before being written to non-volatile storage media (encrypted at-rest) per the following requirements. Use approved algorithms. This includes AES-256, AES-192, or AES-128. Encryption must be enabled before writing data to storage. Applies to all data stores on the diagram. Azure Storage encrypt data at rest by default (AES-256).",
+        "Risk": "Confidentiality"
+    },
+    {
+        "ID": 11,
+        "Category": "Tampering",
+        "Threat": "Cognitive Service connection string is stored in .env file on the IoTEdge device. Once user gains access to the device, .env file can be read and attacker use cognitive service API's for his own purpose causing increase cost to use.",
+        "Mitigation": "All services within the Azure Trust Boundary must authenticate all incoming requests, including requests coming from the same network. Proper authorizations should also be applied to prevent unnecessary privileges. ",
+        "Risk": "Confidentiality"
+    }
+]

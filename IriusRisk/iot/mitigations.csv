@@ -1,0 +1,1246 @@
+﻿"ID",Reference,Component,Use Case,Threat,Name,Description,State,Test Result
+01f29e31-25cf-4c91-a784-6a0ba8a2ff50,C-STORAGE-BR-1,Azure,Denial of Service,Unscheduled or infrequent application backups leading to potential data loss,Ensure regular automated backups,"For Azure Backup supported resources (such as Azure VMs, SQL Server, HANA databases, Azure PostgreSQL Database, File Shares, Blobs or Disks), enable Azure Backup and configure the desired frequency and retention period. For Azure VM, you can use Azure Policy to have backup automatically enabled using Azure Policy. 
+
+For resources or services not supported by Azure Backup, use the native backup capability provided by the resource or service. For example, Azure Key Vault provides a native backup capability. 
+
+For resources/services that are neither supported by Azure Backup nor have a native backup capability, evaluate your backup and disaster needs, and create your own mechanism as per your business requirements. For example: 
+- If you use Azure Storage for data storage, enable blob versioning for your storage blobs which will allow you to preserve, retrieve, and restore every version of every object stored in your Azure Storage. 
+- Service configuration settings can usually be exported to Azure Resource Manager templates. ",recommended,not-tested
+028312e4-bbd3-480a-bff6-9df3cc55c75f,C-IOT-HUB-NS-2,Azure IoT Hub,Information Disclosure,Unauthorized access to public network resources,Secure cloud native services with network controls,"Deploy private endpoints for all Azure resources that support the Private Link feature, to establish a private access point for the resources. Using Private Link will keep the private connection from routing through the public network. 
+
+Note: Certain Azure services may also allow private communication through the service endpoint feature, though it is recommended to use Azure Private Link for secure and private access to services hosted on Azure platform.
+
+For certain services, you can choose to deploy VNet integration for the service where you can restrict/isolate the VNET to establish a private access point for the service. 
+
+You also have the option to configure the service native network ACL rules or simply disable public network access to block access from the public network. 
+
+For Azure VMs, unless there is a strong use case, you should avoid assigning public IPs/subnet directly to the VM interface and instead use gateway or load balancer services as the front-end for access by the public network. 
+",recommended,not-tested
+03be8c92-d165-42a7-9d7e-056363535914,C-VIDEO-CAMERA-CNT-05,USB Video Camera,Tampering,Attackers tamper with camera configurations or settings,Use secure configuration management and strong access control,"<p>Using secure configuration management and strong access control are essential security measures aimed at enhancing the protection of video camera systems. These practices ensure that video cameras are properly configured to minimize vulnerabilities and that access to the cameras is restricted to authorized individuals only.</p><p><strong>Secure Configuration Management:</strong><br>This involves establishing and maintaining secure settings for video cameras and their associated software. It includes disabling unnecessary services, changing default settings, and applying the principle of least privilege to ensure that cameras operate with only the essential configurations required for their functionality. Regularly reviewing and updating configurations helps mitigate the risk of exploitable vulnerabilities and ensures that the cameras adhere to the organization's security policies.</p><p><strong>Strong Access Control:</strong><br>Implementing robust access control mechanisms ensures that only authorized users can access and manage video camera systems. This can be achieved through the use of role-based access control (RBAC), multi-factor authentication (MFA), and strict password policies. By defining and enforcing clear access permissions, organizations can prevent unauthorized access, reduce the risk of insider threats, and ensure that users have appropriate levels of access based on their roles and responsibilities.</p><p><strong>Reference:</strong></p><ul><li><a href=""https://surveillanceguides.com/video-surveillance-solution-design-guide/"">Guide to Securing Video Surveillance Systems</a></li></ul>",recommended,not-tested
+0a0825e3-f17d-4f3f-b68a-7d0a0f549019,C-STORAGE-NS-2,Azure Storage,Information Disclosure,Unauthorized access to Azure Storage through unsecured public connections,Secure cloud native services with network controls,"Deploy private endpoints for all Azure resources that support the Private Link feature, to establish a private access point for the resources. Using Private Link will keep the private connection from routing through the public network. 
+
+Note: Certain Azure services may also allow private communication through the service endpoint feature, though it is recommended to use Azure Private Link for secure and private access to services hosted on Azure platform.
+
+For certain services, you can choose to deploy VNet integration for the service where you can restrict/isolate the VNET to establish a private access point for the service. 
+
+You also have the option to configure the service native network ACL rules or simply disable public network access to block access from the public network. 
+
+For Azure VMs, unless there is a strong use case, you should avoid assigning public IPs/subnet directly to the VM interface and instead use gateway or load balancer services as the front-end for access by the public network. 
+",recommended,not-tested
+144b2835-15ee-4e18-bb49-d2c718802b05,C-IOT-HUB-IM-1,Azure IoT Hub,Tampering,Unauthorized access via local authentication and hard-coded credentials,Use centralized identity and authentication system,"Azure Active Directory (Azure AD) is Azure's identity and authentication management service. You should standardize on Azure AD to govern your organization's identity and authentication in:
+- Microsoft cloud resources, such as Azure Storage, Azure Virtual Machines (Linux and Windows), Azure Key Vault, PaaS, and SaaS applications.
+- Your organization's resources, such as applications on Azure, third-party applications running on your corporate network resources, and third-party SaaS applications. 
+- Your enterprise identities in Active Directory by synchronization to Azure AD to ensure a consistent and centrally managed identity strategy.
+
+For the Azure services that apply, avoid use of local authentication methods and instead use Azure Active Directory to centralize your service authentications.
+
+Note: As soon as it is technically feasible, you should migrate on-premises Active Directory-based applications to Azure AD. This could be an Azure AD Enterprise Directory, Business to Business configuration, or Business to consumer configuration.",recommended,not-tested
+15ec9784-3888-4de8-89b6-5360938185ab,C-AZURE-IOT-EDGE-CNT-02,IoT Edge Device,Information Disclosure,Insufficient encryption of data at rest,Enable encryption at rest,"<section>
+    <p>To ensure that all data stored on Azure IoT Edge devices is encrypted at rest and protected from unauthorized access, follow the step-by-step guidance below using Azure's built-in encryption capabilities:</p>
+    
+    <ol>
+        <li>
+            <p>Before deploying Azure IoT Edge on your devices, ensure they support encryption at rest. This typically involves a hardware security module (HSM) or a Trusted Platform Module (TPM) for secure key storage:</p>
+            <ul>
+                <li>Check the device’s compatibility with encryption standards and assess whether a software-based encryption approach is necessary if hardware encryption is unavailable.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Install Azure IoT Edge on your devices:</p>
+            <ul>
+                <li>Follow the instructions provided by Microsoft to set up the IoT Edge runtime on your equipment. Detailed setup instructions can be found <a href=""https://learn.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge"">here</a>.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Implement data encryption for modules running on IoT Edge. Use the following guidelines:</p>
+            <ul>
+                <li>Leverage Azure Storage account in the cloud or use Azure Blob Storage on IoT Edge. Both support server-side encryption at rest with either Microsoft-managed keys or customer-managed keys using Azure Key Vault.</li>
+                <li>For data stored locally, consider utilizing BitLocker (on Windows-based IoT Edge devices) or the LUKS (Linux Unified Key Setup) encryption on Linux devices.</li>
+                <li>When using Azure Blob Storage on IoT Edge, ensure that encryption features are enabled through the Azure portal or Azure CLI.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Enable double encryption if needed for highly sensitive data:</p>
+            <ul>
+                <li>Optionally employ client-side encryption before sending data to Azure Blob Storage, ensuring another layer of protection by encrypting data with Azure's Storage Client Library before upload.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Regularly review and update security policies and ensure that all software components of your IoT Edge deployments are kept up to date with security patches:</p>
+            <ul>
+                <li>Monitor for updates or vulnerabilities reported by Microsoft and relevant industry standards regarding encryption technologies.</li>
+                <li>Implement automated update systems where possible to minimize the risk of outdated software exposing encryption keys or data.</li>
+            </ul>
+        </li>
+    </ol>
+</section>
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/iot-edge/security"">Azure IoT Edge Security</a></li>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption"">Azure Storage Service Encryption</a></li>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-atrest"">Azure Encryption of Data at Rest</a></li>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/key-vault/general/overview"">Azure Key Vault Overview</a></li>
+</ul>",recommended,not-tested
+1660d394-42f1-40b5-bf55-472d415d441c,C-BROWSER-CNT-06,Browser,Spoofing,Attackers intercept browser communications through man-in-the-middle (MitM) attacks,Utilize encrypted communication tools,"<p>Implement and regularly update encrypted communication tools on all client machines to ensure that all browser communications are securely transmitted. This control enforces the use of secure protocols and encryption solutions, such as TLS and VPNs, to protect data in transit against interception and man-in-the-middle attacks.</p><p><strong>Implementation Steps:</strong></p><p><strong>Enable Secure Protocols:</strong><br>Configure browsers to default to secure protocols (e.g., HTTPS, TLS 1.2/1.3) and disable outdated, insecure versions.</p><p><strong>Deploy VPN or Encrypted Tunnels:</strong><br>Use reputable VPN solutions to encrypt browser traffic, especially when accessing untrusted networks, ensuring that data remains protected.</p><p><strong>Monitor and Validate Encryption:</strong><br>Regularly review encryption settings, validate certificate authenticity, and update encryption libraries to keep pace with emerging threats.</p><p><strong>Integrate with Centralized Management:</strong><br>Utilize enterprise tools to enforce encrypted communication configurations and monitor compliance across all client machines.</p><p><strong>References:</strong></p><ul><li><a href=""https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html"">OWASP Transport Layer Protection Cheat Sheet</a></li></ul>",recommended,not-tested
+1812d303-ef6e-47d8-98f2-549b3a9e57c9,C-STORAGE-DP-6,Azure Storage,Information Disclosure,Unauthorized access to customer-managed keys and data in Azure Storage,Use a secure key management process,"Use Azure Key Vault to create and control your encryption keys life cycle, including key generation, distribution, and storage. Rotate and revoke your keys in Azure Key Vault and your service based on the defined schedule and when there is a key retirement or compromise. Require a certain cryptographic type and minimum key size when generating keys.
+
+When there is a need to use customer-managed key (CMK) in the workload services or applications, ensure you follow the best practices:
+- Use a key hierarchy to generate a separate data encryption key (DEK) with your key encryption key (KEK) in your key vault. 
+- Ensure keys are registered with Azure Key Vault and implemented via key IDs in each service or application.
+
+To maximize the key material lifetime and portability, bring your own key (BYOK) to the services (i.e., importing HSM-protected keys from your on-premises HSMs into Azure Key Vault). Follow the recommended guideline to perform the key generation and key transfer.
+
+Note: Refer to the below for the FIPS 140-2 level for Azure Key Vault types and FIPS compliance/validation level.
+- Software-protected keys in vaults (Premium & Standard SKUs):  FIPS 140-2 Level 1
+- HSM-protected keys in vaults (Premium SKU): FIPS 140-2 Level 2
+- HSM-protected keys in Managed HSM: FIPS 140-2 Level 3
+Azure Key Vault Premium uses a shared HSM infrastructure in the backend. Azure Key Vault Managed HSM uses dedicated, confidential service endpoints with a dedicated HSM for when you need a higher level of key security.",recommended,not-tested
+18d9778c-5284-401f-88e3-0c267a4e3891,C-AZURE-IOT-EDGE-CNT-01,M3,Tampering,Unauthorized access to IoT Edge devices,Implement certificate-based authentication,"<p>Implementing certificate-based authentication for Azure IoT Edge involves several steps to ensure secure communication between devices, modules, and other system actors. Follow these steps to configure and establish certificate-based authentication derived from PKiX standards:</p>
+
+<ol>
+    <li><strong>Set Up Your Public Key Infrastructure (PKI):</strong>
+        <ul>
+            <li>Design or acquire a Public Key Infrastructure (PKI) solution that aligns with your organization's security policies and compliance requirements.</li>
+            <li>Ensure that your PKI supports X.509 certificates, as these are a standard for IoT Edge security.</li>
+        </ul>
+    </li>
+    <li><strong>Generate Certificates:</strong>
+        <ul>
+            <li>Create a root certificate authority (CA) if your organization doesn’t already have one. This CA will be used to sign all devices and module certificates.</li>
+            <li>Generate intermediate and leaf certificates under your root CA. These will represent devices, modules, and users interacting with the IoT Edge.</li>
+            <li>Each certificate should include a unique subject name to ensure precise identity verification of each entity.</li>
+        </ul>
+    </li>
+    <li><strong>Configure IoT Edge to Use Certificates:</strong>
+        <ul>
+            <li>Install the root certificate authority on the IoT Edge device. This will help IoT Edge to verify the signatures on identity certificates of clients.</li>
+            <li>Deploy device and module certificates onto the respective devices and modules.</li>
+            <li>Configure Azure IoT Edge runtime to use these certificates by updating its configuration file (`config.yaml`). Specifically, specify the paths to the certificate files and any related keys.</li>
+        </ul>
+    </li>
+    <li><strong>Secure Certificate Storage and Distribution:</strong>
+        <ul>
+            <li>Use Azure Key Vault or a similar secure store to manage and periodically rotate certificates and private keys.</li>
+            <li>Apply best practices for secure access to keys and certificates, ensuring that they are isolated from non-essential components.</li>
+        </ul>
+    </li>
+    <li><strong>Enable Certificate Revocation Checks:</strong>
+        <ul>
+            <li>Configure IoT Edge to perform revocation checks for certificates against Online Certificate Status Protocol (OCSP) or Certificate Revocation Lists (CRL) to ensure all entities are trusted and valid.</li>
+        </ul>
+    </li>
+    <li><strong>Regularly Audit and Monitor Certification Status:</strong>
+        <ul>
+            <li>Schedule regular audits of your certificate and key usage to ensure integrity and compliance with security policies.</li>
+            <li>Monitor logs and alerts related to certificate validation and access, making use of Azure Security Center for IoT for enhanced visibility.</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/iot-edge/security"">Azure IoT Edge Security</a></li>
+</ul>
+",recommended,not-tested
+1a900b20-40a4-4357-b40c-25cb989c0523,C-AZURE-IOT-EDGE-CNT-03,EdgeRuntime,Tampering,Lack of runtime attestation,Integrate runtime attestation,"<p>Ensuring that Azure IoT Edge devices are running only authorized software is critical for maintaining the security and integrity of IoT environments. Implementing runtime attestation mechanisms can effectively verify the software integrity and authenticity on these devices. Follow the steps below to set up and utilize runtime attestation:</p>
+
+<ol>
+    <li>
+        <p><strong>Enable Device Identity and Access Control:</strong></p>
+        <ul>
+            <li>Assign each IoT Edge device a unique identity through the Azure IoT Hub. This helps maintain a secure channel for communication and attestation verification.</li>
+            <li>Utilize Azure Active Directory to manage role-based access controls, ensuring that only authorized users and services can interact with your IoT Edge devices.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Use TPM for Secure Attestation:</strong></p>
+        <ul>
+            <li>Make sure your IoT Edge devices support a Trusted Platform Module (TPM). TPMs provide a hardware-based mechanism for securely storing cryptographic keys and credentials.</li>
+            <li>Configure the IoT Edge runtime on devices to use the TPM for performing and verifying attestation processes.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Configure Azure Policy for Compliance:</strong></p>
+        <ul>
+            <li>Set up Azure Policy definitions that specify the allowed images and software versions for your IoT Edge deployments. This assists in maintaining fleet-wide compliance.</li>
+            <li>Regularly audit and update these policies to reflect new requirements and software updates.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Set Up Automated Security Monitoring:</strong></p>
+        <ul>
+            <li>Use Azure Security Center for IoT to monitor the security posture of your IoT Edge devices in real-time, identifying any unauthorized modifications to runtime configurations.</li>
+            <li>Implement alerts that notify you immediately when an attestation fails, triggering a review or automated remediation process.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Perform Regular Software Updates and Patching:</strong></p>
+        <ul>
+            <li>Regularly update and patch your IoT Edge software and modules to mitigate known vulnerabilities. Use the automatic updates feature when applicable.</li>
+            <li>Craft a continuous deployment pipeline using Azure DevOps to push secure software updates while ensuring they go through proper attestation checks before going live.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Review Attestation Logs:</strong></p>
+        <ul>
+            <li>Periodically review attestation logs and reports within Azure to ensure that only authorized software is running on your devices.</li>
+            <li>Utilize these logs to identify patterns or anomalies that might indicate a security breach.</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/iot-edge/security"">Azure IoT Edge Security</a></li>
+</ul>
+",recommended,not-tested
+1dc7b618-ac28-47ed-94b0-f9c355259089,C-STORAGE-IM-8,Azure Storage,Information Disclosure,Insecure storage of credentials and hard-coded credentials in configuration files,Restrict the exposure of credential and secrets,"When using a managed identity is not an option, ensure that secrets and credentials are stored in secure locations such as Azure Key Vault, instead of embedding them into the code and configuration files. 
+
+If you use Azure DevOps and GitHub for your code management platform:
+- Implement Azure DevOps Credential Scanner to identify credentials within the code. 
+- For GitHub, use the native secret scanning feature to identify credentials or other forms of secrets within the code.
+
+Clients such as Azure Functions, Azure Apps services, and VMs can use managed identities to access Azure Key Vault securely. See Data Protection controls related to the use of Azure Key Vault for secrets management.
+
+Note: Azure Key Vault provides automatic rotation for supported services. For secrets which cannot be automatically rotated, ensure they are manually rotated periodically and purged when no longer in use. ",recommended,not-tested
+1fb263a0-6284-438c-8077-c1f003889029,C-BROWSER-CNT-09,Browser,Tampering,Attackers distribute malware through compromised browser extensions,Implement extension whitelisting policies,"<p>Implement and regularly update extension whitelisting policies on all client machines to ensure that only approved and trusted browser extensions are installed. This control prevents the use of unauthorized or malicious extensions that could compromise the browser's security or steal sensitive data. Developers and DevOps engineers should configure management tools to enforce a whitelist of extensions and continuously review it for compliance.</p><p><strong>Implementation Steps:</strong></p><p><strong>Establish a Whitelist:</strong><br>Identify and document a list of trusted browser extensions that are approved for use within the organization.</p><p><strong>Configure Management Tools:</strong><br>Use centralized management solutions (e.g., Group Policy, MDM, or browser-specific management consoles) to enforce the extension whitelist on all client machines.</p><p><strong>Monitor Extension Usage:</strong><br>Regularly audit installed extensions to ensure compliance with the whitelist and remove any unauthorized or unapproved extensions.</p><p><strong>Review and Update Policies:</strong><br>Periodically review the whitelist and update it based on emerging threats, changes in business requirements, and updated security guidelines.</p><p><strong>References:</strong></p><ul><li><a href=""https://support.google.com/chrome/a/answer/9296680?hl=en"">Google Chrome Enterprise - Manage Chrome Extensions</a></li></ul>",recommended,not-tested
+22a584c5-032c-493b-8b54-39ca4f30560e,C-AZURE-APPLICATION-INSIGHTS-CNT-03,IoTEdgeMetricsCollector,Elevation of Privilege,Attackers gain access to the system by exploiting weak security configurations,Ensure that SKU Basic/Consumption is not used on artifacts that need to be monitored,"<p>An ideal countermeasure for securing Azure Application Insights involves implementing robust access controls, monitoring, and configuration management to protect telemetry data and ensure operational resilience. Here is a detailed step-by-step guide:</p>
+
+<ol>
+    <li><strong>Restrict Access to Application Insights:</strong>
+        <ul>
+            <li>Navigate to the Azure Portal and select your Application Insights resource.</li>
+            <li>Go to the ""Access control (IAM)"" section.</li>
+            <li>Assign roles that are least privilege, such as the ""Reader"" role, to users who do not need to modify settings.</li>
+            <li>Enable Multi-Factor Authentication (MFA) for all users who have access to Azure resources, including Application Insights.</li>
+        </ul>
+    </li>
+    <li><strong>Configure Data Collection and Retention:</strong>
+        <ul>
+            <li>In the Azure Portal, access your Application Insights instance.</li>
+            <li>Select ""Configure"" under the ""Monitoring"" section and fine-tune the data sampling rates to minimize excessive data collection.</li>
+            <li>Set retention policies to automatically delete older data, aligning with your compliance requirements.</li>
+        </ul>
+    </li>
+    <li><strong>Enable Diagnostic Settings:</strong>
+        <ul>
+            <li>Open your Application Insights resource in the Azure Portal.</li>
+            <li>Go to ""Diagnostic settings"" and configure logging to capture detailed telemetry data.</li>
+            <li>Ensure logs are being sent to a secure storage location, such as Azure Log Analytics or Azure Blob Storage, with appropriate access controls.</li>
+        </ul>
+    </li>
+    <li><strong>Implement Alerts and Monitoring:</strong>
+        <ul>
+            <li>Set up alerts in the Azure Monitor for critical metrics and anomalies in Application Insights.</li>
+            <li>Create customized dashboards to visualize key performance indicators and ensure timely identification of issues.</li>
+        </ul>
+    </li>
+    <li><strong>Regularly Review and Audit Usage:</strong>
+        <ul>
+            <li>Periodically review audit logs and access logs to detect any unauthorized access or changes.</li>
+            <li>Conduct regular security assessments to ensure all configurations align with best practices.</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal"">Assign Azure roles using the Azure portal</a></li>
+    
+    <li><a href=""https://docs.microsoft.com/en-us/azure/azure-monitor/app/pricing"">Azure Monitor pricing and retention policies</a></li>
+    <li><a href=""https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/diagnostic-settings"">Manage diagnostic settings in Azure</a></li>
+    <li><a href=""https://docs.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview"">Overview of alerts in Microsoft Azure</a></li>
+</ul>",recommended,not-tested
+2319451e-7894-4694-8e5e-8952826e2b90,C-STORAGE-IM-7,Azure Storage,Information Disclosure,Insecure storage of credentials and hard-coded credentials in configuration files,Restrict resource access based on conditions,"Use Azure AD conditional access for more granular access controls based on user-defined conditions, such as requiring user logins from certain IP ranges (or devices) to use MFA. Azure AD Conditional Access allows you to enforce access controls on your organization’s apps based on certain conditions. 
+
+Define the applicable conditions and criteria for Azure AD conditional access in the workload. Consider the following common use cases: 
+- Requiring multi-factor authentication for users with administrative roles
+- Requiring multi-factor authentication for Azure management tasks
+- Blocking sign-ins for users attempting to use legacy authentication protocols
+- Requiring trusted locations for Azure AD Multi-Factor Authentication registration
+- Blocking or granting access from specific locations
+- Blocking risky sign-in behaviors
+- Requiring organization-managed devices for specific applications
+
+Note: Granular authentication session management controls can also be implemented through Azure AD conditional access policies such as sign-in frequency and persistent browser session.",recommended,not-tested
+240f0f47-5449-4481-bac1-9fac1abe82b7,C-STORAGE-BR-1,Azure Storage,Denial of Service,Unscheduled or infrequent application backups leading to potential data loss,Ensure regular automated backups,"For Azure Backup supported resources (such as Azure VMs, SQL Server, HANA databases, Azure PostgreSQL Database, File Shares, Blobs or Disks), enable Azure Backup and configure the desired frequency and retention period. For Azure VM, you can use Azure Policy to have backup automatically enabled using Azure Policy. 
+
+For resources or services not supported by Azure Backup, use the native backup capability provided by the resource or service. For example, Azure Key Vault provides a native backup capability. 
+
+For resources/services that are neither supported by Azure Backup nor have a native backup capability, evaluate your backup and disaster needs, and create your own mechanism as per your business requirements. For example: 
+- If you use Azure Storage for data storage, enable blob versioning for your storage blobs which will allow you to preserve, retrieve, and restore every version of every object stored in your Azure Storage. 
+- Service configuration settings can usually be exported to Azure Resource Manager templates. ",recommended,not-tested
+248debbf-b718-4e27-97b9-f26a23e4fb49,C-AZURE-IOT-EDGE-CNT-02,M2,Information Disclosure,Insufficient encryption of data at rest,Enable encryption at rest,"<section>
+    <p>To ensure that all data stored on Azure IoT Edge devices is encrypted at rest and protected from unauthorized access, follow the step-by-step guidance below using Azure's built-in encryption capabilities:</p>
+    
+    <ol>
+        <li>
+            <p>Before deploying Azure IoT Edge on your devices, ensure they support encryption at rest. This typically involves a hardware security module (HSM) or a Trusted Platform Module (TPM) for secure key storage:</p>
+            <ul>
+                <li>Check the device’s compatibility with encryption standards and assess whether a software-based encryption approach is necessary if hardware encryption is unavailable.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Install Azure IoT Edge on your devices:</p>
+            <ul>
+                <li>Follow the instructions provided by Microsoft to set up the IoT Edge runtime on your equipment. Detailed setup instructions can be found <a href=""https://learn.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge"">here</a>.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Implement data encryption for modules running on IoT Edge. Use the following guidelines:</p>
+            <ul>
+                <li>Leverage Azure Storage account in the cloud or use Azure Blob Storage on IoT Edge. Both support server-side encryption at rest with either Microsoft-managed keys or customer-managed keys using Azure Key Vault.</li>
+                <li>For data stored locally, consider utilizing BitLocker (on Windows-based IoT Edge devices) or the LUKS (Linux Unified Key Setup) encryption on Linux devices.</li>
+                <li>When using Azure Blob Storage on IoT Edge, ensure that encryption features are enabled through the Azure portal or Azure CLI.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Enable double encryption if needed for highly sensitive data:</p>
+            <ul>
+                <li>Optionally employ client-side encryption before sending data to Azure Blob Storage, ensuring another layer of protection by encrypting data with Azure's Storage Client Library before upload.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Regularly review and update security policies and ensure that all software components of your IoT Edge deployments are kept up to date with security patches:</p>
+            <ul>
+                <li>Monitor for updates or vulnerabilities reported by Microsoft and relevant industry standards regarding encryption technologies.</li>
+                <li>Implement automated update systems where possible to minimize the risk of outdated software exposing encryption keys or data.</li>
+            </ul>
+        </li>
+    </ol>
+</section>
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/iot-edge/security"">Azure IoT Edge Security</a></li>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption"">Azure Storage Service Encryption</a></li>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-atrest"">Azure Encryption of Data at Rest</a></li>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/key-vault/general/overview"">Azure Key Vault Overview</a></li>
+</ul>",recommended,not-tested
+2b57af14-927b-4038-9c03-ee0ab71d05a4,C-STORAGE-DP-1,Azure Storage,Information Disclosure,Unauthorized access to customer-managed keys and data in Azure Storage,"Discover, classify, and label sensitive data","Use tools such as Microsoft Purview, which combines the former Azure Purview and Microsoft 365 compliance solutions, and Azure SQL Data Discovery and Classification to centrally scan, classify, and label the sensitive data that reside in the Azure, on-premises, Microsoft 365, and other locations.",recommended,not-tested
+2ecbc146-401c-4689-83b1-db5c58ccbabf,C-STORAGE-DP-2,Azure Storage,Information Disclosure,Unauthorized access to customer-managed keys and data in Azure Storage,Monitor anomalies and threats targeting sensitive data,"Use Azure Information protection (AIP) to monitor the data that has been classified and labeled.
+
+Use Microsoft Defender for Storage, Microsoft Defender for SQL, Microsoft Defender for open-source relational databases, and Microsoft Defender for Cosmos DB to alert on anomalous transfer of information that might indicate unauthorized transfers of sensitive data information.  
+
+Note: If required for compliance of data loss prevention (DLP), you can use a host-based DLP solution from Azure Marketplace or a Microsoft 365 DLP solution to enforce detective and/or preventative controls to prevent data exfiltration.",recommended,not-tested
+3076cfcb-740d-47f2-aace-abe627634e37,C-STORAGE-IM-3,Azure,Information Disclosure,Insecure storage of credentials and hard-coded credentials in configuration files,Manage application identities securely and automatically,"Use Azure managed identities, which can authenticate to Azure services and resources that support Azure AD authentication. Managed identity credentials are fully managed, rotated, and protected by the platform, avoiding hard-coded credentials in source code or configuration files. 
+
+For services that don't support managed identities, use Azure AD to create a service principal with restricted permissions at the resource level. It is recommended to configure service principals with certificate credentials and fall back to client secrets for authentication. 
+",recommended,not-tested
+3670c9aa-cc0c-4aee-af17-28163c12092f,C-AZURE-APPLICATION-INSIGHTS-CNT-02,Azure Application Insights,Elevation of Privilege,Attackers gain access to the system by exploiting weak security configurations,Ensure Application Insights are configured,"<p>The absence of a countermeasure in Azure Application Insights could expose your system to threats and vulnerabilities. It is important to implement relevant security controls to ensure the safety and integrity of your data and infrastructure. Here is a step-by-step guide on how to secure your Azure Application Insights:</p>
+
+<ol>
+    <li><strong>Access Control:</strong> Implement role-based access control to restrict permissions. To configure these settings:
+        <ol type=""a"">
+            <li>Go to the Azure portal and select your application insights resource.</li>
+            <li>Click on ""Access Control (IAM)"" from the left-hand menu.</li>
+            <li>Use the ""Add"" button to assign roles to users, groups, or managed identities.</li>
+            <li>Select the appropriate role based on the principle of least privilege.</li>
+        </ol>
+    </li>
+    <li><strong>Monitor Telemetry:</strong> Regularly review telemetry data to detect abnormal patterns:
+        <ol type=""a"">
+            <li>In the Azure portal, navigate to your Application Insights resource.</li>
+            <li>Select ""Metrics"" to view and set up alerts on usage and performance data.</li>
+            <li>Configure alerts to notify you of unusual activity or thresholds being exceeded.</li>
+        </ol>
+    </li>
+    <li><strong>Data Encryption:</strong> Ensure data encryption both at rest and in transit:
+        <ol type=""a"">
+            <li>Verify that server-side encryption is enabled for your telemetry data.</li>
+            <li>Use HTTPS endpoints to send data securely to Application Insights.</li>
+            <li>If possible, configure client-side encryption for additional data protection.</li>
+        </ol>
+    </li>
+    <li><strong>Configuration Monitoring:</strong> Regularly review the settings of your Application Insights environment:
+        <ol type=""a"">
+            <li>Access the ""Properties"" section in your Application Insights resource.</li>
+            <li>Periodically audit the connection strings and instrumentation keys.</li>
+            <li>Ensure that endpoint configurations are securely set.</li>
+        </ol>
+    </li>
+    <li><strong>Network Security:</strong> Implement network security controls to protect against unauthorized access:
+        <ol type=""a"">
+            <li>Consider using service endpoints or private endpoints where applicable.</li>
+            <li>Adjust network security group rules to limit inbound and outbound traffic.</li>
+        </ol>
+    </li>
+</ol>
+
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://docs.microsoft.com/en-us/azure/role-based-access-control/overview"">Understanding Azure role-based access control (Azure RBAC)</a></li>
+    <li><a href=""https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/metrics-getting-started"">Azure Monitor metrics</a></li>
+    
+    <li><a href=""https://docs.microsoft.com/en-us/azure/virtual-network/security-overview"">Azure Virtual Network security</a></li>
+</ul>",recommended,not-tested
+3b70d05e-fe9f-4592-8796-ef7a34a16eed,C-AZURE-IOT-EDGE-CNT-02,EdgeRuntime,Information Disclosure,Insufficient encryption of data at rest,Enable encryption at rest,"<section>
+    <p>To ensure that all data stored on Azure IoT Edge devices is encrypted at rest and protected from unauthorized access, follow the step-by-step guidance below using Azure's built-in encryption capabilities:</p>
+    
+    <ol>
+        <li>
+            <p>Before deploying Azure IoT Edge on your devices, ensure they support encryption at rest. This typically involves a hardware security module (HSM) or a Trusted Platform Module (TPM) for secure key storage:</p>
+            <ul>
+                <li>Check the device’s compatibility with encryption standards and assess whether a software-based encryption approach is necessary if hardware encryption is unavailable.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Install Azure IoT Edge on your devices:</p>
+            <ul>
+                <li>Follow the instructions provided by Microsoft to set up the IoT Edge runtime on your equipment. Detailed setup instructions can be found <a href=""https://learn.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge"">here</a>.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Implement data encryption for modules running on IoT Edge. Use the following guidelines:</p>
+            <ul>
+                <li>Leverage Azure Storage account in the cloud or use Azure Blob Storage on IoT Edge. Both support server-side encryption at rest with either Microsoft-managed keys or customer-managed keys using Azure Key Vault.</li>
+                <li>For data stored locally, consider utilizing BitLocker (on Windows-based IoT Edge devices) or the LUKS (Linux Unified Key Setup) encryption on Linux devices.</li>
+                <li>When using Azure Blob Storage on IoT Edge, ensure that encryption features are enabled through the Azure portal or Azure CLI.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Enable double encryption if needed for highly sensitive data:</p>
+            <ul>
+                <li>Optionally employ client-side encryption before sending data to Azure Blob Storage, ensuring another layer of protection by encrypting data with Azure's Storage Client Library before upload.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Regularly review and update security policies and ensure that all software components of your IoT Edge deployments are kept up to date with security patches:</p>
+            <ul>
+                <li>Monitor for updates or vulnerabilities reported by Microsoft and relevant industry standards regarding encryption technologies.</li>
+                <li>Implement automated update systems where possible to minimize the risk of outdated software exposing encryption keys or data.</li>
+            </ul>
+        </li>
+    </ol>
+</section>
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/iot-edge/security"">Azure IoT Edge Security</a></li>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption"">Azure Storage Service Encryption</a></li>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-atrest"">Azure Encryption of Data at Rest</a></li>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/key-vault/general/overview"">Azure Key Vault Overview</a></li>
+</ul>",recommended,not-tested
+3beedd62-fad2-490d-9b52-2c52fc332d22,C-AZURE-APPLICATION-INSIGHTS-CNT-01,Azure Application Insights,Repudiation,Exploitation of insufficient logging and monitoring,Enable diagnostic logs auditing for Microsoft Azure,"<p>Implementing effective countermeasures in Azure Application Insights is crucial for ensuring the security and reliability of your application monitoring. Although no default action may be necessary, it is important to consider the following steps to enhance security:</p><p><strong>Review Current Configurations:</strong></p><p>Examine existing Application Insights configurations within your Azure portal to understand the baseline settings and identify any potential exposures. Follow these steps to review configurations:</p><ul><li>Log in to the Azure portal.</li><li>Navigate to your Application Insights resource.</li><li>Access 'Overview' and 'Settings' sections to evaluate current configurations.</li></ul><p><strong>Enable Access Control:</strong></p><p>Utilize Role-Based Access Control (RBAC) to restrict access based on the principle of least privilege by following these steps:</p><ul><li>Navigate to your Application Insights resource in the Azure portal.</li><li>Select 'Access control (IAM)'.</li><li>Assign roles appropriate to users, ensuring only necessary roles are provided.</li></ul><p><strong>Implement IP Restrictions:</strong></p><p>Safeguard data from unauthorized network access by configuring IP restrictions:</p><ul><li>Go to the 'Networking' section of your Application Insights resource.</li><li>Add specific IP addresses or ranges that are permitted to access these resources.</li><li>Save your configuration to enforce the IP restrictions.</li></ul><p><strong>Use Diagnostic Logs:</strong></p><p>Enable and regularly review diagnostic logs to monitor access and usage patterns:</p><ul><li>Navigate to the 'Monitoring' section in Azure portal.</li><li>Select 'Logs' and configure diagnostics settings as required.</li><li>Set up alerts for any unusual activity patterns detected in the logs.</li></ul><p><strong>Ensure Data Encryption:</strong></p><p>Verify that data is encrypted both in transit and at rest, and ensure alignment with security standards:</p><ul><li>Review current encryption settings in Application Insights.</li><li>Consult your organization's security policies to verify compliance.</li></ul><p><strong>Regular Security Audits:</strong></p><p>Conduct regular security audits and penetration testing to identify potential vulnerabilities:</p><ul><li>Use Azure Security Center to analyze security recommendations.</li><li>Plan regular security assessments and address identified vulnerabilities promptly.</li></ul><p>By following the above guidelines, you can better secure your Azure Application Insights environment, thereby improving the overall security of your application monitoring setup.</p><p><strong>References</strong></p><ul><li><a href=""https://learn.microsoft.com/en-us/azure/role-based-access-control/best-practices"">Best practices for Azure RBAC</a></li><li><a href=""https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-query-overview"">Log Query Overview in Azure Monitor</a></li><li><a href=""https://learn.microsoft.com/en-us/azure/security-center/security-center-introduction"">Introduction to Azure Security Center</a></li></ul>",recommended,not-tested
+438de44e-0ebd-476b-a23e-9d7c08492a01,C-COGNITIVE-SERVICES-IM-1,Azure Cognitive Service,Tampering,Unauthorized access due to misconfigured Azure AD authentication controls,Use centralized identity and authentication system,"Azure Active Directory (Azure AD) is Azure's identity and authentication management service. You should standardize on Azure AD to govern your organization's identity and authentication in:
+- Microsoft cloud resources, such as Azure Storage, Azure Virtual Machines (Linux and Windows), Azure Key Vault, PaaS, and SaaS applications.
+- Your organization's resources, such as applications on Azure, third-party applications running on your corporate network resources, and third-party SaaS applications. 
+- Your enterprise identities in Active Directory by synchronization to Azure AD to ensure a consistent and centrally managed identity strategy.
+
+For the Azure services that apply, avoid use of local authentication methods and instead use Azure Active Directory to centralize your service authentications.
+
+Note: As soon as it is technically feasible, you should migrate on-premises Active Directory-based applications to Azure AD. This could be an Azure AD Enterprise Directory, Business to Business configuration, or Business to consumer configuration.",recommended,not-tested
+449299ab-8815-4f01-99e8-5ea45f8c601b,C-COGNITIVE-SERVICES-LT-4,Azure Cognitive Service,Repudiation,Undetected unauthorized activities due to lack of resource logs,Enable network logging for security investigation,"Enable and collect network security group (NSG) resource logs, NSG flow logs, Azure Firewall logs, and Web Application Firewall (WAF) logs, and logs from virtual machines via the network traffic data collection agent for security analysis to support incident investigations, and security alert generation. You can send the flow logs to an Azure Monitor Log Analytics workspace and then use Traffic Analytics to provide insights.
+
+Collect DNS query logs to assist in correlating other network data.",recommended,not-tested
+45baf28a-f08d-4a56-9d98-de303d7580ed,C-STORAGE-IM-3,Azure Storage,Information Disclosure,Insecure storage of credentials and hard-coded credentials in configuration files,Manage application identities securely and automatically,"Use Azure managed identities, which can authenticate to Azure services and resources that support Azure AD authentication. Managed identity credentials are fully managed, rotated, and protected by the platform, avoiding hard-coded credentials in source code or configuration files. 
+
+For services that don't support managed identities, use Azure AD to create a service principal with restricted permissions at the resource level. It is recommended to configure service principals with certificate credentials and fall back to client secrets for authentication. 
+",recommended,not-tested
+48fda7ff-818f-4894-9899-634c8983970a,C-STORAGE-PA-8,Azure,Elevation of Privilege,Unauthorized access to Azure Storage data via Azure AD permissions,Choose approval process for third-party support,"In support scenarios where Microsoft needs to access your data, use Customer Lockbox to review and either approve or reject each data access request made by Microsoft.",recommended,not-tested
+499957b4-585f-45c6-a487-8876799d41a3,C-AZURE-IOT-EDGE-CNT-03,IoT Edge Device,Tampering,Lack of runtime attestation,Integrate runtime attestation,"<p>Ensuring that Azure IoT Edge devices are running only authorized software is critical for maintaining the security and integrity of IoT environments. Implementing runtime attestation mechanisms can effectively verify the software integrity and authenticity on these devices. Follow the steps below to set up and utilize runtime attestation:</p>
+
+<ol>
+    <li>
+        <p><strong>Enable Device Identity and Access Control:</strong></p>
+        <ul>
+            <li>Assign each IoT Edge device a unique identity through the Azure IoT Hub. This helps maintain a secure channel for communication and attestation verification.</li>
+            <li>Utilize Azure Active Directory to manage role-based access controls, ensuring that only authorized users and services can interact with your IoT Edge devices.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Use TPM for Secure Attestation:</strong></p>
+        <ul>
+            <li>Make sure your IoT Edge devices support a Trusted Platform Module (TPM). TPMs provide a hardware-based mechanism for securely storing cryptographic keys and credentials.</li>
+            <li>Configure the IoT Edge runtime on devices to use the TPM for performing and verifying attestation processes.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Configure Azure Policy for Compliance:</strong></p>
+        <ul>
+            <li>Set up Azure Policy definitions that specify the allowed images and software versions for your IoT Edge deployments. This assists in maintaining fleet-wide compliance.</li>
+            <li>Regularly audit and update these policies to reflect new requirements and software updates.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Set Up Automated Security Monitoring:</strong></p>
+        <ul>
+            <li>Use Azure Security Center for IoT to monitor the security posture of your IoT Edge devices in real-time, identifying any unauthorized modifications to runtime configurations.</li>
+            <li>Implement alerts that notify you immediately when an attestation fails, triggering a review or automated remediation process.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Perform Regular Software Updates and Patching:</strong></p>
+        <ul>
+            <li>Regularly update and patch your IoT Edge software and modules to mitigate known vulnerabilities. Use the automatic updates feature when applicable.</li>
+            <li>Craft a continuous deployment pipeline using Azure DevOps to push secure software updates while ensuring they go through proper attestation checks before going live.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Review Attestation Logs:</strong></p>
+        <ul>
+            <li>Periodically review attestation logs and reports within Azure to ensure that only authorized software is running on your devices.</li>
+            <li>Utilize these logs to identify patterns or anomalies that might indicate a security breach.</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/iot-edge/security"">Azure IoT Edge Security</a></li>
+</ul>
+",recommended,not-tested
+4a0b62d4-01dc-4ba7-8d79-dde48ba989b7,C-IOT-HUB-LT-4,Azure IoT Hub,Repudiation,Undetected unauthorized activities due to lack of resource logs,Enable network logging for security investigation,"Enable and collect network security group (NSG) resource logs, NSG flow logs, Azure Firewall logs, and Web Application Firewall (WAF) logs, and logs from virtual machines via the network traffic data collection agent for security analysis to support incident investigations, and security alert generation. You can send the flow logs to an Azure Monitor Log Analytics workspace and then use Traffic Analytics to provide insights.
+
+Collect DNS query logs to assist in correlating other network data.",recommended,not-tested
+4e920a91-2bcd-45fe-a09d-2089d5c13884,C-STORAGE-DP-1,Azure,Information Disclosure,Unauthorized access to customer-managed keys and data in Azure Storage,"Discover, classify, and label sensitive data","Use tools such as Microsoft Purview, which combines the former Azure Purview and Microsoft 365 compliance solutions, and Azure SQL Data Discovery and Classification to centrally scan, classify, and label the sensitive data that reside in the Azure, on-premises, Microsoft 365, and other locations.",recommended,not-tested
+59b27188-7882-4ceb-a389-9a7e59ac5e74,C-AZURE-APPLICATION-INSIGHTS-CNT-02,IoTEdgeMetricsCollector,Elevation of Privilege,Attackers gain access to the system by exploiting weak security configurations,Ensure Application Insights are configured,"<p>The absence of a countermeasure in Azure Application Insights could expose your system to threats and vulnerabilities. It is important to implement relevant security controls to ensure the safety and integrity of your data and infrastructure. Here is a step-by-step guide on how to secure your Azure Application Insights:</p>
+
+<ol>
+    <li><strong>Access Control:</strong> Implement role-based access control to restrict permissions. To configure these settings:
+        <ol type=""a"">
+            <li>Go to the Azure portal and select your application insights resource.</li>
+            <li>Click on ""Access Control (IAM)"" from the left-hand menu.</li>
+            <li>Use the ""Add"" button to assign roles to users, groups, or managed identities.</li>
+            <li>Select the appropriate role based on the principle of least privilege.</li>
+        </ol>
+    </li>
+    <li><strong>Monitor Telemetry:</strong> Regularly review telemetry data to detect abnormal patterns:
+        <ol type=""a"">
+            <li>In the Azure portal, navigate to your Application Insights resource.</li>
+            <li>Select ""Metrics"" to view and set up alerts on usage and performance data.</li>
+            <li>Configure alerts to notify you of unusual activity or thresholds being exceeded.</li>
+        </ol>
+    </li>
+    <li><strong>Data Encryption:</strong> Ensure data encryption both at rest and in transit:
+        <ol type=""a"">
+            <li>Verify that server-side encryption is enabled for your telemetry data.</li>
+            <li>Use HTTPS endpoints to send data securely to Application Insights.</li>
+            <li>If possible, configure client-side encryption for additional data protection.</li>
+        </ol>
+    </li>
+    <li><strong>Configuration Monitoring:</strong> Regularly review the settings of your Application Insights environment:
+        <ol type=""a"">
+            <li>Access the ""Properties"" section in your Application Insights resource.</li>
+            <li>Periodically audit the connection strings and instrumentation keys.</li>
+            <li>Ensure that endpoint configurations are securely set.</li>
+        </ol>
+    </li>
+    <li><strong>Network Security:</strong> Implement network security controls to protect against unauthorized access:
+        <ol type=""a"">
+            <li>Consider using service endpoints or private endpoints where applicable.</li>
+            <li>Adjust network security group rules to limit inbound and outbound traffic.</li>
+        </ol>
+    </li>
+</ol>
+
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://docs.microsoft.com/en-us/azure/role-based-access-control/overview"">Understanding Azure role-based access control (Azure RBAC)</a></li>
+    <li><a href=""https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/metrics-getting-started"">Azure Monitor metrics</a></li>
+    
+    <li><a href=""https://docs.microsoft.com/en-us/azure/virtual-network/security-overview"">Azure Virtual Network security</a></li>
+</ul>",recommended,not-tested
+60e43220-00a5-4c7d-be46-2c045078b96e,C-STORAGE-PA-7,Azure Storage,Elevation of Privilege,Unauthorized access to Azure Storage data via Azure AD permissions,Follow just enough administration (least privilege) principle,"Use Azure role-based access control (Azure RBAC) to manage Azure resource access through role assignments. Through RBAC, you can assign roles to users, groups, service principals, and managed identities. There are pre-defined built-in roles for certain resources, and these roles can be inventoried or queried through tools such as Azure CLI, Azure PowerShell, and the Azure portal. 
+
+The privileges you assign to resources through Azure RBAC should always be limited to what's required by the roles. Limited privileges will complement the just-in-time (JIT) approach of Azure AD Privileged Identity Management (PIM), and those privileges should be reviewed periodically. If required, you can also use PIM to define a time-bound assignment, which is a condition in a role assignment where a user can only activate the role within the specified start and end dates. 
+
+Note: Use Azure built-in roles to allocate permissions and only create custom roles when required.",recommended,not-tested
+620f2d05-f384-47f2-a26d-94a0951ebe3f,C-AZURE-IOT-EDGE-CNT-03,M1,Tampering,Lack of runtime attestation,Integrate runtime attestation,"<p>Ensuring that Azure IoT Edge devices are running only authorized software is critical for maintaining the security and integrity of IoT environments. Implementing runtime attestation mechanisms can effectively verify the software integrity and authenticity on these devices. Follow the steps below to set up and utilize runtime attestation:</p>
+
+<ol>
+    <li>
+        <p><strong>Enable Device Identity and Access Control:</strong></p>
+        <ul>
+            <li>Assign each IoT Edge device a unique identity through the Azure IoT Hub. This helps maintain a secure channel for communication and attestation verification.</li>
+            <li>Utilize Azure Active Directory to manage role-based access controls, ensuring that only authorized users and services can interact with your IoT Edge devices.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Use TPM for Secure Attestation:</strong></p>
+        <ul>
+            <li>Make sure your IoT Edge devices support a Trusted Platform Module (TPM). TPMs provide a hardware-based mechanism for securely storing cryptographic keys and credentials.</li>
+            <li>Configure the IoT Edge runtime on devices to use the TPM for performing and verifying attestation processes.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Configure Azure Policy for Compliance:</strong></p>
+        <ul>
+            <li>Set up Azure Policy definitions that specify the allowed images and software versions for your IoT Edge deployments. This assists in maintaining fleet-wide compliance.</li>
+            <li>Regularly audit and update these policies to reflect new requirements and software updates.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Set Up Automated Security Monitoring:</strong></p>
+        <ul>
+            <li>Use Azure Security Center for IoT to monitor the security posture of your IoT Edge devices in real-time, identifying any unauthorized modifications to runtime configurations.</li>
+            <li>Implement alerts that notify you immediately when an attestation fails, triggering a review or automated remediation process.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Perform Regular Software Updates and Patching:</strong></p>
+        <ul>
+            <li>Regularly update and patch your IoT Edge software and modules to mitigate known vulnerabilities. Use the automatic updates feature when applicable.</li>
+            <li>Craft a continuous deployment pipeline using Azure DevOps to push secure software updates while ensuring they go through proper attestation checks before going live.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Review Attestation Logs:</strong></p>
+        <ul>
+            <li>Periodically review attestation logs and reports within Azure to ensure that only authorized software is running on your devices.</li>
+            <li>Utilize these logs to identify patterns or anomalies that might indicate a security breach.</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/iot-edge/security"">Azure IoT Edge Security</a></li>
+</ul>
+",recommended,not-tested
+6235c487-2243-428f-a9b3-be93cc49f51c,C-IOT-HUB-IM-3,Azure IoT Hub,Tampering,Unauthorized access via local authentication and hard-coded credentials,Manage application identities securely and automatically,"Use Azure managed identities, which can authenticate to Azure services and resources that support Azure AD authentication. Managed identity credentials are fully managed, rotated, and protected by the platform, avoiding hard-coded credentials in source code or configuration files. 
+
+For services that don't support managed identities, use Azure AD to create a service principal with restricted permissions at the resource level. It is recommended to configure service principals with certificate credentials and fall back to client secrets for authentication. 
+",recommended,not-tested
+6a24f465-a54f-4a07-8001-f0e5408abdef,C-STORAGE-IM-8,Azure,Information Disclosure,Insecure storage of credentials and hard-coded credentials in configuration files,Restrict the exposure of credential and secrets,"When using a managed identity is not an option, ensure that secrets and credentials are stored in secure locations such as Azure Key Vault, instead of embedding them into the code and configuration files. 
+
+If you use Azure DevOps and GitHub for your code management platform:
+- Implement Azure DevOps Credential Scanner to identify credentials within the code. 
+- For GitHub, use the native secret scanning feature to identify credentials or other forms of secrets within the code.
+
+Clients such as Azure Functions, Azure Apps services, and VMs can use managed identities to access Azure Key Vault securely. See Data Protection controls related to the use of Azure Key Vault for secrets management.
+
+Note: Azure Key Vault provides automatic rotation for supported services. For secrets which cannot be automatically rotated, ensure they are manually rotated periodically and purged when no longer in use. ",recommended,not-tested
+6f0ddf88-8b7a-4212-af2e-69a9ad45b7eb,C-COGNITIVE-SERVICES-DP-5,Azure Cognitive Service,Information Disclosure,Unauthorized access to customer-managed keys and data loss prevention,Use customer-managed key option in data at rest encryption when required,"Azure also provides an encryption option using keys managed by yourself (customer-managed keys) for most services. 
+
+Azure Key Vault Standard, Premium, and Managed HSM are natively integrated with many Azure Services for customer-managed key use cases. You may use Azure Key Vault to generate your key or bring your own keys.
+
+However, using the customer-managed key option requires additional operational effort to manage the key lifecycle. This may include encryption key generation, rotation, revoke, and access control, etc. ",recommended,not-tested
+6f1251f2-01d5-450e-a79b-3871cb99cda9,C-COGNITIVE-SERVICES-NS-2,Azure Cognitive Service,Information Disclosure,"Unauthorized public network access bypasses restrictions, compromising data security",Secure cloud native services with network controls,"Deploy private endpoints for all Azure resources that support the Private Link feature, to establish a private access point for the resources. Using Private Link will keep the private connection from routing through the public network. 
+
+Note: Certain Azure services may also allow private communication through the service endpoint feature, though it is recommended to use Azure Private Link for secure and private access to services hosted on Azure platform.
+
+For certain services, you can choose to deploy VNet integration for the service where you can restrict/isolate the VNET to establish a private access point for the service. 
+
+You also have the option to configure the service native network ACL rules or simply disable public network access to block access from the public network. 
+
+For Azure VMs, unless there is a strong use case, you should avoid assigning public IPs/subnet directly to the VM interface and instead use gateway or load balancer services as the front-end for access by the public network. 
+",recommended,not-tested
+70bd171f-ec8a-49dd-a9be-aa9083c986fa,C-AZURE-APPLICATION-INSIGHTS-CNT-01,IoTEdgeMetricsCollector,Repudiation,Exploitation of insufficient logging and monitoring,Enable diagnostic logs auditing for Microsoft Azure,"<p>Implementing effective countermeasures in Azure Application Insights is crucial for ensuring the security and reliability of your application monitoring. Although no default action may be necessary, it is important to consider the following steps to enhance security:</p><p><strong>Review Current Configurations:</strong></p><p>Examine existing Application Insights configurations within your Azure portal to understand the baseline settings and identify any potential exposures. Follow these steps to review configurations:</p><ul><li>Log in to the Azure portal.</li><li>Navigate to your Application Insights resource.</li><li>Access 'Overview' and 'Settings' sections to evaluate current configurations.</li></ul><p><strong>Enable Access Control:</strong></p><p>Utilize Role-Based Access Control (RBAC) to restrict access based on the principle of least privilege by following these steps:</p><ul><li>Navigate to your Application Insights resource in the Azure portal.</li><li>Select 'Access control (IAM)'.</li><li>Assign roles appropriate to users, ensuring only necessary roles are provided.</li></ul><p><strong>Implement IP Restrictions:</strong></p><p>Safeguard data from unauthorized network access by configuring IP restrictions:</p><ul><li>Go to the 'Networking' section of your Application Insights resource.</li><li>Add specific IP addresses or ranges that are permitted to access these resources.</li><li>Save your configuration to enforce the IP restrictions.</li></ul><p><strong>Use Diagnostic Logs:</strong></p><p>Enable and regularly review diagnostic logs to monitor access and usage patterns:</p><ul><li>Navigate to the 'Monitoring' section in Azure portal.</li><li>Select 'Logs' and configure diagnostics settings as required.</li><li>Set up alerts for any unusual activity patterns detected in the logs.</li></ul><p><strong>Ensure Data Encryption:</strong></p><p>Verify that data is encrypted both in transit and at rest, and ensure alignment with security standards:</p><ul><li>Review current encryption settings in Application Insights.</li><li>Consult your organization's security policies to verify compliance.</li></ul><p><strong>Regular Security Audits:</strong></p><p>Conduct regular security audits and penetration testing to identify potential vulnerabilities:</p><ul><li>Use Azure Security Center to analyze security recommendations.</li><li>Plan regular security assessments and address identified vulnerabilities promptly.</li></ul><p>By following the above guidelines, you can better secure your Azure Application Insights environment, thereby improving the overall security of your application monitoring setup.</p><p><strong>References</strong></p><ul><li><a href=""https://learn.microsoft.com/en-us/azure/role-based-access-control/best-practices"">Best practices for Azure RBAC</a></li><li><a href=""https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-query-overview"">Log Query Overview in Azure Monitor</a></li><li><a href=""https://learn.microsoft.com/en-us/azure/security-center/security-center-introduction"">Introduction to Azure Security Center</a></li></ul>",recommended,not-tested
+71bc4788-d676-4a77-a4fb-fe1c93e87894,C-BROWSER-CNT-04,Browser,Spoofing,Attackers conduct phishing attacks through deceptive websites,Activate URL filtering mechanisms,"<p>Implement and regularly update URL filtering mechanisms on all client machines to protect against phishing attacks and access to deceptive websites. These mechanisms help detect and block access to known malicious domains and prevent users from visiting harmful sites that could compromise credentials or lead to malware infections. Regular updates and reviews ensure that the URL filtering remains effective against evolving threats.</p><p><strong>Implementation Steps:</strong></p><p><strong>Configure Browser Settings:</strong><br>Set the browser's URL filtering features via built-in settings or through centralized management policies to block access to high-risk websites.</p><p><strong>Integrate with Threat Intelligence:</strong><br>Leverage reputable threat intelligence feeds to update filtering rules and identify new malicious URLs continuously.</p><p><strong>Schedule Regular Audits:</strong><br>Perform periodic reviews of the URL filtering configuration to ensure it is properly enforced and updated in line with the latest threat data.</p><p><strong>Monitor and Alert:</strong><br>Establish monitoring mechanisms to detect attempts to access blocked URLs and alert administrators for further investigation.</p><p><strong>References:</strong></p><ul><li><a href=""https://safebrowsing.google.com"">Google Safe Browsing API</a></li></ul>",recommended,not-tested
+7578732f-0499-4517-8b85-e9bf7ce8c484,C-COGNITIVE-SERVICES-PA-8,Azure Cognitive Service,Elevation of Privilege,Unauthorized access to Azure resources through misconfigured RBAC roles,Choose approval process for third-party support,"In support scenarios where Microsoft needs to access your data, use Customer Lockbox to review and either approve or reject each data access request made by Microsoft.",recommended,not-tested
+764a955a-e932-4879-81e1-f2276f6b8613,C-STORAGE-PA-7,Azure,Elevation of Privilege,Unauthorized access to Azure Storage data via Azure AD permissions,Follow just enough administration (least privilege) principle,"Use Azure role-based access control (Azure RBAC) to manage Azure resource access through role assignments. Through RBAC, you can assign roles to users, groups, service principals, and managed identities. There are pre-defined built-in roles for certain resources, and these roles can be inventoried or queried through tools such as Azure CLI, Azure PowerShell, and the Azure portal. 
+
+The privileges you assign to resources through Azure RBAC should always be limited to what's required by the roles. Limited privileges will complement the just-in-time (JIT) approach of Azure AD Privileged Identity Management (PIM), and those privileges should be reviewed periodically. If required, you can also use PIM to define a time-bound assignment, which is a condition in a role assignment where a user can only activate the role within the specified start and end dates. 
+
+Note: Use Azure built-in roles to allocate permissions and only create custom roles when required.",recommended,not-tested
+7b347411-0634-4d7b-9f5a-3c18f6b8608a,C-IOT-HUB-AM-2,Azure IoT Hub,Information Disclosure,Unauthorized access due to misconfigured Azure resources,Use only approved services,Use Azure Policy to audit and restrict which services users can provision in your environment. Use Azure Resource Graph to query for and discover resources within their subscriptions. You can also use Azure Monitor to create rules to trigger alerts when a non-approved service is detected.,recommended,not-tested
+81440403-d110-4042-9c6f-07e16656d839,C-STORAGE-DP-2,Azure,Information Disclosure,Unauthorized access to customer-managed keys and data in Azure Storage,Monitor anomalies and threats targeting sensitive data,"Use Azure Information protection (AIP) to monitor the data that has been classified and labeled.
+
+Use Microsoft Defender for Storage, Microsoft Defender for SQL, Microsoft Defender for open-source relational databases, and Microsoft Defender for Cosmos DB to alert on anomalous transfer of information that might indicate unauthorized transfers of sensitive data information.  
+
+Note: If required for compliance of data loss prevention (DLP), you can use a host-based DLP solution from Azure Marketplace or a Microsoft 365 DLP solution to enforce detective and/or preventative controls to prevent data exfiltration.",recommended,not-tested
+853afe4c-7468-41d7-a285-9015b9b32f97,C-COGNITIVE-SERVICES-IM-8,Azure Cognitive Service,Tampering,Unauthorized access due to misconfigured Azure AD authentication controls,Restrict the exposure of credential and secrets,"When using a managed identity is not an option, ensure that secrets and credentials are stored in secure locations such as Azure Key Vault, instead of embedding them into the code and configuration files. 
+
+If you use Azure DevOps and GitHub for your code management platform:
+- Implement Azure DevOps Credential Scanner to identify credentials within the code. 
+- For GitHub, use the native secret scanning feature to identify credentials or other forms of secrets within the code.
+
+Clients such as Azure Functions, Azure Apps services, and VMs can use managed identities to access Azure Key Vault securely. See Data Protection controls related to the use of Azure Key Vault for secrets management.
+
+Note: Azure Key Vault provides automatic rotation for supported services. For secrets which cannot be automatically rotated, ensure they are manually rotated periodically and purged when no longer in use. ",recommended,not-tested
+85c5b527-eefe-43dd-812a-70eb04436af1,C-VIDEO-CAMERA-CNT-06,USB Video Camera,Tampering,Attackers physically sabotage or gain direct access to the camera,Implement tamper-resistant hardware and secure physical placement,"<p>Implementing tamper-resistant hardware and ensuring secure physical placement are essential security measures designed to protect video cameras from unauthorized physical access, tampering, and environmental threats. These practices enhance the overall security posture of video surveillance systems by safeguarding the integrity and functionality of the hardware components.</p><p><strong>Tamper-Resistant Hardware:</strong><br>Utilize video cameras and related hardware that are specifically designed to resist physical tampering. This includes features such as hardened casings, secure mounting mechanisms, and tamper-evident seals that alert administrators to any unauthorized attempts to access or modify the device. Tamper-resistant hardware may also incorporate built-in sensors that trigger alarms or notifications if the device is being tampered with, providing an additional layer of security against physical breaches.</p><p><strong>Secure Physical Placement:</strong><br>Strategically position video cameras in locations that minimize the risk of unauthorized access and tampering. This involves mounting cameras out of easy reach, using secure enclosures, and placing them in areas with controlled access. Additionally, ensuring that cameras are installed in well-lit and monitored environments can deter potential attackers. Proper placement also considers environmental factors to protect cameras from weather-related damage and ensure consistent performance.</p><p><strong>Reference:</strong></p><ul><li><a href=""https://www.edps.europa.eu/data-protection/data-protection/reference-library/video-surveillance_en"">Guide to Securing Video Surveillance Systems</a></li></ul>",recommended,not-tested
+8d744849-ea06-4796-bf21-1077466ddd5e,C-COGNITIVE-SERVICES-IM-7,Azure Cognitive Service,Tampering,Unauthorized access due to misconfigured Azure AD authentication controls,Restrict resource access based on conditions,"Use Azure AD conditional access for more granular access controls based on user-defined conditions, such as requiring user logins from certain IP ranges (or devices) to use MFA. Azure AD Conditional Access allows you to enforce access controls on your organization’s apps based on certain conditions. 
+
+Define the applicable conditions and criteria for Azure AD conditional access in the workload. Consider the following common use cases: 
+- Requiring multi-factor authentication for users with administrative roles
+- Requiring multi-factor authentication for Azure management tasks
+- Blocking sign-ins for users attempting to use legacy authentication protocols
+- Requiring trusted locations for Azure AD Multi-Factor Authentication registration
+- Blocking or granting access from specific locations
+- Blocking risky sign-in behaviors
+- Requiring organization-managed devices for specific applications
+
+Note: Granular authentication session management controls can also be implemented through Azure AD conditional access policies such as sign-in frequency and persistent browser session.",recommended,not-tested
+8ff41635-1194-4dac-9589-327815eece32,C-STORAGE-AM-2,Azure,Information Disclosure,Unauthorized network access to Azure Storage Account data,Use only approved services,Use Azure Policy to audit and restrict which services users can provision in your environment. Use Azure Resource Graph to query for and discover resources within their subscriptions. You can also use Azure Monitor to create rules to trigger alerts when a non-approved service is detected.,recommended,not-tested
+912cd0d5-453e-4a0e-91bf-2e5ff766cfc8,C-BROWSER-CNT-03,Browser,Spoofing,Attackers conduct phishing attacks through deceptive websites,Deploy anti-phishing protection,"<p>Implement and regularly update anti-phishing protection on all client machines to safeguard users from deceptive websites and phishing attempts. This control leverages browser-integrated security features and threat intelligence to detect and block fraudulent sites, protecting sensitive credentials and personal data. Regular configuration reviews and updates ensure that phishing protection remains effective against emerging threats.</p><p><strong>Implementation Steps:</strong></p><p><strong>Enable Browser Phishing Protection:</strong><br>Activate the built-in anti-phishing features available in the browser settings, ensuring that users are warned about potentially deceptive websites.</p><p><strong>Integrate Threat Intelligence Feeds:</strong><br>Connect the browser’s security system to reputable threat intelligence services (e.g., Google Safe Browsing) to keep filtering rules current with the latest phishing data.</p><p><strong>Enforce Organizational Policies:</strong><br>Use centralized management tools (e.g., Group Policy or MDM solutions) to enforce anti-phishing configurations across all client machines.</p><p><strong>Monitor and Review:</strong><br>Regularly audit and monitor logs for phishing detection alerts, and adjust settings as necessary to maintain a robust defense against phishing attacks.</p><p><strong>References:</strong></p><ul><li><a href=""https://safebrowsing.google.com"">Google Safe Browsing API</a></li></ul>",recommended,not-tested
+96a454ab-84be-4a5d-83c9-c35ea1d333f9,C-AZURE-IOT-EDGE-CNT-03,M3,Tampering,Lack of runtime attestation,Integrate runtime attestation,"<p>Ensuring that Azure IoT Edge devices are running only authorized software is critical for maintaining the security and integrity of IoT environments. Implementing runtime attestation mechanisms can effectively verify the software integrity and authenticity on these devices. Follow the steps below to set up and utilize runtime attestation:</p>
+
+<ol>
+    <li>
+        <p><strong>Enable Device Identity and Access Control:</strong></p>
+        <ul>
+            <li>Assign each IoT Edge device a unique identity through the Azure IoT Hub. This helps maintain a secure channel for communication and attestation verification.</li>
+            <li>Utilize Azure Active Directory to manage role-based access controls, ensuring that only authorized users and services can interact with your IoT Edge devices.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Use TPM for Secure Attestation:</strong></p>
+        <ul>
+            <li>Make sure your IoT Edge devices support a Trusted Platform Module (TPM). TPMs provide a hardware-based mechanism for securely storing cryptographic keys and credentials.</li>
+            <li>Configure the IoT Edge runtime on devices to use the TPM for performing and verifying attestation processes.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Configure Azure Policy for Compliance:</strong></p>
+        <ul>
+            <li>Set up Azure Policy definitions that specify the allowed images and software versions for your IoT Edge deployments. This assists in maintaining fleet-wide compliance.</li>
+            <li>Regularly audit and update these policies to reflect new requirements and software updates.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Set Up Automated Security Monitoring:</strong></p>
+        <ul>
+            <li>Use Azure Security Center for IoT to monitor the security posture of your IoT Edge devices in real-time, identifying any unauthorized modifications to runtime configurations.</li>
+            <li>Implement alerts that notify you immediately when an attestation fails, triggering a review or automated remediation process.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Perform Regular Software Updates and Patching:</strong></p>
+        <ul>
+            <li>Regularly update and patch your IoT Edge software and modules to mitigate known vulnerabilities. Use the automatic updates feature when applicable.</li>
+            <li>Craft a continuous deployment pipeline using Azure DevOps to push secure software updates while ensuring they go through proper attestation checks before going live.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Review Attestation Logs:</strong></p>
+        <ul>
+            <li>Periodically review attestation logs and reports within Azure to ensure that only authorized software is running on your devices.</li>
+            <li>Utilize these logs to identify patterns or anomalies that might indicate a security breach.</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/iot-edge/security"">Azure IoT Edge Security</a></li>
+</ul>
+",recommended,not-tested
+97defa06-679b-491f-a1f5-70d3714408fa,C-VIDEO-CAMERA-CNT-04,USB Video Camera,Elevation of Privilege,Attackers attempt to brute force weak camera passwords,Implement account lockout or rate limiting on failed login attempts,"<p>Implementing account lockout or rate limiting on failed login attempts is a vital security measure aimed at protecting video cameras from unauthorized access and brute-force attacks. By limiting the number of consecutive unsuccessful login attempts, this control helps prevent attackers from systematically guessing or cracking user credentials, thereby enhancing the overall security of the video surveillance system.</p><p><strong>Account Lockout Policies:</strong><br>Configure video cameras to lock user accounts after a predefined number of consecutive failed login attempts (e.g., five attempts). Once locked, the account remains inaccessible for a specified duration or until an administrator manually unlocks it. This approach deters attackers by increasing the time and effort required to gain unauthorized access through repeated guessing.</p><p><strong>Rate Limiting:</strong><br>Implement rate limiting to restrict the number of login attempts from a single IP address or user account within a specific time frame (e.g., no more than ten attempts within ten minutes). Rate limiting slows down brute-force attacks by enforcing delays between successive login attempts, making it more difficult for automated tools to succeed in guessing valid credentials.</p><p><strong>Progressive Delays and Notifications:</strong><br>Introduce progressive delays after each failed login attempt, gradually increasing the wait time to discourage rapid, automated attacks. Additionally, configure the system to send alerts or notifications to administrators when multiple failed login attempts are detected, enabling timely investigation and response to potential security threats.</p><p><strong>Reference:</strong></p><ul><li><a href=""https://pages.nist.gov/800-63-3/sp800-63b.html"">Digital Identity Guidelines (NIST Special Publication 800-63B)</a></li></ul>",recommended,not-tested
+99c01248-b3ba-4266-bb99-e389a60e9d09,C-IOT-HUB-IM-7,Azure IoT Hub,Tampering,Unauthorized access via local authentication and hard-coded credentials,Restrict resource access based on conditions,"Use Azure AD conditional access for more granular access controls based on user-defined conditions, such as requiring user logins from certain IP ranges (or devices) to use MFA. Azure AD Conditional Access allows you to enforce access controls on your organization’s apps based on certain conditions. 
+
+Define the applicable conditions and criteria for Azure AD conditional access in the workload. Consider the following common use cases: 
+- Requiring multi-factor authentication for users with administrative roles
+- Requiring multi-factor authentication for Azure management tasks
+- Blocking sign-ins for users attempting to use legacy authentication protocols
+- Requiring trusted locations for Azure AD Multi-Factor Authentication registration
+- Blocking or granting access from specific locations
+- Blocking risky sign-in behaviors
+- Requiring organization-managed devices for specific applications
+
+Note: Granular authentication session management controls can also be implemented through Azure AD conditional access policies such as sign-in frequency and persistent browser session.",recommended,not-tested
+9ac6716a-6292-4327-8840-078a30b74f00,C-STORAGE-IM-1,Azure Storage,Information Disclosure,Insecure storage of credentials and hard-coded credentials in configuration files,Use centralized identity and authentication system,"Azure Active Directory (Azure AD) is Azure's identity and authentication management service. You should standardize on Azure AD to govern your organization's identity and authentication in:
+- Microsoft cloud resources, such as Azure Storage, Azure Virtual Machines (Linux and Windows), Azure Key Vault, PaaS, and SaaS applications.
+- Your organization's resources, such as applications on Azure, third-party applications running on your corporate network resources, and third-party SaaS applications. 
+- Your enterprise identities in Active Directory by synchronization to Azure AD to ensure a consistent and centrally managed identity strategy.
+
+For the Azure services that apply, avoid use of local authentication methods and instead use Azure Active Directory to centralize your service authentications.
+
+Note: As soon as it is technically feasible, you should migrate on-premises Active Directory-based applications to Azure AD. This could be an Azure AD Enterprise Directory, Business to Business configuration, or Business to consumer configuration.",recommended,not-tested
+9c8a9ed6-3fb3-4f21-acba-2103318ff6c2,C-BROWSER-CNT-05,Browser,Spoofing,Attackers intercept browser communications through man-in-the-middle (MitM) attacks,Enforce strict certificate validation,"<p>Implement and regularly update strict certificate validation on all client machines to ensure that the browser only establishes secure connections with trusted websites. This control verifies that SSL/TLS certificates are valid and issued by recognized Certificate Authorities (CAs), preventing attackers from using forged certificates for man-in-the-middle attacks.</p><p><strong>Implementation Steps:</strong></p><p><strong>Enable Certificate Validation:</strong><br>Configure the browser to enforce strict certificate validation, ensuring that invalid, expired, or self-signed certificates trigger warnings or connection blocks.</p><p><strong>Leverage Centralized Policies:</strong><br>Use enterprise management tools (e.g., Group Policy or MDM solutions) to enforce certificate validation settings across all client machines.</p><p><strong>Monitor Certificate Revocations:</strong><br>Ensure that the browser is set to regularly check Certificate Revocation Lists (CRLs) or use Online Certificate Status Protocol (OCSP) to verify certificate validity.</p><p><strong>Regularly Audit Configurations:</strong><br>Periodically review and test the certificate validation process to confirm that it effectively blocks connections to untrusted sites.</p><p><strong>References:</strong></p><ul><li><a href=""https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html"">OWASP Transport Layer Protection Cheat Sheet</a></li></ul>",recommended,not-tested
+9e3f4c9c-ed48-4097-8a10-c3912ec0469d,C-STORAGE-DP-6,Azure,Information Disclosure,Unauthorized access to customer-managed keys and data in Azure Storage,Use a secure key management process,"Use Azure Key Vault to create and control your encryption keys life cycle, including key generation, distribution, and storage. Rotate and revoke your keys in Azure Key Vault and your service based on the defined schedule and when there is a key retirement or compromise. Require a certain cryptographic type and minimum key size when generating keys.
+
+When there is a need to use customer-managed key (CMK) in the workload services or applications, ensure you follow the best practices:
+- Use a key hierarchy to generate a separate data encryption key (DEK) with your key encryption key (KEK) in your key vault. 
+- Ensure keys are registered with Azure Key Vault and implemented via key IDs in each service or application.
+
+To maximize the key material lifetime and portability, bring your own key (BYOK) to the services (i.e., importing HSM-protected keys from your on-premises HSMs into Azure Key Vault). Follow the recommended guideline to perform the key generation and key transfer.
+
+Note: Refer to the below for the FIPS 140-2 level for Azure Key Vault types and FIPS compliance/validation level.
+- Software-protected keys in vaults (Premium & Standard SKUs):  FIPS 140-2 Level 1
+- HSM-protected keys in vaults (Premium SKU): FIPS 140-2 Level 2
+- HSM-protected keys in Managed HSM: FIPS 140-2 Level 3
+Azure Key Vault Premium uses a shared HSM infrastructure in the backend. Azure Key Vault Managed HSM uses dedicated, confidential service endpoints with a dedicated HSM for when you need a higher level of key security.",recommended,not-tested
+9f44d367-ae1d-4651-a220-b61268245aa6,C-AZURE-IOT-EDGE-CNT-02,M3,Information Disclosure,Insufficient encryption of data at rest,Enable encryption at rest,"<section>
+    <p>To ensure that all data stored on Azure IoT Edge devices is encrypted at rest and protected from unauthorized access, follow the step-by-step guidance below using Azure's built-in encryption capabilities:</p>
+    
+    <ol>
+        <li>
+            <p>Before deploying Azure IoT Edge on your devices, ensure they support encryption at rest. This typically involves a hardware security module (HSM) or a Trusted Platform Module (TPM) for secure key storage:</p>
+            <ul>
+                <li>Check the device’s compatibility with encryption standards and assess whether a software-based encryption approach is necessary if hardware encryption is unavailable.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Install Azure IoT Edge on your devices:</p>
+            <ul>
+                <li>Follow the instructions provided by Microsoft to set up the IoT Edge runtime on your equipment. Detailed setup instructions can be found <a href=""https://learn.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge"">here</a>.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Implement data encryption for modules running on IoT Edge. Use the following guidelines:</p>
+            <ul>
+                <li>Leverage Azure Storage account in the cloud or use Azure Blob Storage on IoT Edge. Both support server-side encryption at rest with either Microsoft-managed keys or customer-managed keys using Azure Key Vault.</li>
+                <li>For data stored locally, consider utilizing BitLocker (on Windows-based IoT Edge devices) or the LUKS (Linux Unified Key Setup) encryption on Linux devices.</li>
+                <li>When using Azure Blob Storage on IoT Edge, ensure that encryption features are enabled through the Azure portal or Azure CLI.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Enable double encryption if needed for highly sensitive data:</p>
+            <ul>
+                <li>Optionally employ client-side encryption before sending data to Azure Blob Storage, ensuring another layer of protection by encrypting data with Azure's Storage Client Library before upload.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Regularly review and update security policies and ensure that all software components of your IoT Edge deployments are kept up to date with security patches:</p>
+            <ul>
+                <li>Monitor for updates or vulnerabilities reported by Microsoft and relevant industry standards regarding encryption technologies.</li>
+                <li>Implement automated update systems where possible to minimize the risk of outdated software exposing encryption keys or data.</li>
+            </ul>
+        </li>
+    </ol>
+</section>
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/iot-edge/security"">Azure IoT Edge Security</a></li>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption"">Azure Storage Service Encryption</a></li>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-atrest"">Azure Encryption of Data at Rest</a></li>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/key-vault/general/overview"">Azure Key Vault Overview</a></li>
+</ul>",recommended,not-tested
+9f9d2a30-7a12-4d7b-8b16-3ac0d2ee51d5,C-BROWSER-CNT-08,Browser,Elevation of Privilege,Attackers exploit browser vulnerabilities to execute malicious code,Apply security hardening measures,"<p>Implement and regularly update security hardening measures on all client machines to reduce the attack surface and mitigate vulnerabilities within the browser. These measures involve configuring the browser to disable unnecessary features, enforcing secure settings, and applying patches that strengthen the overall security posture against potential threats. Regular audits and updates ensure that the browser remains resilient against evolving attack vectors.</p><p><strong>Implementation Steps:</strong></p><p><strong>Review and Configure Default Settings:</strong><br>Examine the browser’s default configuration and disable non-essential features that could expose vulnerabilities.</p><p><strong>Enforce Secure Configuration:</strong><br>Apply recommended security settings, such as disabling insecure protocols and enabling strict privacy controls, through centralized management or configuration scripts.</p><p><strong>Regularly Update and Patch:</strong><br>Ensure that the browser and its security settings are updated regularly to include the latest hardening recommendations and patches.</p><p><strong>Conduct Security Audits:</strong><br>Schedule periodic security audits to verify the effectiveness of the hardening measures and adjust configurations based on emerging threats.</p><p><strong>References:</strong></p><ul><li><a href=""https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/"">OWASP Secure Configuration Guide</a></li></ul>",recommended,not-tested
+a174caca-00c6-43e3-b537-539477397a0c,C-COGNITIVE-SERVICES-IM-3,Azure Cognitive Service,Tampering,Unauthorized access due to misconfigured Azure AD authentication controls,Manage application identities securely and automatically,"Use Azure managed identities, which can authenticate to Azure services and resources that support Azure AD authentication. Managed identity credentials are fully managed, rotated, and protected by the platform, avoiding hard-coded credentials in source code or configuration files. 
+
+For services that don't support managed identities, use Azure AD to create a service principal with restricted permissions at the resource level. It is recommended to configure service principals with certificate credentials and fall back to client secrets for authentication. 
+",recommended,not-tested
+a2256098-c251-4d95-b68b-8a518c39b32b,C-STORAGE-IM-1,Azure,Information Disclosure,Insecure storage of credentials and hard-coded credentials in configuration files,Use centralized identity and authentication system,"Azure Active Directory (Azure AD) is Azure's identity and authentication management service. You should standardize on Azure AD to govern your organization's identity and authentication in:
+- Microsoft cloud resources, such as Azure Storage, Azure Virtual Machines (Linux and Windows), Azure Key Vault, PaaS, and SaaS applications.
+- Your organization's resources, such as applications on Azure, third-party applications running on your corporate network resources, and third-party SaaS applications. 
+- Your enterprise identities in Active Directory by synchronization to Azure AD to ensure a consistent and centrally managed identity strategy.
+
+For the Azure services that apply, avoid use of local authentication methods and instead use Azure Active Directory to centralize your service authentications.
+
+Note: As soon as it is technically feasible, you should migrate on-premises Active Directory-based applications to Azure AD. This could be an Azure AD Enterprise Directory, Business to Business configuration, or Business to consumer configuration.",recommended,not-tested
+a2996ffa-3a08-4539-bb7a-c9b1f171484a,C-COGNITIVE-SERVICES-PA-7,Azure Cognitive Service,Elevation of Privilege,Unauthorized access to Azure resources through misconfigured RBAC roles,Follow just enough administration (least privilege) principle,"Use Azure role-based access control (Azure RBAC) to manage Azure resource access through role assignments. Through RBAC, you can assign roles to users, groups, service principals, and managed identities. There are pre-defined built-in roles for certain resources, and these roles can be inventoried or queried through tools such as Azure CLI, Azure PowerShell, and the Azure portal. 
+
+The privileges you assign to resources through Azure RBAC should always be limited to what's required by the roles. Limited privileges will complement the just-in-time (JIT) approach of Azure AD Privileged Identity Management (PIM), and those privileges should be reviewed periodically. If required, you can also use PIM to define a time-bound assignment, which is a condition in a role assignment where a user can only activate the role within the specified start and end dates. 
+
+Note: Use Azure built-in roles to allocate permissions and only create custom roles when required.",recommended,not-tested
+a2f6c8f7-6063-4892-81ad-362a4f759c86,C-AZURE-IOT-EDGE-CNT-01,M2,Tampering,Unauthorized access to IoT Edge devices,Implement certificate-based authentication,"<p>Implementing certificate-based authentication for Azure IoT Edge involves several steps to ensure secure communication between devices, modules, and other system actors. Follow these steps to configure and establish certificate-based authentication derived from PKiX standards:</p>
+
+<ol>
+    <li><strong>Set Up Your Public Key Infrastructure (PKI):</strong>
+        <ul>
+            <li>Design or acquire a Public Key Infrastructure (PKI) solution that aligns with your organization's security policies and compliance requirements.</li>
+            <li>Ensure that your PKI supports X.509 certificates, as these are a standard for IoT Edge security.</li>
+        </ul>
+    </li>
+    <li><strong>Generate Certificates:</strong>
+        <ul>
+            <li>Create a root certificate authority (CA) if your organization doesn’t already have one. This CA will be used to sign all devices and module certificates.</li>
+            <li>Generate intermediate and leaf certificates under your root CA. These will represent devices, modules, and users interacting with the IoT Edge.</li>
+            <li>Each certificate should include a unique subject name to ensure precise identity verification of each entity.</li>
+        </ul>
+    </li>
+    <li><strong>Configure IoT Edge to Use Certificates:</strong>
+        <ul>
+            <li>Install the root certificate authority on the IoT Edge device. This will help IoT Edge to verify the signatures on identity certificates of clients.</li>
+            <li>Deploy device and module certificates onto the respective devices and modules.</li>
+            <li>Configure Azure IoT Edge runtime to use these certificates by updating its configuration file (`config.yaml`). Specifically, specify the paths to the certificate files and any related keys.</li>
+        </ul>
+    </li>
+    <li><strong>Secure Certificate Storage and Distribution:</strong>
+        <ul>
+            <li>Use Azure Key Vault or a similar secure store to manage and periodically rotate certificates and private keys.</li>
+            <li>Apply best practices for secure access to keys and certificates, ensuring that they are isolated from non-essential components.</li>
+        </ul>
+    </li>
+    <li><strong>Enable Certificate Revocation Checks:</strong>
+        <ul>
+            <li>Configure IoT Edge to perform revocation checks for certificates against Online Certificate Status Protocol (OCSP) or Certificate Revocation Lists (CRL) to ensure all entities are trusted and valid.</li>
+        </ul>
+    </li>
+    <li><strong>Regularly Audit and Monitor Certification Status:</strong>
+        <ul>
+            <li>Schedule regular audits of your certificate and key usage to ensure integrity and compliance with security policies.</li>
+            <li>Monitor logs and alerts related to certificate validation and access, making use of Azure Security Center for IoT for enhanced visibility.</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/iot-edge/security"">Azure IoT Edge Security</a></li>
+</ul>
+",recommended,not-tested
+a54efbb8-24b1-4352-8598-5f7104ff1738,C-VIDEO-CAMERA-CNT-01,USB Video Camera,Information Disclosure,Attackers intercept unencrypted video feed to capture sensitive footage,Enable end-to-end encryption for video streams,"<p>Enabling end-to-end encryption for video streams is a critical security measure designed to protect the confidentiality and integrity of video data transmitted from video cameras to storage or viewing devices. This ensures that video footage remains secure from interception, unauthorized access, and tampering during transmission.</p><p><strong>Implementing Encryption Protocols:</strong> Configure video cameras and their associated software to use strong encryption standards, such as AES-256, for all video data transmitted over the network. Utilizing protocols like Transport Layer Security (TLS) or Secure Real-time Transport Protocol (SRTP) ensures that video streams are encrypted from the source to the destination.</p><p><strong>Authentication and Key Management:</strong> Ensure that encryption keys are securely generated, distributed, and managed. Employing certificate-based authentication and secure key exchange mechanisms helps maintain the integrity of encrypted video streams and prevents unauthorized decryption.</p><p><strong>Device Compatibility and Performance:</strong> Select encryption methods compatible with existing hardware to avoid performance degradation. Optimizing encryption settings ensures that video quality and transmission speeds are maintained while providing robust security.</p><p><strong>Reference:</strong></p><ul><li><a href=""https://www.nist.gov/publications/securing-wireless-networks"">Securing Wireless Networks</a></li></ul>",recommended,not-tested
+a6316604-df72-4e2e-81ba-9d1bcbe3e6b1,C-STORAGE-DP-5,Azure,Information Disclosure,Unauthorized access to customer-managed keys and data in Azure Storage,Use customer-managed key option in data at rest encryption when required,"Azure also provides an encryption option using keys managed by yourself (customer-managed keys) for most services. 
+
+Azure Key Vault Standard, Premium, and Managed HSM are natively integrated with many Azure Services for customer-managed key use cases. You may use Azure Key Vault to generate your key or bring your own keys.
+
+However, using the customer-managed key option requires additional operational effort to manage the key lifecycle. This may include encryption key generation, rotation, revoke, and access control, etc. ",recommended,not-tested
+a8514299-6519-4219-acd2-a4f51ddc4bb5,C-STORAGE-NS-2,Azure,Information Disclosure,Unauthorized access to Azure Storage through unsecured public connections,Secure cloud native services with network controls,"Deploy private endpoints for all Azure resources that support the Private Link feature, to establish a private access point for the resources. Using Private Link will keep the private connection from routing through the public network. 
+
+Note: Certain Azure services may also allow private communication through the service endpoint feature, though it is recommended to use Azure Private Link for secure and private access to services hosted on Azure platform.
+
+For certain services, you can choose to deploy VNet integration for the service where you can restrict/isolate the VNET to establish a private access point for the service. 
+
+You also have the option to configure the service native network ACL rules or simply disable public network access to block access from the public network. 
+
+For Azure VMs, unless there is a strong use case, you should avoid assigning public IPs/subnet directly to the VM interface and instead use gateway or load balancer services as the front-end for access by the public network. 
+",recommended,not-tested
+a983090f-cd56-430a-93e1-5e51c297a8d1,C-VIDEO-CAMERA-CNT-03,USB Video Camera,Tampering,Attackers exploit vulnerabilities in camera firmware or software,Regularly apply firmware updates and security patches,"<p>Regularly applying firmware updates and security patches is a crucial security measure aimed at maintaining the integrity and protection of video camera systems. This control ensures that known vulnerabilities are addressed promptly, reducing the risk of exploitation and enhancing the overall security posture of the surveillance infrastructure.</p><p><strong>Firmware Updates:</strong><br>Consistently update the video camera’s firmware by downloading and installing the latest versions provided by the manufacturer. Firmware updates often include critical fixes for security vulnerabilities, performance enhancements, and new features. Keeping firmware current helps protect cameras from known exploits and ensures they operate with the most recent security improvements.</p><p><strong>Security Patches:</strong><br>Implement a systematic patch management process to apply security patches as they become available. This involves monitoring vendor announcements for new patches, testing them in a controlled environment, and deploying them to all video cameras in a timely manner. Applying security patches promptly mitigates the risk of attackers exploiting newly discovered vulnerabilities and maintains the reliability and security of the video surveillance system.</p><p><strong>Reference:</strong></p><ul><li><a href=""https://www.cisa.gov/news-events/news/understanding-patches-and-software-updates"">Understanding Patches and Software Updates</a></li></ul>",recommended,not-tested
+aee17926-09a1-457e-802d-5dcffd5ffe07,C-STORAGE-PA-8,Azure Storage,Elevation of Privilege,Unauthorized access to Azure Storage data via Azure AD permissions,Choose approval process for third-party support,"In support scenarios where Microsoft needs to access your data, use Customer Lockbox to review and either approve or reject each data access request made by Microsoft.",recommended,not-tested
+af4244be-422c-4d4d-8967-fd163090c8cf,C-AZURE-IOT-EDGE-CNT-01,M1,Tampering,Unauthorized access to IoT Edge devices,Implement certificate-based authentication,"<p>Implementing certificate-based authentication for Azure IoT Edge involves several steps to ensure secure communication between devices, modules, and other system actors. Follow these steps to configure and establish certificate-based authentication derived from PKiX standards:</p>
+
+<ol>
+    <li><strong>Set Up Your Public Key Infrastructure (PKI):</strong>
+        <ul>
+            <li>Design or acquire a Public Key Infrastructure (PKI) solution that aligns with your organization's security policies and compliance requirements.</li>
+            <li>Ensure that your PKI supports X.509 certificates, as these are a standard for IoT Edge security.</li>
+        </ul>
+    </li>
+    <li><strong>Generate Certificates:</strong>
+        <ul>
+            <li>Create a root certificate authority (CA) if your organization doesn’t already have one. This CA will be used to sign all devices and module certificates.</li>
+            <li>Generate intermediate and leaf certificates under your root CA. These will represent devices, modules, and users interacting with the IoT Edge.</li>
+            <li>Each certificate should include a unique subject name to ensure precise identity verification of each entity.</li>
+        </ul>
+    </li>
+    <li><strong>Configure IoT Edge to Use Certificates:</strong>
+        <ul>
+            <li>Install the root certificate authority on the IoT Edge device. This will help IoT Edge to verify the signatures on identity certificates of clients.</li>
+            <li>Deploy device and module certificates onto the respective devices and modules.</li>
+            <li>Configure Azure IoT Edge runtime to use these certificates by updating its configuration file (`config.yaml`). Specifically, specify the paths to the certificate files and any related keys.</li>
+        </ul>
+    </li>
+    <li><strong>Secure Certificate Storage and Distribution:</strong>
+        <ul>
+            <li>Use Azure Key Vault or a similar secure store to manage and periodically rotate certificates and private keys.</li>
+            <li>Apply best practices for secure access to keys and certificates, ensuring that they are isolated from non-essential components.</li>
+        </ul>
+    </li>
+    <li><strong>Enable Certificate Revocation Checks:</strong>
+        <ul>
+            <li>Configure IoT Edge to perform revocation checks for certificates against Online Certificate Status Protocol (OCSP) or Certificate Revocation Lists (CRL) to ensure all entities are trusted and valid.</li>
+        </ul>
+    </li>
+    <li><strong>Regularly Audit and Monitor Certification Status:</strong>
+        <ul>
+            <li>Schedule regular audits of your certificate and key usage to ensure integrity and compliance with security policies.</li>
+            <li>Monitor logs and alerts related to certificate validation and access, making use of Azure Security Center for IoT for enhanced visibility.</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/iot-edge/security"">Azure IoT Edge Security</a></li>
+</ul>
+",recommended,not-tested
+b0e9c639-a062-4918-8ce7-a3de9e87deca,C-COGNITIVE-SERVICES-DP-6,Azure Cognitive Service,Information Disclosure,Unauthorized access to customer-managed keys and data loss prevention,Use a secure key management process,"Use Azure Key Vault to create and control your encryption keys life cycle, including key generation, distribution, and storage. Rotate and revoke your keys in Azure Key Vault and your service based on the defined schedule and when there is a key retirement or compromise. Require a certain cryptographic type and minimum key size when generating keys.
+
+When there is a need to use customer-managed key (CMK) in the workload services or applications, ensure you follow the best practices:
+- Use a key hierarchy to generate a separate data encryption key (DEK) with your key encryption key (KEK) in your key vault. 
+- Ensure keys are registered with Azure Key Vault and implemented via key IDs in each service or application.
+
+To maximize the key material lifetime and portability, bring your own key (BYOK) to the services (i.e., importing HSM-protected keys from your on-premises HSMs into Azure Key Vault). Follow the recommended guideline to perform the key generation and key transfer.
+
+Note: Refer to the below for the FIPS 140-2 level for Azure Key Vault types and FIPS compliance/validation level.
+- Software-protected keys in vaults (Premium & Standard SKUs):  FIPS 140-2 Level 1
+- HSM-protected keys in vaults (Premium SKU): FIPS 140-2 Level 2
+- HSM-protected keys in Managed HSM: FIPS 140-2 Level 3
+Azure Key Vault Premium uses a shared HSM infrastructure in the backend. Azure Key Vault Managed HSM uses dedicated, confidential service endpoints with a dedicated HSM for when you need a higher level of key security.",recommended,not-tested
+b55ab8e8-2545-448e-bf78-27a86b63c5e8,C-STORAGE-AM-2,Azure Storage,Information Disclosure,Unauthorized network access to Azure Storage Account data,Use only approved services,Use Azure Policy to audit and restrict which services users can provision in your environment. Use Azure Resource Graph to query for and discover resources within their subscriptions. You can also use Azure Monitor to create rules to trigger alerts when a non-approved service is detected.,recommended,not-tested
+b8318258-66ec-4784-9ace-61c913576c92,C-BROWSER-CNT-07,Browser,Elevation of Privilege,Attackers exploit browser vulnerabilities to execute malicious code,Configure automatic browser updates,"<p>Implement and regularly update automatic browser updates on all client machines to ensure that the browser always runs the latest secure version. This control minimizes exposure to vulnerabilities by automatically applying patches and security improvements, reducing the window of opportunity for attackers to exploit known weaknesses.</p><p><strong>Implementation Steps:</strong></p><p><strong>Enable Automatic Updates:</strong><br>Configure the browser’s settings to allow automatic updates. This can typically be done via built-in options or centralized management tools such as Group Policy or MDM solutions.</p><p><strong>Verify Update Channels:</strong><br>Ensure that the browser is configured to use the appropriate update channel (e.g., stable, beta) that balances security with compatibility for your organization’s needs.</p><p><strong>Monitor Update Compliance:</strong><br>Regularly audit update logs and use monitoring tools to confirm that all client machines are receiving and installing updates promptly.</p><p><strong>Test Updates in a Controlled Environment:</strong><br>Before deploying updates organization-wide, test them in a controlled environment to ensure compatibility and avoid disruptions.</p><p><strong>References:</strong></p><ul><li><a href=""https://support.mozilla.org/en-US/kb/enforcing-policies-firefox-enterprise"">Mozilla Firefox Enterprise Policies</a></li></ul>",recommended,not-tested
+bfececb5-62d3-436d-b550-91e4c5870247,C-BROWSER-CNT-10,Browser,Tampering,Attackers distribute malware through compromised browser extensions,Manage browser extensions securely,"<p>Implement and regularly update secure management of browser extensions on all client machines to prevent unauthorized or malicious extensions from compromising browser security. This control involves enforcing approved extension policies, monitoring for unauthorized installations, and ensuring that all extensions are updated and configured according to security best practices.</p><p><strong>Implementation Steps:</strong></p><p><strong>Enforce Extension Policies:</strong><br>Utilize centralized management tools (e.g., Group Policy, MDM, or browser-specific management consoles) to control which extensions can be installed and used.</p><p><strong>Monitor and Audit Extensions:</strong><br>Regularly review installed extensions to ensure compliance with organizational policies. Remove or block any unapproved or suspicious extensions.</p><p><strong>Regular Updates and Reviews:</strong><br>Ensure that all approved extensions are kept up-to-date and configure automatic updates where possible. Periodically review security guidelines and adjust policies as needed.</p><p><strong>User Education:</strong><br>Educate users about the risks of installing unapproved extensions and provide guidelines for verifying extension authenticity.</p><p><strong>References:</strong></p><ul><li><a href=""https://support.google.com/chrome/a/answer/9296680?hl=en"">Google Chrome Enterprise - Manage Chrome Extensions</a></li></ul>",recommended,not-tested
+c0a2ccd2-9593-4356-bcb3-d79940e86b77,C-STORAGE-DP-5,Azure Storage,Information Disclosure,Unauthorized access to customer-managed keys and data in Azure Storage,Use customer-managed key option in data at rest encryption when required,"Azure also provides an encryption option using keys managed by yourself (customer-managed keys) for most services. 
+
+Azure Key Vault Standard, Premium, and Managed HSM are natively integrated with many Azure Services for customer-managed key use cases. You may use Azure Key Vault to generate your key or bring your own keys.
+
+However, using the customer-managed key option requires additional operational effort to manage the key lifecycle. This may include encryption key generation, rotation, revoke, and access control, etc. ",recommended,not-tested
+c3fe3bd7-0488-45c8-98bf-7cbc59845610,C-AZURE-IOT-EDGE-CNT-03,M2,Tampering,Lack of runtime attestation,Integrate runtime attestation,"<p>Ensuring that Azure IoT Edge devices are running only authorized software is critical for maintaining the security and integrity of IoT environments. Implementing runtime attestation mechanisms can effectively verify the software integrity and authenticity on these devices. Follow the steps below to set up and utilize runtime attestation:</p>
+
+<ol>
+    <li>
+        <p><strong>Enable Device Identity and Access Control:</strong></p>
+        <ul>
+            <li>Assign each IoT Edge device a unique identity through the Azure IoT Hub. This helps maintain a secure channel for communication and attestation verification.</li>
+            <li>Utilize Azure Active Directory to manage role-based access controls, ensuring that only authorized users and services can interact with your IoT Edge devices.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Use TPM for Secure Attestation:</strong></p>
+        <ul>
+            <li>Make sure your IoT Edge devices support a Trusted Platform Module (TPM). TPMs provide a hardware-based mechanism for securely storing cryptographic keys and credentials.</li>
+            <li>Configure the IoT Edge runtime on devices to use the TPM for performing and verifying attestation processes.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Configure Azure Policy for Compliance:</strong></p>
+        <ul>
+            <li>Set up Azure Policy definitions that specify the allowed images and software versions for your IoT Edge deployments. This assists in maintaining fleet-wide compliance.</li>
+            <li>Regularly audit and update these policies to reflect new requirements and software updates.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Set Up Automated Security Monitoring:</strong></p>
+        <ul>
+            <li>Use Azure Security Center for IoT to monitor the security posture of your IoT Edge devices in real-time, identifying any unauthorized modifications to runtime configurations.</li>
+            <li>Implement alerts that notify you immediately when an attestation fails, triggering a review or automated remediation process.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Perform Regular Software Updates and Patching:</strong></p>
+        <ul>
+            <li>Regularly update and patch your IoT Edge software and modules to mitigate known vulnerabilities. Use the automatic updates feature when applicable.</li>
+            <li>Craft a continuous deployment pipeline using Azure DevOps to push secure software updates while ensuring they go through proper attestation checks before going live.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Review Attestation Logs:</strong></p>
+        <ul>
+            <li>Periodically review attestation logs and reports within Azure to ensure that only authorized software is running on your devices.</li>
+            <li>Utilize these logs to identify patterns or anomalies that might indicate a security breach.</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/iot-edge/security"">Azure IoT Edge Security</a></li>
+</ul>
+",recommended,not-tested
+c634ea27-c8eb-44a2-a7f8-468cfd759322,C-COGNITIVE-SERVICES-DP-2,Azure Cognitive Service,Information Disclosure,Unauthorized access to customer-managed keys and data loss prevention,Monitor anomalies and threats targeting sensitive data,"Use Azure Information protection (AIP) to monitor the data that has been classified and labeled.
+
+Use Microsoft Defender for Storage, Microsoft Defender for SQL, Microsoft Defender for open-source relational databases, and Microsoft Defender for Cosmos DB to alert on anomalous transfer of information that might indicate unauthorized transfers of sensitive data information.  
+
+Note: If required for compliance of data loss prevention (DLP), you can use a host-based DLP solution from Azure Marketplace or a Microsoft 365 DLP solution to enforce detective and/or preventative controls to prevent data exfiltration.",recommended,not-tested
+c7907d49-ebea-4595-8df9-d8d2011f9ad0,C-BROWSER-CNT-01,Browser,Information Disclosure,Attackers inject malicious scripts via cross-site scripting (XSS),Implement client-side script blockers,"<p>Implement and regularly update client-side script blockers on all client machines to mitigate cross-site scripting (XSS) risks. This control restricts the execution of untrusted scripts within the browser, ensuring that only verified and safe code is run. Developers and DevOps engineers should configure built-in browser options or deploy reputable script-blocking extensions to prevent malicious code execution. Regular audits and updates are essential to maintain the effectiveness of these blockers against emerging threats.</p><p><strong>Implementation Steps:</strong></p><p><strong>Activate Built-in Script Blocking:</strong><br>Configure the browser settings to enable any built-in script blocking features that prevent untrusted script execution.</p><p><strong>Deploy Trusted Extensions:</strong><br>For browsers lacking robust built-in capabilities, deploy reputable third-party script-blocking extensions (e.g., NoScript) using centralized management tools.</p><p><strong>Enforce Configuration Policies:</strong><br>Use enterprise management solutions such as Group Policy or MDM to enforce consistent script-blocking settings across all client machines.</p><p><strong>Monitor and Audit:</strong><br>Regularly review and test the effectiveness of script blockers through security audits and simulated attack scenarios, updating configurations as needed.</p><p><strong>References:</strong></p><ul><li><a href=""https://cheatsheetseries.owasp.org/cheatsheets/XSS_Filter_Evasion_Cheat_Sheet.html"">OWASP XSS Prevention Cheat Sheet</a></li></ul>",recommended,not-tested
+d67821e1-66ca-45e9-88cd-6cfbd08382b2,C-STORAGE-LT-4,Azure Storage,Information Disclosure,Unauthorized access attempts to Azure Storage accounts via endpoint devices,Enable network logging for security investigation,"Enable and collect network security group (NSG) resource logs, NSG flow logs, Azure Firewall logs, and Web Application Firewall (WAF) logs, and logs from virtual machines via the network traffic data collection agent for security analysis to support incident investigations, and security alert generation. You can send the flow logs to an Azure Monitor Log Analytics workspace and then use Traffic Analytics to provide insights.
+
+Collect DNS query logs to assist in correlating other network data.",recommended,not-tested
+d67d1dfa-1d3f-45b0-87b6-ae6f3f003f1b,C-AZURE-IOT-EDGE-CNT-01,EdgeRuntime,Tampering,Unauthorized access to IoT Edge devices,Implement certificate-based authentication,"<p>Implementing certificate-based authentication for Azure IoT Edge involves several steps to ensure secure communication between devices, modules, and other system actors. Follow these steps to configure and establish certificate-based authentication derived from PKiX standards:</p>
+
+<ol>
+    <li><strong>Set Up Your Public Key Infrastructure (PKI):</strong>
+        <ul>
+            <li>Design or acquire a Public Key Infrastructure (PKI) solution that aligns with your organization's security policies and compliance requirements.</li>
+            <li>Ensure that your PKI supports X.509 certificates, as these are a standard for IoT Edge security.</li>
+        </ul>
+    </li>
+    <li><strong>Generate Certificates:</strong>
+        <ul>
+            <li>Create a root certificate authority (CA) if your organization doesn’t already have one. This CA will be used to sign all devices and module certificates.</li>
+            <li>Generate intermediate and leaf certificates under your root CA. These will represent devices, modules, and users interacting with the IoT Edge.</li>
+            <li>Each certificate should include a unique subject name to ensure precise identity verification of each entity.</li>
+        </ul>
+    </li>
+    <li><strong>Configure IoT Edge to Use Certificates:</strong>
+        <ul>
+            <li>Install the root certificate authority on the IoT Edge device. This will help IoT Edge to verify the signatures on identity certificates of clients.</li>
+            <li>Deploy device and module certificates onto the respective devices and modules.</li>
+            <li>Configure Azure IoT Edge runtime to use these certificates by updating its configuration file (`config.yaml`). Specifically, specify the paths to the certificate files and any related keys.</li>
+        </ul>
+    </li>
+    <li><strong>Secure Certificate Storage and Distribution:</strong>
+        <ul>
+            <li>Use Azure Key Vault or a similar secure store to manage and periodically rotate certificates and private keys.</li>
+            <li>Apply best practices for secure access to keys and certificates, ensuring that they are isolated from non-essential components.</li>
+        </ul>
+    </li>
+    <li><strong>Enable Certificate Revocation Checks:</strong>
+        <ul>
+            <li>Configure IoT Edge to perform revocation checks for certificates against Online Certificate Status Protocol (OCSP) or Certificate Revocation Lists (CRL) to ensure all entities are trusted and valid.</li>
+        </ul>
+    </li>
+    <li><strong>Regularly Audit and Monitor Certification Status:</strong>
+        <ul>
+            <li>Schedule regular audits of your certificate and key usage to ensure integrity and compliance with security policies.</li>
+            <li>Monitor logs and alerts related to certificate validation and access, making use of Azure Security Center for IoT for enhanced visibility.</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/iot-edge/security"">Azure IoT Edge Security</a></li>
+</ul>
+",recommended,not-tested
+d8c59043-37cc-46cd-977c-fd693bf0281d,C-COGNITIVE-SERVICES-AM-2,Azure Cognitive Service,Tampering,Unauthorized access and data breaches due to misconfigured cloud resources,Use only approved services,Use Azure Policy to audit and restrict which services users can provision in your environment. Use Azure Resource Graph to query for and discover resources within their subscriptions. You can also use Azure Monitor to create rules to trigger alerts when a non-approved service is detected.,recommended,not-tested
+e5a0378a-139a-4c60-b427-826c70f5f50d,C-IOT-HUB-DP-6,Azure IoT Hub,Information Disclosure,Unauthorized access to Azure Key Vault encryption keys,Use a secure key management process,"Use Azure Key Vault to create and control your encryption keys life cycle, including key generation, distribution, and storage. Rotate and revoke your keys in Azure Key Vault and your service based on the defined schedule and when there is a key retirement or compromise. Require a certain cryptographic type and minimum key size when generating keys.
+
+When there is a need to use customer-managed key (CMK) in the workload services or applications, ensure you follow the best practices:
+- Use a key hierarchy to generate a separate data encryption key (DEK) with your key encryption key (KEK) in your key vault. 
+- Ensure keys are registered with Azure Key Vault and implemented via key IDs in each service or application.
+
+To maximize the key material lifetime and portability, bring your own key (BYOK) to the services (i.e., importing HSM-protected keys from your on-premises HSMs into Azure Key Vault). Follow the recommended guideline to perform the key generation and key transfer.
+
+Note: Refer to the below for the FIPS 140-2 level for Azure Key Vault types and FIPS compliance/validation level.
+- Software-protected keys in vaults (Premium & Standard SKUs):  FIPS 140-2 Level 1
+- HSM-protected keys in vaults (Premium SKU): FIPS 140-2 Level 2
+- HSM-protected keys in Managed HSM: FIPS 140-2 Level 3
+Azure Key Vault Premium uses a shared HSM infrastructure in the backend. Azure Key Vault Managed HSM uses dedicated, confidential service endpoints with a dedicated HSM for when you need a higher level of key security.",recommended,not-tested
+e5cc3683-0cf7-491e-ac5c-bc4fea344348,C-IOT-HUB-PA-7,Azure IoT Hub,Elevation of Privilege,Unauthorized IoT Hub API access due to misconfigured RBAC role assignment,Follow just enough administration (least privilege) principle,"Use Azure role-based access control (Azure RBAC) to manage Azure resource access through role assignments. Through RBAC, you can assign roles to users, groups, service principals, and managed identities. There are pre-defined built-in roles for certain resources, and these roles can be inventoried or queried through tools such as Azure CLI, Azure PowerShell, and the Azure portal. 
+
+The privileges you assign to resources through Azure RBAC should always be limited to what's required by the roles. Limited privileges will complement the just-in-time (JIT) approach of Azure AD Privileged Identity Management (PIM), and those privileges should be reviewed periodically. If required, you can also use PIM to define a time-bound assignment, which is a condition in a role assignment where a user can only activate the role within the specified start and end dates. 
+
+Note: Use Azure built-in roles to allocate permissions and only create custom roles when required.",recommended,not-tested
+e846540e-be63-4c3c-9900-2f3246bdc20d,C-STORAGE-LT-4,Azure,Information Disclosure,Unauthorized access attempts to Azure Storage accounts via endpoint devices,Enable network logging for security investigation,"Enable and collect network security group (NSG) resource logs, NSG flow logs, Azure Firewall logs, and Web Application Firewall (WAF) logs, and logs from virtual machines via the network traffic data collection agent for security analysis to support incident investigations, and security alert generation. You can send the flow logs to an Azure Monitor Log Analytics workspace and then use Traffic Analytics to provide insights.
+
+Collect DNS query logs to assist in correlating other network data.",recommended,not-tested
+e95efd52-f30a-465c-8cfb-e3cd86ebb0e7,C-STORAGE-LT-1,Azure,Information Disclosure,Unauthorized access attempts to Azure Storage accounts via endpoint devices,Enable threat detection capabilities,"Use the threat detection capability of Microsoft Defender for Cloud for the respective Azure services. 
+
+For threat detection not included in Microsoft Defender services, refer to Microsoft Cloud Security Benchmark service baselines for the respective services to enable the threat detection or security alert capabilities within the service. Ingest alerts and log data from Microsoft Defender for Cloud, Microsoft 365 Defender, and log data from other resources into your Azure Monitor or Microsoft Sentinel instances to build analytics rules, which hunt detect threats and create alerts that match specific criteria across your environment. 
+
+For Operational Technology (OT) environments that include computers that control or monitor Industrial Control System (ICS) or Supervisory Control and Data Acquisition (SCADA) resources, use Microsoft Defender for IoT to inventory assets and detect threats and vulnerabilities. 
+
+For services that do not have a native threat detection capability, consider collecting the data plane logs and analyze the threats through Microsoft Sentinel.",recommended,not-tested
+ea2a2dcb-cb43-450a-b22f-119066ac0523,C-STORAGE-IM-7,Azure,Information Disclosure,Insecure storage of credentials and hard-coded credentials in configuration files,Restrict resource access based on conditions,"Use Azure AD conditional access for more granular access controls based on user-defined conditions, such as requiring user logins from certain IP ranges (or devices) to use MFA. Azure AD Conditional Access allows you to enforce access controls on your organization’s apps based on certain conditions. 
+
+Define the applicable conditions and criteria for Azure AD conditional access in the workload. Consider the following common use cases: 
+- Requiring multi-factor authentication for users with administrative roles
+- Requiring multi-factor authentication for Azure management tasks
+- Blocking sign-ins for users attempting to use legacy authentication protocols
+- Requiring trusted locations for Azure AD Multi-Factor Authentication registration
+- Blocking or granting access from specific locations
+- Blocking risky sign-in behaviors
+- Requiring organization-managed devices for specific applications
+
+Note: Granular authentication session management controls can also be implemented through Azure AD conditional access policies such as sign-in frequency and persistent browser session.",recommended,not-tested
+ef337fab-5097-478e-9d55-de483be52c58,C-BROWSER-CNT-02,Browser,Information Disclosure,Attackers inject malicious scripts via cross-site scripting (XSS),Activate built-in browser security filters,"<p>Implement and regularly update built-in browser security filters on all client machines to protect against malicious scripts, exploit code, and other types of web-based threats. These filters help detect and block untrusted content and potential attacks that could compromise the browser or steal sensitive data. Regular reviews and updates ensure that the browser’s security configurations remain effective against emerging threats.</p><p><strong>Implementation Steps:</strong></p><p><strong>Review Browser Security Settings:</strong><br>Verify that the browser’s security filters are enabled by default in the configuration settings.</p><p><strong>Configure Automatic Updates:</strong><br>Ensure that browsers are set to automatically update so that the latest security filters and patches are applied.</p><p><strong>Enforce Organizational Policies:</strong><br>Deploy centralized management policies (e.g., via Group Policy or MDM solutions) to enforce and monitor these settings across all client machines.</p><p><strong>Test Security Filter Effectiveness:</strong><br>Regularly perform security audits and simulated attacks to verify that the security filters are properly detecting and blocking malicious content.</p><p><strong>References:</strong></p><ul><li><a href=""https://owasp.org/www-project-secure-headers/"">OWASP Secure Headers Project</a></li></ul>",recommended,not-tested
+efc86284-3bd6-4ca2-91af-67ce11a09759,C-STORAGE-LT-1,Azure Storage,Information Disclosure,Unauthorized access attempts to Azure Storage accounts via endpoint devices,Enable threat detection capabilities,"Use the threat detection capability of Microsoft Defender for Cloud for the respective Azure services. 
+
+For threat detection not included in Microsoft Defender services, refer to Microsoft Cloud Security Benchmark service baselines for the respective services to enable the threat detection or security alert capabilities within the service. Ingest alerts and log data from Microsoft Defender for Cloud, Microsoft 365 Defender, and log data from other resources into your Azure Monitor or Microsoft Sentinel instances to build analytics rules, which hunt detect threats and create alerts that match specific criteria across your environment. 
+
+For Operational Technology (OT) environments that include computers that control or monitor Industrial Control System (ICS) or Supervisory Control and Data Acquisition (SCADA) resources, use Microsoft Defender for IoT to inventory assets and detect threats and vulnerabilities. 
+
+For services that do not have a native threat detection capability, consider collecting the data plane logs and analyze the threats through Microsoft Sentinel.",recommended,not-tested
+f54e3224-ac0b-4124-b650-82c109325846,C-VIDEO-CAMERA-CNT-02,USB Video Camera,Elevation of Privilege,Attackers gain unauthorized access to camera controls or administrative interface,Implement strong authentication and change default credentials,"<p>Implementing strong authentication and changing default credentials are essential security measures aimed at safeguarding video cameras from unauthorized access and potential exploitation. These practices ensure that only authorized users can access and control video surveillance systems, thereby protecting sensitive video data and maintaining the integrity of security operations.</p><p><strong>Changing Default Credentials:</strong><br>Immediately replace manufacturer-provided default usernames and passwords with unique, strong credentials. Default credentials are widely known and often exploited by attackers to gain unauthorized access. Using complex passwords that include a combination of letters, numbers, and special characters significantly reduces the risk of brute-force and credential-stuffing attacks.</p><p><strong>Implementing Strong Authentication Mechanisms:</strong><br>Utilize robust authentication methods such as multi-factor authentication (MFA) to add an additional layer of security beyond just passwords. MFA requires users to provide two or more verification factors, making it more difficult for attackers to gain access even if they obtain user credentials. Additionally, integrating video cameras with centralized authentication systems like LDAP or Active Directory can streamline user management and enhance security.</p><p><strong>Regular Credential Updates and Management:</strong><br>Establish policies for regularly updating passwords and managing credentials securely. This includes enforcing password complexity requirements, scheduling periodic password changes, and ensuring that credentials are stored securely using encryption. Implementing account lockout mechanisms after a certain number of failed login attempts can further protect against unauthorized access attempts.</p><p><strong>Reference:</strong></p><ul><li><a href=""https://www.ncsc.gov.uk/collection/passwords/password-manager-buyers-guide"">Guide to Enterprise Password Management</a></li></ul>",recommended,not-tested
+f92e9316-939a-4f9e-8a33-a8cae7eb454d,C-AZURE-IOT-EDGE-CNT-01,IoT Edge Device,Tampering,Unauthorized access to IoT Edge devices,Implement certificate-based authentication,"<p>Implementing certificate-based authentication for Azure IoT Edge involves several steps to ensure secure communication between devices, modules, and other system actors. Follow these steps to configure and establish certificate-based authentication derived from PKiX standards:</p>
+
+<ol>
+    <li><strong>Set Up Your Public Key Infrastructure (PKI):</strong>
+        <ul>
+            <li>Design or acquire a Public Key Infrastructure (PKI) solution that aligns with your organization's security policies and compliance requirements.</li>
+            <li>Ensure that your PKI supports X.509 certificates, as these are a standard for IoT Edge security.</li>
+        </ul>
+    </li>
+    <li><strong>Generate Certificates:</strong>
+        <ul>
+            <li>Create a root certificate authority (CA) if your organization doesn’t already have one. This CA will be used to sign all devices and module certificates.</li>
+            <li>Generate intermediate and leaf certificates under your root CA. These will represent devices, modules, and users interacting with the IoT Edge.</li>
+            <li>Each certificate should include a unique subject name to ensure precise identity verification of each entity.</li>
+        </ul>
+    </li>
+    <li><strong>Configure IoT Edge to Use Certificates:</strong>
+        <ul>
+            <li>Install the root certificate authority on the IoT Edge device. This will help IoT Edge to verify the signatures on identity certificates of clients.</li>
+            <li>Deploy device and module certificates onto the respective devices and modules.</li>
+            <li>Configure Azure IoT Edge runtime to use these certificates by updating its configuration file (`config.yaml`). Specifically, specify the paths to the certificate files and any related keys.</li>
+        </ul>
+    </li>
+    <li><strong>Secure Certificate Storage and Distribution:</strong>
+        <ul>
+            <li>Use Azure Key Vault or a similar secure store to manage and periodically rotate certificates and private keys.</li>
+            <li>Apply best practices for secure access to keys and certificates, ensuring that they are isolated from non-essential components.</li>
+        </ul>
+    </li>
+    <li><strong>Enable Certificate Revocation Checks:</strong>
+        <ul>
+            <li>Configure IoT Edge to perform revocation checks for certificates against Online Certificate Status Protocol (OCSP) or Certificate Revocation Lists (CRL) to ensure all entities are trusted and valid.</li>
+        </ul>
+    </li>
+    <li><strong>Regularly Audit and Monitor Certification Status:</strong>
+        <ul>
+            <li>Schedule regular audits of your certificate and key usage to ensure integrity and compliance with security policies.</li>
+            <li>Monitor logs and alerts related to certificate validation and access, making use of Azure Security Center for IoT for enhanced visibility.</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/iot-edge/security"">Azure IoT Edge Security</a></li>
+</ul>
+",recommended,not-tested
+fb6491d9-9a88-4b48-993f-ee75c7af37d2,C-AZURE-APPLICATION-INSIGHTS-CNT-03,Azure Application Insights,Elevation of Privilege,Attackers gain access to the system by exploiting weak security configurations,Ensure that SKU Basic/Consumption is not used on artifacts that need to be monitored,"<p>An ideal countermeasure for securing Azure Application Insights involves implementing robust access controls, monitoring, and configuration management to protect telemetry data and ensure operational resilience. Here is a detailed step-by-step guide:</p>
+
+<ol>
+    <li><strong>Restrict Access to Application Insights:</strong>
+        <ul>
+            <li>Navigate to the Azure Portal and select your Application Insights resource.</li>
+            <li>Go to the ""Access control (IAM)"" section.</li>
+            <li>Assign roles that are least privilege, such as the ""Reader"" role, to users who do not need to modify settings.</li>
+            <li>Enable Multi-Factor Authentication (MFA) for all users who have access to Azure resources, including Application Insights.</li>
+        </ul>
+    </li>
+    <li><strong>Configure Data Collection and Retention:</strong>
+        <ul>
+            <li>In the Azure Portal, access your Application Insights instance.</li>
+            <li>Select ""Configure"" under the ""Monitoring"" section and fine-tune the data sampling rates to minimize excessive data collection.</li>
+            <li>Set retention policies to automatically delete older data, aligning with your compliance requirements.</li>
+        </ul>
+    </li>
+    <li><strong>Enable Diagnostic Settings:</strong>
+        <ul>
+            <li>Open your Application Insights resource in the Azure Portal.</li>
+            <li>Go to ""Diagnostic settings"" and configure logging to capture detailed telemetry data.</li>
+            <li>Ensure logs are being sent to a secure storage location, such as Azure Log Analytics or Azure Blob Storage, with appropriate access controls.</li>
+        </ul>
+    </li>
+    <li><strong>Implement Alerts and Monitoring:</strong>
+        <ul>
+            <li>Set up alerts in the Azure Monitor for critical metrics and anomalies in Application Insights.</li>
+            <li>Create customized dashboards to visualize key performance indicators and ensure timely identification of issues.</li>
+        </ul>
+    </li>
+    <li><strong>Regularly Review and Audit Usage:</strong>
+        <ul>
+            <li>Periodically review audit logs and access logs to detect any unauthorized access or changes.</li>
+            <li>Conduct regular security assessments to ensure all configurations align with best practices.</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal"">Assign Azure roles using the Azure portal</a></li>
+    
+    <li><a href=""https://docs.microsoft.com/en-us/azure/azure-monitor/app/pricing"">Azure Monitor pricing and retention policies</a></li>
+    <li><a href=""https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/diagnostic-settings"">Manage diagnostic settings in Azure</a></li>
+    <li><a href=""https://docs.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview"">Overview of alerts in Microsoft Azure</a></li>
+</ul>",recommended,not-tested
+fc7d0b06-8dc0-4ce0-a97f-7bae5c2b8041,C-AZURE-IOT-EDGE-CNT-02,M1,Information Disclosure,Insufficient encryption of data at rest,Enable encryption at rest,"<section>
+    <p>To ensure that all data stored on Azure IoT Edge devices is encrypted at rest and protected from unauthorized access, follow the step-by-step guidance below using Azure's built-in encryption capabilities:</p>
+    
+    <ol>
+        <li>
+            <p>Before deploying Azure IoT Edge on your devices, ensure they support encryption at rest. This typically involves a hardware security module (HSM) or a Trusted Platform Module (TPM) for secure key storage:</p>
+            <ul>
+                <li>Check the device’s compatibility with encryption standards and assess whether a software-based encryption approach is necessary if hardware encryption is unavailable.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Install Azure IoT Edge on your devices:</p>
+            <ul>
+                <li>Follow the instructions provided by Microsoft to set up the IoT Edge runtime on your equipment. Detailed setup instructions can be found <a href=""https://learn.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge"">here</a>.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Implement data encryption for modules running on IoT Edge. Use the following guidelines:</p>
+            <ul>
+                <li>Leverage Azure Storage account in the cloud or use Azure Blob Storage on IoT Edge. Both support server-side encryption at rest with either Microsoft-managed keys or customer-managed keys using Azure Key Vault.</li>
+                <li>For data stored locally, consider utilizing BitLocker (on Windows-based IoT Edge devices) or the LUKS (Linux Unified Key Setup) encryption on Linux devices.</li>
+                <li>When using Azure Blob Storage on IoT Edge, ensure that encryption features are enabled through the Azure portal or Azure CLI.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Enable double encryption if needed for highly sensitive data:</p>
+            <ul>
+                <li>Optionally employ client-side encryption before sending data to Azure Blob Storage, ensuring another layer of protection by encrypting data with Azure's Storage Client Library before upload.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Regularly review and update security policies and ensure that all software components of your IoT Edge deployments are kept up to date with security patches:</p>
+            <ul>
+                <li>Monitor for updates or vulnerabilities reported by Microsoft and relevant industry standards regarding encryption technologies.</li>
+                <li>Implement automated update systems where possible to minimize the risk of outdated software exposing encryption keys or data.</li>
+            </ul>
+        </li>
+    </ol>
+</section>
+<p><strong>References</strong></p>
+<ul>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/iot-edge/security"">Azure IoT Edge Security</a></li>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption"">Azure Storage Service Encryption</a></li>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-atrest"">Azure Encryption of Data at Rest</a></li>
+    <li><a href=""https://learn.microsoft.com/en-us/azure/key-vault/general/overview"">Azure Key Vault Overview</a></li>
+</ul>",recommended,not-tested

@@ -1,6 +1,6 @@
 [
     {
-        "ID": 1,
+        "ID": 0,
         "Category": "Information Disclosure",
         "Asset": "Background Worker Config",
         "Threat": "The Background Worker Config stores the credentials used by the Background Worker to access the Database. An attacker could compromise the Background Worker and get access to the Database credentials.",
@@ -8,7 +8,7 @@
         "Risk": "High Severity"
     },
     {
-        "ID": 2,
+        "ID": 1,
         "Category": "Information Disclosure",
         "Asset": "Database",
         "Threat": "An attacker could make a query call on the Database.",
@@ -16,7 +16,7 @@
         "Risk": "High Severity"
     },
     {
-        "ID": 3,
+        "ID": 2,
         "Category": "Information Disclosure",
         "Asset": "Database",
         "Threat": "An attacker could obtain the Database credentials and use them to make unauthorised queries.",
@@ -24,7 +24,7 @@
         "Risk": "Medium Severity"
     },
     {
-        "ID": 4,
+        "ID": 3,
         "Category": "Information Disclosure",
         "Asset": "Web Application Config",
         "Threat": "The Web Application Config stores credentials used  by the Web Application to access the Message Queue. These could be stolen by an attacker and used to read confidential data or place poisoned messages on the queue.",
@@ -32,7 +32,7 @@
         "Risk": "High Severity"
     },
     {
-        "ID": 5,
+        "ID": 4,
         "Category": "Information Disclosure",
         "Asset": "Message Queue",
         "Threat": "The data flow between the Web Application and the Background Worker is not point-to-point and therefore end-to-end secrecy cannot be provided at the transport layer. Messages could be read by an attacker at rest in the Message Queue.",
@@ -40,7 +40,7 @@
         "Risk": "Low Severity"
     },
     {
-        "ID": 6,
+        "ID": 5,
         "Category": "Tampering",
         "Asset": "Message Queue",
         "Threat": "Messages on the queue could be tampered with, causing incorrect processing by the Background Worker.",
@@ -48,7 +48,7 @@
         "Risk": "Medium Severity"
     },
     {
-        "ID": 7,
+        "ID": 6,
         "Category": "Spoofing",
         "Asset": "Message Queue",
         "Threat": "An attacker could put a fake message on queue, causing the Background Worker to do incorrect processing.",
@@ -56,23 +56,23 @@
         "Risk": "High Severity"
     },
     {
-        "ID": 8,
+        "ID": 7,
         "Category": "Denial of Service",
-        "Asset": "Message Queue",
+        "Asset": "Background Worker",
         "Threat": "An attacker could generate a malicious message that the Background Worker cannot process.",
         "Mitigation": "Implement a poison message queue where messages are placed after a fixed number of retries.",
         "Risk": "Medium Severity"
     },
     {
-        "ID": 9,
+        "ID": 8,
         "Category": "Denial of Service",
-        "Asset": "Message Queue",
+        "Asset": "Background Worker",
         "Threat": "An attacker could generate a malicious message that the Background Worker cannot process.",
-        "Mitigation": "Validate the content of all messages before processing. Reject any message that has invalid content and log the rejection. Do not log the malicious content \u2014 instead log a description of the error.",
+        "Mitigation": "Validate the content of all messages before processing. Reject any message that has invalid content and log the rejection. Do not log the malicious content instead log a description of the error.",
         "Risk": "Medium Severity"
     },
     {
-        "ID": 10,
+        "ID": 9,
         "Category": "Information Disclosure",
         "Asset": "Browser",
         "Threat": "These requests are made over the public internet and could be intercepted by an attacker.",
@@ -80,7 +80,7 @@
         "Risk": "High Severity"
     },
     {
-        "ID": 11,
+        "ID": 10,
         "Category": "Information Disclosure",
         "Asset": "Web Application",
         "Threat": "These requests are made over the public internet and could be intercepted by an attacker.",
@@ -88,7 +88,7 @@
         "Risk": "High Severity"
     },
     {
-        "ID": 12,
+        "ID": 11,
         "Category": "Information Disclosure",
         "Asset": "Message Queue",
         "Threat": "These requests are made over the public internet and could be intercepted by an attacker.",
@@ -96,7 +96,7 @@
         "Risk": "High Severity"
     },
     {
-        "ID": 13,
+        "ID": 12,
         "Category": "Information Disclosure",
         "Asset": "Database",
         "Threat": "An attacker could intercept the Database queries in transit and obtain sensitive information, such as Database credentials, query parameters or query results (is unlikely since the data flow is over a private network).",

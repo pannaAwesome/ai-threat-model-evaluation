@@ -12,6 +12,26 @@ Repository with examples of threat models created by AI-driven threat modelling 
 
 *The apt commands might need to be run with sudo*
 
+### LLM API
+The LLM setup uses openAI and it is compatible with any provider that supports this format. Examples would be:
+- OpenRouter
+- Ollama
+- OpenAI
+- and many more
+
+For any provider you will need to setup a .env file containing your api key and api endpoint, the file should contain
+the following:
+```
+OPENAI_API_KEY=<your-api-key>
+OPENAI_ENDPOINT=<api-endpoint-to-target>
+```
+> *For local providers you can set the api key to a dummy value*
+
+**Ollama Setup:** \
+You install Ollama by running `curl -fsSL https://ollama.com/install.sh | sh`
+
+After this you can run the entire project through the `run_all_experiments.sh` file, or you can pull selected models and run the `judge_threat_models.py` with your pulled model. For the project, you can find som suggested models based on your system strength in *ollama/models_to_use.txt*.
+
 ## DFD
 
 It uses the *data-flow-diagram* module in python, the package and syntax is described here:

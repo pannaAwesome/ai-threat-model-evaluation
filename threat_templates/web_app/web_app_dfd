@@ -1,0 +1,14 @@
+# Components
+process ui      Web UI
+process ws      Web Service
+store   p       PostgreSQL
+
+# Data flows
+ui      -->     ws  Request
+ws      -->     ui  Response
+ws      -->     p   Query
+p       -->     ws  Data
+
+# Trust Boundary
+frame ui = Internet
+frame ws p = Public Cloud

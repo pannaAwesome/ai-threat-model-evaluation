@@ -1,0 +1,51 @@
+[
+    {
+        "Note": "Everything is the same",
+        "Human": {"threats": [0, 0, 0], "mitigations": [0, 0, 0], "risk": {"same":[0], "more":[0], "less":[0]}},
+        "ID": 0,
+        "Category": "Elevation of Privilege",
+        "Asset": "Frontend",
+        "Threat": "Attackers may exploit improperly implemented input validation mechanisms on the Frontend, and thereby gain unauthorized access to the Web Server.",
+        "Mitigation": "Implement strict input validation on all user-supplied data to prevent injection attacks like SQL and XSS.",
+        "Risk": "2 out of 3"
+    },
+    {
+        "Note": "The mitigation is different",
+        "Human": {"threats": [1, 1, 1], "mitigations": [], "risk": {"same":[1], "more":[1], "less":[1]}},
+        "ID": 1,
+        "Category": "Elevation of Privilege",
+        "Asset": "Frontend",
+        "Threat": "Attackers may exploit improperly implemented input validation mechanisms on the Frontend, and thereby gain unauthorized access to the Web Server.",
+        "Mitigation": "Limit the amount of requests that the user can make at once.",
+        "Risk": "50 out of 100"
+    },
+    {
+        "Note": "Asset is missing, but everything is the same",
+        "Human": {"threats": [2, 2, 2], "mitigations": [2, 2, 2], "risk": {"same":[2], "more":[2], "less":[2]}},
+        "ID": 2,
+        "Category": "Elevation of Privilege",
+        "Threat": "Attackers may exploit improperly implemented input validation mechanisms on the Frontend, and thereby gain unauthorized access to the Web Server.",
+        "Mitigation": "Implement strict input validation on all user-supplied data to prevent injection attacks like SQL and XSS.",
+        "Risk": "50 out of 100"
+    },
+    {
+        "Note": "Fake Category",
+        "Human": {"category": [3], "threats": [], "mitigations": [], "risk": {"same":[], "more":[], "less":[]}},
+        "ID": 3,
+        "Category": "Non-Repudiation",
+        "Asset": "Frontend",
+        "Threat": "Attackers may exploit improperly implemented input validation mechanisms on the Frontend, and thereby gain unauthorized access to the Web Server.",
+        "Mitigation": "Implement strict input validation on all user-supplied data to prevent injection attacks like SQL and XSS.",
+        "Risk": "50 out of 100"
+    },
+    {
+        "Note": "Fake Asset",
+        "Human": {"category": [], "asset": [4], "threats": [], "mitigations": [], "risk": {"same":[], "more":[], "less":[]}},
+        "ID": 4,
+        "Category": "Elevation of Privilege",
+        "Asset": "Database",
+        "Threat": "Attackers may exploit improperly implemented input validation mechanisms on the Frontend, and thereby gain unauthorized access to the Web Server.",
+        "Mitigation": "Implement strict input validation on all user-supplied data to prevent injection attacks like SQL and XSS.",
+        "Risk": "50 out of 100"
+    }
+]

@@ -1,0 +1,6 @@
+result_id,model,seed,category,asset
+0,phi3:14b-medium-128k-instruct-q4_K_M,169,[3],[4]
+1,phi3:14b-medium-128k-instruct-q4_K_M,429,[3],[4]
+2,phi3:14b-medium-128k-instruct-q4_K_M,707,[3],[4]
+3,phi3:14b-medium-128k-instruct-q4_K_M,429,[3],[4]
+4,phi3:14b-medium-128k-instruct-q4_K_M,651,[3],[4]
