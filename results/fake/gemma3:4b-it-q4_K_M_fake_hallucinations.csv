@@ -1,6 +1,0 @@
-result_id,model,seed,category,asset
-0,gemma3:4b-it-q4_K_M,169,[3],[4]
-1,gemma3:4b-it-q4_K_M,429,[3],[4]
-2,gemma3:4b-it-q4_K_M,707,[3],[4]
-3,gemma3:4b-it-q4_K_M,429,[],[4]
-4,gemma3:4b-it-q4_K_M,651,[3],[4]

@@ -1,6 +1,0 @@
-result_id,model,seed,category,asset
-0,deepseek-r1:7b,169,"[4, 2]",[4]
-1,deepseek-r1:7b,429,[0],[4]
-2,deepseek-r1:7b,707,[0],[]
-3,deepseek-r1:7b,429,"[2, 4]",[4]
-4,deepseek-r1:7b,651,[0],[]
