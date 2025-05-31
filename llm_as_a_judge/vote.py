@@ -43,11 +43,11 @@ def vote_hallucinations_threaded(ai, tm, assets, seed):
     category_id = []
     asset_ids = []
     
-    with ThreadPoolExecutor(max_workers=4) as executor:
+    with ThreadPoolExecutor() as executor:
         for category, cat_id, asset, ass_id in executor.map(vote_hallucinations, tm_shuffled, repeat(ai), repeat(assets)):
-            if category == 0:
+            if category == 1:
                 category_id.append(cat_id)            
-            if asset == 0:
+            if asset == 1:
                 asset_ids.append(ass_id)
     
     return {
@@ -153,7 +153,7 @@ def vote_threats_threaded(tms, assets, ai, reversed=False) -> list:
         }
     }
     
-    with ThreadPoolExecutor(max_workers=4) as executor:
+    with ThreadPoolExecutor() as executor:
         for result in executor.map(vote_all, tms, repeat(assets), repeat(ai), repeat(reversed)):
             if result["threats"] != -1:
                 results["threats"].append(result["threats"])

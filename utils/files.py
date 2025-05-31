@@ -1,7 +1,6 @@
 import json
 import os
-import csv
-import ast
+import csvimport ast
 
 import pandas as pd
 
@@ -30,6 +29,7 @@ def save_stats(result_folder, tool, stats_name, all_ai_stats, all_ai_itself_stat
             
     with open(f"{stats_folder}/ais_{tool}_{stats_name}.json", "w") as json_file:
         json.dump(all_ai_stats, json_file, indent=4)
+
 
 def load_assets(assets_path):
     with open(assets_path, "r") as assets_file:
@@ -70,7 +70,7 @@ def append_threat_results(results, ai, id, reversed_val, csv_file):
     file_exists = os.path.isfile(csv_file)
 
     with open(csv_file, mode='a', newline='', encoding='utf-8') as file:
-        writer = csv.DictWriter(file, fieldnames=["result_id", "model", "reversed", "threats", "mitigations", "risk_same", "risk_more", "risk_less"])
+        writer = csv.DictWriter(file, fieldnames=["result_id", "model", "reversed", "threats", "mitigations", "risks_same", "risks_more", "risks_less"])
 
         if not file_exists:
             writer.writeheader()
@@ -81,7 +81,7 @@ def append_threat_results(results, ai, id, reversed_val, csv_file):
             "reversed": reversed_val,
             "threats": results["threats"],
             "mitigations": results["mitigations"],
-            "risk_same": results["risks"]["same"],
-            "risk_more": results["risks"]["more"],
-            "risk_less": results["risks"]["less"],
+            "risks_same": results["risks"]["same"],
+            "risks_more": results["risks"]["more"],
+            "risks_less": results["risks"]["less"],
         })

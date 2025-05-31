@@ -32,35 +32,35 @@ def perform_judging(ai, ai_model, tms, tms_reversed, assets, seeds, iterations, 
         threat_time = result_time(time() - start_time)
         print(f"[INFO] Threats saved for {idx+1} out of {iterations} after {threat_time}")
         
-        vote_results_reversed = vote_threats_threaded(tms_reversed, assets, ai, True)
-        if vote_results_reversed:
-            append_threat_results(vote_results_reversed, ai, idx, True, f"{prefix_result}_reverse_threats.csv")                    
-        threat_reversed_time = result_time(time() - start_time)
-        print(f"[INFO] Reversed Threats saved for {idx+1} out of {iterations} after {threat_reversed_time}")
+        #vote_results_reversed = vote_threats_threaded(tms_reversed, assets, ai, True)
+        #if vote_results_reversed:
+        #    append_threat_results(vote_results_reversed, ai, idx, True, f"{prefix_result}_reverse_threats.csv")                    
+        #threat_reversed_time = result_time(time() - start_time)
+        #print(f"[INFO] Reversed Threats saved for {idx+1} out of {iterations} after {threat_reversed_time}")
         
         total_time = result_time(time() - start_time)
         print(f"[RESULT] Finished iteration {idx} out of {iterations}, it took {total_time}")
 
 if __name__ == "__main__":
-    # parser = ArgumentParser(
-    #     description="Script that obtains judging on the provided threat model"
-    # )
-    # parser.add_argument("-a", "--application", required=True, type=str)
-    # parser.add_argument("-t", "--tool", required=True, type=str)
-    # parser.add_argument("-ai", "--aimodel", required=True, type=str)
-    # parser.add_argument("-i", "--iterations", required=True, type=int)
-    # args = parser.parse_args()
+    parser = ArgumentParser(
+        description="Script that obtains judging on the provided threat model"
+    )
+    parser.add_argument("-a", "--application", required=True, type=str)
+    parser.add_argument("-t", "--tool", required=True, type=str)
+    parser.add_argument("-ai", "--aimodel", required=True, type=str)
+    parser.add_argument("-i", "--iterations", required=True, type=int)
+    args = parser.parse_args()
     
-    # application = args.application
-    # tool = args.tool
-    # ai = args.aimodel
-    # iterations = args.iterations
+    application = args.application
+    tool = args.tool
+    ai = args.aimodel
+    iterations = args.iterations
     
     # For easy debugging
-    application = "message_queue_app"
-    tool = "stridegpt"
-    ai = "mistral:7b-instruct-v0.3-q4_K_M"
-    iterations = 2
+    # application = "message_queue_app"
+    # tool = "stridegpt"
+    # ai = "gemma3:4b-it-q4_K_M"
+    # iterations = 2
     
     random.seed(21)
     seeds = [random.randint(1, 1000) for _ in range(iterations)]
@@ -79,12 +79,12 @@ if __name__ == "__main__":
     tms_reversed = np.array(np.meshgrid(ai_model, human_model)).T.reshape(-1,2)
     print("[INFO] Threat models are ready for judging")
     
-    result_path = f"{tool_folder}/{ai}_{tool} "
+    result_path = f"{tool_folder}/{ai}_{tool}"
     
     # For easy debugging
-    ai_model = random.sample(ai_model, 10)
-    tms = random.sample(list(tms), 10)
-    tms_reversed = random.sample(list(tms_reversed), 10)
+    # ai_model = random.sample(ai_model, 10)
+    # tms = random.sample(list(tms), 10)
+    # tms_reversed = random.sample(list(tms_reversed), 10)
     
     perform_judging(ai, ai_model, tms, tms_reversed, assets, seeds, iterations, result_path)
     print(f"[SUCCESS] Finished judging threat model for {application} with {tool}")

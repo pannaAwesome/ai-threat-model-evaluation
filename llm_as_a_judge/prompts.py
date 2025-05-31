@@ -56,13 +56,12 @@ THREAT_PROMPT = """
     {{
     "Category": "Denial of Service",
     "Asset": "System",
-    "Threat": "The System is flooded with requests, overwhelming system resources and rendering it unresponsive."
+    "Threat": "The system is flooded with requests, overwhelming system resources and rendering it unresponsive."
     }}
 
     Threat B:
     {{
     "Category": "Denial of Service",
-    "Asset": "System"
     "Threat": "An attacker performs a Denial of Service attack on the system."
     }}
 
@@ -74,7 +73,7 @@ THREAT_PROMPT = """
     {{
     "Category": "Spoofing",
     "Asset": "System",
-    "Threat": "The System is flooded with requests, overwhelming system resources and rendering it unresponsive."
+    "Threat": "The system is flooded with requests, overwhelming system resources and rendering it unresponsive."
     }}
 
     Threat B:
