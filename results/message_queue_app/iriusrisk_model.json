@@ -1,278 +1,6 @@
 [
     {
         "ID": 0,
-        "Category": "Information Disclosure",
-        "Asset": "Web App Config",
-        "Threat": "An attacker exploits weak access controls to retrieve sensitive secrets Attackers may exploit improperly configured or weak access controls to retrieve sensitive secrets stored in Secrets Manager. This can result in the exposure of API keys, database credentials, and other confidential information, leading to unauthorized access to services or systems.",
-        "Mitigation": "Implement strict access control policies",
-        "Risk": "88 out of 100"
-    },
-    {
-        "ID": 1,
-        "Category": "Tampering",
-        "Asset": "Database",
-        "Threat": "Attacker exploit misconfiguration and/or vulnerable third-party plugins",
-        "Mitigation": "Implement regular review and updates for system configuration and dependencies",
-        "Risk": "71 out of 100"
-    },
-    {
-        "ID": 2,
-        "Category": "Information Disclosure",
-        "Asset": "Web Application",
-        "Threat": "Attackers can abuse server-side requests",
-        "Mitigation": "Block or validate all outbound requests",
-        "Risk": "29 out of 100"
-    },
-    {
-        "ID": 3,
-        "Category": "Elevation of Privilege",
-        "Asset": "Web Application",
-        "Threat": "Attackers can bypass permissions",
-        "Mitigation": "Check user roles and permissions on every request",
-        "Risk": "63 out of 100"
-    },
-    {
-        "ID": 4,
-        "Category": "Spoofing",
-        "Asset": "Web Application",
-        "Threat": "Attackers can compromise sessions",
-        "Mitigation": "Enforce MFA, use secure cookies, and invalidate sessions",
-        "Risk": "56 out of 100"
-    },
-    {
-        "ID": 5,
-        "Category": "Repudiation",
-        "Asset": "Web Application",
-        "Threat": "Attackers can evade detection without proper logging",
-        "Mitigation": "Capture and monitor detailed logs for critical actions",
-        "Risk": "38 out of 100"
-    },
-    {
-        "ID": 6,
-        "Category": "Information Disclosure",
-        "Asset": "Web Application",
-        "Threat": "Attackers can exploit insecure configurations",
-        "Mitigation": "Disable unused services, remove default accounts, and apply security updates",
-        "Risk": "63 out of 100"
-    },
-    {
-        "ID": 7,
-        "Category": "Information Disclosure",
-        "Asset": "Web Application",
-        "Threat": "Attackers can exploit unsafe XML parsers",
-        "Mitigation": "Configure XML parsers to disallow external entities and DTD processing",
-        "Risk": "88 out of 100"
-    },
-    {
-        "ID": 8,
-        "Category": "Elevation of Privilege",
-        "Asset": "Web Application",
-        "Threat": "Attackers can exploit vulnerable components",
-        "Mitigation": "Perform software composition analysis and patch outdated libraries",
-        "Risk": "83 out of 100"
-    },
-    {
-        "ID": 9,
-        "Category": "Tampering",
-        "Asset": "Web Application",
-        "Threat": "Attackers can inject malicious commands",
-        "Mitigation": "Implement prepared statements and validate user inputs",
-        "Risk": "60 out of 100"
-    },
-    {
-        "ID": 10,
-        "Category": "Tampering",
-        "Asset": "Web Application",
-        "Threat": "Attackers can inject scripts",
-        "Mitigation": "Ensure proper escaping/encoding of dynamic content and configure CSP",
-        "Risk": "68 out of 100"
-    },
-    {
-        "ID": 11,
-        "Category": "Information Disclosure",
-        "Asset": "Web Application",
-        "Threat": "Attackers can intercept or leak sensitive data",
-        "Mitigation": "Use TLS for communications and protect stored data with encryption",
-        "Risk": "88 out of 100"
-    },
-    {
-        "ID": 12,
-        "Category": "Tampering",
-        "Asset": "Web Application",
-        "Threat": "Attackers can manipulate business workflows",
-        "Mitigation": "Implement server-side checks and multi-step validation for important transactions",
-        "Risk": "88 out of 100"
-    },
-    {
-        "ID": 13,
-        "Category": "Tampering",
-        "Asset": "Web Application",
-        "Threat": "Attackers can run malicious code via deserialization",
-        "Mitigation": "Use secure data formats and strict whitelisting for deserialization",
-        "Risk": "40 out of 100"
-    },
-    {
-        "ID": 14,
-        "Category": "Spoofing",
-        "Asset": "Background Config",
-        "Threat": "Attackers compromise user accounts by Authentication Attacks",
-        "Mitigation": "Implement Secure Password Hashing and Multi-Factor Authentication",
-        "Risk": "77 out of 100"
-    },
-    {
-        "ID": 15,
-        "Category": "Spoofing",
-        "Asset": "Background Config",
-        "Threat": "Attackers compromise user accounts by Authentication Attacks",
-        "Mitigation": "Implement Account Lockout Policy and CAPTCHA",
-        "Risk": "77 out of 100"
-    },
-    {
-        "ID": 16,
-        "Category": "Spoofing",
-        "Asset": "Browser",
-        "Threat": "Attackers conduct phishing attacks through deceptive websites",
-        "Mitigation": "Deploy anti-phishing protection",
-        "Risk": "83 out of 100"
-    },
-    {
-        "ID": 17,
-        "Category": "Spoofing",
-        "Asset": "Browser",
-        "Threat": "Attackers conduct phishing attacks through deceptive websites",
-        "Mitigation": "Activate URL filtering mechanisms",
-        "Risk": "83 out of 100"
-    },
-    {
-        "ID": 18,
-        "Category": "Tampering",
-        "Asset": "Browser",
-        "Threat": "Attackers distribute malware through compromised browser extensions",
-        "Mitigation": "Implement extension whitelisting policies",
-        "Risk": "77 out of 100"
-    },
-    {
-        "ID": 19,
-        "Category": "Tampering",
-        "Asset": "Browser",
-        "Threat": "Attackers distribute malware through compromised browser extensions",
-        "Mitigation": "Manage browser extensions securely",
-        "Risk": "77 out of 100"
-    },
-    {
-        "ID": 20,
-        "Category": "Elevation of Privilege",
-        "Asset": "Browser",
-        "Threat": "Attackers exploit browser vulnerabilities to execute malicious code",
-        "Mitigation": "Apply security hardening measures",
-        "Risk": "81 out of 100"
-    },
-    {
-        "ID": 21,
-        "Category": "Elevation of Privilege",
-        "Asset": "Browser",
-        "Threat": "Attackers exploit browser vulnerabilities to execute malicious code",
-        "Mitigation": "Configure automatic browser updates",
-        "Risk": "81 out of 100"
-    },
-    {
-        "ID": 22,
-        "Category": "Information Disclosure",
-        "Asset": "Background Config",
-        "Threat": "Attackers exploit misconfiguration and Supply Chain Vulnerabilities",
-        "Mitigation": "Harden System Configurations and Conduct Third-party Security Assessments",
-        "Risk": "71 out of 100"
-    },
-    {
-        "ID": 23,
-        "Category": "Elevation of Privilege",
-        "Asset": "Web App Config",
-        "Threat": "Attackers exploit vulnerabilities in the Secrets Manager API Attackers may exploit vulnerabilities in the Secrets Manager API, such as insufficient input validation or authentication weaknesses, to gain unauthorized access to secrets.",
-        "Mitigation": "Secure the API with strong authentication and input validation",
-        "Risk": "77 out of 100"
-    },
-    {
-        "ID": 24,
-        "Category": "Elevation of Privilege",
-        "Asset": "Background Config",
-        "Threat": "Attackers gain elevated privileges through Credential Misuse",
-        "Mitigation": "Enforce Principle of Least Privilege",
-        "Risk": "56 out of 100"
-    },
-    {
-        "ID": 25,
-        "Category": "Elevation of Privilege",
-        "Asset": "Database",
-        "Threat": "Attackers gain unauthorized access or elevated privileges",
-        "Mitigation": "Create a workflow for a comprehensive security framework for your database management system",
-        "Risk": "56 out of 100"
-    },
-    {
-        "ID": 26,
-        "Category": "Information Disclosure",
-        "Asset": "Database",
-        "Threat": "Attackers gather useful information from inadequate error handling",
-        "Mitigation": "Implement secure error handling",
-        "Risk": "56 out of 100"
-    },
-    {
-        "ID": 27,
-        "Category": "Information Disclosure",
-        "Asset": "Background Config",
-        "Threat": "Attackers gather useful information from inadequate Error Handling",
-        "Mitigation": "Implement Secure Error Handling",
-        "Risk": "56 out of 100"
-    },
-    {
-        "ID": 28,
-        "Category": "Tampering",
-        "Asset": "Database",
-        "Threat": "Attackers inject malicious content, e.g., SQLi",
-        "Mitigation": "Implement proper input validation",
-        "Risk": "56 out of 100"
-    },
-    {
-        "ID": 29,
-        "Category": "Tampering",
-        "Asset": "Database",
-        "Threat": "Attackers inject malicious content, e.g., SQLi",
-        "Mitigation": "Use prepared statements and parameterized queries",
-        "Risk": "56 out of 100"
-    },
-    {
-        "ID": 30,
-        "Category": "Information Disclosure",
-        "Asset": "Browser",
-        "Threat": "Attackers inject malicious scripts via cross-site scripting (XSS)",
-        "Mitigation": "Activate built-in browser security filters",
-        "Risk": "71 out of 100"
-    },
-    {
-        "ID": 31,
-        "Category": "Information Disclosure",
-        "Asset": "Browser",
-        "Threat": "Attackers inject malicious scripts via cross-site scripting (XSS)",
-        "Mitigation": "Implement client-side script blockers",
-        "Risk": "71 out of 100"
-    },
-    {
-        "ID": 32,
-        "Category": "Spoofing",
-        "Asset": "Browser",
-        "Threat": "Attackers intercept browser communications through man-in-the-middle (MitM) attacks",
-        "Mitigation": "Utilize encrypted communication tools",
-        "Risk": "81 out of 100"
-    },
-    {
-        "ID": 33,
-        "Category": "Spoofing",
-        "Asset": "Browser",
-        "Threat": "Attackers intercept browser communications through man-in-the-middle (MitM) attacks",
-        "Mitigation": "Enforce strict certificate validation",
-        "Risk": "81 out of 100"
-    },
-    {
-        "ID": 34,
         "Category": "Denial of Service",
         "Asset": "Background Config",
         "Threat": "Attackers perform Denial of Service through Authentication Systems",
@@ -280,151 +8,39 @@
         "Risk": "60 out of 100"
     },
     {
-        "ID": 35,
-        "Category": "Tampering",
+        "ID": 1,
+        "Category": "Elevation of Privilege",
         "Asset": "Background Config",
-        "Threat": "Attackers perform Injection Attacks and Unathorized Data Modification",
-        "Mitigation": "Use Prepared Statements with Parameterized Queries",
-        "Risk": "68 out of 100"
+        "Threat": "Attackers gain elevated privileges through Credential Misuse",
+        "Mitigation": "Enforce Principle of Least Privilege",
+        "Risk": "56 out of 100"
     },
     {
-        "ID": 36,
-        "Category": "Tampering",
-        "Asset": "Background Config",
-        "Threat": "Attackers perform Injection Attacks and Unathorized Data Modification",
-        "Mitigation": "Implement Input Validation",
-        "Risk": "68 out of 100"
-    },
-    {
-        "ID": 37,
+        "ID": 2,
         "Category": "Information Disclosure",
-        "Asset": "Database",
-        "Threat": "Attackers take advantage of insecure communication channels or inadequate data encryption practices",
-        "Mitigation": "Implement strong encryption mechanisms and practices",
+        "Asset": "Background Config",
+        "Threat": "Attackers exploit misconfiguration and Supply Chain Vulnerabilities",
+        "Mitigation": "Harden System Configurations and Conduct Third-party Security Assessments",
         "Risk": "71 out of 100"
     },
     {
-        "ID": 38,
+        "ID": 3,
         "Category": "Information Disclosure",
-        "Asset": "Database",
-        "Threat": "Attackers take advantage of insecure communication channels or inadequate data encryption practices",
-        "Mitigation": "Enforce TLS for all Communications",
-        "Risk": "71 out of 100"
+        "Asset": "Background Config",
+        "Threat": "Attackers gather useful information from inadequate Error Handling",
+        "Mitigation": "Implement Secure Error Handling",
+        "Risk": "56 out of 100"
     },
     {
-        "ID": 39,
+        "ID": 4,
         "Category": "Information Disclosure",
         "Asset": "Background Config",
         "Threat": "Attackers take advantage of Insufficient Data Protection and Encryption for User Credentials",
-        "Mitigation": "Apply Data Masking and Tokenization",
+        "Mitigation": "Apply Data Masking and Tokenization; Secure Data Transmission; Implement Strong Encryption for Data at Rest",
         "Risk": "56 out of 100"
     },
     {
-        "ID": 40,
-        "Category": "Information Disclosure",
-        "Asset": "Background Config",
-        "Threat": "Attackers take advantage of Insufficient Data Protection and Encryption for User Credentials",
-        "Mitigation": "Secure Data Transmission",
-        "Risk": "56 out of 100"
-    },
-    {
-        "ID": 41,
-        "Category": "Information Disclosure",
-        "Asset": "Background Config",
-        "Threat": "Attackers take advantage of Insufficient Data Protection and Encryption for User Credentials",
-        "Mitigation": "Implement Strong Encryption for Data at Rest",
-        "Risk": "56 out of 100"
-    },
-    {
-        "ID": 42,
-        "Category": "Information Disclosure",
-        "Asset": "Web App Config",
-        "Threat": "Compromised systems reuse leaked or old secrets Attackers who gain access to secrets from compromised systems may reuse them if the secrets are not rotated or invalidated in a timely manner. This leads to prolonged unauthorized access to services and systems.",
-        "Mitigation": "Implement automatic secret rotation",
-        "Risk": "71 out of 100"
-    },
-    {
-        "ID": 43,
-        "Category": "Information Disclosure",
-        "Asset": "Message Queue",
-        "Threat": "Data leakage due to unencrypted messages in transit &nbsp;",
-        "Mitigation": "Implement encryption for messages in transit",
-        "Risk": "81 out of 100"
-    },
-    {
-        "ID": 44,
-        "Category": "Denial of Service",
-        "Asset": "Background Worker",
-        "Threat": "Denial of Service (DoS) attacks",
-        "Mitigation": "Implement rate limiting",
-        "Risk": "63 out of 100"
-    },
-    {
-        "ID": 45,
-        "Category": "Denial of Service",
-        "Asset": "Message Queue",
-        "Threat": "Denial of Service (DoS) through message queue saturation &nbsp;",
-        "Mitigation": "Implement resource throttling and monitoring for message queues",
-        "Risk": "81 out of 100"
-    },
-    {
-        "ID": 46,
-        "Category": "Denial of Service",
-        "Asset": "Database",
-        "Threat": "Denial of service via resource exhaustion",
-        "Mitigation": "Implement rate and resource limiting",
-        "Risk": "56 out of 100"
-    },
-    {
-        "ID": 47,
-        "Category": "Tampering",
-        "Asset": "Background Worker",
-        "Threat": "Execution of malicious or unauthorized code",
-        "Mitigation": "Use code signing and validation checks",
-        "Risk": "88 out of 100"
-    },
-    {
-        "ID": 48,
-        "Category": "Tampering",
-        "Asset": "Message Queue",
-        "Threat": "Insider threat leading to unauthorized message manipulation or deletion &nbsp;",
-        "Mitigation": "Implement privileged access management (PAM) and continuous monitoring for message queues",
-        "Risk": "81 out of 100"
-    },
-    {
-        "ID": 49,
-        "Category": "Repudiation",
-        "Asset": "Database",
-        "Threat": "Lack of evidences of misuse due to insufficient auditing and logging or poor log protection",
-        "Mitigation": "Implement review, monitoring, and logging mechanisms",
-        "Risk": "40 out of 100"
-    },
-    {
-        "ID": 50,
-        "Category": "Tampering",
-        "Asset": "Background Worker",
-        "Threat": "Message interception and manipulation",
-        "Mitigation": "Implement TLS encryption",
-        "Risk": "81 out of 100"
-    },
-    {
-        "ID": 51,
-        "Category": "Tampering",
-        "Asset": "Message Queue",
-        "Threat": "Message tampering during transit or storage &nbsp;",
-        "Mitigation": "Implement cryptographic signing and integrity checks for messages",
-        "Risk": "81 out of 100"
-    },
-    {
-        "ID": 52,
-        "Category": "Information Disclosure",
-        "Asset": "Web App Config",
-        "Threat": "Overly permissive secrets sharing between services leads to data leakage Secrets may be accidentally shared between services or users that do not require them. Overly permissive configurations or default settings in Secrets Manager can lead to unintentional data leakage to other services or environments.",
-        "Mitigation": "Restrict secret sharing based on least privilege",
-        "Risk": "81 out of 100"
-    },
-    {
-        "ID": 53,
+        "ID": 5,
         "Category": "Repudiation",
         "Asset": "Background Config",
         "Threat": "Repudiation of Authentication Actions",
@@ -432,15 +48,167 @@
         "Risk": "37 out of 100"
     },
     {
-        "ID": 54,
+        "ID": 6,
+        "Category": "Spoofing",
+        "Asset": "Background Config",
+        "Threat": "Attackers compromise user accounts by Authentication Attacks",
+        "Mitigation": "Implement Secure Password Hashing and Multi-Factor Authentication; Implement Account Lockout Policy and CAPTCHA",
+        "Risk": "77 out of 100"
+    },
+    {
+        "ID": 7,
+        "Category": "Tampering",
+        "Asset": "Background Config",
+        "Threat": "Attackers perform Injection Attacks and Unathorized Data Modification",
+        "Mitigation": "Use Prepared Statements with Parameterized Queries; Implement Input Validation",
+        "Risk": "68 out of 100"
+    },
+    {
+        "ID": 8,
+        "Category": "Denial of Service",
+        "Asset": "Background Worker",
+        "Threat": "Denial of Service (DoS) attacks",
+        "Mitigation": "Implement rate limiting",
+        "Risk": "63 out of 100"
+    },
+    {
+        "ID": 9,
         "Category": "Information Disclosure",
-        "Asset": "Web App Config",
-        "Threat": "Secrets are stored without encryption, leading to potential exposure If secrets are stored without proper encryption, they may be exposed if unauthorized access to the Secrets Manager storage occurs. This could lead to unauthorized users gaining access to sensitive information like passwords, tokens, or API keys.",
-        "Mitigation": "Enforce encryption of secrets at rest and in transit",
+        "Asset": "Background Worker",
+        "Threat": "Unauthorized access to sensitive data",
+        "Mitigation": "Use role-based access control",
+        "Risk": "71 out of 100"
+    },
+    {
+        "ID": 10,
+        "Category": "Tampering",
+        "Asset": "Background Worker",
+        "Threat": "Execution of malicious or unauthorized code",
+        "Mitigation": "Use code signing and validation checks",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 11,
+        "Category": "Tampering",
+        "Asset": "Background Worker",
+        "Threat": "Message interception and manipulation",
+        "Mitigation": "Implement TLS encryption",
         "Risk": "81 out of 100"
     },
     {
-        "ID": 55,
+        "ID": 12,
+        "Category": "Elevation of Privilege",
+        "Asset": "Browser",
+        "Threat": "Attackers exploit browser vulnerabilities to execute malicious code",
+        "Mitigation": "Apply security hardening measures; Configure automatic browser updates",
+        "Risk": "81 out of 100"
+    },
+    {
+        "ID": 13,
+        "Category": "Information Disclosure",
+        "Asset": "Browser",
+        "Threat": "Attackers inject malicious scripts via cross-site scripting (XSS)",
+        "Mitigation": "Activate built-in browser security filters; Implement client-side script blockers",
+        "Risk": "71 out of 100"
+    },
+    {
+        "ID": 14,
+        "Category": "Spoofing",
+        "Asset": "Browser",
+        "Threat": "Attackers conduct phishing attacks through deceptive websites",
+        "Mitigation": "Deploy anti-phishing protection; Activate URL filtering mechanisms",
+        "Risk": "83 out of 100"
+    },
+    {
+        "ID": 15,
+        "Category": "Spoofing",
+        "Asset": "Browser",
+        "Threat": "Attackers intercept browser communications through man-in-the-middle (MitM) attacks",
+        "Mitigation": "Utilize encrypted communication tools; Enforce strict certificate validation",
+        "Risk": "81 out of 100"
+    },
+    {
+        "ID": 16,
+        "Category": "Tampering",
+        "Asset": "Browser",
+        "Threat": "Attackers distribute malware through compromised browser extensions",
+        "Mitigation": "Implement extension whitelisting policies; Manage browser extensions securely",
+        "Risk": "77 out of 100"
+    },
+    {
+        "ID": 17,
+        "Category": "Denial of Service",
+        "Asset": "Database",
+        "Threat": "Denial of service via resource exhaustion",
+        "Mitigation": "Implement rate and resource limiting",
+        "Risk": "56 out of 100"
+    },
+    {
+        "ID": 18,
+        "Category": "Elevation of Privilege",
+        "Asset": "Database",
+        "Threat": "Attackers gain unauthorized access or elevated privileges",
+        "Mitigation": "Create a workflow for a comprehensive security framework for your database management system",
+        "Risk": "56 out of 100"
+    },
+    {
+        "ID": 19,
+        "Category": "Information Disclosure",
+        "Asset": "Database",
+        "Threat": "Attackers gather useful information from inadequate error handling",
+        "Mitigation": "Implement secure error handling",
+        "Risk": "56 out of 100"
+    },
+    {
+        "ID": 20,
+        "Category": "Information Disclosure",
+        "Asset": "Database",
+        "Threat": "Attackers take advantage of insecure communication channels or inadequate data encryption practices",
+        "Mitigation": "Implement strong encryption mechanisms and practices; Enforce TLS for all Communications",
+        "Risk": "71 out of 100"
+    },
+    {
+        "ID": 21,
+        "Category": "Repudiation",
+        "Asset": "Database",
+        "Threat": "Lack of evidences of misuse due to insufficient auditing and logging or poor log protection",
+        "Mitigation": "Implement review, monitoring, and logging mechanisms",
+        "Risk": "40 out of 100"
+    },
+    {
+        "ID": 22,
+        "Category": "Tampering",
+        "Asset": "Database",
+        "Threat": "Attacker exploit misconfiguration and/or vulnerable third-party plugins",
+        "Mitigation": "Implement regular review and updates for system configuration and dependencies",
+        "Risk": "71 out of 100"
+    },
+    {
+        "ID": 23,
+        "Category": "Tampering",
+        "Asset": "Database",
+        "Threat": "Attackers inject malicious content, e.g., SQLi",
+        "Mitigation": "Implement proper input validation; Use prepared statements and parameterized queries",
+        "Risk": "56 out of 100"
+    },
+    {
+        "ID": 24,
+        "Category": "Denial of Service",
+        "Asset": "Message Queue",
+        "Threat": "Denial of Service (DoS) through message queue saturation &nbsp;",
+        "Mitigation": "Implement resource throttling and monitoring for message queues",
+        "Risk": "81 out of 100"
+    },
+    {
+        "ID": 25,
+        "Category": "Information Disclosure",
+        "Asset": "Message Queue",
+        "Threat": "Data leakage due to unencrypted messages in transit &nbsp;",
+        "Mitigation": "Implement encryption for messages in transit",
+        "Risk": "81 out of 100"
+    },
+    {
+        "ID": 26,
         "Category": "Spoofing",
         "Asset": "Message Queue",
         "Threat": "Unauthorized access to message queues &nbsp;",
@@ -448,11 +216,155 @@
         "Risk": "56 out of 100"
     },
     {
-        "ID": 56,
+        "ID": 27,
+        "Category": "Tampering",
+        "Asset": "Message Queue",
+        "Threat": "Insider threat leading to unauthorized message manipulation or deletion &nbsp;",
+        "Mitigation": "Implement privileged access management (PAM) and continuous monitoring for message queues",
+        "Risk": "81 out of 100"
+    },
+    {
+        "ID": 28,
+        "Category": "Tampering",
+        "Asset": "Message Queue",
+        "Threat": "Message tampering during transit or storage &nbsp;",
+        "Mitigation": "Implement cryptographic signing and integrity checks for messages",
+        "Risk": "81 out of 100"
+    },
+    {
+        "ID": 29,
+        "Category": "Elevation of Privilege",
+        "Asset": "Web App Config",
+        "Threat": "Attackers exploit vulnerabilities in the Secrets Manager API Attackers may exploit vulnerabilities in the Secrets Manager API, such as insufficient input validation or authentication weaknesses, to gain unauthorized access to secrets.",
+        "Mitigation": "Secure the API with strong authentication and input validation",
+        "Risk": "77 out of 100"
+    },
+    {
+        "ID": 30,
         "Category": "Information Disclosure",
-        "Asset": "Background Worker",
-        "Threat": "Unauthorized access to sensitive data",
-        "Mitigation": "Use role-based access control",
+        "Asset": "Web App Config",
+        "Threat": "An attacker exploits weak access controls to retrieve sensitive secrets Attackers may exploit improperly configured or weak access controls to retrieve sensitive secrets stored in Secrets Manager. This can result in the exposure of API keys, database credentials, and other confidential information, leading to unauthorized access to services or systems.",
+        "Mitigation": "Implement strict access control policies",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 31,
+        "Category": "Information Disclosure",
+        "Asset": "Web App Config",
+        "Threat": "Compromised systems reuse leaked or old secrets Attackers who gain access to secrets from compromised systems may reuse them if the secrets are not rotated or invalidated in a timely manner. This leads to prolonged unauthorized access to services and systems.",
+        "Mitigation": "Implement automatic secret rotation",
         "Risk": "71 out of 100"
+    },
+    {
+        "ID": 32,
+        "Category": "Information Disclosure",
+        "Asset": "Web App Config",
+        "Threat": "Overly permissive secrets sharing between services leads to data leakage Secrets may be accidentally shared between services or users that do not require them. Overly permissive configurations or default settings in Secrets Manager can lead to unintentional data leakage to other services or environments.",
+        "Mitigation": "Restrict secret sharing based on least privilege",
+        "Risk": "81 out of 100"
+    },
+    {
+        "ID": 33,
+        "Category": "Information Disclosure",
+        "Asset": "Web App Config",
+        "Threat": "Secrets are stored without encryption, leading to potential exposure If secrets are stored without proper encryption, they may be exposed if unauthorized access to the Secrets Manager storage occurs. This could lead to unauthorized users gaining access to sensitive information like passwords, tokens, or API keys.",
+        "Mitigation": "Enforce encryption of secrets at rest and in transit",
+        "Risk": "81 out of 100"
+    },
+    {
+        "ID": 34,
+        "Category": "Elevation of Privilege",
+        "Asset": "Web Application",
+        "Threat": "Attackers can bypass permissions",
+        "Mitigation": "Check user roles and permissions on every request",
+        "Risk": "63 out of 100"
+    },
+    {
+        "ID": 35,
+        "Category": "Elevation of Privilege",
+        "Asset": "Web Application",
+        "Threat": "Attackers can exploit vulnerable components",
+        "Mitigation": "Perform software composition analysis and patch outdated libraries",
+        "Risk": "83 out of 100"
+    },
+    {
+        "ID": 36,
+        "Category": "Information Disclosure",
+        "Asset": "Web Application",
+        "Threat": "Attackers can abuse server-side requests",
+        "Mitigation": "Block or validate all outbound requests",
+        "Risk": "29 out of 100"
+    },
+    {
+        "ID": 37,
+        "Category": "Information Disclosure",
+        "Asset": "Web Application",
+        "Threat": "Attackers can exploit insecure configurations",
+        "Mitigation": "Disable unused services, remove default accounts, and apply security updates",
+        "Risk": "63 out of 100"
+    },
+    {
+        "ID": 38,
+        "Category": "Information Disclosure",
+        "Asset": "Web Application",
+        "Threat": "Attackers can exploit unsafe XML parsers",
+        "Mitigation": "Configure XML parsers to disallow external entities and DTD processing",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 39,
+        "Category": "Information Disclosure",
+        "Asset": "Web Application",
+        "Threat": "Attackers can intercept or leak sensitive data",
+        "Mitigation": "Use TLS for communications and protect stored data with encryption",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 40,
+        "Category": "Repudiation",
+        "Asset": "Web Application",
+        "Threat": "Attackers can evade detection without proper logging",
+        "Mitigation": "Capture and monitor detailed logs for critical actions",
+        "Risk": "38 out of 100"
+    },
+    {
+        "ID": 41,
+        "Category": "Spoofing",
+        "Asset": "Web Application",
+        "Threat": "Attackers can compromise sessions",
+        "Mitigation": "Enforce MFA, use secure cookies, and invalidate sessions",
+        "Risk": "56 out of 100"
+    },
+    {
+        "ID": 42,
+        "Category": "Tampering",
+        "Asset": "Web Application",
+        "Threat": "Attackers can inject malicious commands",
+        "Mitigation": "Implement prepared statements and validate user inputs",
+        "Risk": "60 out of 100"
+    },
+    {
+        "ID": 43,
+        "Category": "Tampering",
+        "Asset": "Web Application",
+        "Threat": "Attackers can inject scripts",
+        "Mitigation": "Ensure proper escaping/encoding of dynamic content and configure CSP",
+        "Risk": "68 out of 100"
+    },
+    {
+        "ID": 44,
+        "Category": "Tampering",
+        "Asset": "Web Application",
+        "Threat": "Attackers can manipulate business workflows",
+        "Mitigation": "Implement server-side checks and multi-step validation for important transactions",
+        "Risk": "88 out of 100"
+    },
+    {
+        "ID": 45,
+        "Category": "Tampering",
+        "Asset": "Web Application",
+        "Threat": "Attackers can run malicious code via deserialization",
+        "Mitigation": "Use secure data formats and strict whitelisting for deserialization",
+        "Risk": "40 out of 100"
     }
 ]

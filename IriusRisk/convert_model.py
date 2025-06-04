@@ -27,6 +27,11 @@ def csv_to_dataframe(threat_path: str, mitigation_path: str) -> pd.DataFrame:
     mitigation_df = mitigation_df[["Component", "Use Case", "Threat", "Mitigation", "Fix"]]
 
     merged_df = pd.merge(threat_df, mitigation_df, how='left', on=["Component", "Use Case", "Threat"])
+    merged_df = (
+        merged_df
+        .groupby(["Component", "Use Case", "Threat", "Current Risk"], as_index=False)
+        .agg(lambda x: '; '.join(x.dropna().astype(str).unique()))
+    )
 
     return merged_df
 
