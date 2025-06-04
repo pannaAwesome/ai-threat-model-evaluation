@@ -46,21 +46,21 @@
     },
     {
         "ID": 6,
-        "Category": "Tampering",
+        "Category": "Spoofing",
         "Threat": "Application Insights is connected via Connection String which is stored in .env file on the IoTEdge device. Once user gains access to the device, .env file can be read and attacker can tamper the log data.",
         "Mitigation": "All services within the Azure Trust Boundary must authenticate all incoming requests, including requests coming from the same network. Proper authorizations should also be applied to prevent unnecessary privileges.",
         "Risk": "Confidentiality"
     },
     {
         "ID": 7,
-        "Category": "Tampering",
+        "Category": "Spoofing",
         "Threat": "Video camera path is stored in .env file on the IoTEdge device. Once user gains access to the device, .env file can be read and attacker can tamper the video feed or use another video source or fake video stream.",
         "Mitigation": "All products and services must encrypt data in transit using approved cryptographic protocols and algorithms.",
         "Risk": "Confidentiality and Integrity"
     },
     {
         "ID": 8,
-        "Category": "Spoofing",
+        "Category": "Denial of Service",
         "Threat": "Azure IoT Hub connection string is stored in .env file on IoTEdge Device. Once user gains access to the device, .env file can be read and attacker cause Dos attacks on IoTHub",
         "Mitigation": "All services within the Azure Trust Boundary must authenticate all incoming requests, including requests coming from the same network. Proper authorizations should also be applied to prevent unnecessary privileges.",
         "Risk": "Confidentiality"
@@ -81,7 +81,7 @@
     },
     {
         "ID": 11,
-        "Category": "Tampering",
+        "Category": "Denial of Service",
         "Threat": "Cognitive Service connection string is stored in .env file on the IoTEdge device. Once user gains access to the device, .env file can be read and attacker use cognitive service API's for his own purpose causing increase cost to use.",
         "Mitigation": "All services within the Azure Trust Boundary must authenticate all incoming requests, including requests coming from the same network. Proper authorizations should also be applied to prevent unnecessary privileges. ",
         "Risk": "Confidentiality"
