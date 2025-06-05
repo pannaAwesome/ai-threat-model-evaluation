@@ -1,2 +1,2 @@
 threats,mitigations,risks_same,risks_more,risks_less
-"[]","[]","[]","[]","[]"
+"[(5,12),(9,13)]","[]","[]","[]","[(9,13),(5,12)]"
